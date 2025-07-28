@@ -1,0 +1,45 @@
+{
+  "name": "parkit",
+  "version": "1.0.0",
+  "description": "Aplicación multiplataforma para gestión inteligente de parqueos",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "clean": "turbo run clean",
+    "db:generate": "cd packages/database && yarn generate",
+    "db:migrate": "cd packages/database && yarn migrate",
+    "db:seed": "cd packages/database && yarn seed",
+    "backend:dev": "cd apps/backend && yarn dev",
+    "mobile:dev": "cd apps/mobile && yarn start",
+    "web:dev": "cd apps/web && yarn dev",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "turbo": "^1.12.4",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.3",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "packageManager": "yarn@1.22.19"
+}
