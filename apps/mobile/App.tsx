@@ -29,7 +29,7 @@ function AppContent() {
       <AuthProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName='Login'
             screenOptions={{
               headerStyle: {
                 backgroundColor: theme.colors.primary,
@@ -41,37 +41,37 @@ function AppContent() {
             }}
           >
             <Stack.Screen
-              name="Login"
+              name='Login'
               component={LoginScreen}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Dashboard"
+              name='Dashboard'
               component={DashboardScreen}
               options={{ title: 'Parkit - Dashboard' }}
             />
             <Stack.Screen
-              name="Parkings"
+              name='Parkings'
               component={ParkingsScreen}
               options={{ title: 'Parqueos' }}
             />
             <Stack.Screen
-              name="Reservations"
+              name='Reservations'
               component={ReservationsScreen}
               options={{ title: 'Reservas' }}
             />
             <Stack.Screen
-              name="Vehicles"
+              name='Vehicles'
               component={VehiclesScreen}
               options={{ title: 'Vehículos' }}
             />
-                        <Stack.Screen
-              name="QRScanner"
+            <Stack.Screen
+              name='QRScanner'
               component={QRScannerScreen}
               options={{ title: 'Escanear QR' }}
             />
             <Stack.Screen
-              name="Settings"
+              name='Settings'
               component={SettingsScreen}
               options={{ title: 'Configuración' }}
             />
@@ -94,3 +94,7 @@ export default function App() {
     </ApolloProvider>
   );
 }
+
+// Register the component for Expo
+import { registerRootComponent } from 'expo';
+registerRootComponent(App);

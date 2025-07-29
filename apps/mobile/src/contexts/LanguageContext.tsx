@@ -1,13 +1,19 @@
 import {
-    DEFAULT_LANGUAGE,
-    getTranslation,
-    getTranslationWithParams,
-    SupportedLanguage,
-    TranslationKey
+  DEFAULT_LANGUAGE,
+  getTranslation,
+  getTranslationWithParams,
+  SupportedLanguage,
+  TranslationKey,
 } from '@parkit/shared';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Localization from 'expo-localization';
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 interface LanguageContextType {
   language: SupportedLanguage;
@@ -15,25 +21,33 @@ interface LanguageContextType {
   t: (key: TranslationKey, params?: Record<string, string | number>) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 interface LanguageProviderProps {
   children: ReactNode;
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<SupportedLanguage>(DEFAULT_LANGUAGE);
+  const [language, setLanguageState] =
+    useState<SupportedLanguage>(DEFAULT_LANGUAGE);
 
   // Load language from AsyncStorage on mount
   useEffect(() => {
     const loadLanguage = async () => {
       try {
-        const savedLanguage = await AsyncStorage.getItem('parkit-language') as SupportedLanguage;
-        if (savedLanguage && Object.values(SupportedLanguage).includes(savedLanguage)) {
+        const savedLanguage = (await AsyncStorage.getItem(
+          'parkit-language'
+        )) as SupportedLanguage;
+        if (
+          savedLanguage &&
+          Object.values(SupportedLanguage).includes(savedLanguage)
+        ) {
           setLanguageState(savedLanguage);
         } else {
           // Try to detect device language
-          const deviceLanguage = Localization.locale.split('-')[0];
+          const deviceLanguage = Localization.locale?.split('-')[0] || 'en';
           if (deviceLanguage === 'en') {
             setLanguageState('en');
           } else {
@@ -58,7 +72,10 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
   };
 
-  const t = (key: TranslationKey, params?: Record<string, string | number>): string => {
+  const t = (
+    key: TranslationKey,
+    params?: Record<string, string | number>
+  ): string => {
     if (params) {
       return getTranslationWithParams(language, key, params);
     }

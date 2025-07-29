@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, ThemeMode, getTheme } from '@parkit/shared';
+import { DEFAULT_THEME, ThemeMode } from '@parkit/shared';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {
   ReactNode,
@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { useColorScheme } from 'react-native';
-import { MD3Theme } from 'react-native-paper';
+import { MD3Theme, MD3LightTheme, MD3DarkTheme } from 'react-native-paper';
 
 interface ThemeContextType {
   themeMode: ThemeMode;
@@ -60,12 +60,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     themeMode === 'dark' || (themeMode === 'system' && systemPrefersDark);
 
   // Create theme based on current mode
-  const theme = getTheme(themeMode, systemPrefersDark);
+  const theme = isDark ? MD3DarkTheme : MD3LightTheme;
 
   const value: ThemeContextType = {
     themeMode,
     setThemeMode,
-    theme: theme as unknown as MD3Theme,
+    theme,
     isDark,
   };
 
