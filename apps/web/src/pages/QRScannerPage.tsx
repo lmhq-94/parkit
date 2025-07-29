@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { EventType } from '@parkit/shared';
 import { useState } from 'react'
-import { useLanguage } from '@/contexts/LanguageContext';;
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function QRScannerPage() {
   const { t } = useLanguage();
@@ -55,7 +55,7 @@ export default function QRScannerPage() {
 
     setScanResult({
       success: true,
-      message: {t('events.manualEventRegistered')},
+      message: t('events.manualEventRegistered'),
     });
   };
 
@@ -166,7 +166,7 @@ export default function QRScannerPage() {
                     )}
                     <Box>
                       <Typography variant="h6" color={scanResult.success ? 'success.main' : 'error.main'}>
-                        {scanResult.success ? {t('success.success')} : {t('errors.error')}}
+                        {scanResult.success ? t('success.success') : t('errors.error')}
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
                         {scanResult.message}

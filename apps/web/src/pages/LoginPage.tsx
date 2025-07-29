@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { loginPageStyles } from './LoginPage.styles';
+import { loginPageStyles } from '@/styles/LoginPage.styles';
 
 export default function LoginPage() {
   const { t } = useLanguage();

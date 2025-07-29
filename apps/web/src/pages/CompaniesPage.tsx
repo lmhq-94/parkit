@@ -1,21 +1,20 @@
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 import { usePermissions } from '@/hooks/usePermissions';
-import { CompaniesPageStyles } from './CompaniesPage.styles';
 import { Add, Delete, Edit } from '@mui/icons-material';
 import {
-    Alert,
-    Box,
-    Button,
-    Chip,
-    IconButton,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Typography,
+  Alert,
+  Box,
+  Button,
+  Chip,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
 } from '@mui/material';
 
 export default function CompaniesPage() {
@@ -56,19 +55,27 @@ export default function CompaniesPage() {
   ];
 
   return (
-    <ProtectedRoute requiredPermissions={(p) => p.canManageCompanies}>
+    <ProtectedRoute requiredPermissions={p => p.canManageCompanies}>
       <Box>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-          <Typography variant="h4">Gestión de Empresas</Typography>
-          <Button variant="contained" startIcon={<Add />}>
+        <Box
+          display='flex'
+          justifyContent='space-between'
+          alignItems='center'
+          mb={3}
+        >
+          <Typography variant='h4'>Gestión de Empresas</Typography>
+          <Button variant='contained' startIcon={<Add />}>
             Agregar Empresa
           </Button>
         </Box>
 
-        <Alert severity="info" sx={{ mb: 3 }}>
-          <Typography variant="h6">Panel de Administración de Empresas</Typography>
-          <Typography variant="body2">
-            Gestiona todas las empresas registradas en el sistema y sus configuraciones.
+        <Alert severity='info' sx={{ mb: 3 }}>
+          <Typography variant='h6'>
+            Panel de Administración de Empresas
+          </Typography>
+          <Typography variant='body2'>
+            Gestiona todas las empresas registradas en el sistema y sus
+            configuraciones.
           </Typography>
         </Alert>
 
@@ -82,48 +89,48 @@ export default function CompaniesPage() {
                   <TableCell>Usuarios</TableCell>
                   <TableCell>Parqueos</TableCell>
                   <TableCell>Estado</TableCell>
-                  <TableCell align="right">Acciones</TableCell>
+                  <TableCell align='right'>Acciones</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {companies.map((company) => (
+                {companies.map(company => (
                   <TableRow key={company.id}>
                     <TableCell>
                       <Box>
-                        <Typography variant="subtitle1" fontWeight="bold">
+                        <Typography variant='subtitle1' fontWeight='bold'>
                           {company.name}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant='body2' color='textSecondary'>
                           {company.address}
                         </Typography>
                       </Box>
                     </TableCell>
                     <TableCell>
                       <Box>
-                        <Typography variant="body2">{company.phone}</Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant='body2'>{company.phone}</Typography>
+                        <Typography variant='body2' color='textSecondary'>
                           {company.email}
                         </Typography>
                       </Box>
                     </TableCell>
                     <TableCell>
-                      <Chip label={company.userCount} size="small" />
+                      <Chip label={company.userCount} size='small' />
                     </TableCell>
                     <TableCell>
-                      <Chip label={company.parkingCount} size="small" />
+                      <Chip label={company.parkingCount} size='small' />
                     </TableCell>
                     <TableCell>
                       <Chip
                         label={company.isActive ? 'Activa' : 'Inactiva'}
                         color={company.isActive ? 'success' : 'default'}
-                        size="small"
+                        size='small'
                       />
                     </TableCell>
-                    <TableCell align="right">
-                      <IconButton size="small" color="primary">
+                    <TableCell align='right'>
+                      <IconButton size='small' color='primary'>
                         <Edit />
                       </IconButton>
-                      <IconButton size="small" color="error">
+                      <IconButton size='small' color='error'>
                         <Delete />
                       </IconButton>
                     </TableCell>

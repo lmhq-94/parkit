@@ -25,7 +25,7 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { VehiclesPageStyles } from './VehiclesPage.styles';
+import { VehiclesPageStyles } from '@/styles/VehiclesPage.styles';
 
 export default function VehiclesPage() {
   const [searchQuery, setSearchQuery] = useState('');

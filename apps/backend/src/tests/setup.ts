@@ -36,15 +36,15 @@ export class TestUtils {
     const token = AuthService.generateAccessToken({
       userId: user.id,
       email: user.email,
-      role: user.role,
-      companyId: user.companyId,
+      role: user.role as UserRole,
+      companyId: user.companyId || undefined,
     });
 
     return {
       id: user.id,
       email: user.email,
-      role: user.role,
-      companyId: user.companyId,
+      role: user.role as UserRole,
+      companyId: user.companyId || '',
       token,
     };
   }
@@ -98,7 +98,7 @@ export class TestUtils {
         userId,
         vehicleId,
         parkingId,
-        companyId: (await prisma.user.findUnique({ where: { id: userId } }))!.companyId,
+        companyId: (await prisma.user.findUnique({ where: { id: userId } }))!.companyId || '',
       },
     });
   }

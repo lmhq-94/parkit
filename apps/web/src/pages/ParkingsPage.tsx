@@ -100,13 +100,13 @@ export default function ParkingsPage() {
   const getStatusLabel = (status: string) => {
     switch (status) {
       case 'AVAILABLE':
-        return {t('common.available')};
+        return t('common.available');
       case 'OCCUPIED':
-        return {t('common.occupied')};
+        return t('common.occupied');
       case 'RESERVED':
-        return {t('common.reserved')};
+        return t('common.reserved');
       case 'MAINTENANCE':
-        return {t('common.maintenance')};
+        return t('common.maintenance');
       default:
         return status;
     }

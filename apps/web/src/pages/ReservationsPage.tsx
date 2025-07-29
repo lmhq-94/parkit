@@ -1,37 +1,39 @@
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { usePermissions } from '@/hooks/usePermissions';
 import { Add, MoreVert, Search } from '@mui/icons-material';
 import {
-    Alert,
-    Box,
-    Button,
-    Card,
-    CardContent,
-    Chip,
-    Grid,
-    IconButton,
-    InputAdornment,
-    Menu,
-    MenuItem,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    TextField,
-    Typography,
+  Alert,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Grid,
+  IconButton,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
 } from '@mui/material';
-import React, { useState } from 'react'
-import { useLanguage } from '@/contexts/LanguageContext';;
+import React, { useState } from 'react';
 
 export default function ReservationsPage() {
   const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
-  const [selectedReservation, setSelectedReservation] = useState<string | null>(null);
+  const [selectedReservation, setSelectedReservation] = useState<string | null>(
+    null
+  );
   const permissions = usePermissions();
 
   // Mock data - in real app this would come from GraphQL
@@ -43,7 +45,7 @@ export default function ReservationsPage() {
       startTime: '2024-01-15T10:00:00Z',
       endTime: '2024-01-15T18:00:00Z',
       status: 'CONFIRMED',
-      amount: 40.00,
+      amount: 40.0,
       userName: 'Juan Pérez',
     },
     {
@@ -53,7 +55,7 @@ export default function ReservationsPage() {
       startTime: '2024-01-15T14:00:00Z',
       endTime: '2024-01-15T16:00:00Z',
       status: 'PENDING',
-      amount: 10.00,
+      amount: 10.0,
       userName: 'María García',
     },
     {
@@ -63,7 +65,7 @@ export default function ReservationsPage() {
       startTime: '2024-01-16T09:00:00Z',
       endTime: '2024-01-16T17:00:00Z',
       status: 'CANCELLED',
-      amount: 40.00,
+      amount: 40.0,
       userName: 'Carlos López',
     },
     {
@@ -73,7 +75,7 @@ export default function ReservationsPage() {
       startTime: '2024-01-15T08:00:00Z',
       endTime: '2024-01-15T12:00:00Z',
       status: 'COMPLETED',
-      amount: 20.00,
+      amount: 20.0,
       userName: 'Ana Rodríguez',
     },
   ];
@@ -96,13 +98,13 @@ export default function ReservationsPage() {
   const getStatusLabel = (status: string) => {
     switch (status) {
       case 'CONFIRMED':
-        return {t('common.confirmed')};
+        return t('common.confirmed');
       case 'PENDING':
-        return {t('common.pending')};
+        return t('common.pending');
       case 'CANCELLED':
-        return {t('common.cancelled')};
+        return t('common.cancelled');
       case 'COMPLETED':
-        return {t('common.completed')};
+        return t('common.completed');
       default:
         return status;
     }
@@ -110,10 +112,15 @@ export default function ReservationsPage() {
 
   const filteredReservations = reservations.filter(reservation => {
     const matchesSearch =
-      reservation.parkingName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      reservation.vehiclePlate.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      reservation.parkingName
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      reservation.vehiclePlate
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
       reservation.userName.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFilter = filterStatus === 'all' || reservation.status === filterStatus;
+    const matchesFilter =
+      filterStatus === 'all' || reservation.status === filterStatus;
     return matchesSearch && matchesFilter;
   });
 
@@ -136,7 +143,10 @@ export default function ReservationsPage() {
     });
   };
 
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, reservationId: string) => {
+  const handleMenuOpen = (
+    event: React.MouseEvent<HTMLElement>,
+    reservationId: string
+  ) => {
     setMenuAnchor(event.currentTarget);
     setSelectedReservation(reservationId);
   };
@@ -147,20 +157,29 @@ export default function ReservationsPage() {
   };
 
   return (
-    <ProtectedRoute requiredPermissions={(p) => p.canManageReservations || p.canViewOwnReservations}>
+    <ProtectedRoute
+      requiredPermissions={p =>
+        p.canManageReservations || p.canViewOwnReservations
+      }
+    >
       <Box>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-          <Typography variant="h4">Gestión de Reservas</Typography>
+        <Box
+          display='flex'
+          justifyContent='space-between'
+          alignItems='center'
+          mb={3}
+        >
+          <Typography variant='h4'>Gestión de Reservas</Typography>
           {permissions.canCreateReservations && (
-            <Button variant="contained" startIcon={<Add />}>
+            <Button variant='contained' startIcon={<Add />}>
               Nueva Reserva
             </Button>
           )}
         </Box>
 
-        <Alert severity="info" sx={{ mb: 3 }}>
-          <Typography variant="h6">Panel de Gestión de Reservas</Typography>
-          <Typography variant="body2">
+        <Alert severity='info' sx={{ mb: 3 }}>
+          <Typography variant='h6'>Panel de Gestión de Reservas</Typography>
+          <Typography variant='body2'>
             Gestiona todas las reservas de parqueo en el sistema.
           </Typography>
         </Alert>
@@ -170,40 +189,46 @@ export default function ReservationsPage() {
           <Grid item xs={12} sm={6} md={3}>
             <Card>
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
+                <Typography color='textSecondary' gutterBottom>
                   Total Reservas
                 </Typography>
-                <Typography variant="h4">{stats.total}</Typography>
+                <Typography variant='h4'>{stats.total}</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Card>
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
+                <Typography color='textSecondary' gutterBottom>
                   Confirmadas
                 </Typography>
-                <Typography variant="h4" color="success.main">{stats.confirmed}</Typography>
+                <Typography variant='h4' color='success.main'>
+                  {stats.confirmed}
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Card>
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
+                <Typography color='textSecondary' gutterBottom>
                   Pendientes
                 </Typography>
-                <Typography variant="h4" color="warning.main">{stats.pending}</Typography>
+                <Typography variant='h4' color='warning.main'>
+                  {stats.pending}
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Card>
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
+                <Typography color='textSecondary' gutterBottom>
                   Canceladas
                 </Typography>
-                <Typography variant="h4" color="error.main">{stats.cancelled}</Typography>
+                <Typography variant='h4' color='error.main'>
+                  {stats.cancelled}
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
@@ -211,16 +236,16 @@ export default function ReservationsPage() {
 
         {/* Search and Filters */}
         <Box sx={{ mb: 3 }}>
-          <Grid container spacing={2} alignItems="center">
+          <Grid container spacing={2} alignItems='center'>
             <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
                 placeholder={t('reservations.searchPlaceholder')}
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={e => setSearchQuery(e.target.value)}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">
+                    <InputAdornment position='start'>
                       <Search />
                     </InputAdornment>
                   ),
@@ -228,7 +253,7 @@ export default function ReservationsPage() {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box display="flex" gap={1} flexWrap="wrap">
+              <Box display='flex' gap={1} flexWrap='wrap'>
                 <Chip
                   label={`Todas (${stats.total})`}
                   onClick={() => setFilterStatus('all')}
@@ -268,39 +293,39 @@ export default function ReservationsPage() {
                   <TableCell>Horario</TableCell>
                   <TableCell>Monto</TableCell>
                   <TableCell>Estado</TableCell>
-                  <TableCell align="right">Acciones</TableCell>
+                  <TableCell align='right'>Acciones</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredReservations.map((reservation) => (
+                {filteredReservations.map(reservation => (
                   <TableRow key={reservation.id}>
                     <TableCell>
                       <Box>
-                        <Typography variant="subtitle1" fontWeight="bold">
+                        <Typography variant='subtitle1' fontWeight='bold'>
                           {reservation.parkingName}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant='body2' color='textSecondary'>
                           {reservation.userName}
                         </Typography>
                       </Box>
                     </TableCell>
                     <TableCell>
-                      <Typography variant="body2">
+                      <Typography variant='body2'>
                         {reservation.vehiclePlate}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Box>
-                        <Typography variant="body2">
+                        <Typography variant='body2'>
                           Inicio: {formatDateTime(reservation.startTime)}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant='body2' color='textSecondary'>
                           Fin: {formatDateTime(reservation.endTime)}
                         </Typography>
                       </Box>
                     </TableCell>
                     <TableCell>
-                      <Typography variant="body2" fontWeight="bold">
+                      <Typography variant='body2' fontWeight='bold'>
                         ${reservation.amount}
                       </Typography>
                     </TableCell>
@@ -308,13 +333,13 @@ export default function ReservationsPage() {
                       <Chip
                         label={getStatusLabel(reservation.status)}
                         color={getStatusColor(reservation.status) as any}
-                        size="small"
+                        size='small'
                       />
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell align='right'>
                       <IconButton
-                        size="small"
-                        onClick={(e) => handleMenuOpen(e, reservation.id)}
+                        size='small'
+                        onClick={e => handleMenuOpen(e, reservation.id)}
                       >
                         <MoreVert />
                       </IconButton>
@@ -332,18 +357,12 @@ export default function ReservationsPage() {
           open={Boolean(menuAnchor)}
           onClose={handleMenuClose}
         >
-          <MenuItem onClick={handleMenuClose}>
-            Ver detalles
-          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>Ver detalles</MenuItem>
           {permissions.canCancelReservations && (
-            <MenuItem onClick={handleMenuClose}>
-              Cancelar reserva
-            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>Cancelar reserva</MenuItem>
           )}
           {permissions.canManageReservations && (
-            <MenuItem onClick={handleMenuClose}>
-              Editar reserva
-            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>Editar reserva</MenuItem>
           )}
         </Menu>
       </Box>

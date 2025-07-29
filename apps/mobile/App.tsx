@@ -11,13 +11,13 @@ import { ThemeProvider, useTheme } from './src/contexts/ThemeContext';
 import { client } from './src/lib/apollo';
 
 // Screens
-import DashboardScreen from './src/screens/DashboardScreen';
-import LoginScreen from './src/screens/LoginScreen';
-import ParkingsScreen from './src/screens/ParkingsScreen';
-import QRScannerScreen from './src/screens/QRScannerScreen';
-import ReservationsScreen from './src/screens/ReservationsScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
-import VehiclesScreen from './src/screens/VehiclesScreen';
+import DashboardScreen from './src/screens/DashboardScreen/DashboardScreen';
+import LoginScreen from './src/screens/LoginScreen/LoginScreen';
+import ParkingsScreen from './src/screens/ParkingsScreen/ParkingsScreen';
+import QRScannerScreen from './src/screens/QRScannerScreen/QRScannerScreen';
+import ReservationsScreen from './src/screens/ReservationsScreen/ReservationsScreen';
+import SettingsScreen from './src/screens/SettingsScreen/SettingsScreen';
+import VehiclesScreen from './src/screens/VehiclesScreen/VehiclesScreen';
 
 const Stack = createStackNavigator();
 

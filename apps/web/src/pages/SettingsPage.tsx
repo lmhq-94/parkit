@@ -33,7 +33,7 @@ import {
   THEME_NAMES,
   ThemeMode,
 } from '@parkit/shared';
-import { SettingsPageStyles } from './SettingsPage.styles';
+import { SettingsPageStyles } from '@/styles/SettingsPage.styles';
 
 export default function SettingsPage() {
   const { language, setLanguage, t } = useLanguage();

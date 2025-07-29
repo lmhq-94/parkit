@@ -1,6 +1,6 @@
 import { SxProps, Theme } from '@mui/material';
 
-export const qr-scannerPageStyles = {
+export const qrScannerPageStyles = {
   container: {
     p: 3,
   } as SxProps<Theme>,

@@ -1,5 +1,6 @@
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 import { usePermissions } from '@/hooks/usePermissions';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { QrCode } from '@mui/icons-material';
 import {
     Alert,
@@ -53,9 +54,9 @@ export default function EventsPage() {
   const getEventTypeLabel = (type: EventType) => {
     switch (type) {
       case EventType.ENTRY:
-        return {t('events.entry')};
+        return t('events.entry');
       case EventType.EXIT:
-        return {t('events.exit')};
+        return t('events.exit');
       default:
         return type;
     }

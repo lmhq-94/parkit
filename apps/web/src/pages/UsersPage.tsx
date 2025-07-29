@@ -18,7 +18,7 @@ import {
   Typography,
 } from '@mui/material';
 import { UserRole } from '@parkit/shared';
-import { UsersPageStyles } from './UsersPage.styles';
+import { UsersPageStyles } from '@/styles/UsersPage.styles';
 
 export default function UsersPage() {
   const permissions = usePermissions();

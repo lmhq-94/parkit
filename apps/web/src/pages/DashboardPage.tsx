@@ -28,7 +28,7 @@ import {
 } from '@mui/material';
 import { UserRole } from '@parkit/shared';
 import React from 'react';
-import { dashboardPageStyles } from './DashboardPage.styles';
+import { dashboardPageStyles } from '@/styles/DashboardPage.styles';
 
 const GET_DASHBOARD_DATA = gql`
   query GetDashboardData {
