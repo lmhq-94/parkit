@@ -1,477 +1,336 @@
-# 🚗 ParkIt - Sistema Inteligente de Gestión de Parqueos
+# 🚗 ParkIt - Smart Parking Management System
 
-Una aplicación multiplataforma completa para la gestión inteligente de parqueos, diseñada para empresas que necesitan administrar espacios de estacionamiento de manera eficiente.
+A comprehensive parking management platform built with modern technologies and best practices.
 
-## ✨ Características Principales
+## 🏗️ Architecture
 
-### 🎨 Sistema de Diseño Avanzado
-- **5 Paletas de colores**: Ocean, Sunset, Forest, Royal, Midnight
-- **Modo oscuro/claro** con transiciones suaves
-- **Gradientes dinámicos** con 10 variaciones predefinidas
-- **Efectos glassmorphism** con blur y transparencias
-- **Tipografía profesional** con fuente Inter
-- **Animaciones y micro-interacciones** fluidas
+This is a **monorepo** built with **Turborepo** containing:
 
-### 🔐 Autenticación Moderna
-- **Múltiples métodos de login**: Email, teléfono, Google, Facebook, Apple
-- **Verificación SMS** con countdown timer
-- **JWT tokens** con refresh automático
-- **Sistema de permisos RBAC** con 5 roles
-- **Rate limiting** para seguridad
+- **Backend**: Node.js + Express + GraphQL + Prisma + PostgreSQL
+- **Frontend**: Next.js + React + TypeScript + Tailwind CSS
+- **Mobile**: React Native + Expo + TypeScript
+- **Shared**: Common utilities, types, and UI components
 
-### 📊 Dashboard Interactivo
-- **Gráficos en tiempo real** con MUI X Charts
-- **Widgets personalizables** con efectos hover
-- **Métricas dinámicas** con tendencias
-- **Quick Actions** con animaciones
-- **Recent Activity** timeline
+## 🚀 Quick Start
 
-### 🗺️ Mapa Interactivo
-- **Visualización en tiempo real** de parqueos
-- **Códigos de color** para diferentes estados
-- **Filtros avanzados** por estado, tipo, precio
-- **Búsqueda de espacios** específicos
-- **Zoom y navegación** intuitiva
+### Prerequisites
 
-### 🔔 Notificaciones Inteligentes
-- **Push notifications** en tiempo real
-- **Categorización**: parking, payment, reservation, system, user
-- **Sistema de prioridades**: low, medium, high
-- **Drawer lateral** con lista completa
-- **Configuración personalizada**
+- Node.js 18+ 
+- Yarn 1.22+
+- Docker & Docker Compose
+- PostgreSQL 15+
+- Redis 7+
 
-### 🌍 Internacionalización
-- **Español** (idioma por defecto)
-- **Inglés** (idioma secundario)
-- **Detección automática** del idioma del dispositivo
-- **Hook personalizado** useTranslations
-- **Formateo de fechas** y números
+### Environment Setup
 
-## 🏗️ Arquitectura Moderna
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-org/parkit.git
+   cd parkit
+   ```
 
-### Monorepo con Turbo
+2. **Install dependencies**
+   ```bash
+   yarn install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp env.example .env
+   # Edit .env with your configuration
+   ```
+
+4. **Start development environment**
+   ```bash
+   # Start all services with Docker
+   docker-compose up -d
+   
+   # Or start individual services
+   yarn dev:backend
+   yarn dev:web
+   yarn dev:mobile
+   ```
+
+## 📁 Project Structure
+
 ```
 parkit/
 ├── apps/
-│   ├── web/          # Next.js 15 + React 19
-│   ├── mobile/       # React Native 0.73 + Expo SDK 50
-│   └── backend/      # Node.js + GraphQL + Prisma
+│   ├── backend/          # Express + GraphQL API
+│   ├── web/             # Next.js frontend
+│   └── mobile/          # React Native app
 ├── packages/
-│   ├── ui/           # Material-UI v7 + Sistema de diseño
-│   ├── shared/       # Utilidades y i18n
-│   ├── types/        # Tipos TypeScript
-│   └── config/       # Configuraciones compartidas
-└── turbo.json        # Configuración de Turbo
+│   ├── config/          # Shared configurations
+│   ├── shared/          # Common utilities
+│   ├── types/           # TypeScript types
+│   └── ui/              # UI components
+├── docker-compose.yml   # Development environment
+└── turbo.json          # Build pipeline
 ```
 
-### Stack Tecnológico Moderno
+## 🛠️ Development
 
-#### Frontend
-- **React 19** con hooks avanzados y concurrent features
-- **Next.js 15** para SSR, App Router y optimización
-- **React Native 0.73** con Expo SDK 50 para móvil
-- **TypeScript 5.3** para tipado estático
-- **Material-UI v7** para componentes web
-- **React Native Paper** para componentes móviles
-- **MUI X Charts** para visualización de datos
-- **TanStack Query v5** para gestión de estado del servidor
-- **Zustand** para gestión de estado local
-- **Zod** para validación de esquemas
+### Backend Development
 
-#### Backend
-- **Node.js 18.17** con Express
-- **GraphQL** con Apollo Server v4
-- **Prisma** como ORM moderno
-- **PostgreSQL 15** como base de datos
-- **Redis 7** para caché y sesiones
-- **JWT** para autenticación
-- **WebSockets** para tiempo real
-- **Bull** para colas de trabajo
-- **Winston** para logging estructurado
-
-#### Herramientas y DevOps
-- **Turbo 1.11** para monorepo
-- **Yarn 1.22** para gestión de dependencias
-- **ESLint 8.55** con reglas modernas
-- **Prettier 3.1** para formateo
-- **Jest 29.7** para testing
-- **Husky 8.0** para git hooks
-- **Commitlint** para estándares de commits
-- **Docker Compose** para desarrollo
-- **GitHub Actions** para CI/CD
-
-## 🚀 Inicio Rápido
-
-### Prerrequisitos
-- Node.js >= 18.17.0
-- Yarn >= 1.22.0
-- PostgreSQL >= 15
-- Redis >= 7
-- Docker >= 20.10 (opcional)
-
-### Instalación
-
-1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/tu-usuario/parkit.git
-cd parkit
-```
+cd apps/backend
 
-2. **Instalar dependencias**
-```bash
+# Install dependencies
 yarn install
-```
 
-3. **Configurar variables de entorno**
-```bash
-cp .env.example .env
-# Editar .env con tus configuraciones
-```
+# Run database migrations
+yarn prisma migrate dev
 
-4. **Configurar base de datos**
-```bash
-yarn db:generate
-yarn db:migrate
-yarn db:seed
-```
-
-5. **Ejecutar en desarrollo**
-```bash
-# Todas las aplicaciones
+# Start development server
 yarn dev
 
-# Solo web
-yarn dev:web
+# Run tests
+yarn test
 
-# Solo móvil
-yarn dev:mobile
-
-# Solo backend
-yarn dev:backend
+# Run tests with coverage
+yarn test:coverage
 ```
 
-### Docker (Opcional)
-```bash
-# Iniciar todos los servicios
-docker-compose up -d
-
-# Ver logs
-docker-compose logs -f
-
-# Detener servicios
-docker-compose down
-```
-
-## 📱 Aplicaciones
-
-### Web (Next.js 15)
-- **Dashboard** con gráficos avanzados
-- **Login** con efectos glassmorphism
-- **Gestión de empresas** y usuarios
-- **Mapa interactivo** de parqueos
-- **Gestión de reservas** y pagos
-- **QR Scanner** para escaneo web
-- **Reportes** y análisis
-
-### Móvil (React Native 0.73 + Expo SDK 50)
-- **Splash Screen** con animaciones avanzadas
-- **Login** multi-método con transiciones
-- **Dashboard** adaptado para móvil
-- **Mapa interactivo** con geolocalización
-- **Escáner QR** nativo
-- **Notificaciones push**
-- **Modo offline** con sincronización
-
-### Backend (Node.js + GraphQL)
-- **API GraphQL** completa con Apollo Server v4
-- **Autenticación JWT** con refresh
-- **Sistema de permisos** RBAC
-- **WebSockets** para tiempo real
-- **Upload de archivos** con validación
-- **Rate limiting** y seguridad
-- **Logging** estructurado con Winston
-
-## 🎨 Sistema de Temas
-
-### Paletas de Colores
-```typescript
-// Ocean - Azul profesional
-ocean: {
-  primary: '#0066CC',
-  secondary: '#00BFFF',
-  accent: '#00CED1'
-}
-
-// Sunset - Naranja vibrante
-sunset: {
-  primary: '#FF6B35',
-  secondary: '#FF8E53',
-  accent: '#FFB347'
-}
-
-// Forest - Verde natural
-forest: {
-  primary: '#2E7D32',
-  secondary: '#66BB6A',
-  accent: '#8BC34A'
-}
-
-// Royal - Púrpura elegante
-royal: {
-  primary: '#6A1B9A',
-  secondary: '#AB47BC',
-  accent: '#E1BEE7'
-}
-
-// Midnight - Azul oscuro
-midnight: {
-  primary: '#1A237E',
-  secondary: '#5C6BC0',
-  accent: '#9FA8DA'
-}
-```
-
-### Uso del Tema
-```typescript
-import { createParkitTheme, useTheme } from '@parkit/ui';
-
-// Crear tema personalizado
-const theme = createParkitTheme('ocean', 'light');
-
-// Hook para usar tema
-const { theme, toggleTheme, currentPalette } = useTheme();
-```
-
-## 🌍 Internacionalización
-
-### Configuración
-```typescript
-import { useTranslation } from 'react-i18next';
-
-const { t, i18n } = useTranslation();
-
-// Cambiar idioma
-i18n.changeLanguage('en');
-
-// Usar traducciones
-t('auth.login') // "Iniciar Sesión" / "Login"
-```
-
-### Estructura de Traducciones
-```typescript
-{
-  common: { loading: 'Cargando...' },
-  auth: { login: 'Iniciar Sesión' },
-  parking: { title: 'Parqueos' },
-  reservation: { title: 'Reservas' },
-  dashboard: { title: 'Panel Principal' },
-  notifications: { title: 'Notificaciones' },
-  payment: { title: 'Pagos' }
-}
-```
-
-## 🔐 Sistema de Autenticación
-
-### Roles de Usuario
-- **ADMIN**: Acceso completo al sistema
-- **MANAGER**: Gestión de operaciones
-- **VALET**: Registro de entradas/salidas
-- **EMPLOYEE**: Acceso limitado
-- **CLIENT**: Usuario final con reservas
-
-### Métodos de Login
-- Email y contraseña
-- Teléfono con verificación SMS
-- Google OAuth
-- Facebook OAuth
-- Apple Sign-In
-
-## 📊 Base de Datos
-
-### Entidades Principales
-- **Company**: Empresas que usan el sistema
-- **User**: Usuarios con roles y permisos
-- **Vehicle**: Vehículos registrados
-- **Parking**: Espacios de estacionamiento
-- **Reservation**: Reservas de espacios
-- **Event**: Registro de entradas/salidas
-- **Payment**: Transacciones de pago
-- **Notification**: Sistema de notificaciones
-- **QRCode**: Códigos QR para identificación
-
-## 🚀 Scripts Disponibles
+### Frontend Development
 
 ```bash
-# Desarrollo
-yarn dev              # Todas las aplicaciones
-yarn dev:web          # Solo web
-yarn dev:mobile       # Solo móvil
-yarn dev:backend      # Solo backend
+cd apps/web
 
-# Construcción
-yarn build            # Construir todo
-yarn build:web        # Construir web
-yarn build:mobile     # Construir móvil
-yarn build:backend    # Construir backend
+# Install dependencies
+yarn install
 
-# Linting y formateo
-yarn lint             # Lint todo el código
-yarn lint:fix         # Lint con auto-fix
-yarn format           # Formatear código
-yarn format:check     # Verificar formato
-yarn check-types      # Verificar tipos
+# Start development server
+yarn dev
 
-# Testing
-yarn test             # Ejecutar tests
-yarn test:watch       # Tests en modo watch
-yarn test:coverage    # Tests con cobertura
-
-# Base de datos
-yarn db:generate      # Generar cliente Prisma
-yarn db:migrate       # Ejecutar migraciones
-yarn db:seed          # Poblar base de datos
-yarn db:studio        # Abrir Prisma Studio
-
-# Storybook
-yarn storybook        # Abrir Storybook
-yarn build:storybook  # Construir Storybook
-
-# Limpieza
-yarn clean            # Limpiar builds
+# Build for production
+yarn build
 ```
 
-## 📈 Estado del Proyecto
+### Mobile Development
 
-### ✅ Completado (100%)
-- [x] Arquitectura del monorepo con Turbo
-- [x] Sistema de autenticación JWT moderno
-- [x] Sistema de permisos RBAC
-- [x] Internacionalización completa
-- [x] Sistema de temas dinámico
-- [x] Dashboard interactivo con gráficos
-- [x] Sistema de notificaciones avanzado
-- [x] Mapa interactivo de parqueos
-- [x] Todas las pantallas principales (Web + Mobile)
-- [x] Base de datos y migraciones con Prisma
-- [x] API GraphQL con Apollo Server v4
-- [x] UI/UX moderna y responsive
-- [x] Efectos glassmorphism y animaciones
-- [x] Paletas de colores personalizables
-- [x] Componentes reutilizables avanzados
-- [x] Splash Screen avanzado con animaciones
-- [x] Sistema de login multi-método
-- [x] Autenticación por teléfono con verificación SMS
-- [x] Social login (Google, Facebook, Apple, Twitter)
-- [x] Validación en tiempo real y transiciones animadas
-- [x] Diseño tipo DiDi con footer fijo
-- [x] Sistema de fuentes profesionales (Inter)
-- [x] Jerarquía tipográfica consistente
-- [x] Configuración moderna de ESLint y Prettier
-- [x] Testing con Jest y Testing Library
-- [x] CI/CD con GitHub Actions
-- [x] Docker Compose para desarrollo
-- [x] Git hooks con Husky y Commitlint
+```bash
+cd apps/mobile
 
-### 🔄 En Progreso
-- [ ] Integración completa con GraphQL
-- [ ] Notificaciones push
-- [ ] Funcionalidades offline
-- [ ] Tests automatizados
-- [ ] Optimización de rendimiento
+# Install dependencies
+yarn install
 
-### 📋 Pendiente
-- [ ] Documentación de API
-- [ ] Deploy en producción
-- [ ] Monitoreo y analytics
-- [ ] Backup automático
-- [ ] CI/CD pipeline
-- [ ] Integración con IoT
-- [ ] Sistema de gamificación
-- [ ] Análisis predictivo
+# Start Expo development server
+yarn start
+
+# Run on iOS simulator
+yarn ios
+
+# Run on Android emulator
+yarn android
+```
 
 ## 🧪 Testing
 
-### Cobertura de Tests
+### Backend Tests
+
 ```bash
-# Ejecutar tests con cobertura
+cd apps/backend
+
+# Run all tests
+yarn test
+
+# Run tests with coverage
 yarn test:coverage
 
-# Resultados esperados:
-# - Branches: 80%
-# - Functions: 80%
-# - Lines: 80%
-# - Statements: 80%
+# Run specific test file
+yarn test AuthController.test.ts
+
+# Run tests in watch mode
+yarn test:watch
 ```
 
-### Tipos de Tests
-- **Unit Tests**: Componentes y utilidades
-- **Integration Tests**: APIs y servicios
-- **E2E Tests**: Flujos completos
-- **Visual Tests**: Storybook
+### Frontend Tests
 
-## 🔒 Seguridad
-
-### Implementaciones de Seguridad
-- **JWT** con refresh tokens
-- **Rate limiting** para APIs
-- **CORS** configurado
-- **Helmet** para headers de seguridad
-- **Input validation** con Zod
-- **SQL injection** prevention con Prisma
-- **XSS protection** con sanitización
-- **CSRF protection** con tokens
-
-## 🚀 Performance
-
-### Optimizaciones
-- **Code splitting** automático
-- **Lazy loading** de componentes
-- **Image optimization** con Next.js
-- **Bundle analysis** con webpack-bundle-analyzer
-- **Caching** con Redis
-- **CDN** para assets estáticos
-- **Service Workers** para PWA
-
-## 🤝 Contribuir
-
-### Estándares de Contribución
-1. Fork el proyecto
-2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios siguiendo Conventional Commits (`git commit -m 'feat: add amazing feature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir un Pull Request
-
-### Conventional Commits
 ```bash
-feat: nueva característica
-fix: corrección de bug
-docs: cambios en documentación
-style: cambios de formato
-refactor: refactorización de código
-perf: mejoras de performance
-test: agregar o modificar tests
-build: cambios en build system
-ci: cambios en CI/CD
-chore: tareas de mantenimiento
+cd apps/web
+
+# Run all tests
+yarn test
+
+# Run tests with coverage
+yarn test:coverage
 ```
 
-## 📄 Licencia
+## 🚀 Deployment
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+### Production Build
 
-## 👥 Equipo
+```bash
+# Build all applications
+yarn build
 
-- **Desarrollador Principal**: [Tu Nombre]
-- **Diseñador UX/UI**: [Nombre del Diseñador]
-- **DevOps**: [Nombre del DevOps]
+# Build specific app
+yarn build:backend
+yarn build:web
+yarn build:mobile
+```
 
-## 📞 Soporte
+### Docker Deployment
 
-- 📧 Email: soporte@parkit.com
-- 💬 Discord: [Link del Discord]
-- 📱 WhatsApp: [Número de WhatsApp]
-- 🌐 Website: https://parkit.com
+```bash
+# Build and start all services
+docker-compose -f docker-compose.prod.yml up -d
 
----
+# View logs
+docker-compose logs -f
+```
 
-**ParkIt** - Transformando la gestión de parqueos con tecnología moderna y diseño excepcional. 🚗✨
+## 📊 API Documentation
+
+### GraphQL Playground
+- **Development**: http://localhost:4000/graphql
+- **Production**: https://api.parkit.com/graphql
+
+### REST API Endpoints
+
+#### Authentication
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `POST /api/auth/refresh` - Refresh token
+- `POST /api/auth/forgot-password` - Password reset request
+- `POST /api/auth/reset-password` - Password reset
+
+#### Users
+- `GET /api/users/profile` - Get user profile
+- `PUT /api/users/profile` - Update user profile
+- `GET /api/users/` - List users (admin only)
+- `GET /api/users/:id` - Get user by ID
+
+#### Parking
+- `GET /api/parkings/` - List parking spots
+- `GET /api/parkings/:id` - Get parking spot details
+- `POST /api/parkings/` - Create parking spot
+- `PUT /api/parkings/:id` - Update parking spot
+- `DELETE /api/parkings/:id` - Delete parking spot
+
+#### Reservations
+- `GET /api/reservations/` - List reservations
+- `GET /api/reservations/:id` - Get reservation details
+- `POST /api/reservations/` - Create reservation
+- `PUT /api/reservations/:id` - Update reservation
+- `DELETE /api/reservations/:id` - Cancel reservation
+
+#### Payments
+- `GET /api/payments/` - List payments
+- `GET /api/payments/:id` - Get payment details
+- `POST /api/payments/` - Process payment
+- `PUT /api/payments/:id` - Update payment
+- `DELETE /api/payments/:id` - Refund payment
+
+## 🔧 Configuration
+
+### Environment Variables
+
+See `env.example` for all available environment variables.
+
+### Database Schema
+
+The database schema is managed with Prisma. Key entities:
+
+- **Users**: User accounts and authentication
+- **Roles**: User roles and permissions
+- **Companies**: Business entities
+- **ParkingSpots**: Available parking locations
+- **Reservations**: Parking reservations
+- **Payments**: Payment transactions
+- **Vehicles**: User vehicles
+- **QR Codes**: QR codes for parking spots
+
+## 🛡️ Security
+
+### Authentication & Authorization
+
+- JWT-based authentication
+- Role-based access control (RBAC)
+- Permission-based authorization
+- Refresh token rotation
+- Password hashing with bcrypt
+
+### Security Headers
+
+- Helmet.js for security headers
+- CORS configuration
+- Rate limiting
+- Input validation with Zod
+- SQL injection prevention with Prisma
+
+## 📈 Monitoring & Logging
+
+### Logging
+
+- Winston logger with structured logging
+- Request/response logging
+- Error tracking with Sentry
+- Performance monitoring
+
+### Health Checks
+
+- `/health` endpoint for service health
+- Database connectivity checks
+- Redis connectivity checks
+- External service health checks
+
+## 🤝 Contributing
+
+### Development Workflow
+
+1. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes**
+   - Follow the coding standards
+   - Add tests for new functionality
+   - Update documentation
+
+3. **Run tests and linting**
+   ```bash
+   yarn lint
+   yarn test
+   yarn type-check
+   ```
+
+4. **Commit your changes**
+   ```bash
+   git add .
+   git commit -m "feat: add your feature description"
+   ```
+
+5. **Push and create a PR**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+### Code Standards
+
+- **TypeScript**: Strict mode enabled
+- **ESLint**: Airbnb configuration
+- **Prettier**: Consistent code formatting
+- **Commitlint**: Conventional commits
+- **Husky**: Git hooks for quality checks
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- **Documentation**: [docs.parkit.com](https://docs.parkit.com)
+- **Issues**: [GitHub Issues](https://github.com/your-org/parkit/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-org/parkit/discussions)
+- **Email**: support@parkit.com
+
+## 🙏 Acknowledgments
+
+- [Turborepo](https://turborepo.com) for monorepo management
+- [Prisma](https://prisma.io) for database ORM
+- [Apollo GraphQL](https://www.apollographql.com) for GraphQL server
+- [Next.js](https://nextjs.org) for React framework
+- [Expo](https://expo.dev) for React Native development
+- [Tailwind CSS](https://tailwindcss.com) for styling

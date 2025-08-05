@@ -6,9 +6,9 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "dev:web": "turbo run dev --filter=web",
-    "dev:mobile": "turbo run dev --filter=mobile",
-    "dev:backend": "turbo run dev --filter=backend",
+    "dev:backend": "turbo run dev --filter=@parkit/backend",
+    "dev:web": "turbo run dev --filter=@parkit/web",
+    "dev:mobile": "turbo run dev --filter=@parkit/mobile",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,js,jsx}\"",
@@ -18,12 +18,12 @@
     "test:watch": "turbo run test:watch",
     "test:coverage": "turbo run test:coverage",
     "clean": "turbo run clean",
-    "db:generate": "turbo run db:generate --filter=backend",
-    "db:migrate": "turbo run db:migrate --filter=backend",
-    "db:seed": "turbo run db:seed --filter=backend",
-    "db:studio": "turbo run db:studio --filter=backend",
-    "storybook": "turbo run storybook --filter=ui",
-    "build:storybook": "turbo run build:storybook --filter=ui",
+    "db:generate": "turbo run db:generate --filter=@parkit/backend",
+    "db:migrate": "turbo run db:migrate --filter=@parkit/backend",
+    "db:seed": "turbo run db:seed --filter=@parkit/backend",
+    "db:studio": "turbo run db:studio --filter=@parkit/backend",
+    "storybook": "turbo run storybook --filter=@parkit/ui",
+    "build:storybook": "turbo run build:storybook --filter=@parkit/ui",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "node": ">=18.17.0",
     "yarn": ">=1.22.0"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "yarn@1.22.0",
   "workspaces": [
     "apps/*",
     "packages/*"

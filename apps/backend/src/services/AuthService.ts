@@ -57,10 +57,10 @@ export class AuthService {
         throw new Error('El usuario ya existe');
       }
 
-      // Hashear la contraseña
+      // Hash the password
       const hashedPassword = await bcrypt.hash(userData.password, config.auth.bcryptRounds);
 
-      // Crear el usuario
+      // Create the user
       const user = await this.prisma.user.create({
         data: {
           email: userData.email,
@@ -99,7 +99,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     try {
-      // Buscar usuario
+      // Find user
       const user = await this.prisma.user.findUnique({
         where: { email },
         include: {
@@ -109,20 +109,20 @@ export class AuthService {
       });
 
       if (!user) {
-        throw new Error('Credenciales inválidas');
+        throw new Error('Invalid credentials');
       }
 
       if (!user.isActive) {
-        throw new Error('Usuario inactivo');
+        throw new Error('Inactive user');
       }
 
-      // Verificar contraseña
+      // Verify password
       const isValidPassword = await bcrypt.compare(password, user.password || '');
       if (!isValidPassword) {
-        throw new Error('Credenciales inválidas');
+        throw new Error('Invalid credentials');
       }
 
-      // Actualizar último login
+      // Update last login
       await this.prisma.user.update({
         where: { id: user.id },
         data: { lastLogin: new Date() },

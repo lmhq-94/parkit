@@ -64,11 +64,11 @@ interface Context {
 
 async function startServer() {
   try {
-    // Crear aplicación Express
+    // Create Express application
     const app = express();
     const httpServer = createServer(app);
 
-    // Configurar middleware de seguridad
+    // Configure security middleware
     app.use(helmet({
       contentSecurityPolicy: {
         directives: {
@@ -80,46 +80,46 @@ async function startServer() {
       },
     }));
 
-    // Configurar CORS
+    // Configure CORS
     app.use(cors({
       origin: config.corsOrigins,
       credentials: true,
     }));
 
-    // Configurar compresión
+    // Configure compression
     app.use(compression() as any);
 
-    // Configurar rate limiting
+    // Configure rate limiting
     const limiter = rateLimit({
-      windowMs: 15 * 60 * 1000, // 15 minutos
-      max: 100, // máximo 100 requests por ventana
-      message: 'Demasiadas requests desde esta IP',
+      windowMs: 15 * 60 * 1000, // 15 minutes
+      max: 100, // maximum 100 requests per window
+      message: 'Too many requests from this IP',
       standardHeaders: true,
       legacyHeaders: false,
     });
     app.use('/api/', limiter);
 
-    // Configurar parsing de JSON
+    // Configure JSON parsing
     app.use(express.json({ limit: '10mb' }));
     app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-    // Middleware de logging
+    // Logging middleware
     app.use(requestLogger);
 
-    // Crear schema GraphQL
+    // Create GraphQL schema
     const schema = makeExecutableSchema({
       typeDefs,
       resolvers,
     });
 
-    // Crear Apollo Server
+    // Create Apollo Server
     const server = new ApolloServer<Context>({
       schema,
       plugins: [
         ApolloServerPluginDrainHttpServer({ httpServer }),
         {
           async serverWillStart() {
-            logger.info('🚀 Apollo Server iniciando...');
+            logger.info('🚀 Apollo Server starting...');
           },
         },
       ],
@@ -132,10 +132,10 @@ async function startServer() {
       },
     });
 
-    // Iniciar Apollo Server
+    // Start Apollo Server
     await server.start();
 
-    // Configurar middleware de GraphQL
+    // Configure GraphQL middleware
     app.use(
       '/graphql',
       expressMiddleware(server, {
@@ -159,13 +159,13 @@ async function startServer() {
       })
     );
 
-    // TODO: Agregar WebSocket para GraphQL subscriptions cuando se resuelvan los problemas de tipos
+    // TODO: Add WebSocket for GraphQL subscriptions when type issues are resolved
     // const wsServer = new WebSocketServer({
     //   server: httpServer,
     //   path: '/graphql',
     // });
 
-    // Rutas de salud
+    // Health routes
     app.get('/health', (_req, res) => {
       res.json({
         status: 'OK',
@@ -175,45 +175,45 @@ async function startServer() {
       });
     });
 
-    // Rutas de autenticación
+    // Authentication routes
     app.use('/api/auth', require('./controllers/AuthController').default);
     app.use('/api/users', require('./controllers/UserController').default);
     app.use('/api/parkings', require('./controllers/ParkingController').default);
     app.use('/api/reservations', require('./controllers/ReservationController').default);
     app.use('/api/payments', require('./controllers/PaymentController').default);
 
-    // Middleware de autenticación para rutas protegidas
+    // Authentication middleware for protected routes
     app.use('/api/protected', authMiddleware);
 
-    // Middleware de manejo de errores
+    // Error handling middleware
     app.use(errorHandler);
 
-    // Iniciar servidor
+    // Start server
     const PORT = process.env.PORT || 4000;
     httpServer.listen(PORT, () => {
-      logger.info(`🚀 Servidor iniciado en puerto ${PORT}`);
+      logger.info(`🚀 Server started on port ${PORT}`);
       logger.info(`📊 GraphQL Playground: http://localhost:${PORT}/graphql`);
       logger.info(`🏥 Health Check: http://localhost:${PORT}/health`);
     });
 
-    // Manejo de señales de terminación
+    // Graceful shutdown handling
     process.on('SIGTERM', async () => {
-      logger.info('🛑 Recibida señal SIGTERM, cerrando servidor...');
+      logger.info('🛑 Received SIGTERM signal, shutting down server...');
       await prisma.$disconnect();
       process.exit(0);
     });
 
     process.on('SIGINT', async () => {
-      logger.info('🛑 Recibida señal SIGINT, cerrando servidor...');
+      logger.info('🛑 Received SIGINT signal, shutting down server...');
       await prisma.$disconnect();
       process.exit(0);
     });
 
   } catch (error) {
-    logger.error('❌ Error al iniciar servidor:', error);
+    logger.error('❌ Error starting server:', error);
     process.exit(1);
   }
 }
 
-// Iniciar servidor
+// Start server
 startServer(); 
