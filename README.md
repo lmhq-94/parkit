@@ -317,7 +317,24 @@ The database schema is managed with Prisma. Key entities:
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0) - see the [LICENSE](LICENSE) file for details.
+
+### License Summary
+
+- **Freedom to Use**: You can use this software for any purpose
+- **Freedom to Study**: You can examine how the software works
+- **Freedom to Modify**: You can change the software to suit your needs
+- **Freedom to Share**: You can distribute copies of the software
+- **Network Use**: If you run a modified version on a server, you must make the source code available to users
+
+### Key Requirements
+
+1. **Source Code Availability**: Any modified version must include the source code
+2. **Network Interaction**: If users interact with the software over a network, they must have access to the source code
+3. **License Notice**: All copies must include the license and copyright notice
+4. **No Warranty**: The software is provided "as is" without warranty
+
+For more information about the AGPL-3.0 license, visit: https://www.gnu.org/licenses/agpl-3.0.en.html
 
 ## 🆘 Support
 
