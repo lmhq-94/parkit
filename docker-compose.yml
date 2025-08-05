@@ -1,0 +1,121 @@
+version: '3.8'
+
+services:
+  # Base de datos PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: parkit_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: parkit_db
+      POSTGRES_USER: parkit_user
+      POSTGRES_PASSWORD: parkit_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - parkit_network
+
+  # Redis para caché y sesiones
+  redis:
+    image: redis:7-alpine
+    container_name: parkit_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - parkit_network
+
+  # Backend API
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: parkit_backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://parkit_user:parkit_password@postgres:5432/parkit_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: your_super_secret_jwt_key_here
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+    networks:
+      - parkit_network
+
+  # Frontend Web
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: parkit_web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+    networks:
+      - parkit_network
+
+  # Prisma Studio
+  prisma-studio:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: parkit_prisma_studio
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://parkit_user:parkit_password@postgres:5432/parkit_db
+    ports:
+      - "5555:5555"
+    depends_on:
+      - postgres
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+    networks:
+      - parkit_network
+    command: npx prisma studio --hostname 0.0.0.0 --port 5555
+
+  # Storybook
+  storybook:
+    build:
+      context: ./packages/ui
+      dockerfile: Dockerfile
+    container_name: parkit_storybook
+    restart: unless-stopped
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./packages/ui:/app
+      - /app/node_modules
+    networks:
+      - parkit_network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  parkit_network:
+    driver: bridge 

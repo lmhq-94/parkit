@@ -1,24 +1,70 @@
 {
   "name": "parkit",
+  "version": "1.0.0",
+  "description": "Sistema Inteligente de Gestión de Parqueos - Multiplataforma",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=web",
+    "dev:mobile": "turbo run dev --filter=mobile",
+    "dev:backend": "turbo run dev --filter=backend",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "lint:fix": "turbo run lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,js,jsx}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json,js,jsx}\"",
+    "check-types": "turbo run check-types",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "test:coverage": "turbo run test:coverage",
+    "clean": "turbo run clean",
+    "db:generate": "turbo run db:generate --filter=backend",
+    "db:migrate": "turbo run db:migrate --filter=backend",
+    "db:seed": "turbo run db:seed --filter=backend",
+    "db:studio": "turbo run db:studio --filter=backend",
+    "storybook": "turbo run storybook --filter=ui",
+    "build:storybook": "turbo run build:storybook --filter=ui",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.5",
-    "typescript": "5.8.3"
+    "@types/node": "^20.10.0",
+    "prettier": "^3.1.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "@commitlint/cli": "^18.4.0",
+    "@commitlint/config-conventional": "^18.4.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.17.0",
+    "yarn": ">=1.22.0"
   },
   "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "keywords": [
+    "parking",
+    "management",
+    "react",
+    "react-native",
+    "nextjs",
+    "graphql",
+    "typescript",
+    "turbo",
+    "monorepo"
+  ],
+  "author": "ParkIt Team",
+  "license": "MIT",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
 }

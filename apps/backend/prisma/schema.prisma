@@ -1,0 +1,331 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum UserRole {
+  ADMIN
+  MANAGER
+  VALET
+  EMPLOYEE
+  CLIENT
+}
+
+enum ParkingStatus {
+  AVAILABLE
+  OCCUPIED
+  RESERVED
+  MAINTENANCE
+  DISABLED
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  EXPIRED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  CASH
+  TRANSFER
+  PAYPAL
+  STRIPE
+}
+
+enum NotificationType {
+  PARKING
+  PAYMENT
+  RESERVATION
+  SYSTEM
+  USER
+}
+
+enum NotificationPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum EventType {
+  ENTRY
+  EXIT
+  RESERVATION_START
+  RESERVATION_END
+}
+
+// Models
+model Company {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  address     String?
+  phone       String?
+  email       String?
+  website     String?
+  logo        String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  users       User[]
+  parkings    Parking[]
+  reservations Reservation[]
+
+  @@map("companies")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  phone     String?  @unique
+  password  String?
+  firstName String
+  lastName  String
+  avatar    String?
+  isActive  Boolean  @default(true)
+  isVerified Boolean @default(false)
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  
+  roleId    String
+  role      Role     @relation(fields: [roleId], references: [id])
+  
+  vehicles      Vehicle[]
+  reservations  Reservation[]
+  payments      Payment[]
+  events        Event[]
+  notifications Notification[]
+  qrCodes       QRCode[]
+
+  @@index([email])
+  @@index([companyId])
+  @@index([roleId])
+  @@map("users")
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  name        UserRole @unique
+  description String?
+  permissions String[] // Array de permisos como strings
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  users User[]
+
+  @@map("roles")
+}
+
+model Vehicle {
+  id           String   @id @default(cuid())
+  licensePlate String   @unique
+  make         String
+  model        String
+  year         Int?
+  color        String?
+  vin          String?  @unique
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  reservations Reservation[]
+  events       Event[]
+
+  @@index([licensePlate])
+  @@index([userId])
+  @@index([vin])
+  @@map("vehicles")
+}
+
+model Parking {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  address     String
+  latitude    Float?
+  longitude   Float?
+  floor       Int?
+  section     String?
+  spot        String?
+  zone        String?
+  status      ParkingStatus @default(AVAILABLE)
+  capacity    Int           @default(1)
+  price       Decimal       @default(0)
+  currency    String        @default("USD")
+  isActive    Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  // Relations
+  companyId   String
+  company     Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  reservations Reservation[]
+  events      Event[]
+  qrCodes     QRCode[]
+
+  @@index([companyId])
+  @@index([status])
+  @@index([latitude, longitude])
+  @@map("parkings")
+}
+
+model Reservation {
+  id          String            @id @default(cuid())
+  startTime   DateTime
+  endTime     DateTime
+  status      ReservationStatus @default(PENDING)
+  totalPrice  Decimal           @default(0)
+  notes       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  // Relations
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  vehicleId   String
+  vehicle     Vehicle   @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  
+  parkingId   String
+  parking     Parking   @relation(fields: [parkingId], references: [id], onDelete: Cascade)
+  
+  companyId   String
+  company     Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  payments    Payment[]
+  events      Event[]
+
+  @@index([userId])
+  @@index([parkingId])
+  @@index([status])
+  @@index([startTime, endTime])
+  @@map("reservations")
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  amount        Decimal
+  currency      String        @default("USD")
+  method        PaymentMethod
+  status        PaymentStatus @default(PENDING)
+  transactionId String?       @unique
+  description  String?
+  metadata     Json?         // Datos adicionales del pago
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Relations
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  reservationId String?
+  reservation   Reservation?  @relation(fields: [reservationId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([status])
+  @@index([transactionId])
+  @@map("payments")
+}
+
+model Event {
+  id        String    @id @default(cuid())
+  type      EventType
+  timestamp DateTime  @default(now())
+  metadata  Json?     // Datos adicionales del evento
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  vehicleId     String
+  vehicle       Vehicle     @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  
+  parkingId     String
+  parking       Parking     @relation(fields: [parkingId], references: [id], onDelete: Cascade)
+  
+  reservationId String?
+  reservation   Reservation? @relation(fields: [reservationId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([parkingId])
+  @@index([timestamp])
+  @@index([type])
+  @@map("events")
+}
+
+model Notification {
+  id         String              @id @default(cuid())
+  title      String
+  message    String
+  type       NotificationType
+  priority   NotificationPriority @default(MEDIUM)
+  isRead     Boolean             @default(false)
+  metadata   Json?               // Datos adicionales de la notificación
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+
+  // Relations
+  userId     String
+  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model QRCode {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  type      String   // "parking", "reservation", "user"
+  isActive  Boolean  @default(true)
+  expiresAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  parkingId String?
+  parking   Parking? @relation(fields: [parkingId], references: [id], onDelete: SetNull)
+
+  @@map("qr_codes")
+} 
