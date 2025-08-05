@@ -23,7 +23,97 @@ const es = {
     open: 'Abrir',
     yes: 'Sí',
     no: 'No',
-    ok: 'OK'
+    ok: 'OK',
+    theme: 'Tema',
+    language: 'Idioma',
+    themes: {
+      default: 'Predeterminado',
+      light: 'Claro',
+      dark: 'Oscuro'
+    }
+  },
+  landing: {
+    hero: {
+      title: 'El Futuro del',
+      subtitle: 'Parking Inteligente',
+      description: 'Revoluciona tu negocio con tecnología de vanguardia. La plataforma más inteligente del mercado.',
+      startNow: 'Comenzar Ahora',
+      viewDemo: 'Ver Demo',
+      uptime: 'Uptime Garantizado',
+      companies: 'Empresas Confían',
+      support: 'Soporte Premium'
+    },
+    navigation: {
+      solutions: 'Soluciones',
+      pricing: 'Precios',
+      contact: 'Contacto',
+      proAccess: 'Acceso Pro'
+    },
+    features: {
+      title: 'Tecnología de Vanguardia',
+      subtitle: 'Integramos las últimas tecnologías para crear la experiencia de parking más inteligente del mercado',
+      ai: {
+        title: 'IA Predictiva',
+        description: 'Algoritmos de machine learning que predicen patrones de ocupación y optimizan la gestión'
+      },
+      cloud: {
+        title: 'Cloud Nativo',
+        description: 'Arquitectura cloud-first para máxima escalabilidad y disponibilidad global'
+      },
+      iot: {
+        title: 'IoT Avanzado',
+        description: 'Sensores inteligentes que monitorean en tiempo real cada espacio de parking'
+      },
+      security: {
+        title: 'Seguridad Blockchain',
+        description: 'Transacciones seguras con tecnología blockchain y encriptación de nivel militar'
+      },
+      analytics: {
+        title: 'Analytics Avanzado',
+        description: 'Análisis predictivo y reportes en tiempo real con dashboards interactivos'
+      },
+      qr: {
+        title: 'QR Dinámico',
+        description: 'Códigos QR que se regeneran automáticamente para máxima seguridad'
+      }
+    },
+    stats: {
+      uptime: {
+        value: '99.9%',
+        title: 'Uptime Garantizado',
+        description: 'Disponibilidad continua con redundancia global'
+      },
+      companies: {
+        value: '500+',
+        title: 'Empresas Confían',
+        description: 'Desde startups hasta Fortune 500'
+      },
+      support: {
+        value: '24/7',
+        title: 'Soporte Premium',
+        description: 'Asistencia técnica disponible siempre'
+      },
+      countries: {
+        value: '50+',
+        title: 'Países',
+        description: 'Presencia global con servidores locales'
+      }
+    },
+    cta: {
+      title: '¿Listo para el Futuro?',
+      subtitle: 'Únete a las empresas más innovadoras que ya están transformando su negocio',
+      button: 'Comenzar Gratis'
+    },
+    footer: {
+      copyright: '© 2024 ParkIt. Todos los derechos reservados.'
+    },
+    login: {
+      title: 'Acceso Pro',
+      email: 'Email',
+      password: 'Contraseña',
+      login: 'Ingresar',
+      demoInfo: 'Usa cualquier email y contraseña para acceder al demo'
+    }
   },
   auth: {
     login: 'Iniciar Sesión',
@@ -106,7 +196,13 @@ const es = {
     activeReservations: 'Reservas Activas',
     revenue: 'Ingresos',
     occupancy: 'Ocupación',
-    utilization: 'Utilización'
+    utilization: 'Utilización',
+    adminPanel: 'Panel de Administración',
+    adminDescription: 'Gestiona tu sistema de parking desde aquí',
+    availableSpaces: 'Espacios Disponibles',
+    activeVehicles: 'Vehiculos Activos',
+    todayRevenue: 'Ingresos Hoy',
+    qrScans: 'Escaneos QR'
   },
   notifications: {
     title: 'Notificaciones',
@@ -170,7 +266,97 @@ const en = {
     open: 'Open',
     yes: 'Yes',
     no: 'No',
-    ok: 'OK'
+    ok: 'OK',
+    theme: 'Theme',
+    language: 'Language',
+    themes: {
+      default: 'Default',
+      light: 'Light',
+      dark: 'Dark'
+    }
+  },
+  landing: {
+    hero: {
+      title: 'The Future of',
+      subtitle: 'Smart Parking',
+      description: 'Revolutionize your business with cutting-edge technology. The most intelligent platform in the market.',
+      startNow: 'Start Now',
+      viewDemo: 'View Demo',
+      uptime: 'Guaranteed Uptime',
+      companies: 'Companies Trust',
+      support: 'Premium Support'
+    },
+    navigation: {
+      solutions: 'Solutions',
+      pricing: 'Pricing',
+      contact: 'Contact',
+      proAccess: 'Pro Access'
+    },
+    features: {
+      title: 'Cutting-Edge Technology',
+      subtitle: 'We integrate the latest technologies to create the most intelligent parking experience in the market',
+      ai: {
+        title: 'Predictive AI',
+        description: 'Machine learning algorithms that predict occupancy patterns and optimize management'
+      },
+      cloud: {
+        title: 'Cloud Native',
+        description: 'Cloud-first architecture for maximum scalability and global availability'
+      },
+      iot: {
+        title: 'Advanced IoT',
+        description: 'Smart sensors that monitor each parking space in real-time'
+      },
+      security: {
+        title: 'Blockchain Security',
+        description: 'Secure transactions with blockchain technology and military-grade encryption'
+      },
+      analytics: {
+        title: 'Advanced Analytics',
+        description: 'Predictive analysis and real-time reports with interactive dashboards'
+      },
+      qr: {
+        title: 'Dynamic QR',
+        description: 'QR codes that regenerate automatically for maximum security'
+      }
+    },
+    stats: {
+      uptime: {
+        value: '99.9%',
+        title: 'Guaranteed Uptime',
+        description: 'Continuous availability with global redundancy'
+      },
+      companies: {
+        value: '500+',
+        title: 'Companies Trust',
+        description: 'From startups to Fortune 500'
+      },
+      support: {
+        value: '24/7',
+        title: 'Premium Support',
+        description: 'Technical assistance always available'
+      },
+      countries: {
+        value: '50+',
+        title: 'Countries',
+        description: 'Global presence with local servers'
+      }
+    },
+    cta: {
+      title: 'Ready for the Future?',
+      subtitle: 'Join the most innovative companies that are already transforming their business',
+      button: 'Start Free'
+    },
+    footer: {
+      copyright: '© 2024 ParkIt. All rights reserved.'
+    },
+    login: {
+      title: 'Pro Access',
+      email: 'Email',
+      password: 'Password',
+      login: 'Login',
+      demoInfo: 'Use any email and password to access the demo'
+    }
   },
   auth: {
     login: 'Login',
@@ -253,7 +439,13 @@ const en = {
     activeReservations: 'Active Reservations',
     revenue: 'Revenue',
     occupancy: 'Occupancy',
-    utilization: 'Utilization'
+    utilization: 'Utilization',
+    adminPanel: 'Administration Panel',
+    adminDescription: 'Manage your parking system from here',
+    availableSpaces: 'Available Spaces',
+    activeVehicles: 'Active Vehicles',
+    todayRevenue: 'Today Revenue',
+    qrScans: 'QR Scans'
   },
   notifications: {
     title: 'Notifications',
