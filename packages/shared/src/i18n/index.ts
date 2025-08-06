@@ -51,16 +51,16 @@ const es = {
     },
     features: {
       title: '¿Por qué elegir ParkIt?',
-      subtitle: 'Transforma tu negocio de parking con la solución más completa del mercado. Aumenta tus ingresos, reduce costos y mejora la experiencia de tus clientes.',
+      subtitle: 'Transforma tu negocio de parking con la solución más completa del mercado. Gestiona tu parqueo de forma eficiente, reduce costos y mejora la experiencia de tus clientes.',
       benefits: {
         title: 'BENEFICIOS PARA TU NEGOCIO',
         keyBenefits: 'Beneficios Clave',
         revenue: {
-          title: 'Aumenta tus Ingresos',
-          description: 'Maximiza la ocupación y optimiza precios',
-          longDescription: 'Sistema de precios dinámicos que se adapta a la demanda. Reservas anticipadas que garantizan ingresos.',
-          benefits: ['+30% Ingresos', 'Precios Dinámicos', 'Reservas Anticipadas'],
-          metric: '+30% promedio'
+          title: 'Gestión de Parqueos',
+          description: 'Control total de espacios y ocupación',
+          longDescription: 'Gestiona múltiples parqueos desde un solo dashboard. Control de acceso, monitoreo en tiempo real y reportes detallados.',
+          benefits: ['Múltiples Parqueos', 'Control de Acceso', 'Reportes Detallados'],
+          metric: 'Control Total'
         },
         automation: {
           title: 'Automatiza tu Operación',
@@ -99,6 +99,78 @@ const es = {
         }
       }
     },
+    howItWorks: {
+      title: '¿Cómo Funciona?',
+      subtitle: 'Proceso simple y eficiente para gestionar tu parqueo',
+      step1: {
+        title: 'Registra tu Parqueo',
+        description: 'Crea tu empresa y registra tus espacios de parking con ubicación, capacidad y precios.'
+      },
+      step2: {
+        title: 'Escanea y Accede',
+        description: 'Los usuarios escanean códigos QR para entrar y salir. Sistema automático de control de acceso.'
+      },
+      step3: {
+        title: 'Gestiona Reservas',
+        description: 'Los clientes reservan espacios desde la app. Monitorea ocupación y gestiona desde el dashboard.'
+      }
+    },
+    testimonials: {
+      title: 'Lo que Dicen Nuestros Usuarios',
+      subtitle: 'Empresas que confían en ParkIt para gestionar su parqueo',
+      testimonial1: {
+        name: 'María González',
+        role: 'Gerente de Operaciones',
+        company: 'Centro Comercial Plaza Central',
+        content: 'ParkIt simplificó completamente la gestión de nuestro parqueo. El sistema de QR es muy eficiente y los usuarios lo encuentran fácil de usar.'
+      },
+      testimonial2: {
+        name: 'Carlos Rodríguez',
+        role: 'Director General',
+        company: 'Estacionamiento Premium',
+        content: 'La implementación fue sencilla y el dashboard nos da control total. Los usuarios pueden reservar fácilmente desde la app.'
+      },
+      testimonial3: {
+        name: 'Ana Martínez',
+        role: 'CEO',
+        company: 'Parking Solutions',
+        content: 'La plataforma es intuitiva y el sistema de roles funciona perfectamente. Nuestros empleados pueden gestionar todo desde el dashboard.'
+      }
+    },
+    faq: {
+      title: 'Preguntas Frecuentes',
+      subtitle: 'Resolvemos tus dudas sobre ParkIt',
+      faq1: {
+        question: '¿Cómo funciona el sistema de QR?',
+        answer: 'Cada espacio de parking tiene un código QR único. Los usuarios lo escanean para registrar entrada y salida automáticamente.'
+      },
+      faq2: {
+        question: '¿Puedo gestionar múltiples parqueos?',
+        answer: 'Sí, puedes registrar múltiples empresas y parqueos desde una sola cuenta con diferentes roles de usuario.'
+      },
+      faq3: {
+        question: '¿Cómo se gestionan las reservas?',
+        answer: 'Los usuarios pueden reservar espacios desde la app móvil. El sistema actualiza automáticamente la disponibilidad.'
+      },
+      faq4: {
+        question: '¿Qué tipos de parqueos puedo gestionar?',
+        answer: 'Puedes gestionar parqueos comerciales, residenciales, corporativos, centros comerciales y cualquier tipo de estacionamiento con diferentes configuraciones.'
+      },
+      faq5: {
+        question: '¿Puedo ver el historial de entradas y salidas?',
+        answer: 'Sí, el sistema registra todos los eventos de entrada, salida y reservas con timestamps completos.'
+      },
+      faq6: {
+        question: '¿Es compatible con móviles?',
+        answer: 'Sí, la aplicación es responsive y funciona perfectamente en smartphones para escanear QR y gestionar reservas.'
+      }
+    },
+    cta: {
+      title: '¿Listo para Gestionar tu Parqueo?',
+      subtitle: 'Únete a empresas que ya están usando ParkIt para gestionar sus espacios de parking de forma eficiente',
+      primaryButton: 'Comenzar Ahora',
+      secondaryButton: 'Ver Demo'
+    },
     stats: {
       uptime: {
         value: '99.9%',
@@ -121,13 +193,8 @@ const es = {
         description: 'Presencia global con servidores locales'
       }
     },
-    cta: {
-      title: '¿Listo para el Futuro?',
-      subtitle: 'Únete a las empresas más innovadoras que ya están transformando su negocio',
-      button: 'Comenzar Gratis'
-    },
     footer: {
-      copyright: '© 2024 ParkIt. Todos los derechos reservados.',
+      copyright: `© ${new Date().getFullYear()} ParkIt. Todos los derechos reservados.`,
       tagline: 'Smart Parking Solutions',
       quickLinks: 'Enlaces Rápidos',
       newsletter: {
@@ -198,10 +265,10 @@ const es = {
       info: {
         title: 'Información de Contacto',
         description: 'Nuestro equipo de expertos está disponible 24/7 para brindarte el mejor soporte técnico y comercial.',
-        phone: '+1 (555) 123-4567',
-        whatsapp: '+1 (555) 123-4567',
+        phone: '(+506) 6216-4040',
+        whatsapp: '(+506) 6216-4040',
         email: 'info@parkit.com',
-        address: '123 Innovation Street, Tech City, TC 12345',
+        address: '20501 Atenas, Alajuela, Costa Rica',
         hours: 'Lun - Vie: 9:00 AM - 6:00 PM',
         support: 'Soporte 24/7 disponible'
       },
@@ -408,11 +475,11 @@ const en = {
         title: 'BENEFITS FOR YOUR BUSINESS',
         keyBenefits: 'Key Benefits',
         revenue: {
-          title: 'Increase Your Revenue',
-          description: 'Maximize occupancy and optimize pricing',
-          longDescription: 'Dynamic pricing system that adapts to demand. Advance reservations that guarantee income.',
-          benefits: ['+30% Revenue', 'Dynamic Pricing', 'Advance Reservations'],
-          metric: '+30% average'
+          title: 'Parking Management',
+          description: 'Total control of spaces and occupancy',
+          longDescription: 'Manage multiple parking lots from a single dashboard. Access control, real-time monitoring and detailed reports.',
+          benefits: ['Multiple Parking Lots', 'Access Control', 'Detailed Reports'],
+          metric: 'Total Control'
         },
         automation: {
           title: 'Automate Your Operation',
@@ -451,6 +518,78 @@ const en = {
         }
       }
     },
+    howItWorks: {
+      title: 'How It Works',
+      subtitle: 'Simple and efficient process to manage your parking',
+      step1: {
+        title: 'Register Your Parking',
+        description: 'Create your company and register your parking spaces with location, capacity and prices.'
+      },
+      step2: {
+        title: 'Scan and Access',
+        description: 'Users scan QR codes to enter and exit. Automatic access control system.'
+      },
+      step3: {
+        title: 'Manage Reservations',
+        description: 'Clients reserve spaces from the app. Monitor occupancy and manage from the dashboard.'
+      }
+    },
+    testimonials: {
+      title: 'What Our Users Say',
+      subtitle: 'Companies that trust ParkIt to manage their parking',
+      testimonial1: {
+        name: 'Maria Gonzalez',
+        role: 'Operations Manager',
+        company: 'Central Plaza Mall',
+        content: 'ParkIt completely simplified our parking management. The QR system is very efficient and users find it easy to use.'
+      },
+      testimonial2: {
+        name: 'Carlos Rodriguez',
+        role: 'General Director',
+        company: 'Premium Parking',
+        content: 'Implementation was simple and the dashboard gives us total control. Users can easily reserve from the app.'
+      },
+      testimonial3: {
+        name: 'Ana Martinez',
+        role: 'CEO',
+        company: 'Parking Solutions',
+        content: 'The platform is intuitive and the role system works perfectly. Our employees can manage everything from the dashboard.'
+      }
+    },
+    faq: {
+      title: 'Frequently Asked Questions',
+      subtitle: 'We answer your questions about ParkIt',
+      faq1: {
+        question: 'How does the QR system work?',
+        answer: 'Each parking space has a unique QR code. Users scan it to automatically register entry and exit.'
+      },
+      faq2: {
+        question: 'Can I manage multiple parking lots?',
+        answer: 'Yes, you can register multiple companies and parking lots from a single account with different user roles.'
+      },
+      faq3: {
+        question: 'How are reservations managed?',
+        answer: 'Users can reserve spaces from the mobile app. The system automatically updates availability.'
+      },
+      faq4: {
+        question: 'What types of parking lots can I manage?',
+        answer: 'You can manage commercial, residential, corporate, shopping center parking lots and any type of parking with different configurations.'
+      },
+      faq5: {
+        question: 'Can I see entry and exit history?',
+        answer: 'Yes, the system records all entry, exit and reservation events with complete timestamps.'
+      },
+      faq6: {
+        question: 'Is it mobile compatible?',
+        answer: 'Yes, the application is responsive and works perfectly on smartphones for QR scanning and reservation management.'
+      }
+    },
+    cta: {
+      title: 'Ready to Manage Your Parking?',
+      subtitle: 'Join companies that are already using ParkIt to efficiently manage their parking spaces',
+      primaryButton: 'Start Now',
+      secondaryButton: 'View Demo'
+    },
     stats: {
       uptime: {
         value: '99.9%',
@@ -473,13 +612,8 @@ const en = {
         description: 'Global presence with local servers'
       }
     },
-    cta: {
-      title: 'Ready for the Future?',
-      subtitle: 'Join the most innovative companies that are already transforming their business',
-      button: 'Start Free'
-    },
     footer: {
-      copyright: '© 2024 ParkIt. All rights reserved.',
+      copyright: `© ${new Date().getFullYear()} ParkIt. All rights reserved.`,
       tagline: 'Smart Parking Solutions',
       quickLinks: 'Quick Links',
       newsletter: {
@@ -550,10 +684,10 @@ const en = {
       info: {
         title: 'Contact Information',
         description: 'Our team of experts is available 24/7 to provide you with the best technical and commercial support.',
-        phone: '+1 (555) 123-4567',
-        whatsapp: '+1 (555) 123-4567',
+        phone: '(+506) 6216-4040',
+        whatsapp: '(+506) 6216-4040',
         email: 'info@parkit.com',
-        address: '123 Innovation Street, Tech City, TC 12345',
+        address: '20501 Atenas, Alajuela, Costa Rica',
         hours: 'Mon - Fri: 9:00 AM - 6:00 PM',
         support: '24/7 Support Available'
       },

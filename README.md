@@ -1,4 +1,4 @@
-# 🚗 ParkIt - Smart Parking Management System
+# 🚗 ParkIt - Smart Parking Solutions
 
 A comprehensive parking management platform built with modern technologies and best practices.
 

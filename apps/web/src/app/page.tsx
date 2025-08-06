@@ -26,7 +26,7 @@ import {
   Alert,
   useTheme,
   useMediaQuery,
-  Divider,
+  Link,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -41,33 +41,17 @@ import {
   AdminPanelSettings,
   Login,
   Close,
-  CheckCircle,
   Star,
   Phone,
+  Smartphone,
   Email,
   LocationOn,
-  ArrowForward,
-  PlayArrow,
   TrendingUp,
-  Shield,
-  SmartToy,
-  Cloud,
-  Wifi,
-  Sensors,
   Dashboard,
-  Notifications,
-  Settings,
-  Person,
-  Business,
-  Engineering,
-  Psychology,
   WhatsApp,
   LinkedIn,
   Twitter,
   Instagram,
-  Facebook,
-  Chat,
-  Schedule,
 } from "@mui/icons-material";
 import { useAuthStore } from "../store/authStore";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
@@ -168,12 +152,22 @@ export default function HomePage() {
         sx={{
           background:
             scrollY > 50
-              ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
+              ? theme.palette.mode === 'dark' 
+                ? "linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%)"
+                : "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
               : "transparent",
           backdropFilter: scrollY > 50 ? "blur(10px)" : "none",
           WebkitBackdropFilter: scrollY > 50 ? "blur(10px)" : "none",
-          borderBottom: scrollY > 50 ? "1px solid rgba(0,0,0,0.05)" : "none",
-          boxShadow: scrollY > 50 ? "0 4px 20px rgba(0,0,0,0.08)" : "none",
+          borderBottom: scrollY > 50 
+            ? theme.palette.mode === 'dark' 
+              ? "1px solid rgba(255,255,255,0.1)" 
+              : "1px solid rgba(0,0,0,0.05)"
+            : "none",
+          boxShadow: scrollY > 50 
+            ? theme.palette.mode === 'dark'
+              ? "0 4px 20px rgba(0,0,0,0.3)"
+              : "0 4px 20px rgba(0,0,0,0.08)"
+            : "none",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
@@ -239,7 +233,9 @@ export default function HomePage() {
                   <Box
                     component="span"
                     sx={{
-                      color: scrollY > 50 ? "#000000" : "#ffffff",
+                      color: scrollY > 50 
+                        ? (theme.palette.mode === 'dark' ? "#ffffff" : "#000000")
+                        : "#ffffff",
                       fontWeight: 700,
                     }}
                   >
@@ -248,7 +244,9 @@ export default function HomePage() {
                   <Box
                     component="span"
                     sx={{
-                      color: scrollY > 50 ? "#666666" : "#cccccc",
+                      color: scrollY > 50 
+                        ? (theme.palette.mode === 'dark' ? "#00d4ff" : "#0056b3")
+                        : "#00d4ff",
                       fontWeight: 700,
                     }}
                   >
@@ -268,13 +266,17 @@ export default function HomePage() {
             >
               {[
                 { label: t("landing.navigation.solutions"), id: "soluciones" },
+                { label: t("landing.howItWorks.title"), id: "como-funciona" },
+                { label: t("landing.faq.title"), id: "faq" },
                 { label: t("landing.navigation.contact"), id: "footer" },
               ].map((item, index) => (
                 <Button
                   key={index}
                   onClick={() => smoothScrollTo(item.id)}
                   sx={{
-                    color: scrollY > 50 ? "#000000" : "rgba(255,255,255,0.9)",
+                    color: scrollY > 50 
+                      ? (theme.palette.mode === 'dark' ? "#cccccc" : "#000000")
+                      : "rgba(255,255,255,0.9)",
                     fontWeight: 600,
                     fontSize: "0.875rem",
                     px: 4,
@@ -288,7 +290,7 @@ export default function HomePage() {
                     "&:hover": {
                       background:
                         scrollY > 50
-                          ? "rgba(0, 0, 0, 0.08)"
+                          ? (theme.palette.mode === 'dark' ? "rgba(255,255,255,0.1)" : "rgba(0, 0, 0, 0.08)")
                           : "rgba(255, 255, 255, 0.1)",
                       transform: "translateY(-1px)",
                     },
@@ -314,9 +316,13 @@ export default function HomePage() {
                 sx={{
                   background:
                     scrollY > 50
-                      ? "linear-gradient(135deg, #000000 0%, #333333 100%)"
+                      ? (theme.palette.mode === 'dark' 
+                          ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
+                          : "linear-gradient(135deg, #000000 0%, #333333 100%)")
                       : "rgba(255,255,255,0.1)",
-                  color: scrollY > 50 ? "#ffffff" : "rgba(255,255,255,0.9)",
+                  color: scrollY > 50 
+                    ? (theme.palette.mode === 'dark' ? "#000000" : "#ffffff")
+                    : "rgba(255,255,255,0.9)",
                   px: 4,
                   py: 1.5,
                   fontWeight: 700,
@@ -331,7 +337,9 @@ export default function HomePage() {
                   "&:hover": {
                     background:
                       scrollY > 50
-                        ? "linear-gradient(135deg, #333333 0%, #000000 100%)"
+                        ? (theme.palette.mode === 'dark'
+                            ? "linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)"
+                            : "linear-gradient(135deg, #333333 0%, #000000 100%)")
                         : "rgba(255,255,255,0.2)",
                     transform: "translateY(-2px)",
                     boxShadow:
@@ -349,7 +357,9 @@ export default function HomePage() {
             {/* Mobile Menu Button */}
             <IconButton
               sx={{
-                color: scrollY > 50 ? "#000000" : "rgba(255,255,255,0.9)",
+                color: scrollY > 50 
+                  ? (theme.palette.mode === 'dark' ? "#cccccc" : "#000000")
+                  : "rgba(255,255,255,0.9)",
                 display: { md: "none" },
                 p: 2,
                 background: "transparent",
@@ -358,7 +368,7 @@ export default function HomePage() {
                 "&:hover": {
                   background:
                     scrollY > 50
-                      ? "rgba(0, 0, 0, 0.08)"
+                      ? (theme.palette.mode === 'dark' ? "rgba(255,255,255,0.1)" : "rgba(0, 0, 0, 0.08)")
                       : "rgba(255, 255, 255, 0.1)",
                   transform: "translateY(-1px)",
                 },
@@ -398,6 +408,16 @@ export default function HomePage() {
               </ListItemButton>
             </ListItem>
             <ListItem>
+              <ListItemButton onClick={() => smoothScrollTo("como-funciona")}>
+                <ListItemText primary={t("landing.howItWorks.title")} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton onClick={() => smoothScrollTo("faq")}>
+                <ListItemText primary={t("landing.faq.title")} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
               <ListItemButton onClick={() => smoothScrollTo("footer")}>
                 <ListItemText primary={t("landing.navigation.contact")} />
               </ListItemButton>
@@ -420,7 +440,9 @@ export default function HomePage() {
         sx={{
           position: "relative",
           minHeight: "100vh",
-          background: "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
+          background: theme.palette.mode === 'dark' 
+            ? "linear-gradient(135deg, #000000 0%, #0a0a0a 100%)"
+            : "linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%)",
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
@@ -431,13 +453,18 @@ export default function HomePage() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: `
-              linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>')
-            `,
+            background: theme.palette.mode === 'dark'
+              ? `
+                linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>')
+              `
+              : `
+                linear-gradient(135deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.02) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>')
+              `,
             backgroundSize: "cover, 40px 40px",
             backgroundPosition: "center, center",
-            opacity: 0.8,
+            opacity: theme.palette.mode === 'dark' ? 0.8 : 0.3,
           },
         }}
       >
@@ -449,11 +476,17 @@ export default function HomePage() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: `
-              radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(255,255,255,0.03) 0%, transparent 50%)
-            `,
+            background: theme.palette.mode === 'dark'
+              ? `
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.03) 0%, transparent 50%)
+              `
+              : `
+                radial-gradient(circle at 20% 80%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0,0,0,0.01) 0%, transparent 50%)
+              `,
             pointerEvents: "none",
             animation: "pulse 4s ease-in-out infinite",
             "@keyframes pulse": {
@@ -465,7 +498,11 @@ export default function HomePage() {
         <Container maxWidth="xl" sx={{ position: "relative", zIndex: 2 }}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
-              <Box sx={{ color: "white", position: "relative", zIndex: 3 }}>
+              <Box sx={{ 
+                color: theme.palette.mode === 'dark' ? "white" : "black", 
+                position: "relative", 
+                zIndex: 3 
+              }}>
                 <Typography
                   variant="h1"
                   sx={{
@@ -527,9 +564,10 @@ export default function HomePage() {
                     size="large"
                     onClick={() => setLoginOpen(true)}
                     sx={{
-                      background:
-                        "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)",
-                      color: "#000000",
+                      background: theme.palette.mode === 'dark'
+                        ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
+                        : "linear-gradient(135deg, #000000 0%, #333333 100%)",
+                      color: theme.palette.mode === 'dark' ? "#000000" : "#ffffff",
                       px: 6,
                       py: 2.5,
                       fontWeight: 700,
@@ -538,8 +576,12 @@ export default function HomePage() {
                       borderRadius: 0,
                       fontFamily:
                         '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      boxShadow: "0 8px 32px rgba(255,255,255,0.3)",
-                      border: "1px solid rgba(255,255,255,0.2)",
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? "0 8px 32px rgba(255,255,255,0.3)"
+                        : "0 8px 32px rgba(0,0,0,0.3)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.2)"
+                        : "1px solid rgba(255,255,255,0.2)",
                       position: "relative",
                       overflow: "hidden",
                       "&::before": {
@@ -549,15 +591,19 @@ export default function HomePage() {
                         left: "-100%",
                         width: "100%",
                         height: "100%",
-                        background:
-                          "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+                        background: theme.palette.mode === 'dark'
+                          ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)"
+                          : "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
                         transition: "left 0.5s",
                       },
                       "&:hover": {
-                        background:
-                          "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)",
+                        background: theme.palette.mode === 'dark'
+                          ? "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)"
+                          : "linear-gradient(135deg, #333333 0%, #000000 100%)",
                         transform: "translateY(-3px)",
-                        boxShadow: "0 12px 40px rgba(255,255,255,0.4)",
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? "0 12px 40px rgba(255,255,255,0.4)"
+                          : "0 12px 40px rgba(0,0,0,0.4)",
                         "&::before": {
                           left: "100%",
                         },
@@ -570,10 +616,12 @@ export default function HomePage() {
                   <Button
                     variant="outlined"
                     size="large"
-                    onClick={() => smoothScrollTo("soluciones")}
+                    onClick={() => smoothScrollTo("como-funciona")}
                     sx={{
-                      color: "#ffffff",
-                      borderColor: "rgba(255,255,255,0.4)",
+                      color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                      borderColor: theme.palette.mode === 'dark' 
+                        ? "rgba(255,255,255,0.4)" 
+                        : "rgba(0,0,0,0.4)",
                       px: 6,
                       py: 2.5,
                       fontWeight: 600,
@@ -582,14 +630,22 @@ export default function HomePage() {
                       borderRadius: 0,
                       fontFamily:
                         '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      background: "rgba(255,255,255,0.08)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.08)"
+                        : "rgba(0,0,0,0.08)",
                       backdropFilter: "blur(15px)",
                       borderWidth: "2px",
                       "&:hover": {
-                        background: "rgba(255, 255, 255, 0.15)",
-                        borderColor: "rgba(255,255,255,0.8)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255, 255, 255, 0.15)"
+                          : "rgba(0, 0, 0, 0.15)",
+                        borderColor: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.8)"
+                          : "rgba(0,0,0,0.8)",
                         transform: "translateY(-3px)",
-                        boxShadow: "0 8px 32px rgba(255,255,255,0.3)",
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? "0 8px 32px rgba(255,255,255,0.3)"
+                          : "0 8px 32px rgba(0,0,0,0.3)",
                       },
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
@@ -614,12 +670,18 @@ export default function HomePage() {
                       textAlign: "center",
                       p: 2,
                       borderRadius: 0,
-                      background: "rgba(255,255,255,0.05)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.05)"
+                        : "rgba(0,0,0,0.05)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.1)"
+                        : "1px solid rgba(0,0,0,0.1)",
                       transition: "all 0.3s ease",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.1)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.1)"
+                          : "rgba(0,0,0,0.1)",
                         transform: "translateY(-2px)",
                       },
                     }}
@@ -628,8 +690,10 @@ export default function HomePage() {
                       variant="h3"
                       sx={{
                         fontWeight: 900,
-                        color: "#ffffff",
-                        textShadow: "0 2px 10px rgba(255,255,255,0.3)",
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                        textShadow: theme.palette.mode === 'dark'
+                          ? "0 2px 10px rgba(255,255,255,0.3)"
+                          : "0 2px 10px rgba(0,0,0,0.3)",
                         mb: 1,
                       }}
                     >
@@ -637,7 +701,11 @@ export default function HomePage() {
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ opacity: 0.9, fontWeight: 500 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.hero.uptime")}
                     </Typography>
@@ -647,12 +715,18 @@ export default function HomePage() {
                       textAlign: "center",
                       p: 2,
                       borderRadius: 0,
-                      background: "rgba(255,255,255,0.05)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.05)"
+                        : "rgba(0,0,0,0.05)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.1)"
+                        : "1px solid rgba(0,0,0,0.1)",
                       transition: "all 0.3s ease",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.1)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.1)"
+                          : "rgba(0,0,0,0.1)",
                         transform: "translateY(-2px)",
                       },
                     }}
@@ -661,8 +735,10 @@ export default function HomePage() {
                       variant="h3"
                       sx={{
                         fontWeight: 900,
-                        color: "#ffffff",
-                        textShadow: "0 2px 10px rgba(255,255,255,0.3)",
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                        textShadow: theme.palette.mode === 'dark'
+                          ? "0 2px 10px rgba(255,255,255,0.3)"
+                          : "0 2px 10px rgba(0,0,0,0.3)",
                         mb: 1,
                       }}
                     >
@@ -670,7 +746,11 @@ export default function HomePage() {
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ opacity: 0.9, fontWeight: 500 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.hero.companies")}
                     </Typography>
@@ -680,12 +760,18 @@ export default function HomePage() {
                       textAlign: "center",
                       p: 2,
                       borderRadius: 0,
-                      background: "rgba(255,255,255,0.05)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.05)"
+                        : "rgba(0,0,0,0.05)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.1)"
+                        : "1px solid rgba(0,0,0,0.1)",
                       transition: "all 0.3s ease",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.1)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.1)"
+                          : "rgba(0,0,0,0.1)",
                         transform: "translateY(-2px)",
                       },
                     }}
@@ -694,8 +780,10 @@ export default function HomePage() {
                       variant="h3"
                       sx={{
                         fontWeight: 900,
-                        color: "#ffffff",
-                        textShadow: "0 2px 10px rgba(255,255,255,0.3)",
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                        textShadow: theme.palette.mode === 'dark'
+                          ? "0 2px 10px rgba(255,255,255,0.3)"
+                          : "0 2px 10px rgba(0,0,0,0.3)",
                         mb: 1,
                       }}
                     >
@@ -703,7 +791,11 @@ export default function HomePage() {
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ opacity: 0.9, fontWeight: 500 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.hero.support")}
                     </Typography>
@@ -730,10 +822,13 @@ export default function HomePage() {
                     width: 400,
                     height: 400,
                     borderRadius: "50%",
-                    background:
-                      "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
+                    background: theme.palette.mode === 'dark'
+                      ? "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)"
+                      : "radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.05) 50%, transparent 100%)",
                     backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    border: theme.palette.mode === 'dark'
+                      ? "1px solid rgba(255,255,255,0.1)"
+                      : "1px solid rgba(0,0,0,0.1)",
                     animation: "float 6s ease-in-out infinite",
                     "@keyframes float": {
                       "0%, 100%": { transform: "translateY(0px)" },
@@ -744,8 +839,12 @@ export default function HomePage() {
                   <LocalParking
                     sx={{
                       fontSize: 200,
-                      color: "rgba(255, 255, 255, 0.8)",
-                      filter: "drop-shadow(0 4px 20px rgba(255,255,255,0.3))",
+                      color: theme.palette.mode === 'dark' 
+                        ? "rgba(255, 255, 255, 0.8)" 
+                        : "rgba(0, 0, 0, 0.8)",
+                      filter: theme.palette.mode === 'dark'
+                        ? "drop-shadow(0 4px 20px rgba(255,255,255,0.3))"
+                        : "drop-shadow(0 4px 20px rgba(0,0,0,0.3))",
                     }}
                   />
                 </Box>
@@ -758,7 +857,9 @@ export default function HomePage() {
                     width: 60,
                     height: 60,
                     borderRadius: "50%",
-                    background: "rgba(255,255,255,0.1)",
+                    background: theme.palette.mode === 'dark'
+                      ? "rgba(255,255,255,0.1)"
+                      : "rgba(0,0,0,0.1)",
                     backdropFilter: "blur(5px)",
                     animation: "float 4s ease-in-out infinite",
                     animationDelay: "1s",
@@ -772,7 +873,9 @@ export default function HomePage() {
                     width: 40,
                     height: 40,
                     borderRadius: "50%",
-                    background: "rgba(255,255,255,0.08)",
+                    background: theme.palette.mode === 'dark'
+                      ? "rgba(255,255,255,0.08)"
+                      : "rgba(0,0,0,0.08)",
                     backdropFilter: "blur(5px)",
                     animation: "float 5s ease-in-out infinite",
                     animationDelay: "2s",
@@ -788,8 +891,9 @@ export default function HomePage() {
       <Box
         sx={{
           py: 16,
-          background:
-            "linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%)",
+          background: theme.palette.mode === 'dark'
+            ? "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)"
+            : "linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -799,11 +903,17 @@ export default function HomePage() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: `
-              radial-gradient(circle at 20% 80%, rgba(0,0,0,0.02) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(0,0,0,0.02) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(0,0,0,0.01) 0%, transparent 50%)
-            `,
+            background: theme.palette.mode === 'dark'
+              ? `
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.01) 0%, transparent 50%)
+              `
+              : `
+                radial-gradient(circle at 20% 80%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0,0,0,0.01) 0%, transparent 50%)
+              `,
             pointerEvents: "none",
           },
         }}
@@ -818,16 +928,22 @@ export default function HomePage() {
                 alignItems: "center",
                 mb: 3,
                 p: 2,
-                background: "rgba(0,0,0,0.03)",
+                background: theme.palette.mode === 'dark'
+                  ? "rgba(255,255,255,0.03)"
+                  : "rgba(0,0,0,0.03)",
                 borderRadius: 0,
               }}
             >
-              <TrendingUp sx={{ fontSize: 24, mr: 2, color: "#000000" }} />
+              <TrendingUp sx={{ 
+                fontSize: 24, 
+                mr: 2, 
+                color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000" 
+              }} />
               <Typography
                 variant="overline"
                 sx={{
                   fontWeight: 600,
-                  color: "#666666",
+                  color: theme.palette.mode === 'dark' ? "#cccccc" : "#666666",
                   letterSpacing: "0.1em",
                   fontFamily:
                     '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
@@ -841,12 +957,14 @@ export default function HomePage() {
               sx={{
                 fontWeight: 900,
                 mb: 4,
-                color: "#000000",
+                color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
                 fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
                 lineHeight: 1.1,
                 fontFamily:
                   '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                background: "linear-gradient(135deg, #000000 0%, #333333 100%)",
+                background: theme.palette.mode === 'dark'
+                  ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
+                  : "linear-gradient(135deg, #000000 0%, #333333 100%)",
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -857,7 +975,7 @@ export default function HomePage() {
             <Typography
               variant="h5"
               sx={{
-                color: "#666666",
+                color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
                 maxWidth: 800,
                 mx: "auto",
                 lineHeight: 1.6,
@@ -880,12 +998,9 @@ export default function HomePage() {
                 longDescription: t(
                   "landing.features.benefits.revenue.longDescription"
                 ),
-                benefits: t("landing.features.benefits.revenue.benefits", {
-                  returnObjects: true,
-                }) as string[],
+
                 gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                badge: "Ingresos",
-                metric: t("landing.features.benefits.revenue.metric"),
+                                  badge: "Gestión",
               },
               {
                 icon: <Speed sx={{ fontSize: 48 }} />,
@@ -896,12 +1011,9 @@ export default function HomePage() {
                 longDescription: t(
                   "landing.features.benefits.automation.longDescription"
                 ),
-                benefits: t("landing.features.benefits.automation.benefits", {
-                  returnObjects: true,
-                }) as string[],
+
                 gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
                 badge: "Automatización",
-                metric: t("landing.features.benefits.automation.metric"),
               },
               {
                 icon: <Star sx={{ fontSize: 48 }} />,
@@ -912,12 +1024,9 @@ export default function HomePage() {
                 longDescription: t(
                   "landing.features.benefits.experience.longDescription"
                 ),
-                benefits: t("landing.features.benefits.experience.benefits", {
-                  returnObjects: true,
-                }) as string[],
+
                 gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
                 badge: "Experiencia",
-                metric: t("landing.features.benefits.experience.metric"),
               },
               {
                 icon: <Analytics sx={{ fontSize: 48 }} />,
@@ -928,12 +1037,9 @@ export default function HomePage() {
                 longDescription: t(
                   "landing.features.benefits.analytics.longDescription"
                 ),
-                benefits: t("landing.features.benefits.analytics.benefits", {
-                  returnObjects: true,
-                }) as string[],
+
                 gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
                 badge: "Analytics",
-                metric: t("landing.features.benefits.analytics.metric"),
               },
               {
                 icon: <Security sx={{ fontSize: 48 }} />,
@@ -944,12 +1050,9 @@ export default function HomePage() {
                 longDescription: t(
                   "landing.features.benefits.security.longDescription"
                 ),
-                benefits: t("landing.features.benefits.security.benefits", {
-                  returnObjects: true,
-                }) as string[],
+
                 gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
                 badge: "Seguridad",
-                metric: t("landing.features.benefits.security.metric"),
               },
               {
                 icon: <Support sx={{ fontSize: 48 }} />,
@@ -958,22 +1061,25 @@ export default function HomePage() {
                 longDescription: t(
                   "landing.features.benefits.support.longDescription"
                 ),
-                benefits: t("landing.features.benefits.support.benefits", {
-                  returnObjects: true,
-                }) as string[],
+
                 gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
                 badge: "Soporte",
-                metric: t("landing.features.benefits.support.metric"),
               },
             ].map((benefit, index) => (
               <Grid item xs={12} md={6} lg={4} key={index}>
                 <Card
                   sx={{
                     height: "100%",
-                    minHeight: 500,
-                    background: "#ffffff",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                    border: "1px solid rgba(0,0,0,0.05)",
+                    minHeight: 400,
+                    background: theme.palette.mode === 'dark' 
+                      ? "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)"
+                      : "#ffffff",
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? "0 4px 20px rgba(0,0,0,0.3)"
+                      : "0 4px 20px rgba(0,0,0,0.08)",
+                    border: theme.palette.mode === 'dark'
+                      ? "1px solid rgba(255,255,255,0.1)"
+                      : "1px solid rgba(0,0,0,0.05)",
                     borderRadius: 0,
                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                     position: "relative",
@@ -993,7 +1099,9 @@ export default function HomePage() {
                     },
                     "&:hover": {
                       transform: "translateY(-8px)",
-                      boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? "0 20px 40px rgba(0,0,0,0.5)"
+                        : "0 20px 40px rgba(0,0,0,0.15)",
                       "&::before": {
                         opacity: 1,
                       },
@@ -1012,10 +1120,10 @@ export default function HomePage() {
                       p: 5,
                       textAlign: "center",
                       position: "relative",
-                      flex: 1,
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
+                      flex: 1,
                     }}
                   >
                     {/* Benefit Badge */}
@@ -1047,8 +1155,9 @@ export default function HomePage() {
                       sx={{
                         width: 100,
                         height: 100,
-                        background:
-                          "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+                        background: theme.palette.mode === 'dark'
+                          ? "linear-gradient(135deg, #3d3d3d 0%, #2a2a2a 100%)"
+                          : "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -1056,9 +1165,11 @@ export default function HomePage() {
                         mb: 3,
                         borderRadius: "50%",
                         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                        boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? "0 8px 25px rgba(0,0,0,0.3)"
+                          : "0 8px 25px rgba(0,0,0,0.1)",
                         "& svg": {
-                          color: "#000000",
+                          color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
                           transition: "all 0.3s ease",
                         },
                         "&:hover svg": {
@@ -1075,7 +1186,7 @@ export default function HomePage() {
                       sx={{
                         fontWeight: 800,
                         mb: 2,
-                        color: "#000000",
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
                         fontFamily:
                           '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                         lineHeight: 1.2,
@@ -1088,89 +1199,16 @@ export default function HomePage() {
                     <Typography
                       variant="body1"
                       sx={{
-                        color: "#666666",
+                        color: theme.palette.mode === 'dark' ? "#cccccc" : "#666666",
                         lineHeight: 1.6,
                         mb: 3,
                         fontFamily:
                           '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                         fontWeight: 400,
-                        flex: 1,
                       }}
                     >
                       {benefit.longDescription}
                     </Typography>
-
-                    {/* Key Benefits */}
-                    <Box sx={{ mb: 3 }}>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#999999",
-                          mb: 2,
-                          fontWeight: 600,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.05em",
-                          fontSize: "0.75rem",
-                          fontFamily:
-                            '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                        }}
-                      >
-                        {t("landing.features.benefits.keyBenefits")}
-                      </Typography>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: 1,
-                          justifyContent: "center",
-                        }}
-                      >
-                        {benefit.benefits.map(
-                          (benefitItem: string, benefitIndex: number) => (
-                            <Box
-                              key={benefitIndex}
-                              sx={{
-                                background: "rgba(0,0,0,0.05)",
-                                px: 2,
-                                py: 1,
-                                borderRadius: 0,
-                                fontSize: "0.75rem",
-                                fontWeight: 600,
-                                color: "#666666",
-                                fontFamily:
-                                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                              }}
-                            >
-                              {benefitItem}
-                            </Box>
-                          )
-                        )}
-                      </Box>
-                    </Box>
-
-                    {/* Impact Metric */}
-                    <Box
-                      sx={{
-                        background:
-                          "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
-                        p: 2,
-                        borderRadius: 0,
-                        border: "1px solid rgba(0,0,0,0.05)",
-                        mt: "auto",
-                      }}
-                    >
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          fontWeight: 700,
-                          color: "#000000",
-                          fontFamily:
-                            '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                        }}
-                      >
-                        {benefit.metric}
-                      </Typography>
-                    </Box>
                   </CardContent>
                 </Card>
               </Grid>
@@ -1179,11 +1217,552 @@ export default function HomePage() {
         </Container>
       </Box>
 
+      {/* How It Works Section */}
+      <Box
+        sx={{
+          py: 16,
+          background: theme.palette.mode === 'dark' ? "#2d2d2d" : "#ffffff",
+          position: "relative",
+          overflow: "hidden",
+        }}
+        id="como-funciona"
+      >
+        <Container maxWidth="xl">
+          {/* Section Header */}
+          <Box sx={{ textAlign: "center", mb: 12 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 900,
+                mb: 4,
+                color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                lineHeight: 1.1,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.howItWorks.title")}
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.6,
+                fontWeight: 400,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.howItWorks.subtitle")}
+            </Typography>
+          </Box>
+
+          {/* Process Steps */}
+          <Grid container spacing={6}>
+            {[
+              {
+                step: "01",
+                icon: <QrCode sx={{ fontSize: 48, color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000" }} />,
+                title: t("landing.howItWorks.step1.title"),
+                description: t("landing.howItWorks.step1.description"),
+              },
+              {
+                step: "02",
+                icon: <Smartphone sx={{ fontSize: 48, color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000" }} />,
+                title: t("landing.howItWorks.step2.title"),
+                description: t("landing.howItWorks.step2.description"),
+              },
+              {
+                step: "03",
+                icon: <Dashboard sx={{ fontSize: 48, color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000" }} />,
+                title: t("landing.howItWorks.step3.title"),
+                description: t("landing.howItWorks.step3.description"),
+              },
+            ].map((step, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Box
+                  sx={{
+                    textAlign: "center",
+                    p: 4,
+                    position: "relative",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: "50%",
+                      background: theme.palette.mode === 'dark' 
+                        ? "rgba(255,255,255,0.03)" 
+                        : "rgba(0,0,0,0.03)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "0 auto",
+                      mb: 3,
+                    }}
+                  >
+                    {step.icon}
+                  </Box>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontWeight: 900,
+                      color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                      mb: 2,
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    {step.step}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 700,
+                      color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                      mb: 2,
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    {step.title}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
+                      lineHeight: 1.6,
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    {step.description}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Testimonials Section */}
+      <Box
+        sx={{
+          py: 16,
+          background: theme.palette.mode === 'dark'
+            ? "linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%)"
+            : "linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)",
+          position: "relative",
+          overflow: "hidden",
+        }}
+        id="testimonios"
+      >
+        <Container maxWidth="xl">
+          {/* Section Header */}
+          <Box sx={{ textAlign: "center", mb: 12 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 900,
+                mb: 4,
+                color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                lineHeight: 1.1,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.testimonials.title")}
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.6,
+                fontWeight: 400,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.testimonials.subtitle")}
+            </Typography>
+          </Box>
+
+          {/* Testimonials Grid */}
+          <Grid container spacing={4}>
+            {[
+              {
+                name: t("landing.testimonials.testimonial1.name"),
+                role: t("landing.testimonials.testimonial1.role"),
+                company: t("landing.testimonials.testimonial1.company"),
+                content: t("landing.testimonials.testimonial1.content"),
+                rating: 5,
+              },
+              {
+                name: t("landing.testimonials.testimonial2.name"),
+                role: t("landing.testimonials.testimonial2.role"),
+                company: t("landing.testimonials.testimonial2.company"),
+                content: t("landing.testimonials.testimonial2.content"),
+                rating: 5,
+              },
+              {
+                name: t("landing.testimonials.testimonial3.name"),
+                role: t("landing.testimonials.testimonial3.role"),
+                company: t("landing.testimonials.testimonial3.company"),
+                content: t("landing.testimonials.testimonial3.content"),
+                rating: 5,
+              },
+            ].map((testimonial, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    background: theme.palette.mode === 'dark' ? "#2d2d2d" : "#ffffff",
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? "0 4px 20px rgba(0,0,0,0.3)"
+                      : "0 4px 20px rgba(0,0,0,0.08)",
+                    border: theme.palette.mode === 'dark'
+                      ? "1px solid rgba(255,255,255,0.05)"
+                      : "1px solid rgba(0,0,0,0.05)",
+                    borderRadius: 0,
+                    p: 4,
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? "0 20px 40px rgba(0,0,0,0.5)"
+                        : "0 20px 40px rgba(0,0,0,0.12)",
+                    },
+                  }}
+                >
+                  <Box sx={{ mb: 3 }}>
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        sx={{ fontSize: 20, color: "#FFD700", mr: 0.5 }}
+                      />
+                    ))}
+                  </Box>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: theme.palette.mode === 'dark' ? "#cccccc" : "#111111",
+                      lineHeight: 1.6,
+                      mb: 3,
+                      fontStyle: "italic",
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    "{testimonial.content}"
+                  </Typography>
+                  <Box>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                        mb: 0.5,
+                        fontFamily:
+                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                      }}
+                    >
+                      {testimonial.name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: theme.palette.mode === 'dark' ? "#aaaaaa" : "#333333",
+                        fontWeight: 500,
+                        fontFamily:
+                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                      }}
+                    >
+                      {testimonial.role}, {testimonial.company}
+                    </Typography>
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* FAQ Section */}
+      <Box
+        sx={{
+          py: 16,
+          background: theme.palette.mode === 'dark' ? "#2d2d2d" : "#ffffff",
+          position: "relative",
+          overflow: "hidden",
+        }}
+        id="faq"
+      >
+        <Container maxWidth="xl">
+          {/* Section Header */}
+          <Box sx={{ textAlign: "center", mb: 12 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 900,
+                mb: 4,
+                color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                lineHeight: 1.1,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.faq.title")}
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.6,
+                fontWeight: 400,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.faq.subtitle")}
+            </Typography>
+          </Box>
+
+          {/* FAQ Grid */}
+          <Grid container spacing={4}>
+            {[
+              {
+                question: t("landing.faq.faq1.question"),
+                answer: t("landing.faq.faq1.answer"),
+              },
+              {
+                question: t("landing.faq.faq2.question"),
+                answer: t("landing.faq.faq2.answer"),
+              },
+              {
+                question: t("landing.faq.faq3.question"),
+                answer: t("landing.faq.faq3.answer"),
+              },
+              {
+                question: t("landing.faq.faq4.question"),
+                answer: t("landing.faq.faq4.answer"),
+              },
+              {
+                question: t("landing.faq.faq5.question"),
+                answer: t("landing.faq.faq5.answer"),
+              },
+              {
+                question: t("landing.faq.faq6.question"),
+                answer: t("landing.faq.faq6.answer"),
+              },
+            ].map((faq, index) => (
+              <Grid item xs={12} md={6} key={index}>
+                <Card
+                  sx={{
+                    background: theme.palette.mode === 'dark' ? "#2d2d2d" : "#ffffff",
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? "0 4px 20px rgba(0,0,0,0.3)"
+                      : "0 4px 20px rgba(0,0,0,0.08)",
+                    border: theme.palette.mode === 'dark'
+                      ? "1px solid rgba(255,255,255,0.05)"
+                      : "1px solid rgba(0,0,0,0.05)",
+                    borderRadius: 0,
+                    p: 4,
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "translateY(-2px)",
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? "0 20px 40px rgba(0,0,0,0.5)"
+                        : "0 20px 40px rgba(0,0,0,0.12)",
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 700,
+                      color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                      mb: 2,
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    {faq.question}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
+                      lineHeight: 1.6,
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    }}
+                  >
+                    {faq.answer}
+                  </Typography>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box
+        sx={{
+          py: 16,
+          background: theme.palette.mode === 'dark'
+            ? "linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%)"
+            : "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+          color: theme.palette.mode === 'dark' ? "white" : "black",
+          position: "relative",
+          overflow: "hidden",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: theme.palette.mode === 'dark'
+              ? `
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.02) 0%, transparent 50%)
+              `
+              : `
+                radial-gradient(circle at 20% 80%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0,0,0,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0,0,0,0.01) 0%, transparent 50%)
+              `,
+            pointerEvents: "none",
+          },
+        }}
+        id="cta"
+      >
+        <Container maxWidth="xl">
+          <Box sx={{ textAlign: "center" }}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 900,
+                mb: 4,
+                color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
+                lineHeight: 1.1,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.cta.title")}
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                color: theme.palette.mode === 'dark' 
+                  ? "rgba(255,255,255,0.8)" 
+                  : "rgba(0,0,0,0.8)",
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.6,
+                fontWeight: 400,
+                mb: 6,
+                fontFamily:
+                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+              }}
+            >
+              {t("landing.cta.subtitle")}
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 3,
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                sx={{
+                  background: theme.palette.mode === 'dark'
+                    ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
+                    : "linear-gradient(135deg, #000000 0%, #333333 100%)",
+                  color: theme.palette.mode === 'dark' ? "#000000" : "#ffffff",
+                  px: 6,
+                  py: 2,
+                  borderRadius: 0,
+                  fontWeight: 700,
+                  fontSize: "1.1rem",
+                  textTransform: "none",
+                  boxShadow: theme.palette.mode === 'dark'
+                    ? "0 8px 32px rgba(255,255,255,0.3)"
+                    : "0 8px 32px rgba(0,0,0,0.3)",
+                  "&:hover": {
+                    background: theme.palette.mode === 'dark'
+                      ? "linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)"
+                      : "linear-gradient(135deg, #333333 0%, #000000 100%)",
+                    transform: "translateY(-2px)",
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? "0 12px 40px rgba(255,255,255,0.4)"
+                      : "0 12px 40px rgba(0,0,0,0.4)",
+                  },
+                  transition: "all 0.3s ease",
+                }}
+                onClick={() => smoothScrollTo("contacto")}
+              >
+                {t("landing.cta.primaryButton")}
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  border: theme.palette.mode === 'dark'
+                    ? "2px solid rgba(255,255,255,0.3)"
+                    : "2px solid rgba(0,0,0,0.3)",
+                  color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                  px: 6,
+                  py: 2,
+                  borderRadius: 0,
+                  fontWeight: 700,
+                  fontSize: "1.1rem",
+                  textTransform: "none",
+                  "&:hover": {
+                    border: theme.palette.mode === 'dark'
+                      ? "2px solid rgba(255,255,255,0.5)"
+                      : "2px solid rgba(0,0,0,0.5)",
+                    background: theme.palette.mode === 'dark'
+                      ? "rgba(255,255,255,0.1)"
+                      : "rgba(0,0,0,0.1)",
+                    transform: "translateY(-2px)",
+                  },
+                  transition: "all 0.3s ease",
+                }}
+                onClick={() => smoothScrollTo("demo")}
+              >
+                {t("landing.cta.secondaryButton")}
+              </Button>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
       {/* Footer */}
       <Box
         sx={{
-          background: "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
-          color: "white",
+          background: theme.palette.mode === 'dark'
+            ? "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)"
+            : "linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%)",
+          color: theme.palette.mode === 'dark' ? "white" : "black",
           py: 10,
           position: "relative",
           overflow: "hidden",
@@ -1198,8 +1777,9 @@ export default function HomePage() {
             left: 0,
             right: 0,
             bottom: 0,
-            background:
-              "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%)",
+            background: theme.palette.mode === 'dark'
+              ? "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%)"
+              : "radial-gradient(circle at 20% 80%, rgba(0,0,0,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,0,0,0.03) 0%, transparent 50%)",
             pointerEvents: "none",
           }}
         />
@@ -1215,19 +1795,22 @@ export default function HomePage() {
                     sx={{
                       width: 48,
                       height: 48,
-                      background:
-                        "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)",
+                      background: theme.palette.mode === 'dark'
+                        ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
+                        : "linear-gradient(135deg, #000000 0%, #333333 100%)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       mr: 3,
                       //borderRadius: "12px",
-                      boxShadow: "0 4px 20px rgba(255,255,255,0.1)",
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? "0 4px 20px rgba(255,255,255,0.1)"
+                        : "0 4px 20px rgba(0,0,0,0.1)",
                     }}
                   >
                     <Typography
                       sx={{
-                        color: "#000000",
+                        color: theme.palette.mode === 'dark' ? "#000000" : "#ffffff",
                         fontSize: "2.5rem",
                         fontWeight: 700,
                         fontFamily: "var(--font-league-spartan), sans-serif",
@@ -1249,30 +1832,31 @@ export default function HomePage() {
                         alignItems: "center",
                       }}
                     >
-                      <Box
-                        component="span"
-                        sx={{
-                          color: "#ffffff",
-                          fontWeight: 700,
-                        }}
-                      >
-                        park
-                      </Box>
-                      <Box
-                        component="span"
-                        sx={{
-                          color: "#cccccc",
-                          fontWeight: 700,
-                        }}
-                      >
-                        it.
-                      </Box>
+                                        <Box
+                    component="span"
+                    sx={{
+                      color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
+                      fontWeight: 700,
+                    }}
+                  >
+                    park
+                  </Box>
+                  <Box
+                    component="span"
+                    sx={{
+                      color: theme.palette.mode === 'dark' ? "#00d4ff" : "#0056b3",
+                      fontWeight: 700,
+                    }}
+                  >
+                    it.
+                  </Box>
                     </Typography>
                     <Typography
                       variant="body2"
                       sx={{
                         opacity: 0.7,
                         fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
                         fontFamily:
                           '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                       }}
@@ -1286,6 +1870,7 @@ export default function HomePage() {
                   sx={{
                     opacity: 0.8,
                     lineHeight: 1.7,
+                    color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
                     fontFamily:
                       '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                     mb: 4,
@@ -1300,11 +1885,17 @@ export default function HomePage() {
                     sx={{
                       width: 44,
                       height: 44,
-                      background: "rgba(255,255,255,0.1)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      color: "white",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.2)"
+                        : "1px solid rgba(0,0,0,0.2)",
+                      color: theme.palette.mode === 'dark' ? "white" : "black",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.2)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.2)"
+                          : "rgba(0,0,0,0.2)",
                         transform: "translateY(-2px)",
                       },
                       transition: "all 0.3s ease",
@@ -1316,11 +1907,17 @@ export default function HomePage() {
                     sx={{
                       width: 44,
                       height: 44,
-                      background: "rgba(255,255,255,0.1)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      color: "white",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.2)"
+                        : "1px solid rgba(0,0,0,0.2)",
+                      color: theme.palette.mode === 'dark' ? "white" : "black",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.2)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.2)"
+                          : "rgba(0,0,0,0.2)",
                         transform: "translateY(-2px)",
                       },
                       transition: "all 0.3s ease",
@@ -1332,11 +1929,17 @@ export default function HomePage() {
                     sx={{
                       width: 44,
                       height: 44,
-                      background: "rgba(255,255,255,0.1)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      color: "white",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.2)"
+                        : "1px solid rgba(0,0,0,0.2)",
+                      color: theme.palette.mode === 'dark' ? "white" : "black",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.2)",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.2)"
+                          : "rgba(0,0,0,0.2)",
                         transform: "translateY(-2px)",
                       },
                       transition: "all 0.3s ease",
@@ -1357,8 +1960,9 @@ export default function HomePage() {
                   mb: 4,
                   fontFamily:
                     '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                  background:
-                    "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)",
+                  background: theme.palette.mode === 'dark'
+                    ? "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)"
+                    : "linear-gradient(135deg, #000000 0%, #333333 100%)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -1368,15 +1972,20 @@ export default function HomePage() {
               </Typography>
 
               <Box sx={{ mb: 4 }}>
-                <Box
+                <Link
+                  href="tel:+50662164040"
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     mb: 3,
                     p: 2,
                     transition: "all 0.3s ease",
+                    textDecoration: "none",
+                    color: "inherit",
                     "&:hover": {
-                      background: "rgba(255,255,255,0.1)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.05)",
                       transform: "translateX(4px)",
                     },
                   }}
@@ -1389,28 +1998,40 @@ export default function HomePage() {
                         opacity: 0.7,
                         fontSize: "0.75rem",
                         fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#cccccc" : "#666666",
                       }}
                     >
                       {t("landing.contact.channels.phone")}
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ opacity: 0.9, fontWeight: 600 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 600,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.contact.info.phone")}
                     </Typography>
                   </Box>
-                </Box>
+                </Link>
 
-                <Box
+                <Link
+                  href="https://wa.me/50662164040"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     mb: 3,
                     p: 2,
                     transition: "all 0.3s ease",
+                    textDecoration: "none",
+                    color: "inherit",
                     "&:hover": {
-                      background: "rgba(255,255,255,0.1)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.05)",
                       transform: "translateX(4px)",
                     },
                   }}
@@ -1423,18 +2044,23 @@ export default function HomePage() {
                         opacity: 0.7,
                         fontSize: "0.75rem",
                         fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#cccccc" : "#666666",
                       }}
                     >
                       {t("landing.contact.channels.whatsapp")}
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ opacity: 0.9, fontWeight: 600 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 600,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.contact.info.whatsapp")}
                     </Typography>
                   </Box>
-                </Box>
+                </Link>
 
                 <Box
                   sx={{
@@ -1444,7 +2070,9 @@ export default function HomePage() {
                     p: 2,
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      background: "rgba(255,255,255,0.1)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.05)",
                       transform: "translateX(4px)",
                     },
                   }}
@@ -1457,13 +2085,18 @@ export default function HomePage() {
                         opacity: 0.7,
                         fontSize: "0.75rem",
                         fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#cccccc" : "#666666",
                       }}
                     >
                       {t("landing.contact.channels.email")}
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ opacity: 0.9, fontWeight: 600 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 600,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.contact.info.email")}
                     </Typography>
@@ -1478,7 +2111,9 @@ export default function HomePage() {
                     p: 2,
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      background: "rgba(255,255,255,0.1)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.05)",
                       transform: "translateX(4px)",
                     },
                   }}
@@ -1491,13 +2126,18 @@ export default function HomePage() {
                         opacity: 0.7,
                         fontSize: "0.75rem",
                         fontWeight: 500,
+                        color: theme.palette.mode === 'dark' ? "#cccccc" : "#666666",
                       }}
                     >
                       {t("landing.footer.address")}
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ opacity: 0.9, fontWeight: 600 }}
+                      sx={{ 
+                        opacity: 0.9, 
+                        fontWeight: 600,
+                        color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000"
+                      }}
                     >
                       {t("landing.contact.info.address")}
                     </Typography>
@@ -1515,8 +2155,9 @@ export default function HomePage() {
                   mb: 4,
                   fontFamily:
                     '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                  background:
-                    "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)",
+                  background: theme.palette.mode === 'dark'
+                    ? "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)"
+                    : "linear-gradient(135deg, #000000 0%, #333333 100%)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -1529,7 +2170,7 @@ export default function HomePage() {
                 <Button
                   variant="text"
                   sx={{
-                    color: "white",
+                    color: theme.palette.mode === 'dark' ? "white" : "black",
                     opacity: 0.8,
                     p: 2,
                     mb: 1,
@@ -1539,7 +2180,9 @@ export default function HomePage() {
                     width: "100%",
                     "&:hover": {
                       opacity: 1,
-                      background: "rgba(255,255,255,0.1)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
                       transform: "translateX(4px)",
                     },
                     transition: "all 0.3s ease",
@@ -1551,7 +2194,7 @@ export default function HomePage() {
                 <Button
                   variant="text"
                   sx={{
-                    color: "white",
+                    color: theme.palette.mode === 'dark' ? "white" : "black",
                     opacity: 0.8,
                     p: 2,
                     mb: 1,
@@ -1561,14 +2204,41 @@ export default function HomePage() {
                     width: "100%",
                     "&:hover": {
                       opacity: 1,
-                      background: "rgba(255,255,255,0.1)",
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
                       transform: "translateX(4px)",
                     },
                     transition: "all 0.3s ease",
                   }}
-                  onClick={() => smoothScrollTo("precios")}
+                  onClick={() => smoothScrollTo("como-funciona")}
                 >
-                  {t("landing.navigation.pricing")}
+                  {t("landing.howItWorks.title")}
+                </Button>
+
+                <Button
+                  variant="text"
+                  sx={{
+                    color: theme.palette.mode === 'dark' ? "white" : "black",
+                    opacity: 0.8,
+                    p: 2,
+                    mb: 1,
+                    minWidth: "auto",
+                    justifyContent: "flex-start",
+                    textTransform: "none",
+                    width: "100%",
+                    "&:hover": {
+                      opacity: 1,
+                      background: theme.palette.mode === 'dark'
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(0,0,0,0.1)",
+                      transform: "translateX(4px)",
+                    },
+                    transition: "all 0.3s ease",
+                  }}
+                  onClick={() => smoothScrollTo("faq")}
+                >
+                  {t("landing.faq.title")}
                 </Button>
               </Box>
 
@@ -1577,8 +2247,12 @@ export default function HomePage() {
                 sx={{
                   p: 3,
                   borderRadius: 0,
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: theme.palette.mode === 'dark'
+                    ? "rgba(255,255,255,0.05)"
+                    : "rgba(0,0,0,0.05)",
+                  border: theme.palette.mode === 'dark'
+                    ? "1px solid rgba(255,255,255,0.1)"
+                    : "1px solid rgba(0,0,0,0.1)",
                 }}
               >
                 <Typography
@@ -1586,6 +2260,7 @@ export default function HomePage() {
                   sx={{
                     fontWeight: 600,
                     mb: 2,
+                    color: theme.palette.mode === 'dark' ? "#ffffff" : "#000000",
                     fontFamily:
                       '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                   }}
@@ -1597,6 +2272,7 @@ export default function HomePage() {
                   sx={{
                     opacity: 0.7,
                     mb: 3,
+                    color: theme.palette.mode === 'dark' ? "#cccccc" : "#333333",
                     fontFamily:
                       '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                   }}
@@ -1617,20 +2293,34 @@ export default function HomePage() {
                     sx={{
                       flex: 1,
                       "& .MuiOutlinedInput-root": {
-                        color: "white",
-                        background: "rgba(255,255,255,0.05)",
+                        color: theme.palette.mode === 'dark' ? "white" : "black",
+                        background: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.05)"
+                          : "rgba(0,0,0,0.05)",
                         borderRadius: 0,
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        border: theme.palette.mode === 'dark'
+                          ? "1px solid rgba(255,255,255,0.1)"
+                          : "1px solid rgba(0,0,0,0.1)",
                         transition: "all 0.3s ease",
                         "&:hover": {
-                          background: "rgba(255,255,255,0.08)",
-                          border: "1px solid rgba(255,255,255,0.2)",
+                          background: theme.palette.mode === 'dark'
+                            ? "rgba(255,255,255,0.08)"
+                            : "rgba(0,0,0,0.08)",
+                          border: theme.palette.mode === 'dark'
+                            ? "1px solid rgba(255,255,255,0.2)"
+                            : "1px solid rgba(0,0,0,0.2)",
                           transform: "translateY(-1px)",
                         },
                         "&.Mui-focused": {
-                          background: "rgba(255,255,255,0.1)",
-                          border: "1px solid rgba(255,255,255,0.3)",
-                          boxShadow: "0 0 0 2px rgba(255,255,255,0.1)",
+                          background: theme.palette.mode === 'dark'
+                            ? "rgba(255,255,255,0.1)"
+                            : "rgba(0,0,0,0.1)",
+                          border: theme.palette.mode === 'dark'
+                            ? "1px solid rgba(255,255,255,0.3)"
+                            : "1px solid rgba(0,0,0,0.3)",
+                          boxShadow: theme.palette.mode === 'dark'
+                            ? "0 0 0 2px rgba(255,255,255,0.1)"
+                            : "0 0 0 2px rgba(0,0,0,0.1)",
                         },
                         "& fieldset": {
                           border: "none",
@@ -1643,13 +2333,17 @@ export default function HomePage() {
                         fontFamily:
                           '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                         "&::placeholder": {
-                          color: "rgba(255,255,255,0.6)",
+                          color: theme.palette.mode === 'dark'
+                            ? "rgba(255,255,255,0.6)"
+                            : "rgba(0,0,0,0.6)",
                           opacity: 1,
                           fontWeight: 400,
                         },
                       },
                       "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
+                        color: theme.palette.mode === 'dark'
+                          ? "rgba(255,255,255,0.7)"
+                          : "rgba(0,0,0,0.7)",
                         fontWeight: 500,
                       },
                     }}
@@ -1658,29 +2352,39 @@ export default function HomePage() {
                     variant="contained"
                     size="small"
                     sx={{
-                      background:
-                        "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)",
-                      color: "#000000",
+                      background: theme.palette.mode === 'dark'
+                        ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
+                        : "linear-gradient(135deg, #000000 0%, #333333 100%)",
+                      color: theme.palette.mode === 'dark' ? "#000000" : "#ffffff",
                       fontWeight: 700,
                       px: 4,
                       py: 1.5,
                       borderRadius: 0,
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      boxShadow: "0 4px 20px rgba(255,255,255,0.1)",
+                      border: theme.palette.mode === 'dark'
+                        ? "1px solid rgba(255,255,255,0.2)"
+                        : "1px solid rgba(255,255,255,0.2)",
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? "0 4px 20px rgba(255,255,255,0.1)"
+                        : "0 4px 20px rgba(0,0,0,0.1)",
                       fontFamily:
                         '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                       fontSize: "0.875rem",
                       textTransform: "none",
                       minWidth: "120px",
                       "&:hover": {
-                        background:
-                          "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)",
+                        background: theme.palette.mode === 'dark'
+                          ? "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)"
+                          : "linear-gradient(135deg, #333333 0%, #000000 100%)",
                         transform: "translateY(-2px)",
-                        boxShadow: "0 6px 25px rgba(255,255,255,0.15)",
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? "0 6px 25px rgba(255,255,255,0.15)"
+                          : "0 6px 25px rgba(0,0,0,0.15)",
                       },
                       "&:active": {
                         transform: "translateY(0px)",
-                        boxShadow: "0 2px 10px rgba(255,255,255,0.1)",
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? "0 2px 10px rgba(255,255,255,0.1)"
+                          : "0 2px 10px rgba(0,0,0,0.1)",
                       },
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
@@ -1695,7 +2399,9 @@ export default function HomePage() {
           {/* Footer Bottom */}
           <Box
             sx={{
-              borderTop: "1px solid rgba(255,255,255,0.1)",
+              borderTop: theme.palette.mode === 'dark'
+                ? "1px solid rgba(255,255,255,0.1)"
+                : "1px solid rgba(0,0,0,0.1)",
               pt: 4,
               mt: 6,
               display: "flex",
@@ -1717,39 +2423,51 @@ export default function HomePage() {
             </Typography>
 
             <Box sx={{ display: "flex", gap: 3 }}>
-              <Typography
-                variant="body2"
+              <Link
+                href="/privacy"
                 sx={{
                   opacity: 0.7,
                   cursor: "pointer",
+                  color: theme.palette.mode === 'dark' ? "white" : "black",
+                  textDecoration: "none",
                   "&:hover": { opacity: 1 },
                   transition: "opacity 0.3s ease",
                 }}
               >
-                {t("landing.footer.legal.privacy")}
-              </Typography>
-              <Typography
-                variant="body2"
+                <Typography variant="body2">
+                  {t("landing.footer.legal.privacy")}
+                </Typography>
+              </Link>
+              <Link
+                href="/terms"
                 sx={{
                   opacity: 0.7,
                   cursor: "pointer",
+                  color: theme.palette.mode === 'dark' ? "white" : "black",
+                  textDecoration: "none",
                   "&:hover": { opacity: 1 },
                   transition: "opacity 0.3s ease",
                 }}
               >
-                {t("landing.footer.legal.terms")}
-              </Typography>
-              <Typography
-                variant="body2"
+                <Typography variant="body2">
+                  {t("landing.footer.legal.terms")}
+                </Typography>
+              </Link>
+              <Link
+                href="/cookies"
                 sx={{
                   opacity: 0.7,
                   cursor: "pointer",
+                  color: theme.palette.mode === 'dark' ? "white" : "black",
+                  textDecoration: "none",
                   "&:hover": { opacity: 1 },
                   transition: "opacity 0.3s ease",
                 }}
               >
-                {t("landing.footer.legal.cookies")}
-              </Typography>
+                <Typography variant="body2">
+                  {t("landing.footer.legal.cookies")}
+                </Typography>
+              </Link>
             </Box>
           </Box>
         </Container>

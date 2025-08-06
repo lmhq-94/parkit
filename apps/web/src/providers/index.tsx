@@ -36,24 +36,58 @@ export const Providers: React.FC<{ children: React.ReactNode }> = ({ children })
   const [currentTheme, setCurrentTheme] = useState<ThemeType>('default');
 
   useEffect(() => {
-    // Load theme from localStorage on mount
+    // Detect system theme preference
+    const getSystemTheme = (): ThemeType => {
+      if (typeof window !== 'undefined') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      return 'default';
+    };
+
+    // Detect system language preference
+    const getSystemLanguage = (): string => {
+      if (typeof window !== 'undefined') {
+        const systemLang = navigator.language || navigator.languages?.[0] || 'es';
+        return systemLang.startsWith('en') ? 'en' : 'es';
+      }
+      return 'es';
+    };
+
+    // Load theme from localStorage or use system preference
     const savedTheme = localStorage.getItem('theme') as ThemeType;
     if (savedTheme && themes[savedTheme]) {
       setCurrentTheme(savedTheme);
     } else {
-      // Set default theme if none saved
-      localStorage.setItem('theme', 'default');
+      const systemTheme = getSystemTheme();
+      setCurrentTheme(systemTheme);
+      localStorage.setItem('theme', systemTheme);
     }
 
-    // Load language from localStorage on mount
+    // Load language from localStorage or use system preference
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
     } else {
-      // Set default language if none saved
-      localStorage.setItem('language', 'es');
-      i18n.changeLanguage('es');
+      const systemLanguage = getSystemLanguage();
+      localStorage.setItem('language', systemLanguage);
+      i18n.changeLanguage(systemLanguage);
     }
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        setCurrentTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleThemeChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleThemeChange);
+    };
   }, []);
 
   const setTheme = (theme: ThemeType) => {

@@ -17,7 +17,8 @@ import {
   Business,
   Palette,
   Language,
-  Translate
+  Translate,
+  KeyboardArrowUp
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../providers';
@@ -49,6 +50,13 @@ export const FloatingSettingsButton: React.FC<FloatingSettingsButtonProps> = ({ 
     i18n.changeLanguage(language);
     localStorage.setItem('language', language);
     handleClose();
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   const themes = [
@@ -92,9 +100,13 @@ export const FloatingSettingsButton: React.FC<FloatingSettingsButtonProps> = ({ 
         opacity: scrollY > 100 ? 1 : 0,
         visibility: scrollY > 100 ? 'visible' : 'hidden',
         transition: 'all 0.3s ease',
-        transform: scrollY > 100 ? 'translateY(0)' : 'translateY(20px)'
+        transform: scrollY > 100 ? 'translateY(0)' : 'translateY(20px)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 0
       }}
     >
+      {/* Settings Button */}
       <IconButton
         onClick={handleClick}
         sx={{
@@ -113,6 +125,29 @@ export const FloatingSettingsButton: React.FC<FloatingSettingsButtonProps> = ({ 
       >
         <Settings sx={{ fontSize: 24 }} />
       </IconButton>
+
+      {/* Scroll to Top Button */}
+      {scrollY > 300 && (
+        <IconButton
+          onClick={scrollToTop}
+          sx={{
+            width: 56,
+            height: 56,
+            background: '#000000',
+            color: '#ffffff',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+            '&:hover': {
+              background: '#333333',
+              transform: 'scale(1.1)',
+              boxShadow: '0 6px 25px rgba(0,0,0,0.4)'
+            },
+            transition: 'all 0.3s ease'
+          }}
+          aria-label="Volver arriba"
+        >
+          <KeyboardArrowUp sx={{ fontSize: 24 }} />
+        </IconButton>
+      )}
       
       <Menu
         anchorEl={anchorEl}

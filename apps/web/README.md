@@ -1,4 +1,4 @@
-# ParkIt - Smart Parking Management System
+# ParkIt - Smart Parking Solutions
 
 A professional, modern parking management platform built with Next.js, Material-UI, and TypeScript. This system provides comprehensive parking management capabilities with real-time monitoring, reservations, payments, and QR code integration.
 

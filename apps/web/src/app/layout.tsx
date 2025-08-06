@@ -21,20 +21,20 @@ const leagueSpartan = League_Spartan({
 });
 
 export const metadata: Metadata = {
-  title: "ParkIt - Smart Parking Management System",
+  title: "ParkIt - Smart Parking Solutions",
   description: "Professional parking management platform with real-time monitoring, reservations, and payment processing",
   keywords: "parking, management, reservations, payments, smart parking",
   authors: [{ name: "ParkIt Team" }],
   robots: "index, follow",
   openGraph: {
-    title: "ParkIt - Smart Parking Management",
+    title: "ParkIt - Smart Parking Solutions",
     description: "Professional parking management platform",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ParkIt - Smart Parking Management",
+    title: "ParkIt - Smart Parking Solutions",
     description: "Professional parking management platform",
   },
 };
