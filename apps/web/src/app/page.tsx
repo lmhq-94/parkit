@@ -9,15 +9,6 @@ import {
   Card,
   CardContent,
   Grid,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -27,40 +18,57 @@ import {
   useTheme,
   useMediaQuery,
   Link,
+  IconButton,
 } from "@mui/material";
 import {
-  Menu as MenuIcon,
-  LocalParking,
-  DirectionsCar,
-  Payment,
-  QrCode,
-  Security,
-  Speed,
-  Support,
-  Analytics,
-  Login,
   Close,
   Star,
   Phone,
-  Smartphone,
   Email,
   LocationOn,
-  TrendingUp,
-  Dashboard,
   WhatsApp,
   LinkedIn,
   Twitter,
   Instagram,
-  Help,
+  TrendingUp,
+  Speed,
+  Analytics,
+  Security,
+  Support,
+  QrCode,
+  Smartphone,
+  Dashboard,
+  Login,
+  LocalParking,
+  DirectionsCar,
+  Payment,
 } from "@mui/icons-material";
 import { useAuthStore } from "../store/authStore";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
-import { FloatingSettingsButton } from "../components/FloatingSettingsButton";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { ThemeContext } from "../providers";
+
+// Import custom components
+import { HeroSection } from "../components/hero/HeroSection";
+import { Navbar } from "../components/navigation/Navbar";
+import { MobileDrawer } from "../components/navigation/MobileDrawer";
+import { ScrollToTopButton } from "../components/ScrollToTopButton";
+
+// Import utilities and constants
+import { 
+  getInitialTheme, 
+  getInitialLanguage, 
+  saveThemePreference, 
+  saveLanguagePreference,
+  smoothScrollTo 
+} from "../utils/themeUtils";
+import { CONTACT_INFO } from "../constants";
 
 export default function HomePage() {
   const { user, isAuthenticated, login } = useAuthStore();
   const { t, i18n } = useTranslation();
+  const { currentTheme, setTheme } = useContext(ThemeContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -78,15 +86,30 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Función para cambiar idioma
+  const handleLanguageChange = () => {
+    const newLanguage = currentLanguage === 'es' ? 'en' : 'es';
+    setCurrentLanguage(newLanguage);
+    i18n.changeLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
+    forceUpdate({}); // Forzar re-renderizado
+  };
+
+  // Función para cambiar tema
+  const handleThemeChange = () => {
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  };
+
   // Escuchar cambios de idioma
   useEffect(() => {
-    const handleLanguageChange = () => {
+    const handleLanguageChangeEvent = () => {
       setCurrentLanguage(i18n.language);
       forceUpdate({}); // Forzar re-renderizado
     };
 
     // Escuchar el evento de cambio de idioma
-    i18n.on("languageChanged", handleLanguageChange);
+    i18n.on("languageChanged", handleLanguageChangeEvent);
 
     // También escuchar cambios en el localStorage
     const handleStorageChange = () => {
@@ -100,7 +123,7 @@ export default function HomePage() {
     window.addEventListener("storage", handleStorageChange);
 
     return () => {
-      i18n.off("languageChanged", handleLanguageChange);
+      i18n.off("languageChanged", handleLanguageChangeEvent);
       window.removeEventListener("storage", handleStorageChange);
     };
   }, [i18n, currentLanguage]);
@@ -151,1038 +174,32 @@ export default function HomePage() {
 
   return (
     <Box key={key} sx={{ overflow: "hidden" }}>
-      {/* Modern Navigation */}
-      <AppBar
-        position="fixed"
-        elevation={0}
-        sx={{
-          background:
-            scrollY > 50
-              ? theme.palette.mode === "dark"
-                ? "linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%)"
-                : "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
-              : "transparent",
-          backdropFilter: scrollY > 50 ? "blur(10px)" : "none",
-          WebkitBackdropFilter: scrollY > 50 ? "blur(10px)" : "none",
-          borderBottom:
-            scrollY > 50
-              ? theme.palette.mode === "dark"
-                ? "1px solid rgba(255,255,255,0.1)"
-                : "1px solid rgba(0,0,0,0.05)"
-              : "none",
-          boxShadow:
-            scrollY > 50
-              ? theme.palette.mode === "dark"
-                ? "0 4px 20px rgba(0,0,0,0.3)"
-                : "0 4px 20px rgba(0,0,0,0.08)"
-              : "none",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-      >
-        <Container maxWidth="xl" sx={{ borderRadius: 0 }}>
-          <Toolbar
-            disableGutters
-            sx={{
-              minHeight: { xs: 64, md: 72 },
-              px: { xs: 2, md: 0 },
-              borderRadius: 0,
-            }}
-          >
-            {/* Logo */}
-            <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  mr: 6,
-                }}
-              >
-                {/* <Box
-                  sx={{
-                    width: 48,
-                    height: 48,
-                    background:
-                      scrollY > 50
-                        ? "linear-gradient(135deg, #000000 0%, #333333 100%)"
-                        : "rgba(255,255,255,0.1)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    mr: 3,
-                    borderRadius: 0,
-                    boxShadow:
-                      scrollY > 50 ? "0 4px 20px rgba(0,0,0,0.2)" : "none",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: scrollY > 50 ? "#ffffff" : "#000000",
-                      fontSize: 28,
-                      fontWeight: 700,
-                      fontFamily: "var(--font-league-spartan), sans-serif",
-                      letterSpacing: "-0.05em",
-                    }}
-                  >
-                    p
-                  </Typography>
-                </Box> */}
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    fontSize: "2.5rem",
-                    letterSpacing: "-0.05em",
-                    fontFamily: "var(--font-league-spartan), sans-serif",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <Box
-                    component="span"
-                    sx={{
-                      color:
-                        scrollY > 50
-                          ? theme.palette.mode === "dark"
-                            ? "#ffffff"
-                            : "#000000"
-                          : "#ffffff",
-                      fontWeight: 700,
-                    }}
-                  >
-                    park
-                  </Box>
-                  <Box
-                    component="span"
-                    sx={{
-                      color:
-                        scrollY > 50
-                          ? theme.palette.mode === "dark"
-                            ? "#00d4ff"
-                            : "#0056b3"
-                          : "#00d4ff",
-                      fontWeight: 700,
-                    }}
-                  >
-                    it.
-                  </Box>
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* Desktop Navigation */}
-            <Box
-              sx={{
-                display: { xs: "none", lg: "flex" },
-                alignItems: "center",
-                gap: 0,
-              }}
-            >
-              {[
-                { label: t("landing.navigation.solutions"), id: "soluciones" },
-                { label: t("landing.howItWorks.title"), id: "como-funciona" },
-                { label: t("landing.faq.title"), id: "faq" },
-                { label: t("landing.navigation.contact"), id: "footer" },
-              ].map((item, index) => (
-                <Button
-                  key={index}
-                  onClick={() => smoothScrollTo(item.id)}
-                  sx={{
-                    color:
-                      scrollY > 50
-                        ? theme.palette.mode === "dark"
-                          ? "#cccccc"
-                          : "#000000"
-                        : "rgba(255,255,255,0.9)",
-                    fontWeight: 600,
-                    fontSize: "0.875rem",
-                    px: 4,
-                    py: 2,
-                    textTransform: "none",
-                    borderRadius: 0,
-                    fontFamily:
-                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    background: "transparent",
-                    border: "none",
-                    "&:hover": {
-                      background:
-                        scrollY > 50
-                          ? theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.1)"
-                            : "rgba(0, 0, 0, 0.08)"
-                          : "rgba(255, 255, 255, 0.1)",
-                      transform: "translateY(-1px)",
-                    },
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </Box>
-
-            {/* CTA Button */}
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                alignItems: "center",
-                ml: 3,
-              }}
-            >
-              <Button
-                variant="contained"
-                onClick={() => setLoginOpen(true)}
-                sx={{
-                  background:
-                    scrollY > 50
-                      ? theme.palette.mode === "dark"
-                        ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
-                        : "linear-gradient(135deg, #000000 0%, #333333 100%)"
-                      : "rgba(255,255,255,0.1)",
-                  color:
-                    scrollY > 50
-                      ? theme.palette.mode === "dark"
-                        ? "#000000"
-                        : "#ffffff"
-                      : "rgba(255,255,255,0.9)",
-                  px: 4,
-                  py: 1.5,
-                  fontWeight: 700,
-                  fontSize: "0.875rem",
-                  textTransform: "none",
-                  borderRadius: 0,
-                  fontFamily:
-                    '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                  boxShadow:
-                    scrollY > 50 ? "0 4px 20px rgba(0,0,0,0.2)" : "none",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  "&:hover": {
-                    background:
-                      scrollY > 50
-                        ? theme.palette.mode === "dark"
-                          ? "linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)"
-                          : "linear-gradient(135deg, #333333 0%, #000000 100%)"
-                        : "rgba(255,255,255,0.2)",
-                    transform: "translateY(-2px)",
-                    boxShadow:
-                      scrollY > 50
-                        ? "0 6px 25px rgba(0,0,0,0.3)"
-                        : "0 4px 20px rgba(255,255,255,0.2)",
-                  },
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                }}
-              >
-                {t("landing.navigation.proAccess")}
-              </Button>
-            </Box>
-
-            {/* Mobile Menu Button */}
-            <IconButton
-              sx={{
-                color:
-                  scrollY > 50
-                    ? theme.palette.mode === "dark"
-                      ? "#cccccc"
-                      : "#000000"
-                    : "rgba(255,255,255,0.9)",
-                display: { md: "none" },
-                p: 2,
-                background: "transparent",
-                border: "none",
-                borderRadius: 0,
-                "&:hover": {
-                  background:
-                    scrollY > 50
-                      ? theme.palette.mode === "dark"
-                        ? "rgba(255,255,255,0.1)"
-                        : "rgba(0, 0, 0, 0.08)"
-                      : "rgba(255, 255, 255, 0.1)",
-                  transform: "translateY(-1px)",
-                },
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-              }}
-              onClick={() => setMobileOpen(true)}
-            >
-              <MenuIcon sx={{ fontSize: 24 }} />
-            </IconButton>
-          </Toolbar>
-        </Container>
-      </AppBar>
+      {/* Navigation */}
+      <Navbar
+        scrollY={scrollY}
+        onLanguageChange={handleLanguageChange}
+        onThemeChange={handleThemeChange}
+        onMobileMenuOpen={() => setMobileOpen(true)}
+        currentLanguage={currentLanguage}
+        currentTheme={theme.palette.mode}
+      />
 
       {/* Mobile Drawer */}
-      <Drawer
-        anchor="right"
+      <MobileDrawer
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-        PaperProps={{
-          sx: {
-            width: { xs: "80vw", sm: 300 },
-            background:
-              theme.palette.mode === "dark"
-                ? "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)"
-                : "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
-            color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-            borderRight:
-              theme.palette.mode === "dark"
-                ? "1px solid rgba(255,255,255,0.15)"
-                : "1px solid rgba(0,0,0,0.1)",
-            boxShadow:
-              theme.palette.mode === "dark"
-                ? "0 8px 32px rgba(0,0,0,0.5)"
-                : "0 8px 32px rgba(0,0,0,0.15)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            position: "fixed",
-            top: 0,
-            right: 0,
-            height: "100vh",
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background:
-                theme.palette.mode === "dark"
-                  ? "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%)"
-                  : "radial-gradient(circle at 20% 80%, rgba(0,0,0,0.02) 0%, transparent 50%)",
-              pointerEvents: "none",
-            },
-          },
-        }}
-      >
-        <Box
-          sx={{
-            pt: 4,
-            pb: 3,
-            px: 3,
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          {/* Header */}
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              mb: 4,
-              pb: 3,
-              borderBottom:
-                theme.palette.mode === "dark"
-                  ? "1px solid rgba(255,255,255,0.15)"
-                  : "1px solid rgba(0,0,0,0.1)",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <Box
-              sx={{
-                width: 36,
-                height: 36,
-                background:
-                  theme.palette.mode === "dark"
-                    ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
-                    : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                mr: 2,
-                borderRadius: "4px",
-                boxShadow:
-                  theme.palette.mode === "dark"
-                    ? "0 4px 20px rgba(255,255,255,0.1)"
-                    : "0 4px 20px rgba(0,0,0,0.1)",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
-                  fontSize: "1.5rem",
-                  fontWeight: 700,
-                  fontFamily: "var(--font-league-spartan), sans-serif",
-                }}
-              >
-                p.
-              </Typography>
-            </Box>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                fontSize: "1.5rem",
-                fontFamily: "var(--font-league-spartan), sans-serif",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Box
-                component="span"
-                sx={{
-                  color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                }}
-              >
-                park
-              </Box>
-              <Box
-                component="span"
-                sx={{
-                  color: theme.palette.mode === "dark" ? "#00d4ff" : "#0056b3",
-                }}
-              >
-                it.
-              </Box>
-            </Typography>
-          </Box>
+        onNavigation={handleNavigation}
+        onLogin={handleLogin}
+      />
 
-          <List sx={{ pt: 0 }}>
-            <ListItem sx={{ mb: 2, px: 0 }}>
-              <ListItemButton
-                onClick={() => handleNavigation("soluciones")}
-                sx={{
-                  borderRadius: 0,
-                  py: 2,
-                  px: 3,
-                  background: "transparent",
-                  "&:hover": {
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255,255,255,0.1)"
-                        : "rgba(0,0,0,0.05)",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    color:
-                      theme.palette.mode === "dark" ? "#00d4ff" : "#0056b3",
-                    minWidth: 36,
-                  }}
-                >
-                  <DirectionsCar sx={{ fontSize: 20 }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={t("landing.navigation.solutions")}
-                  sx={{
-                    "& .MuiListItemText-primary": {
-                      fontWeight: 500,
-                      fontSize: "0.9rem",
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem sx={{ mb: 2, px: 0 }}>
-              <ListItemButton
-                onClick={() => handleNavigation("como-funciona")}
-                sx={{
-                  borderRadius: 0,
-                  py: 2,
-                  px: 3,
-                  background: "transparent",
-                  "&:hover": {
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255,255,255,0.1)"
-                        : "rgba(0,0,0,0.05)",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    color:
-                      theme.palette.mode === "dark" ? "#00d4ff" : "#0056b3",
-                    minWidth: 36,
-                  }}
-                >
-                  <QrCode sx={{ fontSize: 20 }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={t("landing.howItWorks.title")}
-                  sx={{
-                    "& .MuiListItemText-primary": {
-                      fontWeight: 500,
-                      fontSize: "0.9rem",
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem sx={{ mb: 2, px: 0 }}>
-              <ListItemButton
-                onClick={() => handleNavigation("faq")}
-                sx={{
-                  borderRadius: 0,
-                  py: 2,
-                  px: 3,
-                  background: "transparent",
-                  "&:hover": {
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255,255,255,0.1)"
-                        : "rgba(0,0,0,0.05)",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    color:
-                      theme.palette.mode === "dark" ? "#00d4ff" : "#0056b3",
-                    minWidth: 36,
-                  }}
-                >
-                  <Help sx={{ fontSize: 20 }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={t("landing.faq.title")}
-                  sx={{
-                    "& .MuiListItemText-primary": {
-                      fontWeight: 500,
-                      fontSize: "0.9rem",
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem sx={{ mb: 2, px: 0 }}>
-              <ListItemButton
-                onClick={() => handleNavigation("footer")}
-                sx={{
-                  borderRadius: 0,
-                  py: 2,
-                  px: 3,
-                  background: "transparent",
-                  "&:hover": {
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255,255,255,0.1)"
-                        : "rgba(0,0,0,0.05)",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    color:
-                      theme.palette.mode === "dark" ? "#00d4ff" : "#0056b3",
-                    minWidth: 36,
-                  }}
-                >
-                  <Phone sx={{ fontSize: 20 }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={t("landing.navigation.contact")}
-                  sx={{
-                    "& .MuiListItemText-primary": {
-                      fontWeight: 500,
-                      fontSize: "0.9rem",
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <Box
-              sx={{
-                mt: 4,
-                pt: 3,
-                borderTop:
-                  theme.palette.mode === "dark"
-                    ? "1px solid rgba(255,255,255,0.15)"
-                    : "1px solid rgba(0,0,0,0.1)",
-                position: "relative",
-                zIndex: 2,
-              }}
-            >
-              <ListItem sx={{ px: 0 }}>
-                <ListItemButton
-                  onClick={() => {
-                    setLoginOpen(true);
-                    setMobileOpen(false); // Cerrar el drawer
-                  }}
-                  sx={{
-                    borderRadius: 0,
-                    py: 2.5,
-                    px: 3,
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
-                        : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                    color:
-                      theme.palette.mode === "dark" ? "#000000" : "#ffffff",
-                    boxShadow:
-                      theme.palette.mode === "dark"
-                        ? "0 4px 20px rgba(255,255,255,0.2)"
-                        : "0 4px 20px rgba(0,0,0,0.2)",
-                    border:
-                      theme.palette.mode === "dark"
-                        ? "1px solid rgba(255,255,255,0.2)"
-                        : "1px solid rgba(255,255,255,0.2)",
-                    position: "relative",
-                    overflow: "hidden",
-                    "&::before": {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: "-100%",
-                      width: "100%",
-                      height: "100%",
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)"
-                          : "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-                      transition: "left 0.5s",
-                    },
-                    "&:hover": {
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)"
-                          : "linear-gradient(135deg, #333333 0%, #000000 100%)",
-                      transform: "translateY(-3px)",
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 12px 40px rgba(255,255,255,0.4)"
-                          : "0 12px 40px rgba(0,0,0,0.4)",
-                      "&::before": {
-                        left: "100%",
-                      },
-                    },
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                >
-                  <ListItemText
-                    primary={t("landing.hero.startNow")}
-                    sx={{
-                      "& .MuiListItemText-primary": {
-                        fontWeight: 700,
-                        fontSize: "0.9rem",
-                        textAlign: "center",
-                      },
-                    }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </Box>
-          </List>
-        </Box>
-      </Drawer>
+      {/* Scroll to Top Button */}
+      <ScrollToTopButton scrollY={scrollY} />
 
       {/* Hero Section */}
-      <Box
-        sx={{
-          position: "relative",
-          minHeight: "100vh",
-          background:
-            theme.palette.mode === "dark"
-              ? "linear-gradient(135deg, #000000 0%, #0a0a0a 100%)"
-              : "linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%)",
-          display: "flex",
-          alignItems: "center",
-          overflow: "hidden",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              theme.palette.mode === "dark"
-                ? "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2d2d2d 40%, #1a1a1a 60%, #0f0f0f 80%, #000000 100%)"
-                : "linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #3a5fba 50%, #2a5298 75%, #1e3c72 100%)",
-            opacity: theme.palette.mode === "dark" ? 0.9 : 0.8,
-            zIndex: 1,
-          },
-        }}
-      >
-        <Container
-          maxWidth="xl"
-          sx={{ position: "relative", zIndex: 3, py: { xs: 4, sm: 6, md: 8 } }}
-        >
-          <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} alignItems="center">
-            <Grid item xs={12} md={8} lg={6}>
-              <Box
-                sx={{
-                  color: theme.palette.mode === "dark" ? "white" : "black",
-                  position: "relative",
-                  zIndex: 3,
-                  textAlign: { xs: "center", md: "left" },
-                  px: { xs: 3, sm: 4, md: 0 },
-                  mx: { xs: 2, sm: 3, md: 0 },
-                }}
-              >
-                <Typography
-                  variant="h1"
-                  sx={{
-                    fontWeight: 900,
-                    fontSize: {
-                      xs: "2rem",
-                      sm: "2.5rem",
-                      md: "3.5rem",
-                      lg: "4.5rem",
-                      xl: "5rem",
-                    },
-                    lineHeight: { xs: 1.2, sm: 1.1 },
-                    mb: { xs: 2, sm: 3 },
-                    fontFamily:
-                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    background:
-                      "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    textShadow: "0 4px 20px rgba(255,255,255,0.1)",
-                    textAlign: { xs: "center", md: "left" },
-                    px: { xs: 2, sm: 0 },
-                  }}
-                >
-                  {t("landing.hero.title")}
-                  <Box
-                    component="span"
-                    sx={{
-                      display: "block",
-                      background:
-                        "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      fontSize: {
-                        xs: "1.5rem",
-                        sm: "1.8rem",
-                        md: "2.2rem",
-                        lg: "2.5rem",
-                        xl: "2.8rem",
-                      },
-                      mt: { xs: 1, sm: 2 },
-                    }}
-                  >
-                    {t("landing.hero.subtitle")}
-                  </Box>
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    mb: { xs: 3, sm: 4 },
-                    opacity: 0.9,
-                    fontWeight: 400,
-                    lineHeight: { xs: 1.5, sm: 1.6 },
-                    fontSize: {
-                      xs: "1rem",
-                      sm: "1.1rem",
-                      md: "1.25rem",
-                      lg: "1.5rem",
-                    },
-                    fontFamily:
-                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    color: "rgba(255,255,255,0.9)",
-                    textShadow: "0 2px 10px rgba(0,0,0,0.3)",
-                    textAlign: { xs: "center", md: "left" },
-                    px: { xs: 2, sm: 0 },
-                    maxWidth: { xs: "100%", md: "90%" },
-                  }}
-                >
-                  {t("landing.hero.description")}
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    gap: { xs: 2, sm: 3 },
-                    flexWrap: "wrap",
-                    position: "relative",
-                    zIndex: 3,
-                    justifyContent: { xs: "center", md: "flex-start" },
-                    px: { xs: 2, sm: 0 },
-                  }}
-                >
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={() => setLoginOpen(true)}
-                    sx={{
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
-                          : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                      color:
-                        theme.palette.mode === "dark" ? "#000000" : "#ffffff",
-                      px: { xs: 4, sm: 5, md: 6 },
-                      py: { xs: 2, sm: 2.5 },
-                      fontWeight: 700,
-                      fontSize: { xs: "0.875rem", sm: "0.9rem", md: "1rem" },
-                      textTransform: "none",
-                      borderRadius: 0,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 8px 32px rgba(255,255,255,0.3)"
-                          : "0 8px 32px rgba(0,0,0,0.3)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.2)"
-                          : "1px solid rgba(255,255,255,0.2)",
-                      position: "relative",
-                      overflow: "hidden",
-                      "&::before": {
-                        content: '""',
-                        position: "absolute",
-                        top: 0,
-                        left: "-100%",
-                        width: "100%",
-                        height: "100%",
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)"
-                            : "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-                        transition: "left 0.5s",
-                      },
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)"
-                            : "linear-gradient(135deg, #333333 0%, #000000 100%)",
-                        transform: "translateY(-3px)",
-                        boxShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 12px 40px rgba(255,255,255,0.4)"
-                            : "0 12px 40px rgba(0,0,0,0.4)",
-                        "&::before": {
-                          left: "100%",
-                        },
-                      },
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                  >
-                    {t("landing.hero.startNow")}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    onClick={() => smoothScrollTo("como-funciona")}
-                    sx={{
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      borderColor:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.4)"
-                          : "rgba(0,0,0,0.4)",
-                      px: { xs: 4, sm: 5, md: 6 },
-                      py: { xs: 2, sm: 2.5 },
-                      fontWeight: 600,
-                      fontSize: { xs: "0.875rem", sm: "0.9rem", md: "1rem" },
-                      textTransform: "none",
-                      borderRadius: 0,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.08)"
-                          : "rgba(0,0,0,0.08)",
-                      backdropFilter: "blur(15px)",
-                      borderWidth: "2px",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255, 255, 255, 0.15)"
-                            : "rgba(0, 0, 0, 0.15)",
-                        borderColor:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.8)"
-                            : "rgba(0,0,0,0.8)",
-                        transform: "translateY(-3px)",
-                        boxShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 8px 32px rgba(255,255,255,0.3)"
-                            : "0 8px 32px rgba(0,0,0,0.3)",
-                      },
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                  >
-                    {t("landing.hero.viewDemo")}
-                  </Button>
-                </Box>
-
-                {/* Stats */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    gap: { xs: 2, sm: 3, md: 4 },
-                    mt: { xs: 6, sm: 7, md: 8 },
-                    flexWrap: "wrap",
-                    position: "relative",
-                    zIndex: 3,
-                    justifyContent: { xs: "center", md: "flex-start" },
-                    px: { xs: 2, sm: 0 },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      textAlign: "center",
-                      p: { xs: 1.5, sm: 2 },
-                      borderRadius: 0,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.05)"
-                          : "rgba(0,0,0,0.05)",
-                      backdropFilter: "blur(10px)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.1)"
-                          : "1px solid rgba(0,0,0,0.1)",
-                      transition: "all 0.3s ease",
-                      minWidth: { xs: "120px", sm: "140px", md: "160px" },
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.1)"
-                            : "rgba(0,0,0,0.1)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontWeight: 900,
-                        fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                        textShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 2px 10px rgba(255,255,255,0.3)"
-                            : "0 2px 10px rgba(0,0,0,0.3)",
-                        mb: 1,
-                      }}
-                    >
-                      99.9%
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 500,
-                        fontSize: { xs: "0.75rem", sm: "0.875rem" },
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.hero.uptime")}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      textAlign: "center",
-                      p: 2,
-                      borderRadius: 0,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.05)"
-                          : "rgba(0,0,0,0.05)",
-                      backdropFilter: "blur(10px)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.1)"
-                          : "1px solid rgba(0,0,0,0.1)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.1)"
-                            : "rgba(0,0,0,0.1)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontWeight: 900,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                        textShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 2px 10px rgba(255,255,255,0.3)"
-                            : "0 2px 10px rgba(0,0,0,0.3)",
-                        mb: 1,
-                      }}
-                    >
-                      500+
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.hero.companies")}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      textAlign: "center",
-                      p: 2,
-                      borderRadius: 0,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.05)"
-                          : "rgba(0,0,0,0.05)",
-                      backdropFilter: "blur(10px)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.1)"
-                          : "1px solid rgba(0,0,0,0.1)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.1)"
-                            : "rgba(0,0,0,0.1)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontWeight: 900,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                        textShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 2px 10px rgba(255,255,255,0.3)"
-                            : "0 2px 10px rgba(0,0,0,0.3)",
-                        mb: 1,
-                      }}
-                    >
-                      24/7
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.hero.support")}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+      <HeroSection 
+        onStartNow={() => setLoginOpen(true)}
+        onViewDemo={() => smoothScrollTo("como-funciona")}
+      />
 
       {/* Enhanced Technology Section */}
       <Box
@@ -1811,7 +828,7 @@ export default function HomePage() {
                         '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                     }}
                   >
-                    "{testimonial.content}"
+                                          &quot;{testimonial.content}&quot;
                   </Typography>
                   <Box>
                     <Typography
@@ -2907,8 +1924,7 @@ export default function HomePage() {
         </Container>
       </Box>
 
-      {/* Floating Settings Button */}
-      <FloatingSettingsButton scrollY={scrollY} />
+      
 
       {/* Login Dialog */}
       <Dialog

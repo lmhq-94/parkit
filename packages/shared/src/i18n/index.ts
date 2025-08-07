@@ -116,6 +116,7 @@ const es = {
       }
     },
     testimonials: {
+      navbar: 'Testimonios',
       title: 'Lo que Dicen Nuestros Usuarios',
       subtitle: 'Empresas que confían en ParkIt para gestionar su parqueo',
       testimonial1: {
@@ -535,6 +536,7 @@ const en = {
       }
     },
     testimonials: {
+      navbar: 'Testimonials',
       title: 'What Our Users Say',
       subtitle: 'Companies that trust ParkIt to manage their parking',
       testimonial1: {
