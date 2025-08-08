@@ -1,0 +1,33 @@
+module.exports = {
+  extends: ['../../packages/config/eslint'],
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+  env: {
+    node: true,
+    es2022: true,
+  },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'jsx-a11y/alt-text': 'off',
+    'jsx-a11y/anchor-has-content': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/aria-props': 'off',
+    'jsx-a11y/aria-proptypes': 'off',
+    'jsx-a11y/aria-unsupported-elements': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/heading-has-content': 'off',
+    'jsx-a11y/html-has-lang': 'off',
+    'jsx-a11y/iframe-has-title': 'off',
+    'jsx-a11y/img-redundant-alt': 'off',
+    'jsx-a11y/no-access-key': 'off',
+    'jsx-a11y/no-autofocus': 'off',
+    'jsx-a11y/no-distracting-elements': 'off',
+    'jsx-a11y/no-redundant-roles': 'off',
+    'jsx-a11y/role-has-required-aria-props': 'off',
+    'jsx-a11y/role-supports-aria-props': 'off',
+    'jsx-a11y/scope': 'off',
+    'jsx-a11y/tabindex-no-positive': 'off',
+  },
+}; 

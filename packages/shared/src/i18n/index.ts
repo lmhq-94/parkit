@@ -29,8 +29,8 @@ const es = {
     themes: {
       default: 'Predeterminado',
       light: 'Claro',
-      dark: 'Oscuro'
-    }
+      dark: 'Oscuro',
+    },
   },
   landing: {
     hero: {
@@ -41,13 +41,13 @@ const es = {
       viewDemo: 'Ver Demo',
       uptime: 'Uptime Garantizado',
       companies: 'Empresas Confían',
-      support: 'Soporte Premium'
+      support: 'Soporte Premium',
     },
     navigation: {
       solutions: 'Soluciones',
       pricing: 'Precios',
       contact: 'Contacto',
-      proAccess: 'Acceso Pro'
+      proAccess: 'Acceso Pro',
     },
     features: {
       title: '¿Por qué elegir ParkIt?',
@@ -60,60 +60,60 @@ const es = {
           description: 'Control total de espacios y ocupación',
           longDescription: 'Gestiona múltiples parqueos desde un solo dashboard. Control de acceso, monitoreo en tiempo real y reportes detallados.',
           benefits: ['Múltiples Parqueos', 'Control de Acceso', 'Reportes Detallados'],
-          metric: 'Control Total'
+          metric: 'Control Total',
         },
         automation: {
           title: 'Automatiza tu Operación',
           description: 'Reduce costos operativos y personal',
           longDescription: 'Elimina la necesidad de personal manual. Sistema automático de entrada/salida con QR codes.',
           benefits: ['-50% Costos Operativos', 'Operación 24/7', 'Control Remoto'],
-          metric: '-50% costos'
+          metric: '-50% costos',
         },
         experience: {
           title: 'Mejora la Experiencia',
           description: 'Clientes satisfechos que regresan',
           longDescription: 'Reserva fácil desde el móvil, acceso rápido con QR. Notificaciones automáticas y soporte 24/7.',
           benefits: ['Reserva Móvil', 'Acceso QR Rápido', 'Soporte 24/7'],
-          metric: '95% satisfacción'
+          metric: '95% satisfacción',
         },
         analytics: {
           title: 'Toma Decisiones Inteligentes',
           description: 'Datos en tiempo real para crecer',
           longDescription: 'Dashboard con métricas de ocupación, patrones de uso y análisis de rentabilidad.',
           benefits: ['Datos Tiempo Real', 'Reportes Automáticos', 'Análisis Predictivo'],
-          metric: 'Decisiones basadas en datos'
+          metric: 'Decisiones basadas en datos',
         },
         security: {
           title: 'Seguridad Total',
           description: 'Protege tu negocio y clientes',
           longDescription: 'Control de acceso por roles, registro completo de entradas/salidas y auditoría total.',
           benefits: ['Control de Acceso', 'Registro Completo', 'Auditoría Total'],
-          metric: '100% seguro'
+          metric: '100% seguro',
         },
         support: {
           title: 'Soporte Premium',
           description: 'Estamos aquí para tu éxito',
           longDescription: 'Implementación rápida en 24 horas, capacitación completa y soporte técnico 24/7.',
           benefits: ['Implementación 24h', 'Capacitación Incluida', 'Soporte 24/7'],
-          metric: 'Implementación 24h'
-        }
-      }
+          metric: 'Implementación 24h',
+        },
+      },
     },
     howItWorks: {
       title: '¿Cómo Funciona?',
       subtitle: 'Proceso simple y eficiente para gestionar tu parqueo',
       step1: {
         title: 'Registra tu Parqueo',
-        description: 'Crea tu empresa y registra tus espacios de parking con ubicación, capacidad y precios.'
+        description: 'Crea tu empresa y registra tus espacios de parking con ubicación, capacidad y precios.',
       },
       step2: {
         title: 'Escanea y Accede',
-        description: 'Los usuarios escanean códigos QR para entrar y salir. Sistema automático de control de acceso.'
+        description: 'Los usuarios escanean códigos QR para entrar y salir. Sistema automático de control de acceso.',
       },
       step3: {
         title: 'Gestiona Reservas',
-        description: 'Los clientes reservan espacios desde la app. Monitorea ocupación y gestiona desde el dashboard.'
-      }
+        description: 'Los clientes reservan espacios desde la app. Monitorea ocupación y gestiona desde el dashboard.',
+      },
     },
     testimonials: {
       navbar: 'Testimonios',
@@ -123,76 +123,76 @@ const es = {
         name: 'María González',
         role: 'Gerente de Operaciones',
         company: 'Centro Comercial Plaza Central',
-        content: 'ParkIt simplificó completamente la gestión de nuestro parqueo. El sistema de QR es muy eficiente y los usuarios lo encuentran fácil de usar.'
+        content: 'ParkIt simplificó completamente la gestión de nuestro parqueo. El sistema de QR es muy eficiente y los usuarios lo encuentran fácil de usar.',
       },
       testimonial2: {
         name: 'Carlos Rodríguez',
         role: 'Director General',
         company: 'Estacionamiento Premium',
-        content: 'La implementación fue sencilla y el dashboard nos da control total. Los usuarios pueden reservar fácilmente desde la app.'
+        content: 'La implementación fue sencilla y el dashboard nos da control total. Los usuarios pueden reservar fácilmente desde la app.',
       },
       testimonial3: {
         name: 'Ana Martínez',
         role: 'CEO',
         company: 'Parking Solutions',
-        content: 'La plataforma es intuitiva y el sistema de roles funciona perfectamente. Nuestros empleados pueden gestionar todo desde el dashboard.'
-      }
+        content: 'La plataforma es intuitiva y el sistema de roles funciona perfectamente. Nuestros empleados pueden gestionar todo desde el dashboard.',
+      },
     },
     faq: {
       title: 'Preguntas Frecuentes',
       subtitle: 'Resolvemos tus dudas sobre ParkIt',
       faq1: {
         question: '¿Cómo funciona el sistema de QR?',
-        answer: 'Cada espacio de parking tiene un código QR único. Los usuarios lo escanean para registrar entrada y salida automáticamente.'
+        answer: 'Cada espacio de parking tiene un código QR único. Los usuarios lo escanean para registrar entrada y salida automáticamente.',
       },
       faq2: {
         question: '¿Puedo gestionar múltiples parqueos?',
-        answer: 'Sí, puedes registrar múltiples empresas y parqueos desde una sola cuenta con diferentes roles de usuario.'
+        answer: 'Sí, puedes registrar múltiples empresas y parqueos desde una sola cuenta con diferentes roles de usuario.',
       },
       faq3: {
         question: '¿Cómo se gestionan las reservas?',
-        answer: 'Los usuarios pueden reservar espacios desde la app móvil. El sistema actualiza automáticamente la disponibilidad.'
+        answer: 'Los usuarios pueden reservar espacios desde la app móvil. El sistema actualiza automáticamente la disponibilidad.',
       },
       faq4: {
         question: '¿Qué tipos de parqueos puedo gestionar?',
-        answer: 'Puedes gestionar parqueos comerciales, residenciales, corporativos, centros comerciales y cualquier tipo de estacionamiento con diferentes configuraciones.'
+        answer: 'Puedes gestionar parqueos comerciales, residenciales, corporativos, centros comerciales y cualquier tipo de estacionamiento con diferentes configuraciones.',
       },
       faq5: {
         question: '¿Puedo ver el historial de entradas y salidas?',
-        answer: 'Sí, el sistema registra todos los eventos de entrada, salida y reservas con timestamps completos.'
+        answer: 'Sí, el sistema registra todos los eventos de entrada, salida y reservas con timestamps completos.',
       },
       faq6: {
         question: '¿Es compatible con móviles?',
-        answer: 'Sí, la aplicación es responsive y funciona perfectamente en smartphones para escanear QR y gestionar reservas.'
-      }
+        answer: 'Sí, la aplicación es responsive y funciona perfectamente en smartphones para escanear QR y gestionar reservas.',
+      },
     },
     cta: {
       title: '¿Listo para Gestionar tu Parqueo?',
       subtitle: 'Únete a empresas que ya están usando ParkIt para gestionar sus espacios de parking de forma eficiente',
       primaryButton: 'Comenzar Ahora',
-      secondaryButton: 'Ver Demo'
+      secondaryButton: 'Ver Demo',
     },
     stats: {
       uptime: {
         value: '99.9%',
         title: 'Uptime Garantizado',
-        description: 'Disponibilidad continua con redundancia global'
+        description: 'Disponibilidad continua con redundancia global',
       },
       companies: {
         value: '500+',
         title: 'Empresas Confían',
-        description: 'Desde startups hasta Fortune 500'
+        description: 'Desde startups hasta Fortune 500',
       },
       support: {
         value: '24/7',
         title: 'Soporte Premium',
-        description: 'Asistencia técnica disponible siempre'
+        description: 'Asistencia técnica disponible siempre',
       },
       countries: {
         value: '50+',
         title: 'Países',
-        description: 'Presencia global con servidores locales'
-      }
+        description: 'Presencia global con servidores locales',
+      },
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} ParkIt. Todos los derechos reservados.`,
@@ -202,21 +202,21 @@ const es = {
         title: 'Mantente Informado',
         description: 'Recibe las últimas noticias y actualizaciones',
         placeholder: 'Tu email',
-        subscribe: 'Suscribir'
+        subscribe: 'Suscribir',
       },
       legal: {
         privacy: 'Política de Privacidad',
         terms: 'Términos de Servicio',
-        cookies: 'Cookies'
+        cookies: 'Cookies',
       },
-      address: 'Dirección'
+      address: 'Dirección',
     },
     login: {
       title: 'Acceso Pro',
       email: 'Email',
       password: 'Contraseña',
       login: 'Ingresar',
-      demoInfo: 'Usa cualquier email y contraseña para acceder al demo'
+      demoInfo: 'Usa cualquier email y contraseña para acceder al demo',
     },
     pricing: {
       title: 'Planes y Precios',
@@ -230,8 +230,8 @@ const es = {
           'Soporte por email',
           'Reportes básicos',
           'Integración QR',
-          'App móvil incluida'
-        ]
+          'App móvil incluida',
+        ],
       },
       professional: {
         title: 'Professional',
@@ -242,8 +242,8 @@ const es = {
           'Analytics avanzado',
           'API personalizada',
           'Integración IoT',
-          'Dashboard personalizado'
-        ]
+          'Dashboard personalizado',
+        ],
       },
       enterprise: {
         title: 'Enterprise',
@@ -254,11 +254,11 @@ const es = {
           'IA predictiva',
           'Integración blockchain',
           'White-label',
-          'Implementación on-premise'
-        ]
+          'Implementación on-premise',
+        ],
       },
       startNow: 'Comenzar Ahora',
-      selectPlan: 'Seleccionar Plan'
+      selectPlan: 'Seleccionar Plan',
     },
     contact: {
       title: 'Contacto',
@@ -271,7 +271,7 @@ const es = {
         email: 'info@parkit.com',
         address: '20501 Atenas, Alajuela, Costa Rica',
         hours: 'Lun - Vie: 9:00 AM - 6:00 PM',
-        support: 'Soporte 24/7 disponible'
+        support: 'Soporte 24/7 disponible',
       },
       channels: {
         title: 'Canales de Contacto',
@@ -279,7 +279,7 @@ const es = {
         phone: 'Teléfono',
         email: 'Email',
         chat: 'Chat en vivo',
-        schedule: 'Agendar Demo'
+        schedule: 'Agendar Demo',
       },
       form: {
         title: 'Envíanos un Mensaje',
@@ -288,9 +288,9 @@ const es = {
         company: 'Empresa',
         message: 'Mensaje',
         sendMessage: 'Enviar Mensaje',
-        placeholder: 'Cuéntanos sobre tu proyecto...'
-      }
-    }
+        placeholder: 'Cuéntanos sobre tu proyecto...',
+      },
+    },
   },
   auth: {
     login: 'Iniciar Sesión',
@@ -308,7 +308,7 @@ const es = {
     loginWithGoogle: 'Continuar con Google',
     loginWithFacebook: 'Continuar con Facebook',
     loginWithApple: 'Continuar con Apple',
-    loginWithPhone: 'Continuar con Teléfono'
+    loginWithPhone: 'Continuar con Teléfono',
   },
   parking: {
     title: 'Parqueos',
@@ -333,7 +333,7 @@ const es = {
     floor: 'Piso',
     section: 'Sección',
     spot: 'Espacio',
-    zone: 'Zona'
+    zone: 'Zona',
   },
   reservation: {
     title: 'Reservas',
@@ -352,7 +352,7 @@ const es = {
     make: 'Marca',
     model: 'Modelo',
     color: 'Color',
-    year: 'Año'
+    year: 'Año',
   },
   dashboard: {
     title: 'Panel Principal',
@@ -379,7 +379,7 @@ const es = {
     availableSpaces: 'Espacios Disponibles',
     activeVehicles: 'Vehiculos Activos',
     todayRevenue: 'Ingresos Hoy',
-    qrScans: 'Escaneos QR'
+    qrScans: 'Escaneos QR',
   },
   notifications: {
     title: 'Notificaciones',
@@ -395,7 +395,7 @@ const es = {
     payment: 'Pago',
     reservation: 'Reserva',
     system: 'Sistema',
-    user: 'Usuario'
+    user: 'Usuario',
   },
   payment: {
     title: 'Pagos',
@@ -417,8 +417,8 @@ const es = {
     transactionId: 'ID de Transacción',
     paymentDate: 'Fecha de Pago',
     receipt: 'Recibo',
-    invoice: 'Factura'
-  }
+    invoice: 'Factura',
+  },
 };
 
 // Traducciones en inglés
@@ -449,8 +449,8 @@ const en = {
     themes: {
       default: 'Default',
       light: 'Light',
-      dark: 'Dark'
-    }
+      dark: 'Dark',
+    },
   },
   landing: {
     hero: {
@@ -461,13 +461,13 @@ const en = {
       viewDemo: 'View Demo',
       uptime: 'Guaranteed Uptime',
       companies: 'Companies Trust',
-      support: 'Premium Support'
+      support: 'Premium Support',
     },
     navigation: {
       solutions: 'Solutions',
       pricing: 'Pricing',
       contact: 'Contact',
-      proAccess: 'Pro Access'
+      proAccess: 'Pro Access',
     },
     features: {
       title: 'Why Choose ParkIt?',
@@ -480,60 +480,60 @@ const en = {
           description: 'Total control of spaces and occupancy',
           longDescription: 'Manage multiple parking lots from a single dashboard. Access control, real-time monitoring and detailed reports.',
           benefits: ['Multiple Parking Lots', 'Access Control', 'Detailed Reports'],
-          metric: 'Total Control'
+          metric: 'Total Control',
         },
         automation: {
           title: 'Automate Your Operation',
           description: 'Reduce operational costs and staff',
           longDescription: 'Eliminates the need for manual staff. Automatic entry/exit system with QR codes.',
           benefits: ['-50% Operational Costs', '24/7 Operation', 'Remote Control'],
-          metric: '-50% costs'
+          metric: '-50% costs',
         },
         experience: {
           title: 'Improve Experience',
           description: 'Satisfied customers who return',
           longDescription: 'Easy mobile reservation, quick QR access. Automatic notifications and 24/7 support.',
           benefits: ['Mobile Reservation', 'Quick QR Access', '24/7 Support'],
-          metric: '95% satisfaction'
+          metric: '95% satisfaction',
         },
         analytics: {
           title: 'Make Smart Decisions',
           description: 'Real-time data to grow',
           longDescription: 'Dashboard with occupancy metrics, usage patterns and profitability analysis.',
           benefits: ['Real-time Data', 'Automatic Reports', 'Predictive Analysis'],
-          metric: 'Data-driven decisions'
+          metric: 'Data-driven decisions',
         },
         security: {
           title: 'Total Security',
           description: 'Protect your business and customers',
           longDescription: 'Role-based access control, complete entry/exit records and total audit.',
           benefits: ['Access Control', 'Complete Records', 'Total Audit'],
-          metric: '100% secure'
+          metric: '100% secure',
         },
         support: {
           title: 'Premium Support',
           description: 'We are here for your success',
           longDescription: 'Quick implementation in 24 hours, complete training and 24/7 technical support.',
           benefits: ['24h Implementation', 'Training Included', '24/7 Support'],
-          metric: '24h implementation'
-        }
-      }
+          metric: '24h implementation',
+        },
+      },
     },
     howItWorks: {
       title: 'How It Works',
       subtitle: 'Simple and efficient process to manage your parking',
       step1: {
         title: 'Register Your Parking',
-        description: 'Create your company and register your parking spaces with location, capacity and prices.'
+        description: 'Create your company and register your parking spaces with location, capacity and prices.',
       },
       step2: {
         title: 'Scan and Access',
-        description: 'Users scan QR codes to enter and exit. Automatic access control system.'
+        description: 'Users scan QR codes to enter and exit. Automatic access control system.',
       },
       step3: {
         title: 'Manage Reservations',
-        description: 'Clients reserve spaces from the app. Monitor occupancy and manage from the dashboard.'
-      }
+        description: 'Clients reserve spaces from the app. Monitor occupancy and manage from the dashboard.',
+      },
     },
     testimonials: {
       navbar: 'Testimonials',
@@ -543,76 +543,76 @@ const en = {
         name: 'Maria Gonzalez',
         role: 'Operations Manager',
         company: 'Central Plaza Mall',
-        content: 'ParkIt completely simplified our parking management. The QR system is very efficient and users find it easy to use.'
+        content: 'ParkIt completely simplified our parking management. The QR system is very efficient and users find it easy to use.',
       },
       testimonial2: {
         name: 'Carlos Rodriguez',
         role: 'General Director',
         company: 'Premium Parking',
-        content: 'Implementation was simple and the dashboard gives us total control. Users can easily reserve from the app.'
+        content: 'Implementation was simple and the dashboard gives us total control. Users can easily reserve from the app.',
       },
       testimonial3: {
         name: 'Ana Martinez',
         role: 'CEO',
         company: 'Parking Solutions',
-        content: 'The platform is intuitive and the role system works perfectly. Our employees can manage everything from the dashboard.'
-      }
+        content: 'The platform is intuitive and the role system works perfectly. Our employees can manage everything from the dashboard.',
+      },
     },
     faq: {
       title: 'Frequently Asked Questions',
       subtitle: 'We answer your questions about ParkIt',
       faq1: {
         question: 'How does the QR system work?',
-        answer: 'Each parking space has a unique QR code. Users scan it to automatically register entry and exit.'
+        answer: 'Each parking space has a unique QR code. Users scan it to automatically register entry and exit.',
       },
       faq2: {
         question: 'Can I manage multiple parking lots?',
-        answer: 'Yes, you can register multiple companies and parking lots from a single account with different user roles.'
+        answer: 'Yes, you can register multiple companies and parking lots from a single account with different user roles.',
       },
       faq3: {
         question: 'How are reservations managed?',
-        answer: 'Users can reserve spaces from the mobile app. The system automatically updates availability.'
+        answer: 'Users can reserve spaces from the mobile app. The system automatically updates availability.',
       },
       faq4: {
         question: 'What types of parking lots can I manage?',
-        answer: 'You can manage commercial, residential, corporate, shopping center parking lots and any type of parking with different configurations.'
+        answer: 'You can manage commercial, residential, corporate, shopping center parking lots and any type of parking with different configurations.',
       },
       faq5: {
         question: 'Can I see entry and exit history?',
-        answer: 'Yes, the system records all entry, exit and reservation events with complete timestamps.'
+        answer: 'Yes, the system records all entry, exit and reservation events with complete timestamps.',
       },
       faq6: {
         question: 'Is it mobile compatible?',
-        answer: 'Yes, the application is responsive and works perfectly on smartphones for QR scanning and reservation management.'
-      }
+        answer: 'Yes, the application is responsive and works perfectly on smartphones for QR scanning and reservation management.',
+      },
     },
     cta: {
       title: 'Ready to Manage Your Parking?',
       subtitle: 'Join companies that are already using ParkIt to efficiently manage their parking spaces',
       primaryButton: 'Start Now',
-      secondaryButton: 'View Demo'
+      secondaryButton: 'View Demo',
     },
     stats: {
       uptime: {
         value: '99.9%',
         title: 'Guaranteed Uptime',
-        description: 'Continuous availability with global redundancy'
+        description: 'Continuous availability with global redundancy',
       },
       companies: {
         value: '500+',
         title: 'Companies Trust',
-        description: 'From startups to Fortune 500'
+        description: 'From startups to Fortune 500',
       },
       support: {
         value: '24/7',
         title: 'Premium Support',
-        description: 'Technical assistance always available'
+        description: 'Technical assistance always available',
       },
       countries: {
         value: '50+',
         title: 'Countries',
-        description: 'Global presence with local servers'
-      }
+        description: 'Global presence with local servers',
+      },
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} ParkIt. All rights reserved.`,
@@ -622,21 +622,21 @@ const en = {
         title: 'Stay Informed',
         description: 'Receive the latest news and updates',
         placeholder: 'Your email',
-        subscribe: 'Subscribe'
+        subscribe: 'Subscribe',
       },
       legal: {
         privacy: 'Privacy Policy',
         terms: 'Terms of Service',
-        cookies: 'Cookies'
+        cookies: 'Cookies',
       },
-      address: 'Address'
+      address: 'Address',
     },
     login: {
       title: 'Pro Access',
       email: 'Email',
       password: 'Password',
       login: 'Login',
-      demoInfo: 'Use any email and password to access the demo'
+      demoInfo: 'Use any email and password to access the demo',
     },
     pricing: {
       title: 'Plans & Pricing',
@@ -650,8 +650,8 @@ const en = {
           'Email support',
           'Basic reports',
           'QR integration',
-          'Mobile app included'
-        ]
+          'Mobile app included',
+        ],
       },
       professional: {
         title: 'Professional',
@@ -662,8 +662,8 @@ const en = {
           'Advanced analytics',
           'Custom API',
           'IoT integration',
-          'Custom dashboard'
-        ]
+          'Custom dashboard',
+        ],
       },
       enterprise: {
         title: 'Enterprise',
@@ -674,11 +674,11 @@ const en = {
           'Predictive AI',
           'Blockchain integration',
           'White-label',
-          'On-premise implementation'
-        ]
+          'On-premise implementation',
+        ],
       },
       startNow: 'Start Now',
-      selectPlan: 'Select Plan'
+      selectPlan: 'Select Plan',
     },
     contact: {
       title: 'Contact',
@@ -691,7 +691,7 @@ const en = {
         email: 'info@parkit.com',
         address: '20501 Atenas, Alajuela, Costa Rica',
         hours: 'Mon - Fri: 9:00 AM - 6:00 PM',
-        support: '24/7 Support Available'
+        support: '24/7 Support Available',
       },
       channels: {
         title: 'Contact Channels',
@@ -699,7 +699,7 @@ const en = {
         phone: 'Phone',
         email: 'Email',
         chat: 'Live Chat',
-        schedule: 'Schedule Demo'
+        schedule: 'Schedule Demo',
       },
       form: {
         title: 'Send us a Message',
@@ -708,9 +708,9 @@ const en = {
         company: 'Company',
         message: 'Message',
         sendMessage: 'Send Message',
-        placeholder: 'Tell us about your project...'
-      }
-    }
+        placeholder: 'Tell us about your project...',
+      },
+    },
   },
   auth: {
     login: 'Login',
@@ -728,7 +728,7 @@ const en = {
     loginWithGoogle: 'Continue with Google',
     loginWithFacebook: 'Continue with Facebook',
     loginWithApple: 'Continue with Apple',
-    loginWithPhone: 'Continue with Phone'
+    loginWithPhone: 'Continue with Phone',
   },
   parking: {
     title: 'Parkings',
@@ -753,7 +753,7 @@ const en = {
     floor: 'Floor',
     section: 'Section',
     spot: 'Spot',
-    zone: 'Zone'
+    zone: 'Zone',
   },
   reservation: {
     title: 'Reservations',
@@ -772,7 +772,7 @@ const en = {
     make: 'Make',
     model: 'Model',
     color: 'Color',
-    year: 'Year'
+    year: 'Year',
   },
   dashboard: {
     title: 'Dashboard',
@@ -799,7 +799,7 @@ const en = {
     availableSpaces: 'Available Spaces',
     activeVehicles: 'Active Vehicles',
     todayRevenue: 'Today Revenue',
-    qrScans: 'QR Scans'
+    qrScans: 'QR Scans',
   },
   notifications: {
     title: 'Notifications',
@@ -815,7 +815,7 @@ const en = {
     payment: 'Payment',
     reservation: 'Reservation',
     system: 'System',
-    user: 'User'
+    user: 'User',
   },
   payment: {
     title: 'Payments',
@@ -837,8 +837,8 @@ const en = {
     transactionId: 'Transaction ID',
     paymentDate: 'Payment Date',
     receipt: 'Receipt',
-    invoice: 'Invoice'
-  }
+    invoice: 'Invoice',
+  },
 };
 
 // Configuración de i18n
@@ -847,16 +847,16 @@ i18n
   .init({
     resources: {
       es: { translation: es },
-      en: { translation: en }
+      en: { translation: en },
     },
     lng: 'es', // idioma por defecto
     fallbackLng: 'es',
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
     },
     react: {
-      useSuspense: false
-    }
+      useSuspense: false,
+    },
   });
 
-export default i18n; 
+export default i18n;

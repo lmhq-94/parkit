@@ -20,4 +20,8 @@ export default [
       ...nextPlugin.configs["core-web-vitals"].rules,
     },
   },
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    ignores: ["node_modules/**", ".next/**", "dist/**"],
+  },
 ];
