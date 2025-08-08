@@ -1,600 +1,693 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Container,
-  Grid,
   Typography,
   Button,
+  Stack,
+  Avatar,
+  Chip,
+  Fade,
+  Slide,
+  Grow,
+  Card,
+  CardContent,
+  Grid,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import {
   LocalParking,
   QrCode,
   Payment,
   Security,
+  Star,
+  ArrowForward,
+  PlayArrow,
+  CheckCircle,
+  TrendingUp,
+  Speed,
+  Verified,
+  AutoAwesome,
+  Rocket,
+  Bolt,
+  Shield,
+  Analytics,
+  Smartphone,
+  Cloud,
+  Diamond,
+  WorkspacePremium,
+  Psychology,
+  PrecisionManufacturing,
+  ArrowUpward,
+  TrendingDown,
+  Visibility,
+  Settings,
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 
-// Types for hero stats
-interface HeroStat {
-  value: string;
-  label: string;
-  icon: string;
-}
-
-// Hero stats data
-const heroStats: HeroStat[] = [
-  { value: "500+", label: "Espacios Activos", icon: "🚗" },
-  { value: "24/7", label: "Monitoreo", icon: "⏰" },
-  { value: "99.9%", label: "Uptime", icon: "⚡" },
-];
-
-// Props interface
 interface HeroSectionProps {
   onStartNow: () => void;
   onViewDemo: () => void;
 }
 
-/**
- * HeroSection component - Main landing page hero section
- * Features modern design with gradient backgrounds, 3D card stack, and responsive layout
- */
+// Modern Bento Box Background Component
+const BentoBoxBackground: React.FC = () => {
+  const theme = useTheme();
+  const { i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        overflow: "hidden",
+        zIndex: 1,
+      }}
+    >
+      {/* Modern Gradient Mesh */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `radial-gradient(circle at 20% 20%, ${theme.palette.primary.main}05 0%, transparent 50%),
+                       radial-gradient(circle at 80% 80%, ${theme.palette.secondary.main}05 0%, transparent 50%),
+                       radial-gradient(circle at 40% 60%, ${theme.palette.success.main}03 0%, transparent 50%)`,
+          zIndex: 2,
+        }}
+      />
+
+      {/* Geometric Pattern */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.03,
+          background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='geometric' width='30' height='30' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 30 0 L 0 0 0 30' fill='none' stroke='%23${theme.palette.mode === 'dark' ? 'ffffff' : '000000'}' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='60' height='60' fill='url(%23geometric)'/%3E%3C/svg%3E")`,
+          zIndex: 1,
+        }}
+      />
+
+      {/* Floating Bento Elements */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "10%",
+          [isRTL ? 'right' : 'left']: "5%",
+          width: 120,
+          height: 120,
+          opacity: 0.06,
+          animation: "bento-float 25s ease-in-out infinite",
+          zIndex: 1,
+          "@keyframes bento-float": {
+            "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+            "50%": { transform: "translateY(-25px) rotate(3deg)" },
+          },
+        }}
+      >
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="100" height="100" rx="12" fill={theme.palette.primary.main} opacity="0.1"/>
+          <rect x="20" y="20" width="80" height="15" rx="4" fill={theme.palette.secondary.main} opacity="0.15"/>
+          <rect x="20" y="45" width="80" height="15" rx="4" fill={theme.palette.success.main} opacity="0.12"/>
+          <rect x="20" y="70" width="80" height="15" rx="4" fill={theme.palette.warning.main} opacity="0.1"/>
+          <rect x="20" y="95" width="80" height="5" rx="2" fill={theme.palette.info.main} opacity="0.08"/>
+        </svg>
+      </Box>
+
+      {/* Data Visualization */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "20%",
+          [isRTL ? 'left' : 'right']: "10%",
+          width: 140,
+          height: 80,
+          opacity: 0.04,
+          animation: "data-pulse 20s ease-in-out infinite",
+          zIndex: 1,
+          "@keyframes data-pulse": {
+            "0%, 100%": { transform: "scale(1)" },
+            "50%": { transform: "scale(1.03)" },
+          },
+        }}
+      >
+        <svg viewBox="0 0 140 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="120" height="60" rx="8" fill={theme.palette.background.paper} opacity="0.9"/>
+          <rect x="25" y="25" width="8" height="35" rx="2" fill={theme.palette.primary.main} opacity="0.4"/>
+          <rect x="40" y="30" width="8" height="30" rx="2" fill={theme.palette.secondary.main} opacity="0.4"/>
+          <rect x="55" y="20" width="8" height="40" rx="2" fill={theme.palette.success.main} opacity="0.4"/>
+          <rect x="70" y="35" width="8" height="25" rx="2" fill={theme.palette.warning.main} opacity="0.4"/>
+          <rect x="85" y="40" width="8" height="20" rx="2" fill={theme.palette.info.main} opacity="0.4"/>
+          <rect x="100" y="45" width="8" height="15" rx="2" fill={theme.palette.error.main} opacity="0.4"/>
+          <line x1="20" y1="70" x2="120" y2="70" stroke={theme.palette.divider} strokeWidth="0.5"/>
+        </svg>
+      </Box>
+
+      {/* Security Module */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          [isRTL ? 'right' : 'left']: "8%",
+          width: 100,
+          height: 100,
+          opacity: 0.03,
+          animation: "security-glow 22s ease-in-out infinite",
+          zIndex: 1,
+          "@keyframes security-glow": {
+            "0%, 100%": { filter: "drop-shadow(0 0 8px rgba(0,0,0,0.1))" },
+            "50%": { filter: "drop-shadow(0 0 16px rgba(0,0,0,0.15))" },
+          },
+        }}
+      >
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 15L80 30V55C80 75 65 90 50 100C35 90 20 75 20 55V30L50 15Z" 
+                fill={theme.palette.success.main} opacity="0.12"/>
+          <path d="M50 25L70 35V55C70 70 60 80 50 85C40 80 30 70 30 55V35L50 25Z" 
+                fill={theme.palette.success.main} opacity="0.15"/>
+          <circle cx="50" cy="50" r="10" fill={theme.palette.background.paper} opacity="0.95"/>
+          <path d="M47 47L50 50L53 47" stroke={theme.palette.success.main} strokeWidth="1.5" fill="none"/>
+        </svg>
+      </Box>
+
+      {/* Payment Module */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "15%",
+          [isRTL ? 'right' : 'left']: "15%",
+          width: 80,
+          height: 60,
+          opacity: 0.04,
+          animation: "payment-slide 18s ease-in-out infinite",
+          zIndex: 1,
+          "@keyframes payment-slide": {
+            "0%, 100%": { transform: "translateX(0px)" },
+            "50%": { transform: "translateX(12px)" },
+          },
+        }}
+      >
+        <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="15" width="60" height="40" rx="8" fill={theme.palette.primary.main} opacity="0.1"/>
+          <rect x="20" y="25" width="40" height="6" rx="3" fill={theme.palette.background.paper} opacity="0.9"/>
+          <rect x="20" y="35" width="25" height="6" rx="3" fill={theme.palette.background.paper} opacity="0.9"/>
+          <circle cx="60" cy="30" r="8" fill={theme.palette.secondary.main} opacity="0.25"/>
+        </svg>
+      </Box>
+
+      {/* Cloud Module */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "15%",
+          [isRTL ? 'left' : 'right']: "8%",
+          width: 100,
+          height: 60,
+          opacity: 0.03,
+          animation: "cloud-drift 30s ease-in-out infinite",
+          zIndex: 1,
+          "@keyframes cloud-drift": {
+            "0%, 100%": { transform: "translateX(0px)" },
+            "50%": { transform: "translateX(-18px)" },
+          },
+        }}
+      >
+        <svg viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="25" cy="35" rx="18" ry="10" fill={theme.palette.info.main} opacity="0.08"/>
+          <ellipse cx="50" cy="30" rx="16" ry="8" fill={theme.palette.info.main} opacity="0.1"/>
+          <ellipse cx="75" cy="40" rx="14" ry="6" fill={theme.palette.info.main} opacity="0.08"/>
+          <circle cx="30" cy="30" r="2.5" fill={theme.palette.background.paper} opacity="0.8"/>
+          <circle cx="55" cy="25" r="2.5" fill={theme.palette.background.paper} opacity="0.8"/>
+          <circle cx="80" cy="35" r="2.5" fill={theme.palette.background.paper} opacity="0.8"/>
+        </svg>
+      </Box>
+
+      {/* Mobile Module */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "8%",
+          [isRTL ? 'left' : 'right']: "5%",
+          width: 50,
+          height: 80,
+          opacity: 0.025,
+          animation: "mobile-bounce 24s ease-in-out infinite",
+          zIndex: 1,
+          "@keyframes mobile-bounce": {
+            "0%, 100%": { transform: "translateY(0px)" },
+            "50%": { transform: "translateY(-12px)" },
+          },
+        }}
+      >
+        <svg viewBox="0 0 50 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="38" height="68" rx="8" fill={theme.palette.text.primary} opacity="0.12"/>
+          <rect x="10" y="10" width="30" height="50" rx="4" fill={theme.palette.background.paper} opacity="0.95"/>
+          <circle cx="25" cy="70" r="3" fill={theme.palette.primary.main} opacity="0.3"/>
+          <rect x="15" y="18" width="20" height="4" rx="2" fill={theme.palette.success.main} opacity="0.25"/>
+          <rect x="15" y="26" width="20" height="4" rx="2" fill={theme.palette.secondary.main} opacity="0.25"/>
+          <rect x="15" y="34" width="20" height="4" rx="2" fill={theme.palette.warning.main} opacity="0.25"/>
+          <rect x="15" y="42" width="20" height="4" rx="2" fill={theme.palette.info.main} opacity="0.25"/>
+        </svg>
+      </Box>
+    </Box>
+  );
+};
+
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onStartNow,
   onViewDemo,
 }) => {
   const theme = useTheme();
   const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeMetric, setActiveMetric] = useState(0);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setActiveMetric((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const metrics = [
+    { value: "500+", label: t("landing.hero.stats.spaces"), icon: <LocalParking />, trend: "+12%" },
+    { value: "24/7", label: t("landing.hero.stats.monitoring"), icon: <Speed />, trend: "+8%" },
+    { value: "99.9%", label: t("landing.hero.stats.uptime"), icon: <Verified />, trend: "+5%" },
+    { value: "10K+", label: "Users", icon: <Visibility />, trend: "+15%" },
+  ];
+
+  const currentMetric = metrics[activeMetric];
 
   return (
     <Box
       sx={{
         position: "relative",
         minHeight: "100vh",
-        background: theme.palette.mode === "dark"
-          ? "linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0f0f23 100%)"
-          : "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%, #f8fafc 100%)",
-        display: "flex",
-        alignItems: "center",
+        background: theme.palette.mode === 'dark' 
+          ? `linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)`
+          : `linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%)`,
         overflow: "hidden",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: theme.palette.mode === "dark"
-            ? "radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)"
-            : "radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(147, 51, 234, 0.08) 0%, transparent 50%)",
-          zIndex: 1,
-        },
-      }}
-    >
-      {/* Geometric background elements for visual depth */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "10%",
-          right: "15%",
-          width: 300,
-          height: 300,
-          background: theme.palette.mode === "dark"
-            ? "linear-gradient(45deg, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%)"
-            : "linear-gradient(45deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)",
-          borderRadius: "50%",
-          filter: "blur(60px)",
-          zIndex: 1,
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: "20%",
-          left: "10%",
-          width: 200,
-          height: 200,
-          background: theme.palette.mode === "dark"
-            ? "linear-gradient(45deg, rgba(168, 85, 247, 0.1) 0%, rgba(56, 189, 248, 0.1) 100%)"
-            : "linear-gradient(45deg, rgba(147, 51, 234, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%)",
-          borderRadius: "50%",
-          filter: "blur(40px)",
-          zIndex: 1,
-        }}
-      />
-
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 3 }}>
-        <Grid container spacing={8} alignItems="center">
-          {/* Left content section */}
-          <Grid item xs={12} lg={7}>
-            <Box sx={{ textAlign: { xs: "center", lg: "left" } }}>
-              <PremiumBadge />
-              <MainHeadline />
-              <Subtitle />
-              <CTASection onStartNow={onStartNow} onViewDemo={onViewDemo} />
-              <StatsGrid stats={heroStats} />
-            </Box>
-          </Grid>
-
-          {/* Right visual section */}
-          <Grid item xs={12} lg={5}>
-            <VisualSection />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
-  );
-};
-
-/**
- * Premium badge component with technology indicator
- */
-const PremiumBadge: React.FC = () => {
-  const theme = useTheme();
-  const { t } = useTranslation();
-
-  return (
-    <Box
-      sx={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 1.5,
-        px: 3,
-        py: 1.5,
-        mb: 4,
-        background: theme.palette.mode === "dark"
-          ? "rgba(255, 255, 255, 0.08)"
-          : "rgba(0, 0, 0, 0.04)",
-        borderRadius: "100px",
-        border: theme.palette.mode === "dark"
-          ? "1px solid rgba(255, 255, 255, 0.12)"
-          : "1px solid rgba(0, 0, 0, 0.08)",
-        backdropFilter: "blur(20px)",
-        boxShadow: theme.palette.mode === "dark"
-          ? "0 8px 32px rgba(0, 0, 0, 0.3)"
-          : "0 8px 32px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <Box
-        sx={{
-          width: 10,
-          height: 10,
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-          boxShadow: "0 0 20px rgba(16, 185, 129, 0.5)",
-        }}
-      />
-      <Typography
-        variant="body2"
-        sx={{
-          fontWeight: 600,
-          color: theme.palette.mode === "dark" ? "#e2e8f0" : "#374151",
-          fontSize: "0.875rem",
-          letterSpacing: "0.025em",
-        }}
-      >
-        {t("landing.hero.badge")}
-      </Typography>
-    </Box>
-  );
-};
-
-/**
- * Main headline with gradient text effects
- */
-const MainHeadline: React.FC = () => {
-  const theme = useTheme();
-  const { t } = useTranslation();
-
-  return (
-    <Typography
-      variant="h1"
-      sx={{
-        fontWeight: 900,
-        fontSize: {
-          xs: "2.5rem",
-          sm: "3.5rem",
-          md: "4rem",
-          lg: "4.5rem",
-          xl: "5.5rem",
-        },
-        lineHeight: 1.05,
-        mb: 4,
-        background: theme.palette.mode === "dark"
-          ? "linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%)"
-          : "linear-gradient(135deg, #111827 0%, #374151 50%, #6b7280 100%)",
-        backgroundClip: "text",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        textAlign: { xs: "center", lg: "left" },
-        letterSpacing: "-0.02em",
-      }}
-    >
-      {t("landing.hero.title")}
-      <Box
-        component="span"
-        sx={{
-          display: "block",
-          background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          fontSize: "0.9em",
-          mt: 1,
-        }}
-      >
-        {t("landing.hero.subtitle")}
-      </Box>
-    </Typography>
-  );
-};
-
-/**
- * Subtitle with descriptive text
- */
-const Subtitle: React.FC = () => {
-  const theme = useTheme();
-  const { t } = useTranslation();
-
-  return (
-    <Typography
-      variant="h2"
-      sx={{
-        fontWeight: 500,
-        fontSize: {
-          xs: "1.125rem",
-          sm: "1.25rem",
-          md: "1.375rem",
-          lg: "1.5rem",
-        },
-        mb: 5,
-        color: theme.palette.mode === "dark" ? "#94a3b8" : "#6b7280",
-        lineHeight: 1.5,
-        textAlign: { xs: "center", lg: "left" },
-        maxWidth: 600,
-      }}
-    >
-      {t("landing.hero.description")}
-    </Typography>
-  );
-};
-
-/**
- * Call-to-action buttons section
- */
-const CTASection: React.FC<HeroSectionProps> = ({ onStartNow, onViewDemo }) => {
-  const theme = useTheme();
-  const { t } = useTranslation();
-
-  return (
-    <Box
-      sx={{
         display: "flex",
-        flexDirection: { xs: "column", sm: "row" },
-        gap: 3,
-        justifyContent: { xs: "center", lg: "flex-start" },
-        mb: 8,
-      }}
-    >
-      <Button
-        variant="contained"
-        size="large"
-        onClick={onStartNow}
-        sx={{
-          background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
-          color: "#ffffff",
-          px: 5,
-          py: 2.5,
-          borderRadius: "16px",
-          fontWeight: 700,
-          fontSize: "1.125rem",
-          textTransform: "none",
-          boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
-          border: "none",
-          position: "relative",
-          overflow: "hidden",
-          minWidth: 200,
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: "-100%",
-            width: "100%",
-            height: "100%",
-            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-            transition: "left 0.6s",
-          },
-          "&:hover": {
-            background: "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)",
-            transform: "translateY(-3px)",
-            boxShadow: "0 25px 50px rgba(59, 130, 246, 0.5)",
-            "&::before": {
-              left: "100%",
-            },
-          },
-          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-      >
-        {t("landing.hero.startNow")}
-      </Button>
-      <Button
-        variant="outlined"
-        size="large"
-        onClick={onViewDemo}
-        sx={{
-          color: theme.palette.mode === "dark" ? "#e2e8f0" : "#374151",
-          borderColor: theme.palette.mode === "dark" ? "rgba(226, 232, 240, 0.3)" : "rgba(55, 65, 81, 0.3)",
-          px: 5,
-          py: 2.5,
-          borderRadius: "16px",
-          fontWeight: 600,
-          fontSize: "1.125rem",
-          textTransform: "none",
-          background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
-          backdropFilter: "blur(20px)",
-          borderWidth: "2px",
-          minWidth: 200,
-          "&:hover": {
-            background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.04)",
-            borderColor: theme.palette.mode === "dark" ? "rgba(226, 232, 240, 0.6)" : "rgba(55, 65, 81, 0.6)",
-            transform: "translateY(-3px)",
-            boxShadow: "0 15px 35px rgba(0,0,0,0.15)",
-          },
-          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-      >
-        {t("landing.hero.viewDemo")}
-      </Button>
-    </Box>
-  );
-};
-
-/**
- * Stats grid component with hover effects
- */
-const StatsGrid: React.FC<{ stats: HeroStat[] }> = ({ stats }) => {
-  const theme = useTheme();
-
-  return (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "repeat(3, 1fr)" },
-        gap: 4,
-        maxWidth: 600,
-        mx: { xs: "auto", lg: 0 },
-      }}
-    >
-      {stats.map((stat, index) => (
-        <Box
-          key={index}
-          sx={{
-            textAlign: "center",
-            p: 3,
-            background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
-            borderRadius: "20px",
-            border: theme.palette.mode === "dark" ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.06)",
-            backdropFilter: "blur(20px)",
-            transition: "all 0.4s ease",
-            "&:hover": {
-              background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.04)",
-              transform: "translateY(-6px)",
-              boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-            },
-          }}
-        >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 900,
-              fontSize: { xs: "1.75rem", sm: "2rem", md: "2.25rem" },
-              color: theme.palette.mode === "dark" ? "#ffffff" : "#111827",
-              mb: 1,
-              background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            {stat.value}
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{
-              fontWeight: 500,
-              fontSize: "0.875rem",
-              color: theme.palette.mode === "dark" ? "#94a3b8" : "#6b7280",
-              letterSpacing: "0.025em",
-            }}
-          >
-            {stat.label}
-          </Typography>
-        </Box>
-      ))}
-    </Box>
-  );
-};
-
-/**
- * Visual section with 3D card stack and floating icons
- */
-const VisualSection: React.FC = () => {
-  const theme = useTheme();
-
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
         alignItems: "center",
-        height: "100%",
-        minHeight: { xs: "500px", lg: "700px" },
       }}
     >
-      {/* Modern 3D card stack */}
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          maxWidth: 600,
-          height: 500,
-        }}
-      >
-        {/* Background layer */}
+      {/* Bento Box Background */}
+      <BentoBoxBackground />
+
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 2 }}>
         <Box
           sx={{
-            position: "absolute",
-            top: 40,
-            left: 40,
-            right: 40,
-            bottom: 40,
-            background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)",
-            borderRadius: "32px",
-            border: theme.palette.mode === "dark" ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
-            backdropFilter: "blur(30px)",
-            transform: "rotate(-8deg)",
-            boxShadow: "0 25px 50px rgba(0,0,0,0.1)",
-          }}
-        />
-        
-        {/* Middle layer */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 20,
-            left: 20,
-            right: 20,
-            bottom: 20,
-            background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)",
-            borderRadius: "28px",
-            border: theme.palette.mode === "dark" ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.1)",
-            backdropFilter: "blur(25px)",
-            transform: "rotate(-4deg)",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
-          }}
-        />
-        
-        {/* Main card */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: theme.palette.mode === "dark" ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.95)",
-            borderRadius: "24px",
-            border: theme.palette.mode === "dark" ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(0,0,0,0.1)",
-            backdropFilter: "blur(20px)",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            flexDirection: { xs: "column", lg: "row" },
             alignItems: "center",
-            p: 5,
-            boxShadow: "0 30px 60px rgba(0,0,0,0.12)",
+            gap: { xs: 8, lg: 12 },
+            minHeight: "100vh",
+            py: 8,
           }}
         >
-          {/* Main icon */}
+          {/* Left Content - Bento Box Layout */}
           <Box
             sx={{
-              width: 100,
-              height: 100,
-              background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
-              borderRadius: "24px",
+              flex: { xs: "1", lg: "0.6" },
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              mb: 4,
-              boxShadow: "0 25px 50px rgba(59, 130, 246, 0.4)",
+              flexDirection: "column",
+              gap: 4,
             }}
           >
-            <LocalParking sx={{ fontSize: 48, color: "#ffffff" }} />
-          </Box>
-          
-          {/* App name */}
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 800,
-              color: theme.palette.mode === "dark" ? "#ffffff" : "#111827",
-              mb: 3,
-              textAlign: "center",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            ParkIt Pro
-          </Typography>
-          
-          {/* Description */}
-          <Typography
-            variant="body1"
-            sx={{
-              color: theme.palette.mode === "dark" ? "#cbd5e1" : "#6b7280",
-              textAlign: "center",
-              maxWidth: 350,
-              lineHeight: 1.6,
-              fontSize: "1.125rem",
-            }}
-          >
-            La solución definitiva para gestión inteligente de parqueos con tecnología de punta
-          </Typography>
-        </Box>
+            <Fade in={isVisible} timeout={800}>
+              <Box>
+                {/* Premium Badge */}
+                <Box sx={{ mb: 4 }}>
+                  <Chip
+                    icon={<WorkspacePremium />}
+                    label={t("landing.hero.badge")}
+                    sx={{
+                      background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
+                      border: `1px solid ${theme.palette.primary.main}30`,
+                      color: theme.palette.primary.main,
+                      fontWeight: 700,
+                      fontSize: "0.875rem",
+                      backdropFilter: "blur(20px)",
+                      "& .MuiChip-icon": {
+                        color: theme.palette.warning.main,
+                      },
+                    }}
+                  />
+                </Box>
 
-        {/* Floating feature icons */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "8%",
-            right: "8%",
-            width: 70,
-            height: 70,
-            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-            borderRadius: "20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 15px 35px rgba(16, 185, 129, 0.4)",
-          }}
-        >
-          <QrCode sx={{ fontSize: 28, color: "#ffffff" }} />
+                {/* Main Headline */}
+                <Typography
+                  variant="h1"
+                  sx={{
+                    fontWeight: 900,
+                    fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem" },
+                    lineHeight: 1.05,
+                    mb: 3,
+                    color: theme.palette.text.primary,
+                    letterSpacing: "-0.03em",
+                  }}
+                >
+                  {t("landing.hero.title")}
+                  <Box
+                    component="span"
+                    sx={{
+                      display: "block",
+                      background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      fontSize: "0.9em",
+                      mt: 1,
+                      fontWeight: 800,
+                    }}
+                  >
+                    {t("landing.hero.subtitle")}
+                  </Box>
+                </Typography>
+
+                {/* Description */}
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: 400,
+                    fontSize: { xs: "1.25rem", sm: "1.375rem", md: "1.5rem" },
+                    mb: 6,
+                    color: theme.palette.text.secondary,
+                    lineHeight: 1.7,
+                    maxWidth: 600,
+                  }}
+                >
+                  {t("landing.hero.description")}
+                </Typography>
+
+                {/* CTA Buttons */}
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={3}
+                  sx={{ mb: 8 }}
+                >
+                  <Button
+                    variant="contained"
+                    size="large"
+                    onClick={onStartNow}
+                    endIcon={<Rocket />}
+                    sx={{
+                      background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+                      color: "#ffffff",
+                      px: 6,
+                      py: 2.5,
+                      borderRadius: 3,
+                      fontWeight: 800,
+                      fontSize: "1.125rem",
+                      textTransform: "none",
+                      minWidth: 200,
+                      position: "relative",
+                      overflow: "hidden",
+                      transition: "all 0.3s ease",
+                      "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: "-100%",
+                        width: "100%",
+                        height: "100%",
+                        background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+                        transition: "left 0.6s",
+                      },
+                      "&:hover": {
+                        transform: "translateY(-3px)",
+                        boxShadow: `0 25px 50px ${theme.palette.primary.main}40`,
+                        "&::before": {
+                          left: "100%",
+                        },
+                      },
+                    }}
+                  >
+                    {t("landing.hero.startNow")}
+                  </Button>
+                  
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    onClick={onViewDemo}
+                    startIcon={<PlayArrow />}
+                    sx={{
+                      border: `2px solid ${theme.palette.primary.main}`,
+                      color: theme.palette.primary.main,
+                      px: 6,
+                      py: 2.5,
+                      borderRadius: 3,
+                      fontWeight: 700,
+                      fontSize: "1.125rem",
+                      textTransform: "none",
+                      minWidth: 200,
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        background: theme.palette.primary.main,
+                        color: "#ffffff",
+                        transform: "translateY(-3px)",
+                        boxShadow: `0 25px 50px ${theme.palette.primary.main}40`,
+                      },
+                    }}
+                  >
+                    {t("landing.hero.viewDemo")}
+                  </Button>
+                </Stack>
+              </Box>
+            </Fade>
+          </Box>
+
+          {/* Right Content - Bento Box Grid */}
+          <Box
+            sx={{
+              flex: { xs: "1", lg: "0.4" },
+              display: "flex",
+              flexDirection: "column",
+              gap: 3,
+            }}
+          >
+            <Slide direction="up" in={isVisible} timeout={1000}>
+              <Box>
+                {/* Bento Box Grid */}
+                <Grid container spacing={3}>
+                  {/* Main Feature Card */}
+                  <Grid item xs={12}>
+                    <Card
+                      sx={{
+                        background: `linear-gradient(135deg, ${theme.palette.primary.main}10, ${theme.palette.secondary.main}10)`,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 4,
+                        backdropFilter: "blur(20px)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-5px)",
+                          boxShadow: theme.shadows[12],
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 4 }}>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 3, mb: 3 }}>
+                          <Avatar
+                            sx={{
+                              width: 60,
+                              height: 60,
+                              background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                              color: "#ffffff",
+                            }}
+                          >
+                            <LocalParking />
+                          </Avatar>
+                          <Box>
+                            <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
+                              ParkIt Pro
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              Smart parking management
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Stack direction="row" spacing={1}>
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star key={star} sx={{ fontSize: 18, color: theme.palette.warning.main }} />
+                          ))}
+                        </Stack>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+
+                  {/* Metrics Cards */}
+                  <Grid item xs={6}>
+                    <Card
+                      sx={{
+                        background: theme.palette.background.paper,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 3,
+                        backdropFilter: "blur(20px)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-3px)",
+                          boxShadow: theme.shadows[8],
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 3, textAlign: "center" }}>
+                        <Avatar
+                          sx={{
+                            width: 40,
+                            height: 40,
+                            background: `linear-gradient(135deg, ${theme.palette.success.main} 0%, ${theme.palette.success.dark} 100%)`,
+                            color: "#ffffff",
+                            mx: "auto",
+                            mb: 2,
+                          }}
+                        >
+                          {currentMetric.icon}
+                        </Avatar>
+                        <Typography variant="h4" sx={{ fontWeight: 900, mb: 1 }}>
+                          {currentMetric.value}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                          {currentMetric.label}
+                        </Typography>
+                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0.5 }}>
+                          <ArrowUpward sx={{ fontSize: 14, color: theme.palette.success.main }} />
+                          <Typography variant="caption" color="success.main" sx={{ fontWeight: 600 }}>
+                            {currentMetric.trend}
+                          </Typography>
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+
+                  {/* Feature Cards */}
+                  <Grid item xs={6}>
+                    <Card
+                      sx={{
+                        background: theme.palette.background.paper,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 3,
+                        backdropFilter: "blur(20px)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-3px)",
+                          boxShadow: theme.shadows[8],
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 3, textAlign: "center" }}>
+                        <Avatar
+                          sx={{
+                            width: 40,
+                            height: 40,
+                            background: `linear-gradient(135deg, ${theme.palette.info.main} 0%, ${theme.palette.info.dark} 100%)`,
+                            color: "#ffffff",
+                            mx: "auto",
+                            mb: 2,
+                          }}
+                        >
+                          <QrCode />
+                        </Avatar>
+                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                          QR Payments
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Instant transactions
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+
+                  <Grid item xs={6}>
+                    <Card
+                      sx={{
+                        background: theme.palette.background.paper,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 3,
+                        backdropFilter: "blur(20px)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-3px)",
+                          boxShadow: theme.shadows[8],
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 3, textAlign: "center" }}>
+                        <Avatar
+                          sx={{
+                            width: 40,
+                            height: 40,
+                            background: `linear-gradient(135deg, ${theme.palette.warning.main} 0%, ${theme.palette.warning.dark} 100%)`,
+                            color: "#ffffff",
+                            mx: "auto",
+                            mb: 2,
+                          }}
+                        >
+                          <Security />
+                        </Avatar>
+                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                          Secure
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Enterprise-grade
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+
+                  <Grid item xs={6}>
+                    <Card
+                      sx={{
+                        background: theme.palette.background.paper,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 3,
+                        backdropFilter: "blur(20px)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-3px)",
+                          boxShadow: theme.shadows[8],
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 3, textAlign: "center" }}>
+                        <Avatar
+                          sx={{
+                            width: 40,
+                            height: 40,
+                            background: `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.dark} 100%)`,
+                            color: "#ffffff",
+                            mx: "auto",
+                            mb: 2,
+                          }}
+                        >
+                          <Analytics />
+                        </Avatar>
+                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                          Analytics
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Real-time insights
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Slide>
+          </Box>
         </Box>
-        
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: "12%",
-            left: "8%",
-            width: 60,
-            height: 60,
-            background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-            borderRadius: "16px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 15px 35px rgba(139, 92, 246, 0.4)",
-          }}
-        >
-          <Payment sx={{ fontSize: 24, color: "#ffffff" }} />
-        </Box>
-        
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            right: "-10%",
-            width: 50,
-            height: 50,
-            background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-            borderRadius: "12px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 15px 35px rgba(245, 158, 11, 0.4)",
-          }}
-        >
-          <Security sx={{ fontSize: 20, color: "#ffffff" }} />
-        </Box>
-      </Box>
+      </Container>
     </Box>
   );
 }; 
