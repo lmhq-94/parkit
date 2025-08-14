@@ -20,6 +20,7 @@ import {
   Link,
   IconButton,
 } from "@mui/material";
+import { AnimatedSection, StaggeredContainer, ParallaxSection, TypewriterText } from "../components/animations";
 import {
   Close,
   Star,
@@ -240,314 +241,328 @@ export default function HomePage() {
           sx={{ position: "relative", zIndex: 2, px: { xs: 3, sm: 4, md: 0 } }}
         >
           {/* Section Header */}
-          <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-            <Box
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                mb: 3,
-                p: 2,
-                background:
-                  theme.palette.mode === "dark"
-                    ? "rgba(255,255,255,0.03)"
-                    : "rgba(0,0,0,0.03)",
-                borderRadius: 0,
-              }}
-            >
-              <TrendingUp
-                sx={{
-                  fontSize: 24,
-                  mr: 2,
-                  color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                }}
-              />
-              <Typography
-                variant="overline"
-                sx={{
-                  fontWeight: 600,
-                  color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                  letterSpacing: "0.1em",
-                  fontFamily:
-                    '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                }}
-              >
-                {t("landing.features.benefits.title")}
-              </Typography>
-            </Box>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 900,
-                mb: 4,
-                color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                lineHeight: 1.1,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                background:
-                  theme.palette.mode === "dark"
-                    ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
-                    : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              {t("landing.features.title")}
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                maxWidth: 800,
-                mx: "auto",
-                lineHeight: 1.6,
-                fontWeight: 400,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.features.subtitle")}
-            </Typography>
-          </Box>
-
-          {/* Benefits Grid */}
-          <Grid container spacing={4}>
-            {[
-              {
-                icon: <TrendingUp sx={{ fontSize: 48 }} />,
-                title: t("landing.features.benefits.revenue.title"),
-                description: t("landing.features.benefits.revenue.description"),
-                longDescription: t(
-                  "landing.features.benefits.revenue.longDescription"
-                ),
-
-                gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                badge: "Gestión",
-              },
-              {
-                icon: <Speed sx={{ fontSize: 48 }} />,
-                title: t("landing.features.benefits.automation.title"),
-                description: t(
-                  "landing.features.benefits.automation.description"
-                ),
-                longDescription: t(
-                  "landing.features.benefits.automation.longDescription"
-                ),
-
-                gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-                badge: "Automatización",
-              },
-              {
-                icon: <Star sx={{ fontSize: 48 }} />,
-                title: t("landing.features.benefits.experience.title"),
-                description: t(
-                  "landing.features.benefits.experience.description"
-                ),
-                longDescription: t(
-                  "landing.features.benefits.experience.longDescription"
-                ),
-
-                gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-                badge: "Experiencia",
-              },
-              {
-                icon: <Analytics sx={{ fontSize: 48 }} />,
-                title: t("landing.features.benefits.analytics.title"),
-                description: t(
-                  "landing.features.benefits.analytics.description"
-                ),
-                longDescription: t(
-                  "landing.features.benefits.analytics.longDescription"
-                ),
-
-                gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-                badge: "Analytics",
-              },
-              {
-                icon: <Security sx={{ fontSize: 48 }} />,
-                title: t("landing.features.benefits.security.title"),
-                description: t(
-                  "landing.features.benefits.security.description"
-                ),
-                longDescription: t(
-                  "landing.features.benefits.security.longDescription"
-                ),
-
-                gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-                badge: "Seguridad",
-              },
-              {
-                icon: <Support sx={{ fontSize: 48 }} />,
-                title: t("landing.features.benefits.support.title"),
-                description: t("landing.features.benefits.support.description"),
-                longDescription: t(
-                  "landing.features.benefits.support.longDescription"
-                ),
-
-                gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-                badge: "Soporte",
-              },
-            ].map((benefit, index) => (
-              <Grid item xs={12} md={6} lg={4} key={index}>
-                <Card
+          <AnimatedSection animationType="slideUp" delay={0.2}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
+              <AnimatedSection animationType="scale" delay={0.4}>
+                <Box
                   sx={{
-                    height: "100%",
-                    minHeight: 400,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    mb: 3,
+                    p: 2,
                     background:
                       theme.palette.mode === "dark"
-                        ? "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)"
-                        : "#ffffff",
-                    boxShadow:
-                      theme.palette.mode === "dark"
-                        ? "0 4px 20px rgba(0,0,0,0.3)"
-                        : "0 4px 20px rgba(0,0,0,0.08)",
-                    border:
-                      theme.palette.mode === "dark"
-                        ? "1px solid rgba(255,255,255,0.1)"
-                        : "1px solid rgba(0,0,0,0.05)",
+                        ? "rgba(255,255,255,0.03)"
+                        : "rgba(0,0,0,0.03)",
                     borderRadius: 0,
-                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                    position: "relative",
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                    "&::before": {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: "4px",
-                      background: benefit.gradient,
-                      opacity: 0,
-                      transition: "opacity 0.3s ease",
-                    },
-                    "&:hover": {
-                      transform: "translateY(-8px)",
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 20px 40px rgba(0,0,0,0.5)"
-                          : "0 20px 40px rgba(0,0,0,0.15)",
-                      "&::before": {
-                        opacity: 1,
-                      },
-                      "& .feature-icon": {
-                        transform: "scale(1.1) rotate(5deg)",
-                        background: benefit.gradient,
-                      },
-                      "& .feature-badge": {
-                        transform: "scale(1.1)",
-                      },
-                    },
                   }}
                 >
-                  <CardContent
+                  <TrendingUp
                     sx={{
-                      p: 5,
-                      textAlign: "center",
-                      position: "relative",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      flex: 1,
+                      fontSize: 24,
+                      mr: 2,
+                      color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                    }}
+                  />
+                  <Typography
+                    variant="overline"
+                    sx={{
+                      fontWeight: 600,
+                      color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
+                      letterSpacing: "0.1em",
+                      fontFamily:
+                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                     }}
                   >
-                    {/* Benefit Badge */}
-                    <Box
-                      className="feature-badge"
-                      sx={{
-                        position: "absolute",
-                        top: 16,
-                        right: 16,
-                        background: benefit.gradient,
-                        color: "#ffffff",
-                        px: 2,
-                        py: 0.5,
-                        borderRadius: 0,
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.05em",
-                        transition: "all 0.3s ease",
-                        fontFamily:
-                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      {benefit.badge}
-                    </Box>
+                    {t("landing.features.benefits.title")}
+                  </Typography>
+                </Box>
+              </AnimatedSection>
+              <AnimatedSection animationType="slideUp" delay={0.6}>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: 900,
+                    mb: 4,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                    fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                    lineHeight: 1.1,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                    background:
+                      theme.palette.mode === "dark"
+                        ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
+                        : "linear-gradient(135deg, #000000 0%, #333333 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  <TypewriterText 
+                    text={t("landing.features.title")} 
+                    speed={80} 
+                    delay={0.8}
+                  />
+                </Typography>
+              </AnimatedSection>
+              <AnimatedSection animationType="slideUp" delay={0.8}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                    maxWidth: 800,
+                    mx: "auto",
+                    lineHeight: 1.6,
+                    fontWeight: 400,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  {t("landing.features.subtitle")}
+                </Typography>
+              </AnimatedSection>
+            </Box>
+          </AnimatedSection>
 
-                    {/* Icon Container */}
-                    <Box
-                      className="feature-icon"
-                      sx={{
-                        width: 100,
-                        height: 100,
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "linear-gradient(135deg, #3d3d3d 0%, #2a2a2a 100%)"
-                            : "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        mx: "auto",
-                        mb: 3,
-                        borderRadius: "50%",
-                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          {/* Benefits Grid */}
+          <StaggeredContainer animationType="slideUp" staggerDelay={0.15}>
+            <Grid container spacing={4}>
+              {[
+                {
+                  icon: <TrendingUp sx={{ fontSize: 48 }} />,
+                  title: t("landing.features.benefits.revenue.title"),
+                  description: t("landing.features.benefits.revenue.description"),
+                  longDescription: t(
+                    "landing.features.benefits.revenue.longDescription"
+                  ),
+
+                  gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                  badge: "Gestión",
+                },
+                {
+                  icon: <Speed sx={{ fontSize: 48 }} />,
+                  title: t("landing.features.benefits.automation.title"),
+                  description: t(
+                    "landing.features.benefits.automation.description"
+                  ),
+                  longDescription: t(
+                    "landing.features.benefits.automation.longDescription"
+                  ),
+
+                  gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                  badge: "Automatización",
+                },
+                {
+                  icon: <Star sx={{ fontSize: 48 }} />,
+                  title: t("landing.features.benefits.experience.title"),
+                  description: t(
+                    "landing.features.benefits.experience.description"
+                  ),
+                  longDescription: t(
+                    "landing.features.benefits.experience.longDescription"
+                  ),
+
+                  gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+                  badge: "Experiencia",
+                },
+                {
+                  icon: <Analytics sx={{ fontSize: 48 }} />,
+                  title: t("landing.features.benefits.analytics.title"),
+                  description: t(
+                    "landing.features.benefits.analytics.description"
+                  ),
+                  longDescription: t(
+                    "landing.features.benefits.analytics.longDescription"
+                  ),
+
+                  gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+                  badge: "Analytics",
+                },
+                {
+                  icon: <Security sx={{ fontSize: 48 }} />,
+                  title: t("landing.features.benefits.security.title"),
+                  description: t(
+                    "landing.features.benefits.security.description"
+                  ),
+                  longDescription: t(
+                    "landing.features.benefits.security.longDescription"
+                  ),
+
+                  gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+                  badge: "Seguridad",
+                },
+                {
+                  icon: <Support sx={{ fontSize: 48 }} />,
+                  title: t("landing.features.benefits.support.title"),
+                  description: t("landing.features.benefits.support.description"),
+                  longDescription: t(
+                    "landing.features.benefits.support.longDescription"
+                  ),
+
+                  gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+                  badge: "Soporte",
+                },
+              ].map((benefit, index) => (
+                <Grid item xs={12} md={6} lg={4} key={index}>
+                  <Card
+                    sx={{
+                      height: "100%",
+                      minHeight: 400,
+                      background:
+                        theme.palette.mode === "dark"
+                          ? "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)"
+                          : "#ffffff",
+                      boxShadow:
+                        theme.palette.mode === "dark"
+                          ? "0 4px 20px rgba(0,0,0,0.3)"
+                          : "0 4px 20px rgba(0,0,0,0.08)",
+                      border:
+                        theme.palette.mode === "dark"
+                          ? "1px solid rgba(255,255,255,0.1)"
+                          : "1px solid rgba(0,0,0,0.05)",
+                      borderRadius: 0,
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      position: "relative",
+                      overflow: "hidden",
+                      display: "flex",
+                      flexDirection: "column",
+                      "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: "4px",
+                        background: benefit.gradient,
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                      },
+                      "&:hover": {
+                        transform: "translateY(-8px)",
                         boxShadow:
                           theme.palette.mode === "dark"
-                            ? "0 8px 25px rgba(0,0,0,0.3)"
-                            : "0 8px 25px rgba(0,0,0,0.1)",
-                        "& svg": {
-                          color:
-                            theme.palette.mode === "dark"
-                              ? "#ffffff"
-                              : "#000000",
-                          transition: "all 0.3s ease",
+                            ? "0 20px 40px rgba(0,0,0,0.5)"
+                            : "0 20px 40px rgba(0,0,0,0.15)",
+                        "&::before": {
+                          opacity: 1,
                         },
-                        "&:hover svg": {
+                        "& .feature-icon": {
+                          transform: "scale(1.1) rotate(5deg)",
+                          background: benefit.gradient,
+                        },
+                        "& .feature-badge": {
+                          transform: "scale(1.1)",
+                        },
+                      },
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        p: 5,
+                        textAlign: "center",
+                        position: "relative",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        flex: 1,
+                      }}
+                    >
+                      {/* Benefit Badge */}
+                      <Box
+                        className="feature-badge"
+                        sx={{
+                          position: "absolute",
+                          top: 16,
+                          right: 16,
+                          background: benefit.gradient,
                           color: "#ffffff",
-                        },
-                      }}
-                    >
-                      {benefit.icon}
-                    </Box>
+                          px: 2,
+                          py: 0.5,
+                          borderRadius: 0,
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.05em",
+                          transition: "all 0.3s ease",
+                          fontFamily:
+                            '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                        }}
+                      >
+                        {benefit.badge}
+                      </Box>
 
-                    {/* Title */}
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        fontWeight: 800,
-                        mb: 2,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                        fontFamily:
-                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {benefit.title}
-                    </Typography>
+                      {/* Icon Container */}
+                      <Box
+                        className="feature-icon"
+                        sx={{
+                          width: 100,
+                          height: 100,
+                          background:
+                            theme.palette.mode === "dark"
+                              ? "linear-gradient(135deg, #3d3d3d 0%, #2a2a2a 100%)"
+                              : "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          mx: "auto",
+                          mb: 3,
+                          borderRadius: "50%",
+                          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                          boxShadow:
+                            theme.palette.mode === "dark"
+                              ? "0 8px 25px rgba(0,0,0,0.3)"
+                              : "0 8px 25px rgba(0,0,0,0.1)",
+                          "& svg": {
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "#ffffff"
+                                : "#000000",
+                            transition: "all 0.3s ease",
+                          },
+                          "&:hover svg": {
+                            color: "#ffffff",
+                          },
+                        }}
+                      >
+                        {benefit.icon}
+                      </Box>
 
-                    {/* Description */}
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                        lineHeight: 1.6,
-                        mb: 3,
-                        fontFamily:
-                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                        fontWeight: 400,
-                      }}
-                    >
-                      {benefit.longDescription}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+                      {/* Title */}
+                      <Typography
+                        variant="h4"
+                        sx={{
+                          fontWeight: 800,
+                          mb: 2,
+                          color:
+                            theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                          fontFamily:
+                            '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {benefit.title}
+                      </Typography>
+
+                      {/* Description */}
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color:
+                            theme.palette.mode === "dark" ? "#cccccc" : "#666666",
+                          lineHeight: 1.6,
+                          mb: 3,
+                          fontFamily:
+                            '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {benefit.longDescription}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </StaggeredContainer>
         </Container>
       </Box>
 
@@ -563,151 +578,185 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
           {/* Section Header */}
-          <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 900,
-                mb: 4,
-                color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                lineHeight: 1.1,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.howItWorks.title")}
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                maxWidth: 800,
-                mx: "auto",
-                lineHeight: 1.6,
-                fontWeight: 400,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.howItWorks.subtitle")}
-            </Typography>
-          </Box>
-
-          {/* Process Steps */}
-          <Grid container spacing={6}>
-            {[
-              {
-                step: "01",
-                icon: (
-                  <QrCode
-                    sx={{
-                      fontSize: 48,
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                    }}
-                  />
-                ),
-                title: t("landing.howItWorks.step1.title"),
-                description: t("landing.howItWorks.step1.description"),
-              },
-              {
-                step: "02",
-                icon: (
-                  <Smartphone
-                    sx={{
-                      fontSize: 48,
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                    }}
-                  />
-                ),
-                title: t("landing.howItWorks.step2.title"),
-                description: t("landing.howItWorks.step2.description"),
-              },
-              {
-                step: "03",
-                icon: (
-                  <Dashboard
-                    sx={{
-                      fontSize: 48,
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                    }}
-                  />
-                ),
-                title: t("landing.howItWorks.step3.title"),
-                description: t("landing.howItWorks.step3.description"),
-              },
-            ].map((step, index) => (
-              <Grid item xs={12} md={4} key={index}>
-                <Box
+          <AnimatedSection animationType="slideUp" delay={0.2}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
+              <AnimatedSection animationType="scale" delay={0.4}>
+                <Typography
+                  variant="h2"
                   sx={{
-                    textAlign: "center",
-                    p: 4,
-                    position: "relative",
+                    fontWeight: 900,
+                    mb: 4,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                    fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                    lineHeight: 1.1,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: 80,
-                      height: 80,
-                      borderRadius: "50%",
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.03)"
-                          : "rgba(0,0,0,0.03)",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "0 auto",
-                      mb: 3,
-                    }}
-                  >
-                    {step.icon}
-                  </Box>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 900,
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      mb: 2,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    }}
-                  >
-                    {step.step}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 700,
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      mb: 2,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    }}
-                  >
-                    {step.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color:
-                        theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                      lineHeight: 1.6,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    }}
-                  >
-                    {step.description}
-                  </Typography>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
+                  <TypewriterText 
+                    text={t("landing.howItWorks.title")} 
+                    speed={60} 
+                    delay={0.6}
+                  />
+                </Typography>
+              </AnimatedSection>
+              <AnimatedSection animationType="slideUp" delay={0.8}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                    maxWidth: 800,
+                    mx: "auto",
+                    lineHeight: 1.6,
+                    fontWeight: 400,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  {t("landing.howItWorks.subtitle")}
+                </Typography>
+              </AnimatedSection>
+            </Box>
+          </AnimatedSection>
+
+          {/* Process Steps */}
+          <StaggeredContainer animationType="slideUp" staggerDelay={0.2}>
+            <Grid container spacing={6}>
+              {[
+                {
+                  step: "01",
+                  icon: (
+                    <QrCode
+                      sx={{
+                        fontSize: 48,
+                        color:
+                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                      }}
+                    />
+                  ),
+                  title: t("landing.howItWorks.step1.title"),
+                  description: t("landing.howItWorks.step1.description"),
+                },
+                {
+                  step: "02",
+                  icon: (
+                    <Smartphone
+                      sx={{
+                        fontSize: 48,
+                        color:
+                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                      }}
+                    />
+                  ),
+                  title: t("landing.howItWorks.step2.title"),
+                  description: t("landing.howItWorks.step2.description"),
+                },
+                {
+                  step: "03",
+                  icon: (
+                    <Dashboard
+                      sx={{
+                        fontSize: 48,
+                        color:
+                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                      }}
+                    />
+                  ),
+                  title: t("landing.howItWorks.step3.title"),
+                  description: t("landing.howItWorks.step3.description"),
+                },
+              ].map((step, index) => (
+                <Grid item xs={12} md={4} key={index}>
+                  <AnimatedSection animationType="scale" delay={0.1 * index}>
+                    <Box
+                      sx={{
+                        textAlign: "center",
+                        p: 4,
+                        position: "relative",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-8px)",
+                        },
+                      }}
+                    >
+                      <AnimatedSection animationType="rotate" delay={0.2 + (0.1 * index)}>
+                        <Box
+                          sx={{
+                            width: 80,
+                            height: 80,
+                            borderRadius: "50%",
+                            background:
+                              theme.palette.mode === "dark"
+                                ? "rgba(255,255,255,0.03)"
+                                : "rgba(0,0,0,0.03)",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            margin: "0 auto",
+                            mb: 3,
+                            transition: "all 0.3s ease",
+                            "&:hover": {
+                              transform: "scale(1.1)",
+                              background:
+                                theme.palette.mode === "dark"
+                                  ? "rgba(255,255,255,0.08)"
+                                  : "rgba(0,0,0,0.08)",
+                            },
+                          }}
+                        >
+                          {step.icon}
+                        </Box>
+                      </AnimatedSection>
+                      <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
+                        <Typography
+                          variant="h3"
+                          sx={{
+                            fontWeight: 900,
+                            color:
+                              theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                            mb: 2,
+                            fontFamily:
+                              '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          }}
+                        >
+                          {step.step}
+                        </Typography>
+                      </AnimatedSection>
+                      <AnimatedSection animationType="slideUp" delay={0.4 + (0.1 * index)}>
+                        <Typography
+                          variant="h5"
+                          sx={{
+                            fontWeight: 700,
+                            color:
+                              theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                            mb: 2,
+                                                       fontFamily:
+                             '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          }}
+                        >
+                          {step.title}
+                        </Typography>
+                      </AnimatedSection>
+                      <AnimatedSection animationType="slideUp" delay={0.5 + (0.1 * index)}>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color:
+                              theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                            lineHeight: 1.6,
+                            fontFamily:
+                              '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          }}
+                        >
+                          {step.description}
+                        </Typography>
+                      </AnimatedSection>
+                    </Box>
+                  </AnimatedSection>
+                </Grid>
+              ))}
+            </Grid>
+          </StaggeredContainer>
         </Container>
       </Box>
 
@@ -726,141 +775,185 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
           {/* Section Header */}
-          <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 900,
-                mb: 4,
-                color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                lineHeight: 1.1,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.testimonials.title")}
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                maxWidth: 800,
-                mx: "auto",
-                lineHeight: 1.6,
-                fontWeight: 400,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.testimonials.subtitle")}
-            </Typography>
-          </Box>
-
-          {/* Testimonials Grid */}
-          <Grid container spacing={4}>
-            {[
-              {
-                name: t("landing.testimonials.testimonial1.name"),
-                role: t("landing.testimonials.testimonial1.role"),
-                company: t("landing.testimonials.testimonial1.company"),
-                content: t("landing.testimonials.testimonial1.content"),
-                rating: 5,
-              },
-              {
-                name: t("landing.testimonials.testimonial2.name"),
-                role: t("landing.testimonials.testimonial2.role"),
-                company: t("landing.testimonials.testimonial2.company"),
-                content: t("landing.testimonials.testimonial2.content"),
-                rating: 5,
-              },
-              {
-                name: t("landing.testimonials.testimonial3.name"),
-                role: t("landing.testimonials.testimonial3.role"),
-                company: t("landing.testimonials.testimonial3.company"),
-                content: t("landing.testimonials.testimonial3.content"),
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <Grid item xs={12} md={4} key={index}>
-                <Card
+          <AnimatedSection animationType="slideUp" delay={0.2}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
+              <AnimatedSection animationType="scale" delay={0.4}>
+                <Typography
+                  variant="h2"
                   sx={{
-                    height: "100%",
-                    background:
-                      theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
-                    boxShadow:
-                      theme.palette.mode === "dark"
-                        ? "0 4px 20px rgba(0,0,0,0.3)"
-                        : "0 4px 20px rgba(0,0,0,0.08)",
-                    border:
-                      theme.palette.mode === "dark"
-                        ? "1px solid rgba(255,255,255,0.05)"
-                        : "1px solid rgba(0,0,0,0.05)",
-                    borderRadius: 0,
-                    p: 4,
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      transform: "translateY(-4px)",
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 20px 40px rgba(0,0,0,0.5)"
-                          : "0 20px 40px rgba(0,0,0,0.12)",
-                    },
+                    fontWeight: 900,
+                    mb: 4,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                    fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                    lineHeight: 1.1,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                   }}
                 >
-                  <Box sx={{ mb: 3 }}>
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        sx={{ fontSize: 20, color: "#FFD700", mr: 0.5 }}
-                      />
-                    ))}
-                  </Box>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color:
-                        theme.palette.mode === "dark" ? "#cccccc" : "#111111",
-                      lineHeight: 1.6,
-                      mb: 3,
-                      fontStyle: "italic",
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    }}
-                  >
-                                          &quot;{testimonial.content}&quot;
-                  </Typography>
-                  <Box>
-                    <Typography
-                      variant="h6"
+                  <TypewriterText 
+                    text={t("landing.testimonials.title")} 
+                    speed={70} 
+                    delay={0.6}
+                  />
+                </Typography>
+              </AnimatedSection>
+              <AnimatedSection animationType="slideUp" delay={0.8}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                    maxWidth: 800,
+                    mx: "auto",
+                    lineHeight: 1.6,
+                    fontWeight: 400,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  {t("landing.testimonials.subtitle")}
+                </Typography>
+              </AnimatedSection>
+            </Box>
+          </AnimatedSection>
+
+          {/* Testimonials Grid */}
+          <StaggeredContainer animationType="slideUp" staggerDelay={0.15}>
+            <Grid container spacing={4}>
+              {[
+                {
+                  name: t("landing.testimonials.testimonial1.name"),
+                  role: t("landing.testimonials.testimonial1.role"),
+                  company: t("landing.testimonials.testimonial1.company"),
+                  content: t("landing.testimonials.testimonial1.content"),
+                  rating: 5,
+                },
+                {
+                  name: t("landing.testimonials.testimonial2.name"),
+                  role: t("landing.testimonials.testimonial2.role"),
+                  company: t("landing.testimonials.testimonial2.company"),
+                  content: t("landing.testimonials.testimonial2.content"),
+                  rating: 5,
+                },
+                {
+                  name: t("landing.testimonials.testimonial3.name"),
+                  role: t("landing.testimonials.testimonial3.role"),
+                  company: t("landing.testimonials.testimonial3.company"),
+                  content: t("landing.testimonials.testimonial3.content"),
+                  rating: 5,
+                },
+              ].map((testimonial, index) => (
+                <Grid item xs={12} md={4} key={index}>
+                  <AnimatedSection animationType="scale" delay={0.1 * index}>
+                    <Card
                       sx={{
-                        fontWeight: 700,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                        mb: 0.5,
-                        fontFamily:
-                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                        height: "100%",
+                        background:
+                          theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
+                        boxShadow:
+                          theme.palette.mode === "dark"
+                            ? "0 4px 20px rgba(0,0,0,0.3)"
+                            : "0 4px 20px rgba(0,0,0,0.08)",
+                        border:
+                          theme.palette.mode === "dark"
+                            ? "1px solid rgba(255,255,255,0.05)"
+                            : "1px solid rgba(0,0,0,0.05)",
+                        borderRadius: 0,
+                        p: 4,
+                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        position: "relative",
+                        overflow: "hidden",
+                        "&:hover": {
+                          transform: "translateY(-8px) scale(1.02)",
+                          boxShadow:
+                            theme.palette.mode === "dark"
+                              ? "0 20px 40px rgba(0,0,0,0.5)"
+                              : "0 20px 40px rgba(0,0,0,0.12)",
+                        },
+                        "&::before": {
+                          content: '""',
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: "3px",
+                          background: "linear-gradient(90deg, #667eea, #764ba2, #f093fb)",
+                          opacity: 0,
+                          transition: "opacity 0.3s ease",
+                        },
+                        "&:hover::before": {
+                          opacity: 1,
+                        },
                       }}
                     >
-                      {testimonial.name}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#aaaaaa" : "#333333",
-                        fontWeight: 500,
-                        fontFamily:
-                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      {testimonial.role}, {testimonial.company}
-                    </Typography>
-                  </Box>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+                      <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
+                        <Box sx={{ mb: 3 }}>
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star
+                              key={i}
+                              sx={{ 
+                                fontSize: 20, 
+                                color: "#FFD700", 
+                                mr: 0.5,
+                                transition: "all 0.3s ease",
+                                "&:hover": {
+                                  transform: "scale(1.2) rotate(15deg)",
+                                }
+                              }}
+                            />
+                          ))}
+                        </Box>
+                      </AnimatedSection>
+                      <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color:
+                              theme.palette.mode === "dark" ? "#cccccc" : "#111111",
+                            lineHeight: 1.6,
+                            mb: 3,
+                            fontStyle: "italic",
+                            fontFamily:
+                              '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          }}
+                        >
+                          &quot;{testimonial.content}&quot;
+                        </Typography>
+                      </AnimatedSection>
+                      <AnimatedSection animationType="slideUp" delay={0.4 + (0.1 * index)}>
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontWeight: 700,
+                              color:
+                                theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                              mb: 0.5,
+                              fontFamily:
+                                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                            }}
+                          >
+                            {testimonial.name}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color:
+                                theme.palette.mode === "dark" ? "#aaaaaa" : "#333333",
+                              fontWeight: 500,
+                              fontFamily:
+                                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                            }}
+                          >
+                            {testimonial.role}, {testimonial.company}
+                          </Typography>
+                        </Box>
+                      </AnimatedSection>
+                    </Card>
+                  </AnimatedSection>
+                </Grid>
+              ))}
+            </Grid>
+          </StaggeredContainer>
         </Container>
       </Box>
 
@@ -876,119 +969,158 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
           {/* Section Header */}
-          <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 900,
-                mb: 4,
-                color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                lineHeight: 1.1,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.faq.title")}
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                maxWidth: 800,
-                mx: "auto",
-                lineHeight: 1.6,
-                fontWeight: 400,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.faq.subtitle")}
-            </Typography>
-          </Box>
-
-          {/* FAQ Grid */}
-          <Grid container spacing={4}>
-            {[
-              {
-                question: t("landing.faq.faq1.question"),
-                answer: t("landing.faq.faq1.answer"),
-              },
-              {
-                question: t("landing.faq.faq2.question"),
-                answer: t("landing.faq.faq2.answer"),
-              },
-              {
-                question: t("landing.faq.faq3.question"),
-                answer: t("landing.faq.faq3.answer"),
-              },
-              {
-                question: t("landing.faq.faq4.question"),
-                answer: t("landing.faq.faq4.answer"),
-              },
-              {
-                question: t("landing.faq.faq5.question"),
-                answer: t("landing.faq.faq5.answer"),
-              },
-              {
-                question: t("landing.faq.faq6.question"),
-                answer: t("landing.faq.faq6.answer"),
-              },
-            ].map((faq, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <Card
+          <AnimatedSection animationType="slideUp" delay={0.2}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
+              <AnimatedSection animationType="scale" delay={0.4}>
+                <Typography
+                  variant="h2"
                   sx={{
-                    background:
-                      theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
-                    boxShadow:
-                      theme.palette.mode === "dark"
-                        ? "0 4px 20px rgba(0,0,0,0.3)"
-                        : "0 4px 20px rgba(0,0,0,0.08)",
-                    border:
-                      theme.palette.mode === "dark"
-                        ? "1px solid rgba(255,255,255,0.05)"
-                        : "1px solid rgba(0,0,0,0.05)",
-                    borderRadius: 0,
-                    p: 4,
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      transform: "translateY(-2px)",
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 20px 40px rgba(0,0,0,0.5)"
-                          : "0 20px 40px rgba(0,0,0,0.12)",
-                    },
+                    fontWeight: 900,
+                    mb: 4,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                    fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
+                    lineHeight: 1.1,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
                   }}
                 >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 700,
-                      color:
-                        theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      mb: 2,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    }}
-                  >
-                    {faq.question}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color:
-                        theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                      lineHeight: 1.6,
-                      fontFamily:
-                        '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                    }}
-                  >
-                    {faq.answer}
-                  </Typography>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+                  <TypewriterText 
+                    text={t("landing.faq.title")} 
+                    speed={65} 
+                    delay={0.6}
+                  />
+                </Typography>
+              </AnimatedSection>
+              <AnimatedSection animationType="slideUp" delay={0.8}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                    maxWidth: 800,
+                    mx: "auto",
+                    lineHeight: 1.6,
+                    fontWeight: 400,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  {t("landing.faq.subtitle")}
+                </Typography>
+              </AnimatedSection>
+            </Box>
+          </AnimatedSection>
+
+          {/* FAQ Grid */}
+          <StaggeredContainer animationType="slideUp" staggerDelay={0.12}>
+            <Grid container spacing={4}>
+              {[
+                {
+                  question: t("landing.faq.faq1.question"),
+                  answer: t("landing.faq.faq1.answer"),
+                },
+                {
+                  question: t("landing.faq.faq2.question"),
+                  answer: t("landing.faq.faq2.answer"),
+                },
+                {
+                  question: t("landing.faq.faq3.question"),
+                  answer: t("landing.faq.faq3.answer"),
+                },
+                {
+                  question: t("landing.faq.faq4.question"),
+                  answer: t("landing.faq.faq4.answer"),
+                },
+                {
+                  question: t("landing.faq.faq5.question"),
+                  answer: t("landing.faq.faq5.answer"),
+                },
+                {
+                  question: t("landing.faq.faq6.question"),
+                  answer: t("landing.faq.faq6.answer"),
+                },
+              ].map((faq, index) => (
+                <Grid item xs={12} md={6} key={index}>
+                  <AnimatedSection animationType="scale" delay={0.1 * index}>
+                    <Card
+                      sx={{
+                        background:
+                          theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
+                        boxShadow:
+                          theme.palette.mode === "dark"
+                            ? "0 4px 20px rgba(0,0,0,0.3)"
+                            : "0 4px 20px rgba(0,0,0,0.08)",
+                        border:
+                          theme.palette.mode === "dark"
+                            ? "1px solid rgba(255,255,255,0.05)"
+                            : "1px solid rgba(0,0,0,0.05)",
+                        borderRadius: 0,
+                        p: 4,
+                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        position: "relative",
+                        overflow: "hidden",
+                        cursor: "pointer",
+                        "&:hover": {
+                          transform: "translateY(-8px) scale(1.02)",
+                          boxShadow:
+                            theme.palette.mode === "dark"
+                              ? "0 20px 40px rgba(0,0,0,0.5)"
+                              : "0 20px 40px rgba(0,0,0,0.12)",
+                        },
+                        "&::before": {
+                          content: '""',
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: "3px",
+                          background: "linear-gradient(90deg, #4facfe, #00f2fe, #43e97b)",
+                          opacity: 0,
+                          transition: "opacity 0.3s ease",
+                        },
+                        "&:hover::before": {
+                          opacity: 1,
+                        },
+                      }}
+                    >
+                      <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 700,
+                            color:
+                              theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                            mb: 2,
+                            fontFamily:
+                              '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                            transition: "all 0.3s ease",
+                            "&:hover": {
+                              color: theme.palette.mode === "dark" ? "#4facfe" : "#0056b3",
+                            },
+                          }}
+                        >
+                          {faq.question}
+                        </Typography>
+                      </AnimatedSection>
+                      <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color:
+                              theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                            lineHeight: 1.6,
+                            fontFamily:
+                              '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                          }}
+                        >
+                          {faq.answer}
+                        </Typography>
+                      </AnimatedSection>
+                    </Card>
+                  </AnimatedSection>
+                </Grid>
+              ))}
+            </Grid>
+          </StaggeredContainer>
         </Container>
       </Box>
 
@@ -1028,39 +1160,52 @@ export default function HomePage() {
         id="cta"
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
-          <Box sx={{ textAlign: "center", px: { xs: 2, sm: 0 } }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 900,
-                mb: 4,
-                color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
-                lineHeight: 1.1,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.cta.title")}
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                color:
-                  theme.palette.mode === "dark"
-                    ? "rgba(255,255,255,0.8)"
-                    : "rgba(0,0,0,0.8)",
-                maxWidth: 800,
-                mx: "auto",
-                lineHeight: 1.6,
-                fontWeight: 400,
-                mb: 6,
-                fontFamily:
-                  '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-              }}
-            >
-              {t("landing.cta.subtitle")}
-            </Typography>
+          <AnimatedSection animationType="slideUp" delay={0.2}>
+            <Box sx={{ textAlign: "center", px: { xs: 2, sm: 0 } }}>
+              <AnimatedSection animationType="scale" delay={0.4}>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: 900,
+                    mb: 4,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                    fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
+                    lineHeight: 1.1,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  <TypewriterText 
+                    text={t("landing.cta.title")} 
+                    speed={75} 
+                    delay={0.6}
+                  />
+                </Typography>
+              </AnimatedSection>
+              <AnimatedSection animationType="slideUp" delay={0.8}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "rgba(255,255,255,0.8)"
+                        : "rgba(0,0,0,0.8)",
+                    maxWidth: 800,
+                    mx: "auto",
+                    lineHeight: 1.6,
+                    fontWeight: 400,
+                    mb: 6,
+                    fontFamily:
+                      '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                  }}
+                >
+                  {t("landing.cta.subtitle")}
+                </Typography>
+              </AnimatedSection>
+            </Box>
+          </AnimatedSection>
+          
+          <AnimatedSection animationType="slideUp" delay={1.0}>
             <Box
               sx={{
                 display: "flex",
@@ -1138,7 +1283,7 @@ export default function HomePage() {
                 {t("landing.cta.secondaryButton")}
               </Button>
             </Box>
-          </Box>
+          </AnimatedSection>
         </Container>
       </Box>
 
@@ -1180,93 +1325,106 @@ export default function HomePage() {
           <Grid container spacing={6}>
             {/* Company Info */}
             <Grid item xs={12} lg={4}>
-              <Box sx={{ mb: 6 }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
-                  <Box
-                    sx={{
-                      width: 48,
-                      height: 48,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
-                          : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mr: 3,
-                      //borderRadius: "12px",
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 4px 20px rgba(255,255,255,0.1)"
-                          : "0 4px 20px rgba(0,0,0,0.1)",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color:
-                          theme.palette.mode === "dark" ? "#000000" : "#ffffff",
-                        fontSize: "2.5rem",
-                        fontWeight: 700,
-                        fontFamily: "var(--font-league-spartan), sans-serif",
-                        letterSpacing: "-0.05em",
-                      }}
-                    >
-                      p.
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "1.5rem",
-                        letterSpacing: "-0.05em",
-                        fontFamily: "var(--font-league-spartan), sans-serif",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
+              <AnimatedSection animationType="slideUp" delay={0.2}>
+                <Box sx={{ mb: 6 }}>
+                  <AnimatedSection animationType="scale" delay={0.4}>
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
                       <Box
-                        component="span"
                         sx={{
-                          color:
+                          width: 48,
+                          height: 48,
+                          background:
                             theme.palette.mode === "dark"
-                              ? "#ffffff"
-                              : "#000000",
-                          fontWeight: 700,
+                              ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
+                              : "linear-gradient(135deg, #000000 0%, #333333 100%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          mr: 3,
+                          //borderRadius: "12px",
+                          boxShadow:
+                            theme.palette.mode === "dark"
+                              ? "0 4px 20px rgba(255,255,255,0.1)"
+                              : "0 4px 20px rgba(0,0,0,0.1)",
+                          transition: "all 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(1.1) rotate(5deg)",
+                          },
                         }}
                       >
-                        park
+                        <Typography
+                          sx={{
+                            color:
+                              theme.palette.mode === "dark" ? "#000000" : "#ffffff",
+                            fontSize: "2.5rem",
+                            fontWeight: 700,
+                            fontFamily: "var(--font-league-spartan), sans-serif",
+                            letterSpacing: "-0.05em",
+                          }}
+                        >
+                          p.
+                        </Typography>
                       </Box>
-                      <Box
-                        component="span"
-                        sx={{
-                          color:
-                            theme.palette.mode === "dark"
-                              ? "#00d4ff"
-                              : "#0056b3",
-                          fontWeight: 700,
-                        }}
-                      >
-                        it.
+                      <Box>
+                        <AnimatedSection animationType="slideUp" delay={0.6}>
+                          <Typography
+                            variant="h5"
+                            sx={{
+                              fontWeight: 700,
+                              fontSize: "1.5rem",
+                              letterSpacing: "-0.05em",
+                              fontFamily: "var(--font-league-spartan), sans-serif",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Box
+                              component="span"
+                              sx={{
+                                color:
+                                  theme.palette.mode === "dark"
+                                    ? "#ffffff"
+                                    : "#000000",
+                                fontWeight: 700,
+                              }}
+                            >
+                              park
+                            </Box>
+                            <Box
+                              component="span"
+                              sx={{
+                                color:
+                                  theme.palette.mode === "dark"
+                                    ? "#00d4ff"
+                                    : "#0056b3",
+                                fontWeight: 700,
+                              }}
+                            >
+                              it.
+                            </Box>
+                          </Typography>
+                        </AnimatedSection>
+                        <AnimatedSection animationType="slideUp" delay={0.8}>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              opacity: 0.7,
+                              fontWeight: 500,
+                              color:
+                                theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                              fontFamily:
+                                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+                            }}
+                          >
+                            {t("landing.footer.tagline")}
+                          </Typography>
+                        </AnimatedSection>
                       </Box>
-                    </Typography>
+                    </Box>
+                  </AnimatedSection>
+                  
+                  <AnimatedSection animationType="slideUp" delay={1.0}>
                     <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.7,
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                        fontFamily:
-                          '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-                      }}
-                    >
-                      {t("landing.footer.tagline")}
-                    </Typography>
-                  </Box>
-                </Box>
-                <Typography
                   variant="body1"
                   sx={{
                     opacity: 0.8,
@@ -1359,8 +1517,10 @@ export default function HomePage() {
                     <Instagram sx={{ fontSize: 20 }} />
                   </IconButton>
                 </Box>
-              </Box>
-            </Grid>
+              </AnimatedSection>
+            </Box>
+          </AnimatedSection>
+        </Grid>
 
             {/* Contact Info */}
             <Grid item xs={12} md={6} lg={4}>
