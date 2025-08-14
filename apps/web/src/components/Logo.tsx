@@ -72,7 +72,7 @@ export const Logo: React.FC<LogoProps> = ({
             fontWeight: 700,
             color: color,
             letterSpacing: '-0.02em',
-            fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif'
+            
           }}
         >
           ParkIt

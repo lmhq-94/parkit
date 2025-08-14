@@ -12,12 +12,12 @@ import {
   useTheme,
 } from '@mui/material';
 import {
-  DirectionsCar,
-  QrCode,
-  Help,
-  ContactSupport,
-  Login,
-} from '@mui/icons-material';
+  CarIcon,
+  QrCodeIcon,
+  HelpIcon,
+  MessageIcon,
+  LoginIcon,
+} from '../icons';
 
 // Types
 interface MobileDrawerProps {
@@ -102,7 +102,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             fontWeight: 700,
             fontSize: "1.5rem",
             color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-            fontFamily: '"League Spartan", sans-serif',
             letterSpacing: "-0.02em",
           }}
         >
@@ -129,12 +128,12 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
       <Box sx={{ flex: 1, position: "relative", zIndex: 2 }}>
         <List sx={{ p: 2 }}>
           {/* Navigation items */}
-          {[
-            { label: "Soluciones", icon: <DirectionsCar />, id: "soluciones" },
-            { label: "Cómo Funciona", icon: <QrCode />, id: "como-funciona" },
-            { label: "FAQ", icon: <Help />, id: "faq" },
-            { label: "Contacto", icon: <ContactSupport />, id: "footer" },
-          ].map((item) => (
+                  {[
+          { label: "Soluciones", icon: <CarIcon />, id: "soluciones" },
+          { label: "Cómo Funciona", icon: <QrCodeIcon />, id: "como-funciona" },
+          { label: "FAQ", icon: <HelpIcon />, id: "faq" },
+          { label: "Contacto", icon: <MessageIcon />, id: "footer" },
+        ].map((item) => (
             <ListItem key={item.id} disablePadding sx={{ mb: 1 }}>
               <ListItemButton
                 onClick={() => handleNavigation(item.id)}
@@ -212,7 +211,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   color: "#ffffff",
                 }}
               >
-                <Login />
+                <LoginIcon />
               </ListItemIcon>
               <ListItemText
                 primary="Comenzar Ahora"

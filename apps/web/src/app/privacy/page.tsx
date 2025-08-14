@@ -40,8 +40,6 @@ export default function PrivacyPolicyPage() {
               color: "#000000",
               fontSize: { xs: "2rem", md: "3rem", lg: "3.5rem" },
               lineHeight: 1.1,
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Política de Privacidad
@@ -54,8 +52,6 @@ export default function PrivacyPolicyPage() {
               mx: "auto",
               lineHeight: 1.6,
               fontWeight: 400,
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Última actualización: {new Date().toLocaleDateString('es-ES')}
@@ -78,8 +74,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             1. Información que Recopilamos
@@ -90,8 +84,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Recopilamos información que usted nos proporciona directamente, como cuando crea una cuenta, 
@@ -118,8 +110,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             2. Cómo Utilizamos su Información
@@ -130,8 +120,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Utilizamos la información recopilada para:
@@ -163,8 +151,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             3. Compartir Información
@@ -175,8 +161,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             No vendemos, alquilamos ni compartimos su información personal con terceros, excepto:
@@ -202,8 +186,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             4. Seguridad de Datos
@@ -214,8 +196,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger su información personal:
@@ -241,8 +221,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             5. Sus Derechos
@@ -253,8 +231,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Usted tiene los siguientes derechos respecto a su información personal:
@@ -283,8 +259,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             6. Retención de Datos
@@ -295,8 +269,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Conservamos su información personal solo durante el tiempo necesario para los fines descritos en esta política, 
@@ -309,8 +281,6 @@ export default function PrivacyPolicyPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             7. Contacto
@@ -321,8 +291,6 @@ export default function PrivacyPolicyPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Si tiene preguntas sobre esta Política de Privacidad o sobre cómo manejamos su información personal, 

@@ -40,8 +40,6 @@ export default function CookiesPage() {
               color: "#000000",
               fontSize: { xs: "2rem", md: "3rem", lg: "3.5rem" },
               lineHeight: 1.1,
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Política de Cookies
@@ -54,8 +52,6 @@ export default function CookiesPage() {
               mx: "auto",
               lineHeight: 1.6,
               fontWeight: 400,
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Última actualización: {new Date().toLocaleDateString('es-ES')}
@@ -78,8 +74,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             1. ¿Qué son las Cookies?
@@ -90,8 +84,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita nuestro sitio web. 
@@ -104,8 +96,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             2. Tipos de Cookies que Utilizamos
@@ -117,8 +107,6 @@ export default function CookiesPage() {
               fontWeight: 600,
               mb: 2,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Cookies Esenciales
@@ -129,8 +117,6 @@ export default function CookiesPage() {
               mb: 3,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Estas cookies son necesarias para el funcionamiento básico del sitio web. Incluyen cookies que:
@@ -156,8 +142,6 @@ export default function CookiesPage() {
               fontWeight: 600,
               mb: 2,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Cookies de Rendimiento
@@ -168,8 +152,6 @@ export default function CookiesPage() {
               mb: 3,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Estas cookies nos ayudan a entender cómo interactúa con nuestro sitio web:
@@ -195,8 +177,6 @@ export default function CookiesPage() {
               fontWeight: 600,
               mb: 2,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Cookies de Funcionalidad
@@ -207,8 +187,6 @@ export default function CookiesPage() {
               mb: 3,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Estas cookies permiten que el sitio web recuerde las elecciones que hace:
@@ -234,8 +212,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             3. Cookies de Terceros
@@ -246,8 +222,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             También utilizamos servicios de terceros que pueden establecer cookies en su dispositivo:
@@ -273,8 +247,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             4. Duración de las Cookies
@@ -285,8 +257,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Las cookies tienen diferentes duraciones:
@@ -312,8 +282,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             5. Gestión de Cookies
@@ -324,8 +292,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Puede controlar y gestionar las cookies de varias maneras:
@@ -351,8 +317,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             6. Impacto de Deshabilitar Cookies
@@ -363,8 +327,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Si deshabilita las cookies, algunas funcionalidades del sitio web pueden no funcionar correctamente:
@@ -390,8 +352,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             7. Actualizaciones de esta Política
@@ -402,8 +362,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Podemos actualizar esta Política de Cookies de vez en cuando para reflejar cambios en nuestras prácticas 
@@ -417,8 +375,6 @@ export default function CookiesPage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             8. Contacto
@@ -429,8 +385,6 @@ export default function CookiesPage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Si tiene preguntas sobre nuestra Política de Cookies, puede contactarnos en:

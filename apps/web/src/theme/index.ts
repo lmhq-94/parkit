@@ -1,5 +1,6 @@
 import { createTheme, Theme } from '@mui/material/styles';
 import { blue, green, orange, red, grey } from '@mui/material/colors';
+import { getFontFamily } from './fonts';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -61,7 +62,7 @@ export const defaultTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: getFontFamily(),
     h1: {
       fontSize: '2.5rem',
       fontWeight: 900,
@@ -106,13 +107,13 @@ export const defaultTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 0,
+    borderRadius: 8,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           padding: '12px 24px',
           fontSize: '0.875rem',
           fontWeight: 600,
@@ -141,7 +142,7 @@ export const defaultTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -154,7 +155,7 @@ export const defaultTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
         },
       },
     },
@@ -162,7 +163,7 @@ export const defaultTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 0,
+            borderRadius: 2,
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
@@ -177,7 +178,7 @@ export const defaultTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           fontWeight: 600,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -196,14 +197,14 @@ export const defaultTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             transform: 'translateY(-1px)',
@@ -214,7 +215,7 @@ export const defaultTheme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.08)',
@@ -225,7 +226,7 @@ export const defaultTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
         },
       },
@@ -233,7 +234,7 @@ export const defaultTheme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
         },
       },
@@ -292,7 +293,7 @@ export const lightTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: getFontFamily(),
     h1: {
       fontSize: '2.5rem',
       fontWeight: 900,
@@ -300,17 +301,17 @@ export const lightTheme = createTheme({
     },
     h2: {
       fontSize: '2rem',
-      fontWeight: 600,
-      lineHeight: 1.3,
+      fontWeight: 800,
+      lineHeight: 1.2,
     },
     h3: {
       fontSize: '1.75rem',
-      fontWeight: 600,
+      fontWeight: 700,
       lineHeight: 1.3,
     },
     h4: {
       fontSize: '1.5rem',
-      fontWeight: 600,
+      fontWeight: 700,
       lineHeight: 1.4,
     },
     h5: {
@@ -343,7 +344,7 @@ export const lightTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           padding: '12px 24px',
           fontSize: '0.875rem',
           fontWeight: 600,
@@ -372,7 +373,7 @@ export const lightTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -385,7 +386,7 @@ export const lightTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
         },
       },
     },
@@ -393,7 +394,7 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 0,
+            borderRadius: 2,
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
@@ -408,7 +409,7 @@ export const lightTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           fontWeight: 600,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -427,14 +428,14 @@ export const lightTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             transform: 'translateY(-1px)',
@@ -445,7 +446,7 @@ export const lightTheme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.08)',
@@ -456,7 +457,7 @@ export const lightTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
         },
       },
@@ -464,7 +465,7 @@ export const lightTheme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
         },
       },
@@ -519,11 +520,11 @@ export const darkTheme = createTheme({
     },
     text: {
       primary: '#ffffff',
-      secondary: '#b3b3b3',
+      secondary: '#b0b0b0',
     },
   },
   typography: {
-    fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: getFontFamily(),
     h1: {
       fontSize: '2.5rem',
       fontWeight: 900,
@@ -568,13 +569,13 @@ export const darkTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 0,
+    borderRadius: 8,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           padding: '12px 24px',
           fontSize: '0.875rem',
           fontWeight: 600,
@@ -603,7 +604,7 @@ export const darkTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -616,7 +617,7 @@ export const darkTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
         },
       },
     },
@@ -624,7 +625,7 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 0,
+            borderRadius: 2,
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
@@ -639,7 +640,7 @@ export const darkTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           fontWeight: 600,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -658,14 +659,14 @@ export const darkTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             transform: 'translateY(-1px)',
@@ -676,7 +677,7 @@ export const darkTheme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 2,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             backgroundColor: 'rgba(255, 255, 255, 0.08)',
@@ -687,7 +688,7 @@ export const darkTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
         },
       },
@@ -695,7 +696,7 @@ export const darkTheme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          borderRadius: 0,
+          borderRadius: 2,
           boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
         },
       },
@@ -703,8 +704,8 @@ export const darkTheme = createTheme({
   },
 });
 
-// Tema por defecto
-export const theme = defaultTheme;
+// Exportar el tema por defecto
+export default defaultTheme;
 
 // Tipos para el contexto de temas
 export type ThemeType = 'default' | 'light' | 'dark';

@@ -40,8 +40,6 @@ export default function TermsOfServicePage() {
               color: "#000000",
               fontSize: { xs: "2rem", md: "3rem", lg: "3.5rem" },
               lineHeight: 1.1,
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Términos de Servicio
@@ -54,8 +52,6 @@ export default function TermsOfServicePage() {
               mx: "auto",
               lineHeight: 1.6,
               fontWeight: 400,
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Última actualización: {new Date().toLocaleDateString('es-ES')}
@@ -78,8 +74,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             1. Aceptación de los Términos
@@ -90,8 +84,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Al acceder y utilizar ParkIt, usted acepta estar sujeto a estos Términos de Servicio. 
@@ -104,8 +96,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             2. Descripción del Servicio
@@ -116,8 +106,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             ParkIt es una plataforma de gestión de parking que permite:
@@ -146,8 +134,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             3. Cuentas de Usuario
@@ -158,8 +144,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Para utilizar nuestros servicios, debe crear una cuenta. Usted es responsable de:
@@ -185,8 +169,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             4. Uso Aceptable
@@ -197,8 +179,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Usted se compromete a utilizar nuestros servicios únicamente para fines legales y de acuerdo con estos términos. 
@@ -228,8 +208,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             5. Propiedad Intelectual
@@ -240,8 +218,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             El servicio y todo su contenido, incluyendo pero no limitado a software, diseño, texto, gráficos, 
@@ -255,8 +231,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             6. Limitación de Responsabilidad
@@ -267,8 +241,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             ParkIt proporciona el servicio "tal como está" sin garantías de ningún tipo. En ningún caso 
@@ -282,8 +254,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             7. Disponibilidad del Servicio
@@ -294,8 +264,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Nos esforzamos por mantener el servicio disponible 24/7, pero no garantizamos disponibilidad 
@@ -308,8 +276,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             8. Terminación
@@ -320,8 +286,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Podemos suspender o terminar su acceso al servicio en cualquier momento por violación de estos términos 
@@ -335,8 +299,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             9. Modificaciones
@@ -347,8 +309,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán 
@@ -362,8 +322,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             10. Ley Aplicable
@@ -374,8 +332,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Estos términos se rigen por las leyes del estado donde opera ParkIt. Cualquier disputa será 
@@ -388,8 +344,6 @@ export default function TermsOfServicePage() {
               fontWeight: 700,
               mb: 4,
               color: "#000000",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             11. Contacto
@@ -400,8 +354,6 @@ export default function TermsOfServicePage() {
               mb: 4,
               lineHeight: 1.7,
               color: "#333333",
-              fontFamily:
-                '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
             }}
           >
             Si tiene preguntas sobre estos Términos de Servicio, puede contactarnos en:

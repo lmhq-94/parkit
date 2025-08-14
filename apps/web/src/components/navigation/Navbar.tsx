@@ -11,11 +11,11 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import {
-  Menu as MenuIcon,
-  Language as LanguageIcon,
-  DarkMode as DarkModeIcon,
-  LightMode as LightModeIcon,
-} from '@mui/icons-material';
+  MenuIcon,
+  LanguageIcon,
+  MoonIcon,
+  SunIcon,
+} from '../icons';
 import { useTranslation } from 'react-i18next';
 
 // Types
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Typography
               variant="h6"
               sx={{
-                fontWeight: 700,
+                fontWeight: 900,
                 fontSize: "2.5rem",
                 color: scrollY > 50
                   ? theme.palette.mode === "dark"
@@ -83,8 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : theme.palette.mode === "dark"
                     ? "#ffffff"
                     : "#000000",
-                fontFamily: '"League Spartan", sans-serif',
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.065em",
               }}
             >
               <Box
@@ -228,7 +227,7 @@ const ActionButtons: React.FC<{
           },
         }}
       >
-        {currentTheme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+                        {currentTheme === "dark" ? <SunIcon /> : <MoonIcon />}
       </IconButton>
     </Box>
   );
