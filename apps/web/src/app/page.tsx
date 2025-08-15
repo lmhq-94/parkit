@@ -577,7 +577,7 @@ export default function HomePage() {
                     <Box sx={{ mb: 4 }}>
                       <Chip
                         icon={<WorkspacePremiumIcon />}
-                        label="Tecnología de Vanguardia"
+                        label={t("landing.hero.premiumBadge")}
                         sx={{
                           background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
                           border: `1px solid ${theme.palette.primary.main}30`,
@@ -1550,7 +1550,7 @@ export default function HomePage() {
 
           {/* Testimonials Grid */}
           <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.TESTIMONIALS}>
-            <Grid container spacing={4}>
+            <Grid container spacing={4} sx={{ height: "100%" }}>
               {[
                 {
                   name: t("landing.testimonials.testimonial1.name"),
@@ -1574,11 +1574,15 @@ export default function HomePage() {
                   rating: 5,
                 },
               ].map((testimonial, index) => (
-                <Grid item xs={12} md={4} key={index}>
+                <Grid item xs={12} md={4} key={index} sx={{ height: "100%" }}>
                   <AnimatedSection animationType="scale" delay={0.1 * index}>
                     <Card
                       sx={{
                         height: "100%",
+                        minHeight: "300px", // Increased for better content distribution
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between", // Distribute content evenly
                         background:
                           theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
                         boxShadow:
@@ -1589,7 +1593,7 @@ export default function HomePage() {
                           theme.palette.mode === "dark"
                             ? "1px solid rgba(255,255,255,0.05)"
                             : "1px solid rgba(0,0,0,0.05)",
-                        borderRadius: 2,
+                        borderRadius: theme.shape.borderRadius, // Use theme borderRadius
                         p: 4,
                         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                         position: "relative",
@@ -1618,7 +1622,7 @@ export default function HomePage() {
                       }}
                     >
                       <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
-                        <Box sx={{ mb: 3 }}>
+                        <Box sx={{ mb: 2, flexShrink: 0 }}>
                           {[...Array(testimonial.rating)].map((_, i) => (
                             <StarIcon
                               key={i}
@@ -1633,21 +1637,24 @@ export default function HomePage() {
                         </Box>
                       </AnimatedSection>
                       <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            color:
-                              theme.palette.mode === "dark" ? "#cccccc" : "#111111",
-                            lineHeight: 1.6,
-                            mb: 3,
-                            fontStyle: "italic",
-                          }}
-                        >
-                          &quot;{testimonial.content}&quot;
-                        </Typography>
+                        <Box sx={{ flex: 1, display: "flex", alignItems: "flex-start" }}>
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              color:
+                                theme.palette.mode === "dark" ? "#cccccc" : "#111111",
+                              lineHeight: 1.6,
+                              fontStyle: "italic",
+                              textAlign: "left",
+                              width: "100%",
+                            }}
+                          >
+                            &quot;{testimonial.content}&quot;
+                          </Typography>
+                        </Box>
                       </AnimatedSection>
                       <AnimatedSection animationType="slideUp" delay={0.4 + (0.1 * index)}>
-                        <Box>
+                        <Box sx={{ mt: "auto", flexShrink: 0 }}>
                           <Typography
                             variant="h6"
                             sx={{
@@ -1655,6 +1662,7 @@ export default function HomePage() {
                               color:
                                 theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                               mb: 0.5,
+                              textAlign: "left",
                             }}
                           >
                             {testimonial.name}
@@ -1665,6 +1673,7 @@ export default function HomePage() {
                               color:
                                 theme.palette.mode === "dark" ? "#aaaaaa" : "#333333",
                               fontWeight: 500,
+                              textAlign: "left",
                             }}
                           >
                             {testimonial.role}, {testimonial.company}
@@ -1798,6 +1807,18 @@ export default function HomePage() {
                   answer: t("landing.faq.faq6.answer"),
                 },
               ].map((faq, index) => {
+                // Debug: Check if faq5 has content
+                if (index === 4) {
+                  console.log('FAQ5 Debug:', {
+                    question: faq.question,
+                    answer: faq.answer,
+                    questionLength: faq.question?.length,
+                    answerLength: faq.answer?.length,
+                    currentLanguage: i18n.language,
+                    questionTranslation: t("landing.faq.faq5.question"),
+                    answerTranslation: t("landing.faq.faq5.answer")
+                  });
+                }
 
                 return (
                   <Grid item xs={12} md={6} key={index}>
@@ -1814,7 +1835,7 @@ export default function HomePage() {
                             theme.palette.mode === "dark"
                               ? "1px solid rgba(255,255,255,0.05)"
                               : "1px solid rgba(0,0,0,0.05)",
-                          borderRadius: 2,
+                          borderRadius: theme.shape.borderRadius,
                           p: 4,
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",

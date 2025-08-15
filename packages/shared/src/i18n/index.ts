@@ -40,6 +40,7 @@ const es = {
       title: 'El Futuro del',
       subtitle: 'Parking Inteligente',
       description: 'Revoluciona tu negocio con tecnología de vanguardia. La plataforma más inteligente del mercado.',
+      premiumBadge: 'Tecnología de Vanguardia',
       startNow: 'Comenzar Ahora',
       viewDemo: 'Ver Demo',
       uptime: 'Uptime Garantizado',
@@ -105,7 +106,7 @@ const es = {
         benefits: 'BENEFICIOS PARA TU NEGOCIO',
         process: 'PROCESO SIMPLE',
         testimonials: 'EXPERIENCIAS REALES',
-        faq: 'PREGUNTAS FRECUENTES',
+        faq: 'FAQ',
         cta: '¡COMIENZA AHORA!'
       },
       cardBadges: {
@@ -479,6 +480,7 @@ const en = {
       title: 'The Future of',
       subtitle: 'Smart Parking',
       description: 'Revolutionize your business with cutting-edge technology. The most intelligent platform in the market.',
+      premiumBadge: 'Cutting-Edge Technology',
       startNow: 'Start Now',
       viewDemo: 'View Demo',
       uptime: 'Guaranteed Uptime',
@@ -544,7 +546,7 @@ const en = {
         benefits: 'BENEFITS FOR YOUR BUSINESS',
         process: 'SIMPLE PROCESS',
         testimonials: 'REAL EXPERIENCES',
-        faq: 'FREQUENTLY ASKED QUESTIONS',
+        faq: 'FAQ',
         cta: 'START NOW!'
       },
       cardBadges: {

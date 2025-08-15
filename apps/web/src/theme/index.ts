@@ -113,7 +113,7 @@ export const defaultTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 12, // Increased for more rounded corners
   },
   components: {
     MuiButton: {
