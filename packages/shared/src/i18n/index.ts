@@ -1,7 +1,10 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// Traducciones en español
+/**
+ * Spanish translations for the application
+ * Comprehensive coverage of all UI elements and user-facing content
+ */
 const es = {
   common: {
     loading: 'Cargando...',
@@ -50,7 +53,7 @@ const es = {
       proAccess: 'Acceso Pro'
     },
     features: {
-      title: '¿Por qué elegir ParkIt?',
+      title: '¿Por qué elegir parkit.?',
       subtitle: 'Transforma tu negocio de parking con la solución más completa del mercado. Gestiona tu parqueo de forma eficiente, reduce costos y mejora la experiencia de tus clientes.',
       benefits: {
         title: 'BENEFICIOS PARA TU NEGOCIO',
@@ -97,6 +100,21 @@ const es = {
           benefits: ['Implementación 24h', 'Capacitación Incluida', 'Soporte 24/7'],
           metric: 'Implementación 24h'
         }
+      },
+      badges: {
+        benefits: 'BENEFICIOS PARA TU NEGOCIO',
+        process: 'PROCESO SIMPLE',
+        testimonials: 'EXPERIENCIAS REALES',
+        faq: 'PREGUNTAS FRECUENTES',
+        cta: '¡COMIENZA AHORA!'
+      },
+      cardBadges: {
+        management: 'GESTIÓN',
+        automation: 'AUTOMATIZACIÓN',
+        experience: 'EXPERIENCIA',
+        analytics: 'ANALYTICS',
+        security: 'SEGURIDAD',
+        support: 'SOPORTE'
       }
     },
     howItWorks: {
@@ -118,12 +136,12 @@ const es = {
     testimonials: {
       navbar: 'Testimonios',
       title: 'Lo que Dicen Nuestros Usuarios',
-      subtitle: 'Empresas que confían en ParkIt para gestionar su parqueo',
+      subtitle: 'Empresas que confían en parkit para gestionar su parqueo',
       testimonial1: {
         name: 'María González',
         role: 'Gerente de Operaciones',
         company: 'Centro Comercial Plaza Central',
-        content: 'ParkIt simplificó completamente la gestión de nuestro parqueo. El sistema de QR es muy eficiente y los usuarios lo encuentran fácil de usar.'
+        content: 'Parkit simplificó completamente la gestión de nuestro parqueo. El sistema de QR es muy eficiente y los usuarios lo encuentran fácil de usar.'
       },
       testimonial2: {
         name: 'Carlos Rodríguez',
@@ -140,7 +158,8 @@ const es = {
     },
     faq: {
       title: 'Preguntas Frecuentes',
-      subtitle: 'Resolvemos tus dudas sobre ParkIt',
+      shortTitle: 'Preguntas Frecuentes',
+      subtitle: 'Resolvemos tus dudas sobre parkit',
       faq1: {
         question: '¿Cómo funciona el sistema de QR?',
         answer: 'Cada espacio de parking tiene un código QR único. Los usuarios lo escanean para registrar entrada y salida automáticamente.'
@@ -168,7 +187,7 @@ const es = {
     },
     cta: {
       title: '¿Listo para Gestionar tu Parqueo?',
-      subtitle: 'Únete a empresas que ya están usando ParkIt para gestionar sus espacios de parking de forma eficiente',
+      subtitle: 'Únete a empresas que ya están usando parkit. para gestionar sus espacios de parking de forma eficiente',
       primaryButton: 'Comenzar Ahora',
       secondaryButton: 'Ver Demo'
     },
@@ -195,7 +214,7 @@ const es = {
       }
     },
     footer: {
-      copyright: `© ${new Date().getFullYear()} ParkIt. Todos los derechos reservados.`,
+      copyright: `© ${new Date().getFullYear()} parkit. All rights reserved.`,
       tagline: 'Smart Parking Solutions',
       quickLinks: 'Enlaces Rápidos',
       newsletter: {
@@ -421,7 +440,10 @@ const es = {
   }
 };
 
-// Traducciones en inglés
+/**
+ * English translations for the application
+ * Comprehensive coverage of all UI elements and user-facing content
+ */
 const en = {
   common: {
     loading: 'Loading...',
@@ -470,7 +492,7 @@ const en = {
       proAccess: 'Pro Access'
     },
     features: {
-      title: 'Why Choose ParkIt?',
+      title: 'Why Choose parkit.?',
       subtitle: 'Transform your parking business with the most complete solution in the market. Increase your revenue, reduce costs and improve your customers experience.',
       benefits: {
         title: 'BENEFITS FOR YOUR BUSINESS',
@@ -517,6 +539,21 @@ const en = {
           benefits: ['24h Implementation', 'Training Included', '24/7 Support'],
           metric: '24h implementation'
         }
+      },
+      badges: {
+        benefits: 'BENEFITS FOR YOUR BUSINESS',
+        process: 'SIMPLE PROCESS',
+        testimonials: 'REAL EXPERIENCES',
+        faq: 'FREQUENTLY ASKED QUESTIONS',
+        cta: 'START NOW!'
+      },
+      cardBadges: {
+        management: 'MANAGEMENT',
+        automation: 'AUTOMATION',
+        experience: 'EXPERIENCE',
+        analytics: 'ANALYTICS',
+        security: 'SECURITY',
+        support: 'SUPPORT'
       }
     },
     howItWorks: {
@@ -538,12 +575,12 @@ const en = {
     testimonials: {
       navbar: 'Testimonials',
       title: 'What Our Users Say',
-      subtitle: 'Companies that trust ParkIt to manage their parking',
+      subtitle: 'Companies that trust parkit to manage their parking',
       testimonial1: {
         name: 'Maria Gonzalez',
         role: 'Operations Manager',
         company: 'Central Plaza Mall',
-        content: 'ParkIt completely simplified our parking management. The QR system is very efficient and users find it easy to use.'
+        content: 'Parkit completely simplified our parking management. The QR system is very efficient and users find it easy to use.'
       },
       testimonial2: {
         name: 'Carlos Rodriguez',
@@ -560,7 +597,8 @@ const en = {
     },
     faq: {
       title: 'Frequently Asked Questions',
-      subtitle: 'We answer your questions about ParkIt',
+      shortTitle: 'FAQ',
+      subtitle: 'We answer your questions about parkit',
       faq1: {
         question: 'How does the QR system work?',
         answer: 'Each parking space has a unique QR code. Users scan it to automatically register entry and exit.'
@@ -588,7 +626,7 @@ const en = {
     },
     cta: {
       title: 'Ready to Manage Your Parking?',
-      subtitle: 'Join companies that are already using ParkIt to efficiently manage their parking spaces',
+      subtitle: 'Join companies that are already using parkit to efficiently manage their parking spaces',
       primaryButton: 'Start Now',
       secondaryButton: 'View Demo'
     },
@@ -615,7 +653,7 @@ const en = {
       }
     },
     footer: {
-      copyright: `© ${new Date().getFullYear()} ParkIt. All rights reserved.`,
+      copyright: `© ${new Date().getFullYear()} parkit. All rights reserved.`,
       tagline: 'Smart Parking Solutions',
       quickLinks: 'Quick Links',
       newsletter: {

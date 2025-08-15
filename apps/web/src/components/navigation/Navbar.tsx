@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   IconButton,
   Box,
@@ -16,6 +15,7 @@ import {
   MoonIcon,
   SunIcon,
 } from '../icons';
+import { Logo } from '../Logo';
 import { useTranslation } from 'react-i18next';
 
 // Types
@@ -71,38 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <Toolbar sx={{ justifyContent: "space-between", py: 1 }}>
           {/* Logo section */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 900,
-                fontSize: "2.5rem",
-                color: scrollY > 50
-                  ? theme.palette.mode === "dark"
-                    ? "#ffffff"
-                    : "#000000"
-                  : theme.palette.mode === "dark"
-                    ? "#ffffff"
-                    : "#000000",
-                letterSpacing: "-0.065em",
-              }}
-            >
-              <Box
-                component="span"
-                sx={{
-                  color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                }}
-              >
-                park
-              </Box>
-              <Box
-                component="span"
-                sx={{
-                  color: theme.palette.mode === "dark" ? "#3b82f6" : "#3b82f6",
-                }}
-              >
-                it.
-              </Box>
-            </Typography>
+            <Logo />
           </Box>
 
           {/* Desktop navigation */}
@@ -161,7 +130,7 @@ const NavLinks: React.FC = () => {
         { label: t("landing.navigation.solutions"), id: "soluciones" },
         { label: t("landing.howItWorks.title"), id: "como-funciona" },
         { label: t("landing.testimonials.navbar"), id: "testimonios" },
-        { label: t("landing.faq.title"), id: "faq" },
+        { label: t("landing.faq.shortTitle"), id: "faq" },
         { label: t("landing.navigation.contact"), id: "footer" },
       ].map((link) => (
         <Button

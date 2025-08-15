@@ -2,6 +2,9 @@ import { createTheme, Theme } from '@mui/material/styles';
 import { blue, green, orange, red, grey } from '@mui/material/colors';
 import { getFontFamily } from './fonts';
 
+/**
+ * Extend Material-UI theme with custom palette options
+ */
 declare module '@mui/material/styles' {
   interface Palette {
     neutral: Palette['primary'];
@@ -11,7 +14,10 @@ declare module '@mui/material/styles' {
   }
 }
 
-// Tema Predeterminado (Light) - Usando el sistema de temas del paquete UI
+/**
+ * Default theme (Light) - Using the UI package theme system
+ * Optimized for readability and modern design
+ */
 export const defaultTheme = createTheme({
   palette: {
     mode: 'light',
@@ -338,7 +344,7 @@ export const lightTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 4,
   },
   components: {
     MuiButton: {
@@ -569,7 +575,7 @@ export const darkTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 4,
   },
   components: {
     MuiButton: {

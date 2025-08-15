@@ -63,6 +63,7 @@ import { ThemeContext } from "../providers";
 import { Navbar } from "../components/navigation/Navbar";
 import { MobileDrawer } from "../components/navigation/MobileDrawer";
 import { ScrollToTopButton } from "../components/ScrollToTopButton";
+import { Logo } from "../components/Logo";
 
 // Import utilities and constants
 import { 
@@ -74,6 +75,30 @@ import {
 } from "../utils/themeUtils";
 import { CONTACT_INFO } from "../constants";
 
+/**
+ * Animation constants for consistent timing across components
+ */
+const ANIMATION_DELAYS = {
+  HERO: 0.2,
+  FEATURES: 0.4,
+  TESTIMONIALS: 0.6,
+  FAQ: 0.8,
+  CTA: 1.0,
+} as const;
+
+/**
+ * Stagger delays for grid animations
+ */
+const STAGGER_DELAYS = {
+  FEATURES: 0.25,
+  TESTIMONIALS: 0.15,
+  FAQ: 0.12,
+} as const;
+
+/**
+ * Main landing page component for ParkIt application
+ * Features responsive design, theme switching, internationalization, and smooth animations
+ */
 export default function HomePage() {
   const { user, isAuthenticated, login } = useAuthStore();
   const { t, i18n } = useTranslation();
@@ -95,16 +120,16 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Función para cambiar idioma
+  // Function to change language
   const handleLanguageChange = () => {
     const newLanguage = currentLanguage === 'es' ? 'en' : 'es';
     setCurrentLanguage(newLanguage);
     i18n.changeLanguage(newLanguage);
     localStorage.setItem('language', newLanguage);
-    forceUpdate({}); // Forzar re-renderizado
+    forceUpdate({}); 
   };
 
-  // Función para cambiar tema
+  // Function to change theme
   const handleThemeChange = () => {
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
@@ -137,7 +162,7 @@ export default function HomePage() {
     };
   }, [i18n, currentLanguage]);
 
-  // Función para scroll suave
+  // Function for smooth scrolling
   const smoothScrollTo = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (element) {
@@ -149,12 +174,13 @@ export default function HomePage() {
     }
   };
 
-  // Función para navegación que cierra el drawer
+  // Function for navigation that closes the drawer
   const handleNavigation = (elementId: string) => {
     smoothScrollTo(elementId);
     setMobileOpen(false); // Cerrar el drawer
   };
 
+  // Function for login
   const handleLogin = () => {
     const mockUser = {
       id: "1",
@@ -178,8 +204,111 @@ export default function HomePage() {
     );
   }
 
-  // Forzar re-renderizado cuando cambie el idioma
+  // Force re-render when language changes
   const key = `page-${currentLanguage}`;
+
+  /**
+   * Function to get testimonials subtitle based on current language
+   * @returns JSX element with appropriate language text
+   */
+  const getTestimonialsSubtitle = () => {
+    if (currentLanguage === 'en') {
+      return (
+        <>
+          Companies that trust parkit. to manage their parking
+        </>
+      );
+    }
+    return (
+      <>
+        Empresas que confían en parkit. para gestionar su parqueo
+      </>
+    );
+  };
+
+  /**
+   * Function to get FAQ subtitle based on current language
+   * @returns JSX element with appropriate language text
+   */
+  const getFaqSubtitle = () => {
+    if (currentLanguage === 'en') {
+      return (
+        <>
+          We answer your questions about parkit.
+        </>
+      );
+    }
+    return (
+      <>
+        Resolvemos tus dudas sobre parkit.
+      </>
+    );
+  };
+
+  /**
+   * Function to get CTA subtitle based on current language
+   * @returns JSX element with appropriate language text
+   */
+  const getCtaSubtitle = () => {
+    if (currentLanguage === 'en') {
+      return (
+        <>
+          Join companies that are already using parkit. to efficiently manage their parking spaces
+        </>
+      );
+    }
+    return (
+      <>
+        Únete a empresas que ya están usando parkit. para gestionar sus espacios de parking de forma eficiente
+      </>
+    );
+  };
+
+  /**
+   * Function to get footer copyright based on current language
+   * @returns JSX element with appropriate language text
+   */
+  const getFooterCopyright = () => {
+    if (currentLanguage === 'en') {
+      return (
+        <>
+          © {new Date().getFullYear()} parkit. All rights reserved.
+        </>
+      );
+    }
+    return (
+      <>
+        © {new Date().getFullYear()} parkit. Todos los derechos reservados.
+      </>
+    );
+  };
+
+  /**
+   * Function to get features section title based on current language
+   * @returns JSX element with Logo component and appropriate language text
+   */
+  const getFeaturesTitle = () => {
+    if (currentLanguage === 'en') {
+      return (
+        <>
+          Why Choose{' '}
+          <Box component="span" sx={{ display: "inline-flex", alignItems: "center" }}>
+            <Logo variant="h2" fontSize="4rem" fontWeight={900} />
+          </Box>
+          ?
+        </>
+      );
+    }
+    return (
+      <>
+        ¿Por qué elegir{' '}
+        <Box component="span" sx={{ display: "inline-flex", alignItems: "center" }}>
+          <Logo variant="h2" fontSize="4rem" fontWeight={900} />
+        </Box>
+        ?
+      </>
+    );
+  };
 
   return (
     <Box key={key} sx={{ overflow: "hidden" }}>
@@ -210,8 +339,8 @@ export default function HomePage() {
           position: "relative",
           minHeight: "100vh",
           background: theme.palette.mode === 'dark' 
-            ? `linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)`
-            : `linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%)`,
+            ? `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 50%, ${theme.palette.background.default} 100%)`
+            : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.grey[50]} 50%, ${theme.palette.background.paper} 100%)`,
           overflow: "hidden",
           display: "flex",
           alignItems: "center",
@@ -441,14 +570,14 @@ export default function HomePage() {
                 gap: 4,
               }}
             >
-              <AnimatedSection animationType="slideUp" delay={0.2}>
+              <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO}>
                 <Box>
                   {/* Premium Badge */}
-                  <AnimatedSection animationType="scale" delay={0.4}>
+                  <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
                     <Box sx={{ mb: 4 }}>
                       <Chip
                         icon={<WorkspacePremiumIcon />}
-                        label="Premium Pro"
+                        label="Tecnología de Vanguardia"
                         sx={{
                           background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
                           border: `1px solid ${theme.palette.primary.main}30`,
@@ -456,8 +585,8 @@ export default function HomePage() {
                           fontWeight: 700,
                           fontSize: "0.875rem",
                           backdropFilter: "blur(20px)",
-                          borderRadius: 2,
-                          px: 2,
+                          borderRadius: 2.5,
+                          px: 1,
                           py: 1,
                           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                           "& .MuiChip-icon": {
@@ -465,7 +594,7 @@ export default function HomePage() {
                             fontSize: "1.2rem",
                           },
                           "& .MuiChip-label": {
-                            px: 1,
+                            px: 1.5,
                             fontSize: "0.875rem",
                             fontWeight: 700,
                           },
@@ -479,7 +608,7 @@ export default function HomePage() {
                   </AnimatedSection>
 
                   {/* Main Headline */}
-                  <AnimatedSection animationType="slideUp" delay={0.6}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.4}>
                     <Typography
                       variant="h1"
                       sx={{
@@ -519,7 +648,7 @@ export default function HomePage() {
                   </AnimatedSection>
 
                   {/* Description */}
-                  <AnimatedSection animationType="slideUp" delay={1.0}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.8}>
                     <Typography
                       variant="h2"
                       sx={{
@@ -536,7 +665,7 @@ export default function HomePage() {
                   </AnimatedSection>
 
                   {/* CTA Buttons */}
-                  <AnimatedSection animationType="slideUp" delay={1.2}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 1.0}>
                     <Stack
                       direction={{ xs: "column", sm: "row" }}
                       spacing={3}
@@ -545,68 +674,53 @@ export default function HomePage() {
                       <Button
                         variant="contained"
                         size="large"
-                        onClick={() => setLoginOpen(true)}
                         endIcon={<RocketIcon />}
                         sx={{
-                          background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
-                          color: "#ffffff",
+                          background: theme.palette.primary.main,
+                          color: theme.palette.primary.contrastText,
                           px: 6,
-                          py: 2.5,
-                          borderRadius: 3,
-                          fontWeight: 800,
-                          fontSize: "1.125rem",
+                          py: 2,
+                          borderRadius: theme.shape.borderRadius,
+                          fontWeight: 700,
+                          fontSize: "1.1rem",
                           textTransform: "none",
-                          minWidth: 200,
-                          position: "relative",
-                          overflow: "hidden",
-                          transition: "all 0.3s ease",
-                          "&::before": {
-                            content: '""',
-                            position: "absolute",
-                            top: 0,
-                            left: "-100%",
-                            width: "100%",
-                            height: "100%",
-                            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-                            transition: "left 0.6s",
-                          },
+                          boxShadow: theme.shadows[4],
                           "&:hover": {
-                            transform: "translateY(-3px)",
-                            boxShadow: `0 25px 50px ${theme.palette.primary.main}40`,
-                            "&::before": {
-                              left: "100%",
-                            },
+                            background: theme.palette.primary.dark,
+                            transform: "translateY(-2px)",
+                            boxShadow: theme.shadows[8],
                           },
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         }}
+                        onClick={() => smoothScrollTo("contacto")}
                       >
-                        {t("landing.hero.startNow")}
+                        {t("landing.cta.primaryButton")}
                       </Button>
-                      
                       <Button
                         variant="outlined"
                         size="large"
-                        onClick={() => smoothScrollTo("como-funciona")}
                         startIcon={<PlayArrowIcon />}
                         sx={{
                           border: `2px solid ${theme.palette.primary.main}`,
                           color: theme.palette.primary.main,
                           px: 6,
-                          py: 2.5,
-                          borderRadius: 3,
+                          py: 2,
+                          borderRadius: theme.shape.borderRadius,
                           fontWeight: 700,
-                          fontSize: "1.125rem",
+                          fontSize: "1.1rem",
                           textTransform: "none",
-                          minWidth: 200,
-                          transition: "all 0.3s ease",
                           "&:hover": {
+                            border: `2px solid ${theme.palette.primary.dark}`,
                             background: theme.palette.primary.main,
-                            color: "#ffffff",
-                            transform: "translateY(-3px)",
-                            boxShadow: `0 25px 50px ${theme.palette.primary.main}40`,
+                            color: theme.palette.primary.contrastText,
+                            transform: "translateY(-2px)",
+                            boxShadow: theme.shadows[4],
                           },
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         }}
+                        onClick={() => smoothScrollTo("demo")}
                       >
-                        {t("landing.hero.viewDemo")}
+                        {t("landing.cta.secondaryButton")}
                       </Button>
                     </Stack>
                   </AnimatedSection>
@@ -624,7 +738,7 @@ export default function HomePage() {
                 px: { xs: 2, sm: 4, lg: 0 },
               }}
             >
-              <AnimatedSection animationType="scale" delay={0.8}>
+              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.HERO + 0.8}>
                 <Box
                   sx={{
                     position: "relative",
@@ -699,9 +813,9 @@ export default function HomePage() {
           sx={{ position: "relative", zIndex: 2, px: { xs: 3, sm: 4, md: 0 } }}
         >
           {/* Section Header */}
-          <AnimatedSection animationType="slideUp" delay={0.2}>
+          <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
             <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-              <AnimatedSection animationType="scale" delay={0.4}>
+              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
                 <Box
                   sx={{
                     display: "inline-flex",
@@ -730,11 +844,11 @@ export default function HomePage() {
                       letterSpacing: "0.1em",
                     }}
                   >
-                    {t("landing.features.benefits.title")}
+                    {t("landing.features.badges.benefits")}
                   </Typography>
                 </Box>
               </AnimatedSection>
-              <AnimatedSection animationType="slideUp" delay={0.6}>
+              <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.4}>
                 <Typography
                   variant="h2"
                   sx={{
@@ -743,23 +857,12 @@ export default function HomePage() {
                     color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                     fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
                     lineHeight: 1.1,
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
-                        : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
                   }}
                 >
-                  <TypewriterText 
-                    text={t("landing.features.title")} 
-                    speed={80} 
-                    delay={0.8}
-                  />
+                  {getFeaturesTitle()}
                 </Typography>
               </AnimatedSection>
-              <AnimatedSection animationType="slideUp" delay={0.8}>
+              <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.6}>
                 <Typography
                   variant="h5"
                   sx={{
@@ -777,7 +880,7 @@ export default function HomePage() {
           </AnimatedSection>
 
           {/* Benefits Grid */}
-          <StaggeredContainer animationType="slideUp" staggerDelay={0.25}>
+          <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.FEATURES}>
             <Grid container spacing={4}>
               {[
                 {
@@ -789,7 +892,7 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                  badge: "Gestión",
+                  badge: t("landing.features.cardBadges.management"),
                 },
                 {
                   icon: <ZapIcon style={{ fontSize: 48 }} />,
@@ -802,7 +905,7 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-                  badge: "Automatización",
+                  badge: t("landing.features.cardBadges.automation"),
                 },
                 {
                   icon: <StarIcon style={{ fontSize: 48 }} />,
@@ -815,7 +918,7 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-                  badge: "Experiencia",
+                  badge: t("landing.features.cardBadges.experience"),
                 },
                 {
                   icon: <BarChartIcon style={{ fontSize: 48 }} />,
@@ -828,7 +931,7 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-                  badge: "Analytics",
+                  badge: t("landing.features.cardBadges.analytics"),
                 },
                 {
                   icon: <ShieldIcon style={{ fontSize: 48 }} />,
@@ -841,7 +944,7 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-                  badge: "Seguridad",
+                  badge: t("landing.features.cardBadges.security"),
                 },
                 {
                   icon: <HelpIcon style={{ fontSize: 48 }} />,
@@ -852,13 +955,13 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-                  badge: "Soporte",
+                  badge: t("landing.features.cardBadges.support"),
                 },
               ].map((benefit, index) => (
                 <Grid item xs={12} md={6} lg={4} key={index}>
                   <AnimatedSection 
                     animationType="slideUp" 
-                    delay={0.2 * index}
+                    delay={STAGGER_DELAYS.FEATURES * index}
                     threshold={0.15}
                     duration={1}
                   >
@@ -1141,9 +1244,9 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
                       {/* Section Header */}
-            <AnimatedSection animationType="slideUp" delay={0.2}>
+            <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
               <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={0.4}>
+                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -1172,11 +1275,11 @@ export default function HomePage() {
                         letterSpacing: "0.1em",
                       }}
                     >
-                      Proceso Simple
+                      {t("landing.features.badges.process")}
                     </Typography>
                   </Box>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.6}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.4}>
                   <Typography
                     variant="h2"
                     sx={{
@@ -1201,7 +1304,7 @@ export default function HomePage() {
                     />
                   </Typography>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.8}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.6}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -1219,7 +1322,7 @@ export default function HomePage() {
             </AnimatedSection>
 
           {/* Process Steps */}
-          <StaggeredContainer animationType="slideUp" staggerDelay={0.2}>
+          <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.FEATURES}>
             <Grid container spacing={6}>
               {[
                 {
@@ -1368,9 +1471,9 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
                       {/* Section Header */}
-            <AnimatedSection animationType="slideUp" delay={0.2}>
+            <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.TESTIMONIALS}>
               <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={0.4}>
+                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.TESTIMONIALS}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -1399,11 +1502,11 @@ export default function HomePage() {
                         letterSpacing: "0.1em",
                       }}
                     >
-                      Experiencias Reales
+                      {t("landing.features.badges.testimonials")}
                     </Typography>
                   </Box>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.6}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.TESTIMONIALS + 0.4}>
                   <Typography
                     variant="h2"
                     sx={{
@@ -1428,7 +1531,7 @@ export default function HomePage() {
                     />
                   </Typography>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.8}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.TESTIMONIALS + 0.6}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -1439,14 +1542,14 @@ export default function HomePage() {
                       fontWeight: 400,
                     }}
                   >
-                    {t("landing.testimonials.subtitle")}
+                    {getTestimonialsSubtitle()}
                   </Typography>
                 </AnimatedSection>
               </Box>
             </AnimatedSection>
 
           {/* Testimonials Grid */}
-          <StaggeredContainer animationType="slideUp" staggerDelay={0.15}>
+          <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.TESTIMONIALS}>
             <Grid container spacing={4}>
               {[
                 {
@@ -1589,9 +1692,9 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
                       {/* Section Header */}
-            <AnimatedSection animationType="slideUp" delay={0.2}>
+            <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FAQ}>
               <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={0.4}>
+                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FAQ}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -1620,11 +1723,11 @@ export default function HomePage() {
                         letterSpacing: "0.1em",
                       }}
                     >
-                      Preguntas Frecuentes
+                      {t("landing.features.badges.faq")}
                     </Typography>
                   </Box>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.6}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FAQ + 0.4}>
                   <Typography
                     variant="h2"
                     sx={{
@@ -1649,7 +1752,7 @@ export default function HomePage() {
                     />
                   </Typography>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.8}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FAQ + 0.6}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -1660,14 +1763,14 @@ export default function HomePage() {
                       fontWeight: 400,
                     }}
                   >
-                    {t("landing.faq.subtitle")}
+                    {getFaqSubtitle()}
                   </Typography>
                 </AnimatedSection>
               </Box>
             </AnimatedSection>
 
           {/* FAQ Grid */}
-          <StaggeredContainer animationType="slideUp" staggerDelay={0.12}>
+          <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.FAQ}>
             <Grid container spacing={4}>
               {[
                 {
@@ -1694,83 +1797,86 @@ export default function HomePage() {
                   question: t("landing.faq.faq6.question"),
                   answer: t("landing.faq.faq6.answer"),
                 },
-              ].map((faq, index) => (
-                <Grid item xs={12} md={6} key={index}>
-                  <AnimatedSection animationType="scale" delay={0.1 * index}>
-                    <Card
-                      sx={{
-                        background:
-                          theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
-                        boxShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 4px 20px rgba(0,0,0,0.3)"
-                            : "0 4px 20px rgba(0,0,0,0.08)",
-                        border:
-                          theme.palette.mode === "dark"
-                            ? "1px solid rgba(255,255,255,0.05)"
-                            : "1px solid rgba(0,0,0,0.05)",
-                        borderRadius: 2,
-                        p: 4,
-                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                        position: "relative",
-                        overflow: "hidden",
-                        cursor: "pointer",
-                        "&:hover": {
-                          transform: "translateY(-8px) scale(1.02)",
+              ].map((faq, index) => {
+
+                return (
+                  <Grid item xs={12} md={6} key={index}>
+                    <AnimatedSection animationType="scale" delay={0.1 * index}>
+                      <Card
+                        sx={{
+                          background:
+                            theme.palette.mode === "dark" ? "#2d2d2d" : "#ffffff",
                           boxShadow:
                             theme.palette.mode === "dark"
-                              ? "0 20px 40px rgba(0,0,0,0.5)"
-                              : "0 20px 40px rgba(0,0,0,0.12)",
-                        },
-                        "&::before": {
-                          content: '""',
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          height: "3px",
-                          background: "linear-gradient(90deg, #4facfe, #00f2fe, #43e97b)",
-                          opacity: 0,
-                          transition: "opacity 0.3s ease",
-                        },
-                        "&:hover::before": {
-                          opacity: 1,
-                        },
-                      }}
-                    >
-                      <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: 700,
-                            color:
-                              theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                            mb: 2,
-                            transition: "all 0.3s ease",
-                            "&:hover": {
-                              color: theme.palette.mode === "dark" ? "#4facfe" : "#0056b3",
-                            },
-                          }}
-                        >
-                          {faq.question}
-                        </Typography>
-                      </AnimatedSection>
-                      <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            color:
-                              theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                            lineHeight: 1.6,
-                          }}
-                        >
-                          {faq.answer}
-                        </Typography>
-                      </AnimatedSection>
-                    </Card>
-                  </AnimatedSection>
-                </Grid>
-              ))}
+                              ? "0 4px 20px rgba(0,0,0,0.3)"
+                              : "0 4px 20px rgba(0,0,0,0.08)",
+                          border:
+                            theme.palette.mode === "dark"
+                              ? "1px solid rgba(255,255,255,0.05)"
+                              : "1px solid rgba(0,0,0,0.05)",
+                          borderRadius: 2,
+                          p: 4,
+                          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                          position: "relative",
+                          overflow: "hidden",
+                          cursor: "pointer",
+                          "&:hover": {
+                            transform: "translateY(-8px) scale(1.02)",
+                            boxShadow:
+                              theme.palette.mode === "dark"
+                                ? "0 20px 40px rgba(0,0,0,0.5)"
+                                : "0 20px 40px rgba(0,0,0,0.12)",
+                          },
+                          "&::before": {
+                            content: '""',
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            height: "3px",
+                            background: "linear-gradient(90deg, #4facfe, #00f2fe, #43e97b)",
+                            opacity: 0,
+                            transition: "opacity 0.3s ease",
+                          },
+                          "&:hover::before": {
+                            opacity: 1,
+                          },
+                        }}
+                      >
+                        <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontWeight: 700,
+                              color:
+                                theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                              mb: 2,
+                              transition: "all 0.3s ease",
+                              "&:hover": {
+                                color: theme.palette.mode === "dark" ? "#4facfe" : "#0056b3",
+                              },
+                            }}
+                          >
+                            {faq.question}
+                          </Typography>
+                        </AnimatedSection>
+                        <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              color:
+                                theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                              lineHeight: 1.6,
+                            }}
+                          >
+                            {faq.answer}
+                          </Typography>
+                        </AnimatedSection>
+                      </Card>
+                    </AnimatedSection>
+                  </Grid>
+                );
+              })}
             </Grid>
           </StaggeredContainer>
         </Container>
@@ -1812,9 +1918,9 @@ export default function HomePage() {
         id="cta"
       >
         <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
-                      <AnimatedSection animationType="slideUp" delay={0.2}>
+                      <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA}>
               <Box sx={{ textAlign: "center", px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={0.4}>
+                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.CTA}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -1843,11 +1949,11 @@ export default function HomePage() {
                         letterSpacing: "0.1em",
                       }}
                     >
-                      ¡Comienza Ahora!
+                      {t("landing.features.badges.cta")}
                     </Typography>
                   </Box>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.6}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA + 0.4}>
                   <Typography
                     variant="h2"
                     sx={{
@@ -1872,7 +1978,7 @@ export default function HomePage() {
                     />
                   </Typography>
                 </AnimatedSection>
-                <AnimatedSection animationType="slideUp" delay={0.8}>
+                <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA + 0.6}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -1887,13 +1993,13 @@ export default function HomePage() {
                       mb: 6,
                     }}
                   >
-                    {t("landing.cta.subtitle")}
+                    {getCtaSubtitle()}
                   </Typography>
                 </AnimatedSection>
               </Box>
             </AnimatedSection>
           
-          <AnimatedSection animationType="slideUp" delay={1.0}>
+          <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA + 0.8}>
             <Box
               sx={{
                 display: "flex",
@@ -1905,34 +2011,23 @@ export default function HomePage() {
               <Button
                 variant="contained"
                 size="large"
+                endIcon={<RocketIcon />}
                 sx={{
-                  background:
-                    theme.palette.mode === "dark"
-                      ? "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)"
-                      : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                  color: theme.palette.mode === "dark" ? "#000000" : "#ffffff",
+                  background: theme.palette.primary.main,
+                  color: theme.palette.primary.contrastText,
                   px: 6,
                   py: 2,
-                  borderRadius: 2,
+                  borderRadius: theme.shape.borderRadius,
                   fontWeight: 700,
                   fontSize: "1.1rem",
                   textTransform: "none",
-                  boxShadow:
-                    theme.palette.mode === "dark"
-                      ? "0 8px 32px rgba(255,255,255,0.3)"
-                      : "0 8px 32px rgba(0,0,0,0.3)",
+                  boxShadow: theme.shadows[4],
                   "&:hover": {
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)"
-                        : "linear-gradient(135deg, #333333 0%, #000000 100%)",
+                    background: theme.palette.primary.dark,
                     transform: "translateY(-2px)",
-                    boxShadow:
-                      theme.palette.mode === "dark"
-                        ? "0 12px 40px rgba(255,255,255,0.4)"
-                        : "0 12px 40px rgba(0,0,0,0.4)",
+                    boxShadow: theme.shadows[8],
                   },
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 onClick={() => smoothScrollTo("contacto")}
               >
@@ -1941,30 +2036,24 @@ export default function HomePage() {
               <Button
                 variant="outlined"
                 size="large"
+                startIcon={<PlayArrowIcon />}
                 sx={{
-                  border:
-                    theme.palette.mode === "dark"
-                      ? "2px solid rgba(255,255,255,0.3)"
-                      : "2px solid rgba(0,0,0,0.3)",
-                  color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                  border: `2px solid ${theme.palette.primary.main}`,
+                  color: theme.palette.primary.main,
                   px: 6,
                   py: 2,
-                  borderRadius: 2,
+                  borderRadius: theme.shape.borderRadius,
                   fontWeight: 700,
                   fontSize: "1.1rem",
                   textTransform: "none",
                   "&:hover": {
-                    border:
-                      theme.palette.mode === "dark"
-                        ? "2px solid rgba(255,255,255,0.5)"
-                        : "2px solid rgba(0,0,0,0.5)",
-                    background:
-                      theme.palette.mode === "dark"
-                        ? "rgba(255,255,255,0.1)"
-                        : "rgba(0,0,0,0.1)",
+                    border: `2px solid ${theme.palette.primary.dark}`,
+                    background: theme.palette.primary.main,
+                    color: theme.palette.primary.contrastText,
                     transform: "translateY(-2px)",
+                    boxShadow: theme.shadows[4],
                   },
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 onClick={() => smoothScrollTo("demo")}
               >
@@ -2013,9 +2102,9 @@ export default function HomePage() {
           <Grid container spacing={6}>
             {/* Company Info */}
             <Grid item xs={12} lg={4}>
-              <AnimatedSection animationType="slideUp" delay={0.2}>
+              <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
                 <Box sx={{ mb: 6 }}>
-                  <AnimatedSection animationType="scale" delay={0.4}>
+                  <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
                       <Box
                         sx={{
@@ -2053,7 +2142,7 @@ export default function HomePage() {
                         </Typography>
                       </Box>
                       <Box>
-                        <AnimatedSection animationType="slideUp" delay={0.6}>
+                        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.4}>
                           <Typography
                             variant="h5"
                             sx={{
@@ -2079,10 +2168,7 @@ export default function HomePage() {
                             <Box
                               component="span"
                               sx={{
-                                color:
-                                  theme.palette.mode === "dark"
-                                    ? "#00d4ff"
-                                    : "#0056b3",
+                                color: "#3b82f6",
                                 fontWeight: 700,
                               }}
                             >
@@ -2090,7 +2176,7 @@ export default function HomePage() {
                             </Box>
                           </Typography>
                         </AnimatedSection>
-                        <AnimatedSection animationType="slideUp" delay={0.8}>
+                        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.6}>
                           <Typography
                             variant="body2"
                             sx={{
@@ -2107,7 +2193,7 @@ export default function HomePage() {
                     </Box>
                   </AnimatedSection>
                   
-                  <AnimatedSection animationType="slideUp" delay={1.0}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.8}>
                     <Typography
                   variant="body1"
                   sx={{
@@ -2504,7 +2590,7 @@ export default function HomePage() {
                   }}
                   onClick={() => smoothScrollTo("faq")}
                 >
-                  {t("landing.faq.title")}
+                  {t("landing.faq.shortTitle")}
                 </Button>
               </Box>
 
@@ -2698,7 +2784,7 @@ export default function HomePage() {
                 opacity: 0.7,
               }}
             >
-              {t("landing.footer.copyright")}
+              {getFooterCopyright()}
             </Typography>
 
             <Box sx={{ display: "flex", gap: 3 }}>
