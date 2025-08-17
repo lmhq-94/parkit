@@ -2,36 +2,39 @@
 
 import React, { useState } from 'react';
 import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
+  Button,
+  TextField,
+  Box,
+  Typography,
+  Alert,
+  CircularProgress,
   Stepper,
   Step,
   StepLabel,
   StepContent,
+  Card,
+  CardContent,
+  Grid,
   Chip,
-  Alert,
   Divider,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import {
-  Payment,
-  CreditCard,
-  Receipt,
-  CheckCircle,
-  Error,
-  Schedule,
-} from '@mui/icons-material';
+  PaymentIcon,
+  TimerIcon,
+  SuccessIcon,
+  ErrorIcon,
+  InfoIcon,
+  CloseIcon,
+  SecurityIcon,
+  SecurityLockIcon,
+  AwardIcon,
+} from './icons';
 
 interface PaymentDetails {
   amount: number;
@@ -159,7 +162,7 @@ export function PaymentProcessor({
     <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
       <DialogTitle>
         <Box display="flex" alignItems="center" gap={1}>
-          <Payment />
+          <PaymentIcon />
           <Typography variant="h6">
             Payment Processing
           </Typography>
@@ -203,20 +206,18 @@ export function PaymentProcessor({
 
                     {index === 1 && (
                       <Box sx={{ display: 'grid', gap: 2 }}>
-                        <FormControl fullWidth>
-                          <InputLabel>Payment Method</InputLabel>
-                          <Select
-                            value={paymentMethod}
+                        {/* Payment Method Selection */}
+                        <Box sx={{ display: 'grid', gap: 2 }}>
+                          <TextField
                             label="Payment Method"
+                            value={paymentMethod}
                             onChange={(e) => setPaymentMethod(e.target.value)}
-                          >
-                            <MenuItem value="credit_card">Credit Card</MenuItem>
-                            <MenuItem value="debit_card">Debit Card</MenuItem>
-                            <MenuItem value="cash">Cash</MenuItem>
-                            <MenuItem value="transfer">Bank Transfer</MenuItem>
-                          </Select>
-                        </FormControl>
+                            fullWidth
+                          />
+                          {/* Add more payment method options here if needed */}
+                        </Box>
 
+                        {/* Credit Card Details */}
                         {paymentMethod.includes('card') && (
                           <Box sx={{ display: 'grid', gap: 2 }}>
                             <TextField
@@ -290,7 +291,7 @@ export function PaymentProcessor({
 
                     {success && (
                       <Box sx={{ textAlign: 'center', py: 2 }}>
-                        <CheckCircle sx={{ fontSize: 64, color: 'success.main', mb: 2 }} />
+                        <SuccessIcon style={{ fontSize: 48, color: '#2e7d32', marginBottom: 16 }} />
                         <Typography variant="h6" gutterBottom>
                           Payment Successful!
                         </Typography>
@@ -312,7 +313,7 @@ export function PaymentProcessor({
                           variant="contained"
                           onClick={handleProcessPayment}
                           disabled={processing}
-                          startIcon={processing ? <Schedule /> : <Payment />}
+                          startIcon={processing ? <TimerIcon /> : <PaymentIcon />}
                         >
                           {processing ? 'Processing...' : 'Process Payment'}
                         </Button>

@@ -1,27 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  Box,
   IconButton,
   Menu,
   MenuItem,
   ListItemIcon,
   ListItemText,
-  Divider,
+  Box,
+  useTheme,
   Typography,
-  useTheme as useMuiTheme
+  Divider,
 } from '@mui/material';
 import {
-  Settings,
-  LightMode,
-  DarkMode,
-  Business,
-  Palette,
-  Language,
-  Translate
-} from '@mui/icons-material';
+  BusinessIcon,
+  ThemeIcon,
+  DarkModeIcon,
+  LightModeIcon,
+  TranslateIcon,
+  LanguageIcon,
+} from './icons';
 
 export const ThemeLanguageSwitcher: React.FC = () => {
-  const muiTheme = useMuiTheme();
+  const muiTheme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [currentTheme, setCurrentTheme] = React.useState('corporate');
   const [currentLanguage, setCurrentLanguage] = React.useState('es');
@@ -61,17 +60,17 @@ export const ThemeLanguageSwitcher: React.FC = () => {
     {
       key: 'corporate' as const,
       label: 'Corporativo',
-      icon: <Business sx={{ fontSize: 20 }} />
+      icon: <BusinessIcon style={{ fontSize: 20 }} />
     },
     {
       key: 'classic' as const,
       label: 'Clásico',
-      icon: <Palette sx={{ fontSize: 20 }} />
+      icon: <ThemeIcon style={{ fontSize: 20 }} />
     },
     {
       key: 'dark' as const,
       label: 'Oscuro',
-      icon: <DarkMode sx={{ fontSize: 20 }} />
+      icon: <DarkModeIcon style={{ fontSize: 20 }} />
     }
   ];
 
@@ -79,12 +78,12 @@ export const ThemeLanguageSwitcher: React.FC = () => {
     {
       key: 'es',
       label: 'Español',
-      icon: <Translate sx={{ fontSize: 20 }} />
+      icon: <TranslateIcon style={{ fontSize: 20 }} />
     },
     {
       key: 'en',
       label: 'English',
-      icon: <Language sx={{ fontSize: 20 }} />
+      icon: <LanguageIcon style={{ fontSize: 20 }} />
     }
   ];
 
@@ -98,9 +97,9 @@ export const ThemeLanguageSwitcher: React.FC = () => {
             backgroundColor: muiTheme.palette.action.hover
           }
         }}
-      >
-        <Settings />
-      </IconButton>
+              >
+          <ThemeIcon />
+        </IconButton>
       
       <Menu
         anchorEl={anchorEl}

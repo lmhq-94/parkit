@@ -9,41 +9,41 @@ import {
   Grid,
 } from '@mui/material';
 import {
-  Add,
-  QrCode,
-  DirectionsCar,
-  Payment,
-  Schedule,
-} from '@mui/icons-material';
+  AddIcon,
+  QrCodeIcon,
+  VehicleIcon,
+  PaymentIcon,
+  ScheduleIcon,
+} from '../icons';
 
 const quickActions = [
   {
     title: 'New Reservation',
-    icon: <Add />,
+    icon: <AddIcon />,
     color: 'primary',
     description: 'Book a parking spot',
   },
   {
     title: 'Scan QR Code',
-    icon: <QrCode />,
+    icon: <QrCodeIcon />,
     color: 'secondary',
     description: 'Scan parking QR code',
   },
   {
     title: 'Add Vehicle',
-    icon: <DirectionsCar />,
+    icon: <VehicleIcon />,
     color: 'success',
     description: 'Register new vehicle',
   },
   {
     title: 'Make Payment',
-    icon: <Payment />,
+    icon: <PaymentIcon />,
     color: 'info',
     description: 'Process payment',
   },
   {
     title: 'View Schedule',
-    icon: <Schedule />,
+    icon: <ScheduleIcon />,
     color: 'warning',
     description: 'Check reservations',
   },

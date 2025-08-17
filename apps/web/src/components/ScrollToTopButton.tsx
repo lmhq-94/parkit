@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Box, IconButton, useTheme } from '@mui/material';
-import { KeyboardArrowUp } from '@mui/icons-material';
+import { KeyboardArrowUpIcon } from './icons';
 import { ThemeContext } from '../providers';
 
 interface ScrollToTopButtonProps {
@@ -89,7 +89,7 @@ export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ scrollY })
         }}
         aria-label="Volver arriba"
       >
-        <KeyboardArrowUp sx={{ fontSize: 24 }} />
+        <KeyboardArrowUpIcon style={{ fontSize: 24 }} />
       </IconButton>
     </Box>
   );

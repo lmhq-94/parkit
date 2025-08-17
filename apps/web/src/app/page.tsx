@@ -25,33 +25,48 @@ import {
 import { AnimatedSection, StaggeredContainer, ParallaxSection, TypewriterText } from "../components/animations";
 import {
   CloseIcon,
-  StarIcon,
+  PremiumIcon as StarIcon,
   PhoneIcon,
-  MailIcon,
-  MapPinIcon,
-  MessageIcon,
+  EmailIcon as MailIcon,
+  LocationIcon as MapPinIcon,
+  ChatIcon as MessageIcon,
   LinkIcon,
   ShareIcon,
-  HeartIcon,
-  TrendingUpIcon,
-  ZapIcon,
-  BarChartIcon,
-  ShieldIcon,
+  LikeIcon as HeartIcon,
+  GrowthIcon as TrendingUpIcon,
+  PerformanceIcon as ZapIcon,
+  AnalyticsIcon as BarChartIcon,
+  SecurityIcon as ShieldIcon,
   HelpIcon,
   QrCodeIcon,
-  SmartphoneIcon,
-  BarChartIcon as DashboardIcon,
+  MobileIcon,
+  DashboardIcon,
   LoginIcon,
-  CarIcon,
-  CarIcon as DirectionsCarIcon,
-  CreditCardIcon,
+  VehicleIcon as CarIcon,
+  VehicleIcon as DirectionsCarIcon,
+  PaymentIcon as CreditCardIcon,
   AwardIcon,
-  RocketIcon,
+  InnovationIcon as RocketIcon,
   PlayIcon,
   ArrowUpIcon,
-  WorkspacePremiumIcon,
-  PlayArrowIcon,
-  LocalParkingIcon,
+  CrownIcon as WorkspacePremiumIcon,
+  PlayIcon as PlayArrowIcon,
+  ParkingIcon as LocalParkingIcon,
+  OfficeIcon as BuildingIcon,
+  CalendarIcon,
+  HistoryIcon,
+  ConnectivityIcon as WifiIcon,
+  ManagementIcon,
+  AutomationIcon,
+  ExperienceIcon,
+  AnalyticsIcon,
+  SecurityIcon,
+  SupportIcon,
+  SettingsIcon,
+  ThumbsUpIcon,
+  PieChartIcon,
+  SecurityLockIcon as LockIcon,
+  MonitorIcon,
 } from "../components/icons";
 import { useAuthStore } from "../store/authStore";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
@@ -884,7 +899,7 @@ export default function HomePage() {
             <Grid container spacing={4}>
               {[
                 {
-                  icon: <TrendingUpIcon style={{ fontSize: 48 }} />,
+                  icon: <ManagementIcon style={{ fontSize: 64 }} />, // Data management for business
                   title: t("landing.features.benefits.revenue.title"),
                   description: t("landing.features.benefits.revenue.description"),
                   longDescription: t(
@@ -895,7 +910,7 @@ export default function HomePage() {
                   badge: t("landing.features.cardBadges.management"),
                 },
                 {
-                  icon: <ZapIcon style={{ fontSize: 48 }} />,
+                  icon: <AutomationIcon style={{ fontSize: 64 }} />, // Automation for efficiency
                   title: t("landing.features.benefits.automation.title"),
                   description: t(
                     "landing.features.benefits.automation.description"
@@ -908,7 +923,7 @@ export default function HomePage() {
                   badge: t("landing.features.cardBadges.automation"),
                 },
                 {
-                  icon: <StarIcon style={{ fontSize: 48 }} />,
+                  icon: <ExperienceIcon style={{ fontSize: 64 }} />, // User experience focus
                   title: t("landing.features.benefits.experience.title"),
                   description: t(
                     "landing.features.benefits.experience.description"
@@ -921,7 +936,7 @@ export default function HomePage() {
                   badge: t("landing.features.cardBadges.experience"),
                 },
                 {
-                  icon: <BarChartIcon style={{ fontSize: 48 }} />,
+                  icon: <AnalyticsIcon style={{ fontSize: 64 }} />, // Analytics for insights
                   title: t("landing.features.benefits.analytics.title"),
                   description: t(
                     "landing.features.benefits.analytics.description"
@@ -934,7 +949,7 @@ export default function HomePage() {
                   badge: t("landing.features.cardBadges.analytics"),
                 },
                 {
-                  icon: <ShieldIcon style={{ fontSize: 48 }} />,
+                  icon: <SecurityIcon style={{ fontSize: 64 }} />, // Security & protection
                   title: t("landing.features.benefits.security.title"),
                   description: t(
                     "landing.features.benefits.security.description"
@@ -947,7 +962,7 @@ export default function HomePage() {
                   badge: t("landing.features.cardBadges.security"),
                 },
                 {
-                  icon: <HelpIcon style={{ fontSize: 48 }} />,
+                  icon: <SupportIcon style={{ fontSize: 64 }} />, // Customer support
                   title: t("landing.features.benefits.support.title"),
                   description: t("landing.features.benefits.support.description"),
                   longDescription: t(
@@ -968,7 +983,7 @@ export default function HomePage() {
                     <Card
                     sx={{
                       height: "100%",
-                      minHeight: 400,
+                      minHeight: 500, // Increased from 400 to 500
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)"
@@ -981,29 +996,22 @@ export default function HomePage() {
                         theme.palette.mode === "dark"
                           ? "1px solid rgba(255,255,255,0.1)"
                           : "1px solid rgba(0,0,0,0.05)",
-                      borderRadius: 2,
+                      borderRadius: theme.shape.borderRadius, // Use theme borderRadius
                       transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
                       position: "relative",
-                      overflow: "hidden",
+                      overflow: "visible",
                       display: "flex",
                       flexDirection: "column",
                       cursor: "pointer",
-                      animation: `cardEntrance 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) ${0.15 * index}s both, float 6s ease-in-out infinite 1s`,
+                      animation: `cardEntrance 0.8s ease-out ${0.1 * index}s both, float 4s ease-in-out infinite 1s`,
                       "@keyframes cardEntrance": {
                         "0%": {
                           opacity: 0,
-                          transform: "translateY(80px) scale(0.7) rotateX(15deg)",
-                          boxShadow: `0 0 0 rgba(0,0,0,0)`,
-                        },
-                        "50%": {
-                          opacity: 0.8,
-                          transform: "translateY(-10px) scale(1.05) rotateX(0deg)",
-                          boxShadow: `0 0 30px ${benefit.gradient}30`,
+                          transform: "translateY(40px) scale(0.9)",
                         },
                         "100%": {
                           opacity: 1,
-                          transform: "translateY(0px) scale(1) rotateX(0deg)",
-                          boxShadow: `0 4px 20px rgba(0,0,0,0.08), 0 0 20px ${benefit.gradient}10`,
+                          transform: "translateY(0px) scale(1)",
                         },
                       },
                       "@keyframes float": {
@@ -1011,38 +1019,29 @@ export default function HomePage() {
                           transform: "translateY(0px)",
                         },
                         "50%": {
-                          transform: "translateY(-8px)",
+                          transform: "translateY(-4px)",
                         },
                       },
                       "&:hover": {
-                        animation: "float 6s ease-in-out infinite",
-                        transform: "translateY(-12px) scale(1.02)",
+                        transform: "translateY(-8px) scale(1.02)",
                         boxShadow:
                           theme.palette.mode === "dark"
-                            ? "0 25px 50px rgba(0,0,0,0.6)"
-                            : "0 25px 50px rgba(0,0,0,0.2)",
+                            ? "0 20px 40px rgba(0,0,0,0.5)"
+                            : "0 20px 40px rgba(0,0,0,0.15)",
                         "&::before": {
                           opacity: 1,
                         },
-                        "&::after": {
-                          width: "200%",
-                          height: "200%",
-                        },
                         "& .feature-icon": {
-                          transform: "scale(1.15) rotate(8deg)",
+                          transform: "scale(1.1)",
                           background: benefit.gradient,
-                          boxShadow: `0 15px 35px ${benefit.gradient}40`,
+                          boxShadow: `0 10px 25px ${benefit.gradient}50`,
                         },
                         "& .feature-badge": {
-                          transform: "scale(1.15) rotate(2deg)",
-                          boxShadow: `0 8px 20px ${benefit.gradient}60`,
+                          transform: "scale(1.1)",
+                          boxShadow: `0 6px 15px ${benefit.gradient}70`,
                         },
                         "& .feature-title": {
-                          transform: "translateY(-4px)",
                           color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                        },
-                        "& .feature-description": {
-                          transform: "translateY(-2px)",
                         },
                       },
                       "&::before": {
@@ -1063,22 +1062,22 @@ export default function HomePage() {
                         left: "50%",
                         width: "0%",
                         height: "0%",
-                        background: `radial-gradient(circle, ${benefit.gradient}20 0%, transparent 70%)`,
+                        background: `radial-gradient(circle, ${benefit.gradient}15 0%, transparent 70%)`,
                         borderRadius: "50%",
                         transform: "translate(-50%, -50%)",
-                        transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+                        transition: "all 0.4s ease",
                         zIndex: 0,
-                        animation: `waveExpand 1.5s ease-out ${0.15 * index}s both`,
+                        animation: `waveExpand 1s ease-out ${0.1 * index}s both`,
                       },
                       "@keyframes waveExpand": {
                         "0%": {
                           width: "0%",
                           height: "0%",
-                          opacity: 0.8,
+                          opacity: 0.6,
                         },
                         "100%": {
-                          width: "200%",
-                          height: "200%",
+                          width: "150%",
+                          height: "150%",
                           opacity: 0,
                         },
                       },
@@ -1101,7 +1100,7 @@ export default function HomePage() {
                   >
                     <CardContent
                       sx={{
-                        p: 5,
+                        p: 6, // Increased from 5 to 6
                         textAlign: "center",
                         position: "relative",
                         display: "flex",
@@ -1115,19 +1114,19 @@ export default function HomePage() {
                         className="feature-badge"
                         sx={{
                           position: "absolute",
-                          top: 16,
-                          right: 16,
+                          top: 20, // Increased from 16 to 20
+                          right: 20, // Increased from 16 to 20
                           background: benefit.gradient,
                           color: "#ffffff",
-                          px: 2,
-                          py: 0.5,
-                          borderRadius: 1,
-                          fontSize: "0.75rem",
+                          px: 3, // Increased from 2 to 3
+                          py: 1, // Increased from 0.5 to 1
+                          borderRadius: theme.shape.borderRadius, // Use theme borderRadius
+                          fontSize: "0.875rem", // Increased from 0.75rem to 0.875rem
                           fontWeight: 700,
                           letterSpacing: "0.05em",
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           zIndex: 2,
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.25)", // Enhanced shadow
                           backdropFilter: "blur(10px)",
                           animation: `fadeInUp 0.6s ease-out ${0.3 + (0.15 * index)}s both`,
                           "&::before": {
@@ -1138,7 +1137,7 @@ export default function HomePage() {
                             right: 0,
                             bottom: 0,
                             background: benefit.gradient,
-                            borderRadius: 1,
+                            borderRadius: theme.shape.borderRadius,
                             opacity: 0.8,
                             zIndex: -1,
                           },
@@ -1151,8 +1150,8 @@ export default function HomePage() {
                       <Box
                         className="feature-icon"
                         sx={{
-                          width: 100,
-                          height: 100,
+                          width: 120, // Reduced from 140 to 120 for better proportion
+                          height: 120, // Reduced from 140 to 120 for better proportion
                           background:
                             theme.palette.mode === "dark"
                               ? "linear-gradient(135deg, #3d3d3d 0%, #2a2a2a 100%)"
@@ -1161,13 +1160,13 @@ export default function HomePage() {
                           alignItems: "center",
                           justifyContent: "center",
                           mx: "auto",
-                          mb: 3,
+                          mb: 4,
                           borderRadius: "50%",
                           transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                           boxShadow:
                             theme.palette.mode === "dark"
-                              ? "0 8px 25px rgba(0,0,0,0.3)"
-                              : "0 8px 25px rgba(0,0,0,0.1)",
+                              ? "0 12px 35px rgba(0,0,0,0.4)"
+                              : "0 12px 35px rgba(0,0,0,0.15)",
                           position: "relative",
                           zIndex: 1,
                           "& svg": {
@@ -1175,12 +1174,13 @@ export default function HomePage() {
                               theme.palette.mode === "dark"
                                 ? "#ffffff"
                                 : "#000000",
+                            fontSize: "4rem", // Increased to 4rem (64px) for bigger icon
                             transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                            filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
+                            filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.15))",
                           },
                           "&:hover svg": {
                             color: "#ffffff",
-                            filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.2))",
+                            filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.25))",
                           },
                         }}
                       >
@@ -1190,13 +1190,14 @@ export default function HomePage() {
                       {/* Title */}
                       <Typography
                         className="feature-title"
-                        variant="h4"
+                        variant="h3" // Changed from h4 to h3 for larger size
                         sx={{
                           fontWeight: 800,
-                          mb: 2,
+                          mb: 3, // Increased from 2 to 3
                           color:
                             theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                           lineHeight: 1.2,
+                          fontSize: { xs: "1.5rem", md: "1.75rem", lg: "2rem" }, // Responsive font size
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           zIndex: 1,
@@ -1212,9 +1213,10 @@ export default function HomePage() {
                         sx={{
                           color:
                             theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                          lineHeight: 1.6,
-                          mb: 3,
+                          lineHeight: 1.7, // Increased from 1.6 to 1.7
+                          mb: 4, // Increased from 3 to 4
                           fontWeight: 400,
+                          fontSize: "1.1rem", // Increased from default to 1.1rem
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           zIndex: 1,
@@ -1342,7 +1344,7 @@ export default function HomePage() {
                 {
                   step: "02",
                   icon: (
-                    <SmartphoneIcon
+                    <MobileIcon
                       style={{
                         fontSize: 48,
                         color:
@@ -1356,7 +1358,7 @@ export default function HomePage() {
                 {
                   step: "03",
                   icon: (
-                    <DashboardIcon
+                    <MonitorIcon
                       style={{
                         fontSize: 48,
                         color:
@@ -1785,26 +1787,32 @@ export default function HomePage() {
                 {
                   question: t("landing.faq.faq1.question"),
                   answer: t("landing.faq.faq1.answer"),
+                  icon: <QrCodeIcon />, // QR System
                 },
                 {
                   question: t("landing.faq.faq2.question"),
                   answer: t("landing.faq.faq2.answer"),
+                  icon: <BuildingIcon />, // Multiple companies
                 },
                 {
                   question: t("landing.faq.faq3.question"),
                   answer: t("landing.faq.faq3.answer"),
+                  icon: <CalendarIcon />, // Reservations
                 },
                 {
                   question: t("landing.faq.faq4.question"),
                   answer: t("landing.faq.faq4.answer"),
+                  icon: <LocalParkingIcon />, // Parking types
                 },
                 {
                   question: t("landing.faq.faq5.question"),
                   answer: t("landing.faq.faq5.answer"),
+                  icon: <HistoryIcon />, // History/Records
                 },
                 {
                   question: t("landing.faq.faq6.question"),
                   answer: t("landing.faq.faq6.answer"),
+                  icon: <WifiIcon />, // Mobile compatibility
                 },
               ].map((faq, index) => {
                 // Debug: Check if faq5 has content
@@ -1865,21 +1873,55 @@ export default function HomePage() {
                         }}
                       >
                         <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              fontWeight: 700,
-                              color:
-                                theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                              mb: 2,
-                              transition: "all 0.3s ease",
-                              "&:hover": {
-                                color: theme.palette.mode === "dark" ? "#4facfe" : "#0056b3",
-                              },
-                            }}
-                          >
-                            {faq.question}
-                          </Typography>
+                          <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 56,
+                                height: 56,
+                                borderRadius: "50%",
+                                background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
+                                border: `2px solid ${theme.palette.primary.main}30`,
+                                mr: 3,
+                                transition: "all 0.3s ease",
+                                "&:hover": {
+                                  transform: "scale(1.1)",
+                                  background: `linear-gradient(135deg, ${theme.palette.primary.main}25, ${theme.palette.secondary.main}25)`,
+                                  border: `2px solid ${theme.palette.primary.main}50`,
+                                },
+                              }}
+                            >
+                              <Box
+                                component="span"
+                                sx={{
+                                  color: theme.palette.primary.main,
+                                  fontSize: "2rem",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                {faq.icon}
+                              </Box>
+                            </Box>
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                fontWeight: 700,
+                                color:
+                                  theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+                                transition: "all 0.3s ease",
+                                flex: 1,
+                                "&:hover": {
+                                  color: theme.palette.mode === "dark" ? "#4facfe" : "#0056b3",
+                                },
+                              }}
+                            >
+                              {faq.question}
+                            </Typography>
+                          </Box>
                         </AnimatedSection>
                         <AnimatedSection animationType="slideUp" delay={0.3 + (0.1 * index)}>
                           <Typography
@@ -1887,7 +1929,10 @@ export default function HomePage() {
                             sx={{
                               color:
                                 theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                              lineHeight: 1.6,
+                              lineHeight: 1.7,
+                              pl: 7, // Align with the question text
+                              fontSize: "1rem",
+                              fontWeight: 400,
                             }}
                           >
                             {faq.answer}
@@ -2088,141 +2133,70 @@ export default function HomePage() {
       {/* Footer */}
       <Box
         sx={{
-          background:
-            theme.palette.mode === "dark"
-              ? "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)"
-              : "linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%)",
+          background: theme.palette.mode === "dark" 
+            ? "#0f0f0f"
+            : "#f8f9fa",
           color: theme.palette.mode === "dark" ? "white" : "black",
-          py: 10,
-          position: "relative",
-          overflow: "hidden",
+          borderTop: `1px solid ${theme.palette.mode === "dark" ? "#2a2a2a" : "#e9ecef"}`,
         }}
         id="footer"
       >
-        {/* Background Pattern */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              theme.palette.mode === "dark"
-                ? "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%)"
-                : "radial-gradient(circle at 20% 80%, rgba(0,0,0,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,0,0,0.03) 0%, transparent 50%)",
-            pointerEvents: "none",
-          }}
-        />
-
-        <Container
-          maxWidth="xl"
-          sx={{ position: "relative", zIndex: 1, px: { xs: 3, sm: 4, md: 0 } }}
-        >
+        <Container maxWidth="xl" sx={{ py: 6 }}>
           {/* Main Footer Content */}
-          <Grid container spacing={6}>
+          <Grid container spacing={4}>
             {/* Company Info */}
-            <Grid item xs={12} lg={4}>
-              <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
-                <Box sx={{ mb: 6 }}>
-                  <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
-                      <Box
-                        sx={{
-                          width: 48,
-                          height: 48,
-                          background:
-                            theme.palette.mode === "dark"
-                              ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
-                              : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          mr: 3,
-                          borderRadius: "12px",
-                          boxShadow:
-                            theme.palette.mode === "dark"
-                              ? "0 4px 20px rgba(255,255,255,0.1)"
-                              : "0 4px 20px rgba(0,0,0,0.1)",
-                          transition: "all 0.3s ease",
-                          "&:hover": {
-                            transform: "scale(1.1) rotate(5deg)",
-                          },
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            color:
-                              theme.palette.mode === "dark" ? "#000000" : "#ffffff",
-                            fontSize: "2.5rem",
-                            fontWeight: 700,
-                            letterSpacing: "-0.05em",
-                          }}
-                        >
-                          p.
-                        </Typography>
-                      </Box>
-                      <Box>
-                        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.4}>
-                          <Typography
-                            variant="h5"
-                            sx={{
-                              fontWeight: 700,
-                              fontSize: "1.5rem",
-                              letterSpacing: "-0.065em",
-                              display: "flex",
-                              alignItems: "center",
-                            }}
-                          >
-                            <Box
-                              component="span"
-                              sx={{
-                                color:
-                                  theme.palette.mode === "dark"
-                                    ? "#ffffff"
-                                    : "#000000",
-                                fontWeight: 700,
-                              }}
-                            >
-                              park
-                            </Box>
-                            <Box
-                              component="span"
-                              sx={{
-                                color: "#3b82f6",
-                                fontWeight: 700,
-                              }}
-                            >
-                              it.
-                            </Box>
-                          </Typography>
-                        </AnimatedSection>
-                        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.6}>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              opacity: 0.7,
-                              fontWeight: 500,
-                              color:
-                                theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                            }}
-                          >
-                            {t("landing.footer.tagline")}
-                          </Typography>
-                        </AnimatedSection>
-                      </Box>
-                    </Box>
-                  </AnimatedSection>
-                  
-                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.8}>
+            <Grid item xs={12} md={3}>
+              <Box sx={{ mb: 4 }}>
+                {/* Logo */}
+                <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                  <Box
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background: "#3b82f6",
+                      borderRadius: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mr: 2,
+                    }}
+                  >
                     <Typography
-                  variant="body1"
+                      sx={{
+                        color: "#ffffff",
+                        fontSize: "1.5rem",
+                        fontWeight: 800,
+                        letterSpacing: "-0.05em",
+                      }}
+                    >
+                      p.
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: "1.5rem",
+                      letterSpacing: "-0.065em",
+                    }}
+                  >
+                    <Box component="span" sx={{ color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b" }}>
+                      park
+                    </Box>
+                    <Box component="span" sx={{ color: "#3b82f6" }}>
+                      it.
+                    </Box>
+                  </Typography>
+                </Box>
+
+                {/* Description */}
+                <Typography
+                  variant="body2"
                   sx={{
-                    opacity: 0.8,
-                    lineHeight: 1.7,
-                    color:
-                      theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                    mb: 4,
+                    color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                    lineHeight: 1.6,
+                    mb: 3,
+                    fontSize: "0.875rem",
                   }}
                 >
                   {t("landing.contact.info.description")}
@@ -2230,636 +2204,361 @@ export default function HomePage() {
 
                 {/* Social Media */}
                 <Box sx={{ display: "flex", gap: 2 }}>
-                  <IconButton
-                    sx={{
-                      width: 44,
-                      height: 44,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.1)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.2)"
-                          : "1px solid rgba(0,0,0,0.2)",
-                      color: theme.palette.mode === "dark" ? "white" : "black",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.2)"
-                            : "rgba(0,0,0,0.2)",
-                        transform: "translateY(-2px)",
-                      },
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    <LinkIcon style={{ fontSize: 20 }} />
-                  </IconButton>
-                  <IconButton
-                    sx={{
-                      width: 44,
-                      height: 44,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.1)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.2)"
-                          : "1px solid rgba(0,0,0,0.2)",
-                      color: theme.palette.mode === "dark" ? "white" : "black",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.2)"
-                            : "rgba(0,0,0,0.2)",
-                        transform: "translateY(-2px)",
-                      },
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    <ShareIcon style={{ fontSize: 20 }} />
-                  </IconButton>
-                  <IconButton
-                    sx={{
-                      width: 44,
-                      height: 44,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.1)",
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.2)"
-                          : "1px solid rgba(0,0,0,0.2)",
-                      color: theme.palette.mode === "dark" ? "white" : "black",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.2)"
-                            : "rgba(0,0,0,0.2)",
-                        transform: "translateY(-2px)",
-                      },
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    <HeartIcon style={{ fontSize: 20 }} />
-                  </IconButton>
-                </Box>
-              </AnimatedSection>
-            </Box>
-          </AnimatedSection>
-        </Grid>
-
-            {/* Contact Info */}
-            <Grid item xs={12} md={6} lg={4}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 700,
-                  mb: 4,
-                  background:
-                    theme.palette.mode === "dark"
-                      ? "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)"
-                      : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {t("landing.contact.info.title")}
-              </Typography>
-
-              <Box sx={{ mb: 4 }}>
-                <Link
-                  href="tel:+50662164040"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    mb: 3,
-                    p: 2,
-                    transition: "all 0.3s ease",
-                    textDecoration: "none",
-                    color: "inherit",
-                    "&:hover": {
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.05)",
-                      transform: "translateX(4px)",
-                    },
-                  }}
-                >
-                  <PhoneIcon style={{ fontSize: 20, marginRight: 12, opacity: 0.9 }} />
-                  <Box>
-                    <Typography
-                      variant="body2"
+                  {[
+                    { icon: <LinkIcon />, color: "#3b82f6" },
+                    { icon: <ShareIcon />, color: "#8b5cf6" },
+                    { icon: <HeartIcon />, color: "#ef4444" }
+                  ].map((social, index) => (
+                    <Box
+                      key={index}
                       sx={{
-                        opacity: 0.7,
-                        fontSize: "0.75rem",
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#cccccc" : "#666666",
+                        width: 36,
+                        height: 36,
+                        background: theme.palette.mode === "dark" 
+                          ? "#2a2a2a"
+                          : "#ffffff",
+                        border: `1px solid ${theme.palette.mode === "dark" ? "#404040" : "#e9ecef"}`,
+                        borderRadius: "6px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          background: social.color,
+                          borderColor: social.color,
+                          transform: "translateY(-1px)",
+                        },
                       }}
                     >
-                      {t("landing.contact.channels.phone")}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 600,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.contact.info.phone")}
-                    </Typography>
-                  </Box>
-                </Link>
-
-                <Link
-                  href="https://wa.me/50662164040"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    mb: 3,
-                    p: 2,
-                    transition: "all 0.3s ease",
-                    textDecoration: "none",
-                    color: "inherit",
-                    "&:hover": {
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.05)",
-                      transform: "translateX(4px)",
-                    },
-                  }}
-                >
-                  <MessageIcon style={{ fontSize: 20, marginRight: 12, color: "#25D366" }} />
-                  <Box>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.7,
-                        fontSize: "0.75rem",
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                      }}
-                    >
-                      {t("landing.contact.channels.whatsapp")}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 600,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.contact.info.whatsapp")}
-                    </Typography>
-                  </Box>
-                </Link>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    mb: 3,
-                    p: 2,
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.05)",
-                      transform: "translateX(4px)",
-                    },
-                  }}
-                >
-                  <MailIcon style={{ fontSize: 20, marginRight: 12, opacity: 0.9 }} />
-                  <Box>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.7,
-                        fontSize: "0.75rem",
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                      }}
-                    >
-                      {t("landing.contact.channels.email")}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 600,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.contact.info.email")}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    mb: 3,
-                    p: 2,
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.05)",
-                      transform: "translateX(4px)",
-                    },
-                  }}
-                >
-                  <MapPinIcon style={{ fontSize: 20, marginRight: 12, opacity: 0.9 }} />
-                  <Box>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.7,
-                        fontSize: "0.75rem",
-                        fontWeight: 500,
-                        color:
-                          theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                      }}
-                    >
-                      {t("landing.footer.address")}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        opacity: 0.9,
-                        fontWeight: 600,
-                        color:
-                          theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      }}
-                    >
-                      {t("landing.contact.info.address")}
-                    </Typography>
-                  </Box>
+                      <Box sx={{ color: social.color, display: "flex", "&:hover": { color: "#ffffff" } }}>
+                        {social.icon}
+                      </Box>
+                    </Box>
+                  ))}
                 </Box>
               </Box>
             </Grid>
 
-            {/* Quick Links */}
-            <Grid item xs={12} md={6} lg={4}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 700,
-                  mb: 4,
-                  background:
-                    theme.palette.mode === "dark"
-                      ? "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)"
-                      : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {t("landing.footer.quickLinks")}
-              </Typography>
-
+            {/* Solutions */}
+            <Grid item xs={12} md={2}>
               <Box sx={{ mb: 4 }}>
-                <Button
-                  variant="text"
-                  sx={{
-                    color: theme.palette.mode === "dark" ? "white" : "black",
-                    opacity: 0.8,
-                    p: 2,
-                    mb: 1,
-                    minWidth: "auto",
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    width: "100%",
-                    "&:hover": {
-                      opacity: 1,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.1)",
-                      transform: "translateX(4px)",
-                    },
-                    transition: "all 0.3s ease",
-                  }}
-                  onClick={() => smoothScrollTo("soluciones")}
-                >
-                  {t("landing.navigation.solutions")}
-                </Button>
-                <Button
-                  variant="text"
-                  sx={{
-                    color: theme.palette.mode === "dark" ? "white" : "black",
-                    opacity: 0.8,
-                    p: 2,
-                    mb: 1,
-                    minWidth: "auto",
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    width: "100%",
-                    "&:hover": {
-                      opacity: 1,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.1)",
-                      transform: "translateX(4px)",
-                    },
-                    transition: "all 0.3s ease",
-                  }}
-                  onClick={() => smoothScrollTo("como-funciona")}
-                >
-                  {t("landing.howItWorks.title")}
-                </Button>
-
-                <Button
-                  variant="text"
-                  sx={{
-                    color: theme.palette.mode === "dark" ? "white" : "black",
-                    opacity: 0.8,
-                    p: 2,
-                    mb: 1,
-                    minWidth: "auto",
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    width: "100%",
-                    "&:hover": {
-                      opacity: 1,
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "rgba(255,255,255,0.1)"
-                          : "rgba(0,0,0,0.1)",
-                      transform: "translateX(4px)",
-                    },
-                    transition: "all 0.3s ease",
-                  }}
-                  onClick={() => smoothScrollTo("faq")}
-                >
-                  {t("landing.faq.shortTitle")}
-                </Button>
-              </Box>
-
-              {/* Newsletter Signup */}
-              <Box
-                sx={{
-                  p: 3,
-                  borderRadius: 2,
-                  background:
-                    theme.palette.mode === "dark"
-                      ? "rgba(255,255,255,0.05)"
-                      : "rgba(0,0,0,0.05)",
-                  border:
-                    theme.palette.mode === "dark"
-                      ? "1px solid rgba(255,255,255,0.1)"
-                      : "1px solid rgba(0,0,0,0.1)",
-                }}
-              >
                 <Typography
-                  variant="h6"
+                  variant="subtitle1"
                   sx={{
                     fontWeight: 600,
-                    mb: 2,
-                    color:
-                      theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                  }}
-                >
-                  {t("landing.footer.newsletter.title")}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    opacity: 0.7,
                     mb: 3,
-                    color:
-                      theme.palette.mode === "dark" ? "#cccccc" : "#333333",
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
+                    fontSize: "0.875rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
                   }}
                 >
-                  {t("landing.footer.newsletter.description")}
+                  {t("landing.footer.sections.solutions")}
                 </Typography>
-                <Box
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {[
+                    { label: t("landing.footer.solutions.smartParking"), href: "#" },
+                    { label: t("landing.footer.solutions.mobileApp"), href: "#" },
+                    { label: t("landing.footer.solutions.analytics"), href: "#" },
+                    { label: t("landing.footer.solutions.integration"), href: "#" }
+                  ].map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      sx={{
+                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                        textDecoration: "none",
+                        fontSize: "0.875rem",
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#3b82f6",
+                        },
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Company */}
+            <Grid item xs={12} md={2}>
+              <Box sx={{ mb: 4 }}>
+                <Typography
+                  variant="subtitle1"
                   sx={{
-                    display: "flex",
-                    gap: 2,
-                    flexDirection: { xs: "column", sm: "row" },
+                    fontWeight: 600,
+                    mb: 3,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
+                    fontSize: "0.875rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
                   }}
                 >
-                  <TextField
-                    size="small"
-                    placeholder={t("landing.footer.newsletter.placeholder")}
-                    variant="outlined"
-                    sx={{
-                      flex: 1,
-                      "& .MuiOutlinedInput-root": {
-                        color:
-                          theme.palette.mode === "dark" ? "white" : "black",
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.05)"
-                            : "rgba(0,0,0,0.05)",
-                        borderRadius: 2,
-                        border:
-                          theme.palette.mode === "dark"
-                            ? "1px solid rgba(255,255,255,0.1)"
-                            : "1px solid rgba(0,0,0,0.1)",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          background:
-                            theme.palette.mode === "dark"
-                              ? "rgba(255,255,255,0.08)"
-                              : "rgba(0,0,0,0.08)",
-                          border:
-                            theme.palette.mode === "dark"
-                              ? "1px solid rgba(255,255,255,0.2)"
-                              : "1px solid rgba(0,0,0,0.2)",
-                          transform: "translateY(-1px)",
-                        },
-                        "&.Mui-focused": {
-                          background:
-                            theme.palette.mode === "dark"
-                              ? "rgba(255,255,255,0.1)"
-                              : "rgba(0,0,0,0.1)",
-                          border:
-                            theme.palette.mode === "dark"
-                              ? "1px solid rgba(255,255,255,0.3)"
-                              : "1px solid rgba(0,0,0,0.3)",
-                          boxShadow:
-                            theme.palette.mode === "dark"
-                              ? "0 0 0 2px rgba(255,255,255,0.1)"
-                              : "0 0 0 2px rgba(0,0,0,0.1)",
-                        },
-                        "& fieldset": {
-                          border: "none",
-                        },
-                      },
-                      "& .MuiInputBase-input": {
-                        padding: "12px 16px",
+                  {t("landing.footer.sections.company")}
+                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {[
+                    { label: t("landing.footer.company.aboutUs"), href: "#" },
+                    { label: t("landing.footer.company.careers"), href: "#" },
+                    { label: t("landing.footer.company.press"), href: "#" },
+                    { label: t("landing.footer.company.blog"), href: "#" }
+                  ].map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      sx={{
+                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                        textDecoration: "none",
                         fontSize: "0.875rem",
-                        fontWeight: 500,
-                        "&::placeholder": {
-                          color:
-                            theme.palette.mode === "dark"
-                              ? "rgba(255,255,255,0.6)"
-                              : "rgba(0,0,0,0.6)",
-                          opacity: 1,
-                          fontWeight: 400,
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#3b82f6",
                         },
-                      },
-                      "& .MuiInputLabel-root": {
-                        color:
-                          theme.palette.mode === "dark"
-                            ? "rgba(255,255,255,0.7)"
-                            : "rgba(0,0,0,0.7)",
-                        fontWeight: 500,
-                      },
-                    }}
-                  />
-                  <Button
-                    variant="contained"
-                    size="small"
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Support */}
+            <Grid item xs={12} md={2}>
+              <Box sx={{ mb: 4 }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontWeight: 600,
+                    mb: 3,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
+                    fontSize: "0.875rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {t("landing.footer.sections.support")}
+                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {[
+                    { label: t("landing.footer.support.helpCenter"), href: "#" },
+                    { label: t("landing.footer.support.contactUs"), href: "#" },
+                    { label: t("landing.footer.support.community"), href: "#" },
+                    { label: t("landing.footer.support.status"), href: "#" }
+                  ].map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      sx={{
+                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                        textDecoration: "none",
+                        fontSize: "0.875rem",
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#3b82f6",
+                        },
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Contact & Newsletter */}
+            <Grid item xs={12} md={3}>
+              <Box sx={{ mb: 4 }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontWeight: 600,
+                    mb: 3,
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
+                    fontSize: "0.875rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {t("landing.footer.sections.stayUpdated")}
+                </Typography>
+                
+                {/* Newsletter */}
+                <Box sx={{ mb: 4 }}>
+                  <Typography
+                    variant="body2"
                     sx={{
-                      background:
-                        theme.palette.mode === "dark"
-                          ? "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)"
-                          : "linear-gradient(135deg, #000000 0%, #333333 100%)",
-                      color:
-                        theme.palette.mode === "dark" ? "#000000" : "#ffffff",
-                      fontWeight: 700,
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: 2,
-                      border:
-                        theme.palette.mode === "dark"
-                          ? "1px solid rgba(255,255,255,0.2)"
-                          : "1px solid rgba(255,255,255,0.2)",
-                      boxShadow:
-                        theme.palette.mode === "dark"
-                          ? "0 4px 20px rgba(255,255,255,0.1)"
-                          : "0 4px 20px rgba(0,0,0,0.1)",
+                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                      mb: 2,
                       fontSize: "0.875rem",
-                      textTransform: "none",
-                      minWidth: "120px",
-                      "&:hover": {
-                        background:
-                          theme.palette.mode === "dark"
-                            ? "linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%)"
-                            : "linear-gradient(135deg, #333333 0%, #000000 100%)",
-                        transform: "translateY(-2px)",
-                        boxShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 6px 25px rgba(255,255,255,0.15)"
-                            : "0 6px 25px rgba(0,0,0,0.15)",
-                      },
-                      "&:active": {
-                        transform: "translateY(0px)",
-                        boxShadow:
-                          theme.palette.mode === "dark"
-                            ? "0 2px 10px rgba(255,255,255,0.1)"
-                            : "0 2px 10px rgba(0,0,0,0.1)",
-                      },
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   >
-                    {t("landing.footer.newsletter.subscribe")}
-                  </Button>
+                    {t("landing.footer.newsletter.description")}
+                  </Typography>
+                  
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <TextField
+                      size="small"
+                      placeholder={t("landing.footer.newsletter.placeholder")}
+                      variant="outlined"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          color: theme.palette.mode === "dark" ? "white" : "black",
+                          background: theme.palette.mode === "dark" 
+                            ? "#2a2a2a"
+                            : "#ffffff",
+                          borderRadius: "6px",
+                          border: `1px solid ${theme.palette.mode === "dark" ? "#404040" : "#e9ecef"}`,
+                          fontSize: "0.875rem",
+                          "&:hover": {
+                            border: `1px solid ${theme.palette.mode === "dark" ? "#606060" : "#3b82f6"}`,
+                          },
+                          "&.Mui-focused": {
+                            border: "2px solid #3b82f6",
+                            boxShadow: "0 0 0 2px rgba(59,130,246,0.1)",
+                          },
+                          "& fieldset": { border: "none" },
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "8px 12px",
+                          fontSize: "0.875rem",
+                          "&::placeholder": {
+                            color: theme.palette.mode === "dark" 
+                              ? "rgba(255,255,255,0.5)"
+                              : "rgba(0,0,0,0.5)",
+                            opacity: 1,
+                          },
+                        },
+                      }}
+                    />
+                    <Button
+                      variant="contained"
+                      size="small"
+                      sx={{
+                        background: "#3b82f6",
+                        color: "#ffffff",
+                        fontWeight: 600,
+                        py: 1,
+                        borderRadius: "6px",
+                        border: "none",
+                        fontSize: "0.875rem",
+                        textTransform: "none",
+                        "&:hover": {
+                          background: "#2563eb",
+                        },
+                        transition: "background 0.2s ease",
+                      }}
+                    >
+                      {t("landing.footer.newsletter.subscribe")}
+                    </Button>
+                  </Box>
+                </Box>
+
+                {/* Contact Info */}
+                <Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                      mb: 2,
+                      fontSize: "0.875rem",
+                    }}
+                  >
+                    {t("landing.footer.contact.title")}:
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                      fontSize: "0.875rem",
+                      mb: 1,
+                    }}
+                  >
+                    {t("landing.contact.info.email")}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                      fontSize: "0.875rem",
+                    }}
+                  >
+                    {t("landing.contact.info.phone")}
+                  </Typography>
                 </Box>
               </Box>
             </Grid>
           </Grid>
 
-          {/* Footer Bottom */}
+          {/* Divider */}
           <Box
             sx={{
-              borderTop:
-                theme.palette.mode === "dark"
-                  ? "1px solid rgba(255,255,255,0.1)"
-                  : "1px solid rgba(0,0,0,0.1)",
-              pt: 4,
-              mt: 6,
+              height: 1,
+              background: theme.palette.mode === "dark" ? "#2a2a2a" : "#e9ecef",
+              my: 4,
+            }}
+          />
+
+          {/* Bottom Section */}
+          <Box
+            sx={{
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               justifyContent: "space-between",
-              alignItems: "center",
-              gap: 2,
-              px: { xs: 2, sm: 0 },
+              alignItems: { xs: "center", md: "flex-start" },
+              gap: 3,
             }}
           >
+            {/* Copyright */}
             <Typography
               variant="body2"
               sx={{
-                opacity: 0.7,
+                color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                fontSize: "0.875rem",
+                textAlign: { xs: "center", md: "left" },
               }}
             >
               {getFooterCopyright()}
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 3 }}>
-              <Link
-                href="/privacy"
-                sx={{
-                  opacity: 0.7,
-                  cursor: "pointer",
-                  color: theme.palette.mode === "dark" ? "white" : "black",
-                  textDecoration: "none",
-                  "&:hover": { opacity: 1 },
-                  transition: "opacity 0.3s ease",
-                }}
-              >
-                <Typography variant="body2">
-                  {t("landing.footer.legal.privacy")}
-                </Typography>
-              </Link>
-              <Link
-                href="/terms"
-                sx={{
-                  opacity: 0.7,
-                  cursor: "pointer",
-                  color: theme.palette.mode === "dark" ? "white" : "black",
-                  textDecoration: "none",
-                  "&:hover": { opacity: 1 },
-                  transition: "opacity 0.3s ease",
-                }}
-              >
-                <Typography variant="body2">
-                  {t("landing.footer.legal.terms")}
-                </Typography>
-              </Link>
-              <Link
-                href="/cookies"
-                sx={{
-                  opacity: 0.7,
-                  cursor: "pointer",
-                  color: theme.palette.mode === "dark" ? "white" : "black",
-                  textDecoration: "none",
-                  "&:hover": { opacity: 1 },
-                  transition: "opacity 0.3s ease",
-                }}
-              >
-                <Typography variant="body2">
-                  {t("landing.footer.legal.cookies")}
-                </Typography>
-              </Link>
+            {/* Legal Links */}
+            <Box 
+              sx={{ 
+                display: "flex", 
+                gap: 4, 
+                flexWrap: "wrap", 
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              {[
+                { href: "/privacy", label: t("landing.footer.legal.privacy") },
+                { href: "/terms", label: t("landing.footer.legal.terms") },
+                { href: "/cookies", label: t("landing.footer.legal.cookies") }
+              ].map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  sx={{
+                    color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                    textDecoration: "none",
+                    fontSize: "0.875rem",
+                    transition: "color 0.2s ease",
+                    "&:hover": {
+                      color: "#3b82f6",
+                    },
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </Box>
           </Box>
         </Container>
       </Box>
-
-      
 
       {/* Login Dialog */}
       <Dialog

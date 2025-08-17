@@ -219,17 +219,45 @@ const es = {
       tagline: 'Smart Parking Solutions',
       quickLinks: 'Enlaces Rápidos',
       newsletter: {
-        title: 'Mantente Informado',
-        description: 'Recibe las últimas noticias y actualizaciones',
-        placeholder: 'Tu email',
-        subscribe: 'Suscribir'
+        title: 'Boletín Informativo',
+        description: 'Mantente actualizado con las últimas noticias y actualizaciones',
+        placeholder: 'Ingresa tu correo electrónico',
+        subscribe: 'Suscribirse'
       },
       legal: {
-        privacy: 'Política de Privacidad',
-        terms: 'Términos de Servicio',
+        privacy: 'Privacidad',
+        terms: 'Términos',
         cookies: 'Cookies'
       },
-      address: 'Dirección'
+      address: 'Dirección',
+      // New footer sections
+      sections: {
+        solutions: 'Soluciones',
+        company: 'Empresa',
+        support: 'Soporte',
+        stayUpdated: 'Mantente Actualizado'
+      },
+      solutions: {
+        smartParking: 'Estacionamiento Inteligente',
+        mobileApp: 'Aplicación Móvil',
+        analytics: 'Analíticas',
+        integration: 'Integración'
+      },
+      company: {
+        aboutUs: 'Acerca de Nosotros',
+        careers: 'Carreras',
+        press: 'Prensa',
+        blog: 'Blog'
+      },
+      support: {
+        helpCenter: 'Centro de Ayuda',
+        contactUs: 'Contáctanos',
+        community: 'Comunidad',
+        status: 'Estado'
+      },
+      contact: {
+        title: 'Contáctanos'
+      }
     },
     login: {
       title: 'Acceso Pro',
@@ -669,7 +697,35 @@ const en = {
         terms: 'Terms of Service',
         cookies: 'Cookies'
       },
-      address: 'Address'
+      address: 'Address',
+      // New footer sections
+      sections: {
+        solutions: 'Solutions',
+        company: 'Company',
+        support: 'Support',
+        stayUpdated: 'Stay Updated'
+      },
+      solutions: {
+        smartParking: 'Smart Parking',
+        mobileApp: 'Mobile App',
+        analytics: 'Analytics',
+        integration: 'Integration'
+      },
+      company: {
+        aboutUs: 'About Us',
+        careers: 'Careers',
+        press: 'Press',
+        blog: 'Blog'
+      },
+      support: {
+        helpCenter: 'Help Center',
+        contactUs: 'Contact Us',
+        community: 'Community',
+        status: 'Status'
+      },
+      contact: {
+        title: 'Contact Us'
+      }
     },
     login: {
       title: 'Pro Access',

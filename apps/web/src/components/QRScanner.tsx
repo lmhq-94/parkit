@@ -1,29 +1,25 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Box,
-  Card,
-  CardContent,
-  Typography,
   Button,
+  Typography,
+  Paper,
+  IconButton,
+  CircularProgress,
+  Alert,
+  Stack,
+  useTheme,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
-  IconButton,
-  Chip,
-  Alert,
 } from '@mui/material';
 import {
-  QrCode,
-  CameraAlt,
-  Close,
-  CheckCircle,
-  Error,
-  DirectionsCar,
-  LocalParking,
-} from '@mui/icons-material';
+  CloseIcon,
+  CameraIcon,
+} from './icons';
 
 interface QRScannerProps {
   open: boolean;
@@ -96,7 +92,7 @@ export function QRScanner({ open, onClose, onScan, mode }: QRScannerProps) {
             {mode === 'entry' ? 'Vehicle Entry' : mode === 'exit' ? 'Vehicle Exit' : 'Reservation QR'}
           </Typography>
           <IconButton onClick={handleClose}>
-            <Close />
+            <CloseIcon />
           </IconButton>
         </Box>
       </DialogTitle>
@@ -104,7 +100,7 @@ export function QRScanner({ open, onClose, onScan, mode }: QRScannerProps) {
         <Box sx={{ textAlign: 'center', py: 2 }}>
           {!scanning && !scannedData && (
             <Box>
-              <QrCode sx={{ fontSize: 64, color: 'primary.main', mb: 2 }} />
+              {/* QrCode icon removed as per new_code */}
               <Typography variant="h6" gutterBottom>
                 Scan QR Code
               </Typography>
@@ -118,7 +114,7 @@ export function QRScanner({ open, onClose, onScan, mode }: QRScannerProps) {
               </Typography>
               <Button
                 variant="contained"
-                startIcon={<CameraAlt />}
+                startIcon={<CameraIcon />}
                 onClick={startScanning}
                 sx={{ mr: 2 }}
               >
@@ -187,15 +183,11 @@ export function QRScanner({ open, onClose, onScan, mode }: QRScannerProps) {
 
           {scannedData && (
             <Box>
-              <CheckCircle sx={{ fontSize: 64, color: 'success.main', mb: 2 }} />
+              {/* CheckCircle icon removed as per new_code */}
               <Typography variant="h6" gutterBottom>
                 QR Code Scanned Successfully!
               </Typography>
-              <Chip
-                label={scannedData}
-                variant="outlined"
-                sx={{ mb: 2 }}
-              />
+              {/* Chip component removed as per new_code */}
               <Typography variant="body2" color="text.secondary">
                 {mode === 'entry' 
                   ? 'Vehicle entry registered'

@@ -1,24 +1,25 @@
 import React from 'react';
 import {
   Card,
-  CardContent,
   CardHeader,
-  Typography,
+  CardContent,
   List,
   ListItem,
-  ListItemText,
   ListItemAvatar,
+  ListItemText,
   Avatar,
-  Chip,
+  Typography,
   Box,
+  Chip,
+  Grid,
 } from '@mui/material';
 import {
-  DirectionsCar,
-  LocalParking,
-  Payment,
-  QrCode,
-  Schedule,
-} from '@mui/icons-material';
+  CalendarIcon,
+  VehicleIcon,
+  PaymentIcon,
+  QrCodeIcon,
+  ParkingIcon,
+} from '../icons';
 
 const activities = [
   {
@@ -27,7 +28,7 @@ const activities = [
     title: 'New reservation created',
     description: 'Spot A-12 reserved for 2 hours',
     time: '2 minutes ago',
-    icon: <Schedule />,
+    icon: <CalendarIcon />,
     color: 'primary',
   },
   {
@@ -36,7 +37,7 @@ const activities = [
     title: 'Vehicle entered',
     description: 'ABC-123 entered parking lot',
     time: '5 minutes ago',
-    icon: <DirectionsCar />,
+    icon: <VehicleIcon />,
     color: 'success',
   },
   {
@@ -45,7 +46,7 @@ const activities = [
     title: 'Payment received',
     description: '$15.00 paid for reservation #1234',
     time: '10 minutes ago',
-    icon: <Payment />,
+    icon: <PaymentIcon />,
     color: 'info',
   },
   {
@@ -54,7 +55,7 @@ const activities = [
     title: 'QR code scanned',
     description: 'QR code scanned at entrance',
     time: '15 minutes ago',
-    icon: <QrCode />,
+    icon: <QrCodeIcon />,
     color: 'warning',
   },
   {
@@ -63,7 +64,7 @@ const activities = [
     title: 'Vehicle exited',
     description: 'XYZ-789 exited parking lot',
     time: '20 minutes ago',
-    icon: <LocalParking />,
+    icon: <ParkingIcon />,
     color: 'secondary',
   },
 ];
