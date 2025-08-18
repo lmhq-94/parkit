@@ -24,7 +24,8 @@
     "db:studio": "turbo run db:studio --filter=@parkit/backend",
     "storybook": "turbo run storybook --filter=@parkit/ui",
     "build:storybook": "turbo run build:storybook --filter=@parkit/ui",
-    "prepare": "husky install"
+    "prepare": "echo 'Skipping husky install in production'",
+    "postinstall": "echo 'Skipping husky install in production'"
   },
   "dependencies": {
     "scheduler": "^0.23.0"
