@@ -45,7 +45,7 @@ const es = {
       viewDemo: 'Ver Demo',
       uptime: 'Uptime Garantizado',
       companies: 'Empresas Confían',
-      support: 'Soporte Premium'
+      support: 'Soporte'
     },
     navigation: {
       solutions: 'Soluciones',
@@ -205,7 +205,7 @@ const es = {
       },
       support: {
         value: '24/7',
-        title: 'Soporte Premium',
+        title: 'Soporte',
         description: 'Asistencia técnica disponible siempre'
       },
       countries: {
@@ -235,7 +235,8 @@ const es = {
         solutions: 'Soluciones',
         company: 'Empresa',
         support: 'Soporte',
-        stayUpdated: 'Mantente Actualizado'
+        stayUpdated: 'Mantente Actualizado',
+        contact: 'Contacto'
       },
       solutions: {
         smartParking: 'Estacionamiento Inteligente',
@@ -256,7 +257,9 @@ const es = {
         status: 'Estado'
       },
       contact: {
-        title: 'Contáctanos'
+        title: 'Contáctanos',
+        whatsapp: 'WhatsApp',
+        email: 'Email'
       }
     },
     login: {
@@ -703,7 +706,8 @@ const en = {
         solutions: 'Solutions',
         company: 'Company',
         support: 'Support',
-        stayUpdated: 'Stay Updated'
+        stayUpdated: 'Stay Updated',
+        contact: 'Contact'
       },
       solutions: {
         smartParking: 'Smart Parking',
@@ -724,7 +728,9 @@ const en = {
         status: 'Status'
       },
       contact: {
-        title: 'Contact Us'
+        title: 'Contact Us',
+        whatsapp: 'WhatsApp',
+        email: 'Email'
       }
     },
     login: {

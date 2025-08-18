@@ -43,14 +43,12 @@ import {
   DashboardIcon,
   LoginIcon,
   VehicleIcon as CarIcon,
-  VehicleIcon as DirectionsCarIcon,
   PaymentIcon as CreditCardIcon,
   AwardIcon,
   InnovationIcon as RocketIcon,
-  PlayIcon,
+  PlayIcon as PlayArrowIcon,
   ArrowUpIcon,
   CrownIcon as WorkspacePremiumIcon,
-  PlayIcon as PlayArrowIcon,
   ParkingIcon as LocalParkingIcon,
   OfficeIcon as BuildingIcon,
   CalendarIcon,
@@ -67,12 +65,14 @@ import {
   PieChartIcon,
   SecurityLockIcon as LockIcon,
   MonitorIcon,
+  BusinessIcon,
 } from "../components/icons";
 import { useAuthStore } from "../store/authStore";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { ThemeContext } from "../providers";
+import { FaLinkedin, FaInstagram, FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 
 // Import custom components
 import { Navbar } from "../components/navigation/Navbar";
@@ -2143,168 +2143,132 @@ export default function HomePage() {
       >
         <Container maxWidth="xl" sx={{ py: 6 }}>
           {/* Main Footer Content */}
-          <Grid container spacing={4}>
+          <Box sx={{ 
+            display: "grid", 
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr 1.5fr" },
+            gap: { xs: 3, md: 4 },
+            py: 6
+          }}>
             {/* Company Info */}
-            <Grid item xs={12} md={3}>
-              <Box sx={{ mb: 4 }}>
-                {/* Logo */}
-                <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-                  <Box
-                    sx={{
-                      width: 40,
-                      height: 40,
-                      background: "#3b82f6",
-                      borderRadius: "8px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mr: 2,
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "#ffffff",
-                        fontSize: "1.5rem",
-                        fontWeight: 800,
-                        letterSpacing: "-0.05em",
-                      }}
-                    >
-                      p.
-                    </Typography>
-                  </Box>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: "1.5rem",
-                      letterSpacing: "-0.065em",
-                    }}
-                  >
-                    <Box component="span" sx={{ color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b" }}>
-                      park
-                    </Box>
-                    <Box component="span" sx={{ color: "#3b82f6" }}>
-                      it.
-                    </Box>
-                  </Typography>
-                </Box>
-
-                {/* Description */}
-                <Typography
-                  variant="body2"
+            <Box sx={{ mb: { xs: 4, md: 0 } }}>
+              {/* Logo */}
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
                   sx={{
-                    color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
-                    lineHeight: 1.6,
-                    mb: 3,
-                    fontSize: "0.875rem",
+                    width: { xs: 36, md: 40 },
+                    height: { xs: 36, md: 40 },
+                    background: "#3b82f6",
+                    borderRadius: "8px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 2,
                   }}
                 >
-                  {t("landing.contact.info.description")}
+                  <Typography
+                    sx={{
+                      color: "#ffffff",
+                      fontSize: { xs: "1.2rem", md: "1.5rem" },
+                      fontWeight: 800,
+                      letterSpacing: "-0.05em",
+                    }}
+                  >
+                    p.
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { xs: "1.3rem", md: "1.5rem" },
+                    letterSpacing: "-0.065em",
+                  }}
+                >
+                  <Box component="span" sx={{ color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b" }}>
+                    park
+                  </Box>
+                  <Box component="span" sx={{ color: "#3b82f6" }}>
+                    it.
+                  </Box>
                 </Typography>
+              </Box>
 
-                {/* Social Media */}
-                <Box sx={{ display: "flex", gap: 2 }}>
-                  {[
-                    { icon: <LinkIcon />, color: "#3b82f6" },
-                    { icon: <ShareIcon />, color: "#8b5cf6" },
-                    { icon: <HeartIcon />, color: "#ef4444" }
-                  ].map((social, index) => (
+              {/* Description */}
+              <Typography
+                variant="body2"
+                sx={{
+                  color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                  lineHeight: 1.6,
+                  mb: 3,
+                  fontSize: { xs: "0.8rem", md: "0.875rem" },
+                }}
+              >
+                {t("landing.contact.info.description")}
+              </Typography>
+
+              {/* Social Media */}
+              <Box sx={{ display: "flex", gap: 2 }}>
+                {[
+                  { icon: <FaLinkedin />, color: "#0077b5", label: "LinkedIn", href: "https://linkedin.com/company/parkit" },
+                  { icon: <FaInstagram />, color: "#e4405f", label: "Instagram", href: "https://instagram.com/parkit" },
+                  { icon: <FaFacebook />, color: "#1877f2", label: "Facebook", href: "https://facebook.com/parkit" }
+                ].map((social, index) => (
+                  <Link
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ textDecoration: "none" }}
+                  >
                     <Box
-                      key={index}
                       sx={{
-                        width: 36,
-                        height: 36,
-                        background: theme.palette.mode === "dark" 
-                          ? "#2a2a2a"
-                          : "#ffffff",
-                        border: `1px solid ${theme.palette.mode === "dark" ? "#404040" : "#e9ecef"}`,
-                        borderRadius: "6px",
+                        width: { xs: 24, md: 28 },
+                        height: { xs: 24, md: 28 },
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        cursor: "pointer",
                         transition: "all 0.2s ease",
                         "&:hover": {
-                          background: social.color,
-                          borderColor: social.color,
-                          transform: "translateY(-1px)",
+                          transform: "translateY(-2px)",
                         },
                       }}
+                      title={social.label}
                     >
-                      <Box sx={{ color: social.color, display: "flex", "&:hover": { color: "#ffffff" } }}>
+                      <Box sx={{ 
+                        color: social.color, 
+                        fontSize: { xs: "18px", md: "20px" },
+                        "&:hover": { 
+                          color: theme.palette.mode === "dark" ? "#ffffff" : "#000000" 
+                        } 
+                      }}>
                         {social.icon}
                       </Box>
                     </Box>
-                  ))}
-                </Box>
+                  </Link>
+                ))}
               </Box>
-            </Grid>
+            </Box>
 
-            {/* Solutions */}
-            <Grid item xs={12} md={2}>
-              <Box sx={{ mb: 4 }}>
+            {/* Solutions & Company */}
+            <Box sx={{ mb: { xs: 4, md: 0 } }}>
+              {/* Company */}
+              <Box sx={{ mb: { xs: 3, md: 4 } }}>
                 <Typography
                   variant="subtitle1"
                   sx={{
                     fontWeight: 600,
-                    mb: 3,
+                    mb: { xs: 2, md: 3 },
                     color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
-                    fontSize: "0.875rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  {t("landing.footer.sections.solutions")}
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  {[
-                    { label: t("landing.footer.solutions.smartParking"), href: "#" },
-                    { label: t("landing.footer.solutions.mobileApp"), href: "#" },
-                    { label: t("landing.footer.solutions.analytics"), href: "#" },
-                    { label: t("landing.footer.solutions.integration"), href: "#" }
-                  ].map((link, index) => (
-                    <Link
-                      key={index}
-                      href={link.href}
-                      sx={{
-                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
-                        textDecoration: "none",
-                        fontSize: "0.875rem",
-                        transition: "color 0.2s ease",
-                        "&:hover": {
-                          color: "#3b82f6",
-                        },
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </Box>
-              </Box>
-            </Grid>
-
-            {/* Company */}
-            <Grid item xs={12} md={2}>
-              <Box sx={{ mb: 4 }}>
-                <Typography
-                  variant="subtitle1"
-                  sx={{
-                    fontWeight: 600,
-                    mb: 3,
-                    color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
-                    fontSize: "0.875rem",
+                    fontSize: { xs: "0.8rem", md: "0.875rem" },
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                   }}
                 >
                   {t("landing.footer.sections.company")}
                 </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: 1.5, md: 2 } }}>
                   {[
-                    { label: t("landing.footer.company.aboutUs"), href: "#" },
-                    { label: t("landing.footer.company.careers"), href: "#" },
-                    { label: t("landing.footer.company.press"), href: "#" },
-                    { label: t("landing.footer.company.blog"), href: "#" }
+                    { label: t("landing.footer.company.aboutUs"), href: "#about" }
                   ].map((link, index) => (
                     <Link
                       key={index}
@@ -2312,7 +2276,8 @@ export default function HomePage() {
                       sx={{
                         color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
                         textDecoration: "none",
-                        fontSize: "0.875rem",
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        fontWeight: 400,
                         transition: "color 0.2s ease",
                         "&:hover": {
                           color: "#3b82f6",
@@ -2324,30 +2289,73 @@ export default function HomePage() {
                   ))}
                 </Box>
               </Box>
-            </Grid>
 
-            {/* Support */}
-            <Grid item xs={12} md={2}>
-              <Box sx={{ mb: 4 }}>
+              {/* Solutions */}
+              <Box>
                 <Typography
                   variant="subtitle1"
                   sx={{
                     fontWeight: 600,
-                    mb: 3,
+                    mb: { xs: 2, md: 3 },
                     color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
-                    fontSize: "0.875rem",
+                    fontSize: { xs: "0.8rem", md: "0.875rem" },
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {t("landing.footer.sections.solutions")}
+                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: 1.5, md: 2 } }}>
+                  {[
+                    { label: t("landing.footer.solutions.smartParking"), href: "#soluciones" },
+                    { label: t("landing.footer.solutions.mobileApp"), href: "#app" },
+                    { label: t("landing.footer.solutions.analytics"), href: "#dashboard" }
+                  ].map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      sx={{
+                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                        textDecoration: "none",
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        fontWeight: 400,
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#3b82f6",
+                        },
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+
+            {/* Support & Contact */}
+            <Box sx={{ 
+              display: "flex", 
+              flexDirection: { xs: "column", md: "row" },
+              gap: { xs: 4, md: 6 }
+            }}>
+              {/* Support & Contact */}
+              <Box sx={{ flex: 1, mb: { xs: 3, md: 0 } }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    fontWeight: 600,
+                    mb: { xs: 2, md: 3 },
+                    color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
+                    fontSize: { xs: "0.8rem", md: "0.875rem" },
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                   }}
                 >
                   {t("landing.footer.sections.support")}
                 </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: 1.5, md: 2 }, mb: { xs: 3, md: 4 } }}>
                   {[
-                    { label: t("landing.footer.support.helpCenter"), href: "#" },
-                    { label: t("landing.footer.support.contactUs"), href: "#" },
-                    { label: t("landing.footer.support.community"), href: "#" },
-                    { label: t("landing.footer.support.status"), href: "#" }
+                    { label: t("landing.footer.support.helpCenter"), href: "#faq" }
                   ].map((link, index) => (
                     <Link
                       key={index}
@@ -2355,7 +2363,8 @@ export default function HomePage() {
                       sx={{
                         color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
                         textDecoration: "none",
-                        fontSize: "0.875rem",
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        fontWeight: 400,
                         transition: "color 0.2s ease",
                         "&:hover": {
                           color: "#3b82f6",
@@ -2366,19 +2375,115 @@ export default function HomePage() {
                     </Link>
                   ))}
                 </Box>
-              </Box>
-            </Grid>
 
-            {/* Contact & Newsletter */}
-            <Grid item xs={12} md={3}>
-              <Box sx={{ mb: 4 }}>
+                {/* Contact Info */}
+                <Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                      mb: { xs: 1.5, md: 2 },
+                      fontSize: { xs: "0.8rem", md: "0.875rem" },
+                      fontWeight: 400,
+                    }}
+                  >
+                    {t("landing.footer.contact.title")}:
+                  </Typography>
+                  
+                  {/* Email */}
+                  <Link
+                    href="mailto:info@parkit.com"
+                    sx={{
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1,
+                      mb: { xs: 1, md: 1.5 },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: { xs: 24, md: 28 },
+                        height: { xs: 24, md: 28 },
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          transform: "translateY(-2px)",
+                        },
+                      }}
+                    >
+                      <MailIcon style={{ fontSize: 16, color: "#3b82f6" }} />
+                    </Box>
+                    <Typography
+                      sx={{
+                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        fontWeight: 400,
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#3b82f6",
+                        },
+                      }}
+                    >
+                      {t("landing.footer.contact.email")}
+                    </Typography>
+                  </Link>
+
+                  {/* WhatsApp */}
+                  <Link
+                    href="https://wa.me/50662164040"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: { xs: 24, md: 28 },
+                        height: { xs: 24, md: 28 },
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          transform: "translateY(-2px)",
+                        },
+                      }}
+                    >
+                      <MessageIcon style={{ fontSize: 16, color: "#22c55e" }} />
+                    </Box>
+                    <Typography
+                      sx={{
+                        color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        fontWeight: 400,
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#22c55e",
+                        },
+                      }}
+                    >
+                      {t("landing.footer.contact.whatsapp")}
+                    </Typography>
+                  </Link>
+                </Box>
+              </Box>
+
+              {/* Newsletter */}
+              <Box sx={{ flex: 1 }}>
                 <Typography
                   variant="subtitle1"
                   sx={{
                     fontWeight: 600,
-                    mb: 3,
+                    mb: { xs: 2, md: 3 },
                     color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
-                    fontSize: "0.875rem",
+                    fontSize: { xs: "0.8rem", md: "0.875rem" },
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                   }}
@@ -2387,19 +2492,21 @@ export default function HomePage() {
                 </Typography>
                 
                 {/* Newsletter */}
-                <Box sx={{ mb: 4 }}>
+                <Box sx={{ mb: { xs: 3, md: 4 } }}>
                   <Typography
                     variant="body2"
                     sx={{
                       color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
-                      mb: 2,
-                      fontSize: "0.875rem",
+                      mb: { xs: 1.5, md: 2 },
+                      fontSize: { xs: "0.8rem", md: "0.875rem" },
+                      fontWeight: 400,
+                      lineHeight: 1.5,
                     }}
                   >
                     {t("landing.footer.newsletter.description")}
                   </Typography>
                   
-                  <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: 1.5, md: 2 } }}>
                     <TextField
                       size="small"
                       placeholder={t("landing.footer.newsletter.placeholder")}
@@ -2412,7 +2519,7 @@ export default function HomePage() {
                             : "#ffffff",
                           borderRadius: "6px",
                           border: `1px solid ${theme.palette.mode === "dark" ? "#404040" : "#e9ecef"}`,
-                          fontSize: "0.875rem",
+                          fontSize: { xs: "0.8rem", md: "0.875rem" },
                           "&:hover": {
                             border: `1px solid ${theme.palette.mode === "dark" ? "#606060" : "#3b82f6"}`,
                           },
@@ -2423,8 +2530,9 @@ export default function HomePage() {
                           "& fieldset": { border: "none" },
                         },
                         "& .MuiInputBase-input": {
-                          padding: "8px 12px",
-                          fontSize: "0.875rem",
+                          padding: { xs: "6px 10px", md: "8px 12px" },
+                          fontSize: { xs: "0.8rem", md: "0.875rem" },
+                          fontWeight: 400,
                           "&::placeholder": {
                             color: theme.palette.mode === "dark" 
                               ? "rgba(255,255,255,0.5)"
@@ -2441,10 +2549,11 @@ export default function HomePage() {
                         background: "#3b82f6",
                         color: "#ffffff",
                         fontWeight: 600,
-                        py: 1,
+                        py: { xs: 0.75, md: 1 },
+                        px: { xs: 2, md: 3 },
                         borderRadius: "6px",
                         border: "none",
-                        fontSize: "0.875rem",
+                        fontSize: { xs: "0.8rem", md: "0.875rem" },
                         textTransform: "none",
                         "&:hover": {
                           background: "#2563eb",
@@ -2456,42 +2565,9 @@ export default function HomePage() {
                     </Button>
                   </Box>
                 </Box>
-
-                {/* Contact Info */}
-                <Box>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
-                      mb: 2,
-                      fontSize: "0.875rem",
-                    }}
-                  >
-                    {t("landing.footer.contact.title")}:
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
-                      fontSize: "0.875rem",
-                      mb: 1,
-                    }}
-                  >
-                    {t("landing.contact.info.email")}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: theme.palette.mode === "dark" ? "#a0a0a0" : "#6c757d",
-                      fontSize: "0.875rem",
-                    }}
-                  >
-                    {t("landing.contact.info.phone")}
-                  </Typography>
-                </Box>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
 
           {/* Divider */}
           <Box
@@ -2707,7 +2783,7 @@ function AdminDashboard() {
             }}
           >
             <CardContent sx={{ textAlign: "center" }}>
-              <DirectionsCarIcon style={{ fontSize: 40, marginBottom: 8, color: "#000000" }} />
+              <CarIcon style={{ fontSize: 40, marginBottom: 8, color: "#000000" }} />
               <Typography
                 variant="h4"
                 sx={{
