@@ -91,23 +91,25 @@ import {
 import { CONTACT_INFO } from "../constants";
 
 /**
- * Animation constants for consistent timing across components
+ * Animation delays for different sections (in seconds)
+ * Reduced delays for faster, more responsive animations
  */
 const ANIMATION_DELAYS = {
-  HERO: 0.2,
-  FEATURES: 0.4,
-  TESTIMONIALS: 0.6,
-  FAQ: 0.8,
-  CTA: 1.0,
+  HERO: 0.1,
+  FEATURES: 0.2,
+  TESTIMONIALS: 0.3,
+  FAQ: 0.4,
+  CTA: 0.5,
 } as const;
 
 /**
  * Stagger delays for grid animations
+ * Reduced delays for faster, more responsive animations
  */
 const STAGGER_DELAYS = {
-  FEATURES: 0.25,
-  TESTIMONIALS: 0.15,
-  FAQ: 0.12,
+  FEATURES: 0.1,
+  TESTIMONIALS: 0.08,
+  FAQ: 0.06,
 } as const;
 
 /**
@@ -638,7 +640,7 @@ export default function HomePage() {
                       <TypewriterText 
                         text={t("landing.hero.title")} 
                         speed={60} 
-                        delay={0.8}
+                        delay={0.4}
                       />
                       <Box
                         component="span"
@@ -656,14 +658,14 @@ export default function HomePage() {
                         <TypewriterText 
                           text={t("landing.hero.subtitle")} 
                           speed={70} 
-                          delay={1.2}
+                          delay={0.6}
                         />
                       </Box>
                     </Typography>
                   </AnimatedSection>
 
                   {/* Description */}
-                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.8}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.4}>
                     <Typography
                       variant="h2"
                       sx={{
@@ -680,7 +682,7 @@ export default function HomePage() {
                   </AnimatedSection>
 
                   {/* CTA Buttons */}
-                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 1.0}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.5}>
                     <Stack
                       direction={{ xs: "column", sm: "row" }}
                       spacing={3}
@@ -753,7 +755,7 @@ export default function HomePage() {
                 px: { xs: 2, sm: 4, lg: 0 },
               }}
             >
-              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.HERO + 0.8}>
+              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.HERO + 0.4}>
                 <Box
                   sx={{
                     position: "relative",
@@ -2065,7 +2067,7 @@ export default function HomePage() {
               </Box>
             </AnimatedSection>
           
-          <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA + 0.8}>
+          <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA + 0.4}>
             <Box
               sx={{
                 display: "flex",

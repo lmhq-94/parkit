@@ -15,7 +15,7 @@ interface AnimatedSectionProps extends BoxProps {
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   animationType = 'fade',
   delay = 0,
-  duration = 0.8,
+  duration = 0.4,
   threshold = 0.1,
   children,
   staggerDelay = 0,
@@ -132,7 +132,7 @@ export const StaggeredContainer: React.FC<{
   children: React.ReactNode;
   staggerDelay?: number;
   animationType?: 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight' | 'scale';
-}> = ({ children, staggerDelay = 0.1, animationType = 'slideUp' }) => {
+}> = ({ children, staggerDelay = 0.05, animationType = 'slideUp' }) => {
   return (
     <>
       {React.Children.map(children, (child, index) => (
@@ -177,7 +177,7 @@ export const TypewriterText: React.FC<{
   text: string;
   speed?: number;
   delay?: number;
-}> = ({ text, speed = 50, delay = 0 }) => {
+}> = ({ text, speed = 30, delay = 0 }) => {
   const [displayText, setDisplayText] = React.useState('');
   const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.1 });
 

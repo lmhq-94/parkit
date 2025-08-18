@@ -60,10 +60,10 @@ export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ scrollY })
     <Box
       sx={{
         position: 'fixed',
-        bottom: '20px',
-        right: '20px',
+        bottom: '16px',
+        right: '16px',
         zIndex: 1000,
-        opacity: scrollY > 300 ? 1 : 0,
+        opacity: scrollY > 300 ? 0.7 : 0,
         visibility: scrollY > 300 ? 'visible' : 'hidden',
         transition: 'all 0.3s ease',
         transform: scrollY > 300 ? 'translateY(0)' : 'translateY(20px)',
@@ -72,24 +72,25 @@ export const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ scrollY })
       <IconButton
         onClick={scrollToTop}
         sx={{
-          width: 56,
-          height: 56,
+          width: 40,
+          height: 40,
           background: buttonStyles.background,
           color: buttonStyles.color,
           border: buttonStyles.border,
-          borderRadius: '12px',
-          boxShadow: buttonStyles.boxShadow,
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
           '&:hover': {
             background: buttonStyles.hoverBackground,
             color: buttonStyles.hoverColor,
-            transform: 'translateY(-2px)',
-            boxShadow: buttonStyles.hoverBoxShadow,
+            transform: 'translateY(-1px)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
+            opacity: 1,
           },
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          transition: 'all 0.2s ease',
         }}
         aria-label="Volver arriba"
       >
-        <KeyboardArrowUpIcon style={{ fontSize: 24 }} />
+        <KeyboardArrowUpIcon style={{ fontSize: 18 }} />
       </IconButton>
     </Box>
   );
