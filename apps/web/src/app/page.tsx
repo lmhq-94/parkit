@@ -568,7 +568,7 @@ export default function HomePage() {
           </Box>
         </Box>
 
-        <Container maxWidth="xl" sx={{ position: "relative", zIndex: 2 }}>
+        <Container maxWidth="xl" sx={{ position: "relative", zIndex: 2, px: { xs: 4, sm: 6, md: 0 } }}>
           <Box
             sx={{
               display: "flex",
@@ -576,7 +576,7 @@ export default function HomePage() {
               alignItems: "center",
               gap: { xs: 8, lg: 12 },
               minHeight: "100vh",
-              py: 8,
+              py: { xs: 8, sm: 8, md: 8 }, // Increase top padding for mobile
             }}
           >
             {/* Left Content - Bento Box Layout */}
@@ -585,14 +585,18 @@ export default function HomePage() {
                 flex: { xs: "1", lg: "0.6" },
                 display: "flex",
                 flexDirection: "column",
-                gap: 4,
+                gap: { xs: 3, sm: 4, md: 4 }, // Reduce gap on mobile
+                pt: { xs: 2, sm: 0, md: 0 }, // Add top padding for mobile
               }}
             >
               <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO}>
                 <Box>
                   {/* Premium Badge */}
                   <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
-                    <Box sx={{ mb: 4 }}>
+                    <Box sx={{ 
+                      mb: 4,
+                      pt: { xs: 2, sm: 0, md: 0 } // Add top padding for mobile
+                    }}>
                       <Chip
                         icon={<WorkspacePremiumIcon />}
                         label={t("landing.hero.premiumBadge")}
@@ -601,19 +605,19 @@ export default function HomePage() {
                           border: `1px solid ${theme.palette.primary.main}30`,
                           color: theme.palette.primary.main,
                           fontWeight: 700,
-                          fontSize: "0.875rem",
+                          fontSize: { xs: "0.8rem", sm: "0.875rem", md: "0.875rem" }, // Responsive font size
                           backdropFilter: "blur(20px)",
                           borderRadius: 2.5,
-                          px: 1,
-                          py: 1,
+                          px: { xs: 1.5, sm: 1, md: 1 }, // More horizontal padding on mobile
+                          py: { xs: 1.5, sm: 1, md: 1 }, // More vertical padding on mobile
                           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                           "& .MuiChip-icon": {
                             color: theme.palette.warning.main,
-                            fontSize: "1.2rem",
+                            fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" }, // Responsive icon size
                           },
                           "& .MuiChip-label": {
-                            px: 1.5,
-                            fontSize: "0.875rem",
+                            px: { xs: 1, sm: 1.5, md: 1.5 }, // Responsive horizontal padding
+                            fontSize: { xs: "0.8rem", sm: "0.875rem", md: "0.875rem" }, // Responsive font size
                             fontWeight: 700,
                           },
                           "&:hover": {
@@ -651,9 +655,9 @@ export default function HomePage() {
                           backgroundClip: "text",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
-                          fontSize: "0.9em",
-                          mt: 1,
-                          fontWeight: 800,
+                          fontSize: { xs: "0.85em", sm: "0.9em", md: "0.9em" }, // Responsive subtitle size
+                          mt: { xs: 0.5, sm: 1, md: 1 }, // Responsive top margin
+                          fontWeight: { xs: 700, sm: 800, md: 800 }, // Responsive font weight
                         }}
                       >
                         <TypewriterText 
@@ -665,17 +669,60 @@ export default function HomePage() {
                     </Typography>
                   </AnimatedSection>
 
+                  {/* Hero SVG - Shown on mobile between title and description */}
+                  <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.HERO + 0.5}>
+                    <Box
+                      sx={{
+                        display: { xs: "flex", lg: "none" }, // Show on mobile, hide on desktop
+                        justifyContent: "center",
+                        alignItems: "center",
+                        mt: 2, // Add margin top for more space after title
+                        mb: 4, // Add margin bottom for spacing
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: "relative",
+                          width: "100%",
+                          maxWidth: { xs: 280, sm: 350 }, // Mobile max width
+                          height: "auto",
+                          filter: theme.palette.mode === "dark" 
+                            ? "drop-shadow(0 0 20px rgba(255,255,255,0.1))" 
+                            : "drop-shadow(0 0 20px rgba(0,0,0,0.1))",
+                          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                          "&:hover": {
+                            transform: "scale(1.02)",
+                            filter: theme.palette.mode === "dark" 
+                              ? "drop-shadow(0 0 30px rgba(255,255,255,0.15))" 
+                              : "drop-shadow(0 0 30px rgba(0,0,0,0.15))",
+                          },
+                        }}
+                      >
+                        <img
+                          src="/hero.svg"
+                          alt="ParkIt Hero Illustration"
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            maxWidth: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  </AnimatedSection>
+
                   {/* Description */}
-                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.4}>
+                  <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.6}>
                     <Typography
                       variant="h2"
                       sx={{
-                        fontWeight: 400,
-                        fontSize: { xs: "1.25rem", sm: "1.375rem", md: "1.5rem" },
-                        mb: 6,
+                        fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                        fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.375rem", lg: "1.5rem" }, // More responsive font size
+                        mb: { xs: 4, sm: 5, md: 6 }, // Responsive margin bottom
                         color: theme.palette.text.secondary,
-                        lineHeight: 1.7,
-                        maxWidth: 600,
+                        lineHeight: { xs: 1.6, sm: 1.65, md: 1.7 }, // Responsive line height
+                        maxWidth: { xs: "100%", sm: 600, md: 600 }, // Full width on mobile
                       }}
                     >
                       {t("landing.hero.description")}
@@ -703,6 +750,7 @@ export default function HomePage() {
                           fontSize: "1.1rem",
                           textTransform: "none",
                           boxShadow: theme.shadows[4],
+                          width: { xs: "100%", sm: "280px" }, // Wider width to prevent text wrapping
                           "&:hover": {
                             background: theme.palette.primary.dark,
                             transform: "translateY(-2px)",
@@ -727,6 +775,7 @@ export default function HomePage() {
                           fontWeight: 700,
                           fontSize: "1.1rem",
                           textTransform: "none",
+                          width: { xs: "100%", sm: "280px" }, // Wider width to prevent text wrapping
                           "&:hover": {
                             border: `2px solid ${theme.palette.primary.dark}`,
                             background: theme.palette.primary.main,
@@ -742,18 +791,20 @@ export default function HomePage() {
                       </Button>
                     </Stack>
                   </AnimatedSection>
+
+
                 </Box>
               </AnimatedSection>
             </Box>
 
-            {/* Right Content - Hero SVG */}
+            {/* Right Content - Hero SVG - Hidden on mobile, shown on desktop */}
             <Box
               sx={{
-                flex: { xs: "1", lg: "0.4" },
-                display: "flex",
+                display: { xs: "none", lg: "flex" }, // Hide on mobile, show on desktop
+                flex: { lg: "0.4" },
                 alignItems: "center",
                 justifyContent: "center",
-                px: { xs: 2, sm: 4, lg: 0 },
+                px: { lg: 0 },
               }}
             >
               <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.HERO + 0.4}>
@@ -761,7 +812,7 @@ export default function HomePage() {
                   sx={{
                     position: "relative",
                     width: "100%",
-                    maxWidth: { xs: 300, sm: 400, lg: 500 },
+                    maxWidth: { lg: 500 }, // Desktop max width
                     height: "auto",
                     filter: theme.palette.mode === "dark" 
                       ? "drop-shadow(0 0 20px rgba(255,255,255,0.1))" 
@@ -832,7 +883,7 @@ export default function HomePage() {
         >
           {/* Section Header */}
           <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
-            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 4, sm: 6, md: 0 } }}>
               <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
                 <Box
                   sx={{
@@ -849,17 +900,18 @@ export default function HomePage() {
                 >
                   <TrendingUpIcon
                     style={{
-                      fontSize: 24,
-                      marginRight: 16,
+                      fontSize: { xs: 20, sm: 22, md: 24 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
+                      marginRight: { xs: 12, sm: 14, md: 16 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
                       color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                     }}
                   />
                   <Typography
                     variant="overline"
                     sx={{
-                      fontWeight: 600,
+                      fontWeight: { xs: 500, sm: 600, md: 600 }, // Responsive font weight
                       color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                      letterSpacing: "0.1em",
+                      letterSpacing: { xs: "0.08em", sm: "0.1em", md: "0.1em" }, // Responsive letter spacing
+                      fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.8rem" }, // Responsive font size
                     }}
                   >
                     {t("landing.features.badges.benefits")}
@@ -870,11 +922,11 @@ export default function HomePage() {
                 <Typography
                   variant="h2"
                   sx={{
-                    fontWeight: 900,
-                    mb: 4,
+                    fontWeight: { xs: 800, sm: 900, md: 900, lg: 900 }, // Responsive font weight
+                    mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                     color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                    fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                    lineHeight: 1.1,
+                    fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem", xl: "4rem" }, // More responsive font size
+                    lineHeight: { xs: 1.15, sm: 1.1, md: 1.1 }, // Responsive line height
                   }}
                 >
                   {getFeaturesTitle()}
@@ -882,12 +934,12 @@ export default function HomePage() {
                 {/* Visual Divider */}
                 <Box
                   sx={{
-                    width: { xs: "60px", md: "80px" },
-                    height: "4px",
+                    width: { xs: "50px", sm: "60px", md: "70px", lg: "80px" }, // More responsive width
+                    height: { xs: "3px", sm: "3px", md: "4px", lg: "4px" }, // Responsive height
                     background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                     borderRadius: "2px",
                     mx: "auto",
-                    mb: 4,
+                    mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                     boxShadow: "0 2px 8px rgba(102, 126, 234, 0.3)",
                   }}
                 />
@@ -897,10 +949,12 @@ export default function HomePage() {
                   variant="h5"
                   sx={{
                     color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                    maxWidth: 800,
+                    maxWidth: { xs: "100%", sm: 700, md: 800 }, // Responsive max width
                     mx: "auto",
-                    lineHeight: 1.6,
-                    fontWeight: 400,
+                    lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 }, // Responsive line height
+                    fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" }, // Responsive font size
+                    mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                   }}
                 >
                   {t("landing.features.subtitle")}
@@ -911,7 +965,8 @@ export default function HomePage() {
 
           {/* Benefits Grid */}
           <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.FEATURES}>
-            <Grid container spacing={4}>
+            <Box sx={{ px: { xs: 2, sm: 0 } }}>
+              <Grid container spacing={{ xs: 3, sm: 3.5, md: 4 }}> {/* Responsive spacing */}
               {[
                 {
                   icon: <ManagementIcon style={{ fontSize: 64 }} />, // Data management for business
@@ -998,7 +1053,7 @@ export default function HomePage() {
                     <Card
                     sx={{
                       height: "100%",
-                      minHeight: 500, // Increased from 400 to 500
+                      minHeight: { xs: 400, sm: 450, md: 500 }, // Responsive min height
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)"
@@ -1115,7 +1170,7 @@ export default function HomePage() {
                   >
                     <CardContent
                       sx={{
-                        p: 6, // Increased from 5 to 6
+                        p: { xs: 4, sm: 5, md: 6 }, // Responsive padding
                         textAlign: "center",
                         position: "relative",
                         display: "flex",
@@ -1129,16 +1184,16 @@ export default function HomePage() {
                         className="feature-badge"
                         sx={{
                           position: "absolute",
-                          top: 20, // Increased from 16 to 20
-                          right: 20, // Increased from 16 to 20
+                          top: { xs: 16, sm: 18, md: 20 }, // Responsive top position
+                          right: { xs: 16, sm: 18, md: 20 }, // Responsive right position
                           background: benefit.gradient,
                           color: "#ffffff",
-                          px: 3, // Increased from 2 to 3
-                          py: 1, // Increased from 0.5 to 1
+                          px: { xs: 2, sm: 2.5, md: 3 }, // Responsive horizontal padding
+                          py: { xs: 0.5, sm: 0.75, md: 1 }, // Responsive vertical padding
                           borderRadius: theme.shape.borderRadius, // Use theme borderRadius
-                          fontSize: "0.875rem", // Increased from 0.75rem to 0.875rem
-                          fontWeight: 700,
-                          letterSpacing: "0.05em",
+                          fontSize: { xs: "0.75rem", sm: "0.8rem", md: "0.875rem" }, // Responsive font size
+                          fontWeight: { xs: 600, sm: 700, md: 700 }, // Responsive font weight
+                          letterSpacing: { xs: "0.03em", sm: "0.04em", md: "0.05em" }, // Responsive letter spacing
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           zIndex: 2,
                           boxShadow: "0 4px 12px rgba(0,0,0,0.25)", // Enhanced shadow
@@ -1165,8 +1220,8 @@ export default function HomePage() {
                       <Box
                         className="feature-icon"
                         sx={{
-                          width: 120, // Reduced from 140 to 120 for better proportion
-                          height: 120, // Reduced from 140 to 120 for better proportion
+                          width: { xs: 80, sm: 100, md: 120 }, // Responsive width
+                          height: { xs: 80, sm: 100, md: 120 }, // Responsive height
                           background:
                             theme.palette.mode === "dark"
                               ? "linear-gradient(135deg, #3d3d3d 0%, #2a2a2a 100%)"
@@ -1175,7 +1230,7 @@ export default function HomePage() {
                           alignItems: "center",
                           justifyContent: "center",
                           mx: "auto",
-                          mb: 4,
+                          mb: { xs: 3, sm: 3.5, md: 4 }, // Responsive margin bottom
                           borderRadius: "50%",
                           transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                           boxShadow:
@@ -1207,12 +1262,12 @@ export default function HomePage() {
                         className="feature-title"
                         variant="h3" // Changed from h4 to h3 for larger size
                         sx={{
-                          fontWeight: 800,
-                          mb: 3, // Increased from 2 to 3
+                          fontWeight: { xs: 700, sm: 800, md: 800, lg: 800 }, // Responsive font weight
+                          mb: { xs: 2, sm: 2.5, md: 3 }, // Responsive margin bottom
                           color:
                             theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                          lineHeight: 1.2,
-                          fontSize: { xs: "1.5rem", md: "1.75rem", lg: "2rem" }, // Responsive font size
+                          lineHeight: { xs: 1.25, sm: 1.2, md: 1.2 }, // Responsive line height
+                          fontSize: { xs: "1.3rem", sm: "1.5rem", md: "1.75rem", lg: "2rem" }, // More responsive font size
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           zIndex: 1,
@@ -1228,10 +1283,10 @@ export default function HomePage() {
                         sx={{
                           color:
                             theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                          lineHeight: 1.7, // Increased from 1.6 to 1.7
-                          mb: 4, // Increased from 3 to 4
-                          fontWeight: 400,
-                          fontSize: "1.1rem", // Increased from default to 1.1rem
+                          lineHeight: { xs: 1.6, sm: 1.65, md: 1.7 }, // Responsive line height
+                          mb: { xs: 3, sm: 3.5, md: 4 }, // Responsive margin bottom
+                          fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                          fontSize: { xs: "1rem", sm: "1.05rem", md: "1.1rem" }, // Responsive font size
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           zIndex: 1,
@@ -1244,7 +1299,8 @@ export default function HomePage() {
                   </AnimatedSection>
                 </Grid>
               ))}
-            </Grid>
+              </Grid>
+            </Box>
           </StaggeredContainer>
         </Container>
       </Box>
@@ -1259,9 +1315,9 @@ export default function HomePage() {
         }}
         id="como-funciona"
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
-                      {/* Section Header */}
-            <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
+              <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 0 } }}>
+        {/* Section Header */}
+        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES}>
               <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
                 <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FEATURES}>
                   <Box
@@ -1279,17 +1335,18 @@ export default function HomePage() {
                   >
                     <QrCodeIcon
                       style={{
-                        fontSize: 24,
-                        marginRight: 16,
+                        fontSize: { xs: 20, sm: 22, md: 24 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
+                        marginRight: { xs: 12, sm: 14, md: 16 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
                         color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                       }}
                     />
                     <Typography
                       variant="overline"
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: { xs: 500, sm: 600, md: 600 }, // Responsive font weight
                         color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                        letterSpacing: "0.1em",
+                        letterSpacing: { xs: "0.08em", sm: "0.1em", md: "0.1em" }, // Responsive letter spacing
+                        fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.8rem" }, // Responsive font size
                       }}
                     >
                       {t("landing.features.badges.process")}
@@ -1300,11 +1357,11 @@ export default function HomePage() {
                   <Typography
                     variant="h2"
                     sx={{
-                      fontWeight: 900,
-                      mb: 4,
+                      fontWeight: { xs: 800, sm: 900, md: 900, lg: 900 }, // Responsive font weight
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                      lineHeight: 1.1,
+                      fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem", xl: "4rem" }, // More responsive font size
+                      lineHeight: { xs: 1.15, sm: 1.1, md: 1.1 }, // Responsive line height
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
@@ -1323,12 +1380,12 @@ export default function HomePage() {
                   {/* Visual Divider */}
                   <Box
                     sx={{
-                      width: { xs: "60px", md: "80px" },
-                      height: "4px",
+                      width: { xs: "50px", sm: "60px", md: "70px", lg: "80px" }, // More responsive width
+                      height: { xs: "3px", sm: "3px", md: "4px", lg: "4px" }, // Responsive height
                       background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
                       borderRadius: "2px",
                       mx: "auto",
-                      mb: 4,
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       boxShadow: "0 2px 8px rgba(240, 147, 251, 0.3)",
                     }}
                   />
@@ -1338,10 +1395,12 @@ export default function HomePage() {
                     variant="h5"
                     sx={{
                       color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                      maxWidth: 800,
+                      maxWidth: { xs: "100%", sm: 700, md: 800 }, // Responsive max width
                       mx: "auto",
-                      lineHeight: 1.6,
-                      fontWeight: 400,
+                      lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 }, // Responsive line height
+                      fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                      fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" }, // Responsive font size
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                     }}
                   >
                     {t("landing.howItWorks.subtitle")}
@@ -1352,7 +1411,8 @@ export default function HomePage() {
 
           {/* Process Steps */}
           <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.FEATURES}>
-            <Grid container spacing={6}>
+            <Box sx={{ px: { xs: 2, sm: 0 } }}>
+              <Grid container spacing={{ xs: 4, sm: 5, md: 6 }}> {/* Responsive spacing */}
               {[
                 {
                   step: "01",
@@ -1402,7 +1462,7 @@ export default function HomePage() {
                     <Box
                       sx={{
                         textAlign: "center",
-                        p: 4,
+                        p: { xs: 3, sm: 3.5, md: 4 }, // Responsive padding
                         position: "relative",
                         transition: "all 0.3s ease",
                         "&:hover": {
@@ -1413,8 +1473,8 @@ export default function HomePage() {
                       <AnimatedSection animationType="rotate" delay={0.2 + (0.1 * index)}>
                         <Box
                           sx={{
-                            width: 80,
-                            height: 80,
+                            width: { xs: 60, sm: 70, md: 80 }, // Responsive width
+                            height: { xs: 60, sm: 70, md: 80 }, // Responsive height
                             borderRadius: "50%",
                             background:
                               theme.palette.mode === "dark"
@@ -1424,7 +1484,7 @@ export default function HomePage() {
                             justifyContent: "center",
                             alignItems: "center",
                             margin: "0 auto",
-                            mb: 3,
+                            mb: { xs: 2, sm: 2.5, md: 3 }, // Responsive margin bottom
                             transition: "all 0.3s ease",
                             "&:hover": {
                               transform: "scale(1.1)",
@@ -1442,10 +1502,11 @@ export default function HomePage() {
                         <Typography
                           variant="h3"
                           sx={{
-                            fontWeight: 900,
+                            fontWeight: { xs: 800, sm: 900, md: 900 }, // Responsive font weight
                             color:
                               theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                            mb: 2,
+                            mb: { xs: 1.5, sm: 2, md: 2 }, // Responsive margin bottom
+                            fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" }, // Responsive font size
                           }}
                         >
                           {step.step}
@@ -1455,10 +1516,11 @@ export default function HomePage() {
                         <Typography
                           variant="h5"
                           sx={{
-                            fontWeight: 700,
+                            fontWeight: { xs: 600, sm: 700, md: 700 }, // Responsive font weight
                             color:
                               theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                            mb: 2,
+                            mb: { xs: 1.5, sm: 2, md: 2 }, // Responsive margin bottom
+                            fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" }, // Responsive font size
                           }}
                         >
                           {step.title}
@@ -1470,7 +1532,9 @@ export default function HomePage() {
                           sx={{
                             color:
                               theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                            lineHeight: 1.6,
+                            lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 }, // Responsive line height
+                            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.125rem" }, // Responsive font size
+                            fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
                           }}
                         >
                           {step.description}
@@ -1480,7 +1544,8 @@ export default function HomePage() {
                   </AnimatedSection>
                 </Grid>
               ))}
-            </Grid>
+              </Grid>
+            </Box>
           </StaggeredContainer>
         </Container>
       </Box>
@@ -1498,11 +1563,11 @@ export default function HomePage() {
         }}
         id="testimonios"
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
-                      {/* Section Header */}
-            <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.TESTIMONIALS}>
-              <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.TESTIMONIALS}>
+              <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 0 } }}>
+        {/* Section Header */}
+        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.TESTIMONIALS}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 4, sm: 6, md: 0 } }}>
+              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.TESTIMONIALS}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -1518,17 +1583,18 @@ export default function HomePage() {
                   >
                     <StarIcon
                       style={{
-                        fontSize: 24,
-                        marginRight: 16,
+                        fontSize: { xs: 20, sm: 22, md: 24 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
+                        marginRight: { xs: 12, sm: 14, md: 16 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
                         color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                       }}
                     />
                     <Typography
                       variant="overline"
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: { xs: 500, sm: 600, md: 600 }, // Responsive font weight
                         color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                        letterSpacing: "0.1em",
+                        letterSpacing: { xs: "0.08em", sm: "0.1em", md: "0.1em" }, // Responsive letter spacing
+                        fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.8rem" }, // Responsive font size
                       }}
                     >
                       {t("landing.features.badges.testimonials")}
@@ -1539,11 +1605,11 @@ export default function HomePage() {
                   <Typography
                     variant="h2"
                     sx={{
-                      fontWeight: 900,
-                      mb: 4,
+                      fontWeight: { xs: 800, sm: 900, md: 900, lg: 900 }, // Responsive font weight
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                      lineHeight: 1.1,
+                      fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem", xl: "4rem" }, // More responsive font size
+                      lineHeight: { xs: 1.15, sm: 1.1, md: 1.1 }, // Responsive line height
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
@@ -1562,12 +1628,12 @@ export default function HomePage() {
                   {/* Visual Divider */}
                   <Box
                     sx={{
-                      width: { xs: "60px", md: "80px" },
-                      height: "4px",
+                      width: { xs: "50px", sm: "60px", md: "70px", lg: "80px" }, // More responsive width
+                      height: { xs: "3px", sm: "3px", md: "4px", lg: "4px" }, // Responsive height
                       background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
                       borderRadius: "2px",
                       mx: "auto",
-                      mb: 4,
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       boxShadow: "0 2px 8px rgba(79, 172, 254, 0.3)",
                     }}
                   />
@@ -1577,10 +1643,12 @@ export default function HomePage() {
                     variant="h5"
                     sx={{
                       color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                      maxWidth: 800,
+                      maxWidth: { xs: "100%", sm: 700, md: 800 }, // Responsive max width
                       mx: "auto",
-                      lineHeight: 1.6,
-                      fontWeight: 400,
+                      lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 }, // Responsive line height
+                      fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                      fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" }, // Responsive font size
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                     }}
                   >
                     {getTestimonialsSubtitle()}
@@ -1591,7 +1659,8 @@ export default function HomePage() {
 
           {/* Testimonials Grid */}
           <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.TESTIMONIALS}>
-            <Grid container spacing={4} sx={{ height: "100%" }}>
+            <Box sx={{ px: { xs: 2, sm: 0 } }}>
+              <Grid container spacing={{ xs: 3, sm: 3.5, md: 4 }} sx={{ height: "100%" }}> {/* Responsive spacing */}
               {[
                 {
                   name: t("landing.testimonials.testimonial1.name"),
@@ -1620,7 +1689,7 @@ export default function HomePage() {
                     <Card
                       sx={{
                         height: "100%",
-                        minHeight: "300px", // Increased for better content distribution
+                        minHeight: { xs: "250px", sm: "275px", md: "300px" }, // Responsive min height
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between", // Distribute content evenly
@@ -1635,7 +1704,7 @@ export default function HomePage() {
                             ? "1px solid rgba(255,255,255,0.05)"
                             : "1px solid rgba(0,0,0,0.05)",
                         borderRadius: theme.shape.borderRadius, // Use theme borderRadius
-                        p: 4,
+                        p: { xs: 3, sm: 3.5, md: 4 }, // Responsive padding
                         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                         position: "relative",
                         overflow: "hidden",
@@ -1725,7 +1794,8 @@ export default function HomePage() {
                   </AnimatedSection>
                 </Grid>
               ))}
-            </Grid>
+              </Grid>
+            </Box>
           </StaggeredContainer>
         </Container>
       </Box>
@@ -1740,11 +1810,11 @@ export default function HomePage() {
         }}
         id="faq"
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
-                      {/* Section Header */}
-            <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FAQ}>
-              <Box sx={{ textAlign: "center", mb: 12, px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FAQ}>
+              <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 0 } }}>
+        {/* Section Header */}
+        <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FAQ}>
+            <Box sx={{ textAlign: "center", mb: 12, px: { xs: 4, sm: 6, md: 0 } }}>
+              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.FAQ}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -1760,17 +1830,18 @@ export default function HomePage() {
                   >
                     <HelpIcon
                       style={{
-                        fontSize: 24,
-                        marginRight: 16,
+                        fontSize: { xs: 20, sm: 22, md: 24 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
+                        marginRight: { xs: 12, sm: 14, md: 16 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
                         color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                       }}
                     />
                     <Typography
                       variant="overline"
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: { xs: 500, sm: 600, md: 600 }, // Responsive font weight
                         color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                        letterSpacing: "0.1em",
+                        letterSpacing: { xs: "0.08em", sm: "0.1em", md: "0.1em" }, // Responsive letter spacing
+                        fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.8rem" }, // Responsive font size
                       }}
                     >
                       {t("landing.features.badges.faq")}
@@ -1781,11 +1852,11 @@ export default function HomePage() {
                   <Typography
                     variant="h2"
                     sx={{
-                      fontWeight: 900,
-                      mb: 4,
+                      fontWeight: { xs: 800, sm: 900, md: 900, lg: 900 }, // Responsive font weight
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                      lineHeight: 1.1,
+                      fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem", xl: "4rem" }, // More responsive font size
+                      lineHeight: { xs: 1.15, sm: 1.1, md: 1.1 }, // Responsive line height
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
@@ -1804,12 +1875,12 @@ export default function HomePage() {
                   {/* Visual Divider */}
                   <Box
                     sx={{
-                      width: { xs: "60px", md: "80px" },
-                      height: "4px",
+                      width: { xs: "50px", sm: "60px", md: "70px", lg: "80px" }, // More responsive width
+                      height: { xs: "3px", sm: "3px", md: "4px", lg: "4px" }, // Responsive height
                       background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                       borderRadius: "2px",
                       mx: "auto",
-                      mb: 4,
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       boxShadow: "0 2px 8px rgba(102, 126, 234, 0.3)",
                     }}
                   />
@@ -1819,10 +1890,12 @@ export default function HomePage() {
                     variant="h5"
                     sx={{
                       color: theme.palette.mode === "dark" ? "#cccccc" : "#333333",
-                      maxWidth: 800,
+                      maxWidth: { xs: "100%", sm: 700, md: 800 }, // Responsive max width
                       mx: "auto",
-                      lineHeight: 1.6,
-                      fontWeight: 400,
+                      lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 }, // Responsive line height
+                      fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                      fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" }, // Responsive font size
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                     }}
                   >
                     {getFaqSubtitle()}
@@ -1833,7 +1906,8 @@ export default function HomePage() {
 
           {/* FAQ Grid */}
           <StaggeredContainer animationType="slideUp" staggerDelay={STAGGER_DELAYS.FAQ}>
-            <Grid container spacing={4}>
+            <Box sx={{ px: { xs: 2, sm: 0 } }}>
+              <Grid container spacing={{ xs: 3, sm: 3.5, md: 4 }}> {/* Responsive spacing */}
               {[
                 {
                   question: t("landing.faq.faq1.question"),
@@ -1895,7 +1969,7 @@ export default function HomePage() {
                               ? "1px solid rgba(255,255,255,0.05)"
                               : "1px solid rgba(0,0,0,0.05)",
                           borderRadius: theme.shape.borderRadius,
-                          p: 4,
+                          p: { xs: 3, sm: 3.5, md: 4 }, // Responsive padding
                           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           overflow: "hidden",
@@ -1924,18 +1998,18 @@ export default function HomePage() {
                         }}
                       >
                         <AnimatedSection animationType="slideUp" delay={0.2 + (0.1 * index)}>
-                          <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                          <Box sx={{ display: "flex", alignItems: "center", mb: { xs: 2, sm: 2.5, md: 3 } }}> {/* Responsive margin bottom */}
                             <Box
                               sx={{
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                width: 56,
-                                height: 56,
+                                width: { xs: 48, sm: 52, md: 56 }, // Responsive width
+                                height: { xs: 48, sm: 52, md: 56 }, // Responsive height
                                 borderRadius: "50%",
                                 background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
                                 border: `2px solid ${theme.palette.primary.main}30`,
-                                mr: 3,
+                                mr: { xs: 2, sm: 2.5, md: 3 }, // Responsive margin right
                                 transition: "all 0.3s ease",
                                 "&:hover": {
                                   transform: "scale(1.1)",
@@ -1948,7 +2022,7 @@ export default function HomePage() {
                                 component="span"
                                 sx={{
                                   color: theme.palette.primary.main,
-                                  fontSize: "2rem",
+                                  fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" }, // Responsive font size
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "center",
@@ -1994,7 +2068,8 @@ export default function HomePage() {
                   </Grid>
                 );
               })}
-            </Grid>
+              </Grid>
+            </Box>
           </StaggeredContainer>
         </Container>
       </Box>
@@ -2034,10 +2109,10 @@ export default function HomePage() {
         }}
         id="cta"
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 4, md: 0 } }}>
-                      <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA}>
-              <Box sx={{ textAlign: "center", px: { xs: 2, sm: 0 } }}>
-                <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.CTA}>
+        <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 0 } }}>
+          <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA}>
+            <Box sx={{ textAlign: "center", px: { xs: 4, sm: 6, md: 0 } }}>
+              <AnimatedSection animationType="scale" delay={ANIMATION_DELAYS.CTA}>
                   <Box
                     sx={{
                       display: "inline-flex",
@@ -2053,17 +2128,18 @@ export default function HomePage() {
                   >
                     <GoalIcon
                       style={{
-                        fontSize: 24,
-                        marginRight: 16,
+                        fontSize: { xs: 20, sm: 22, md: 24 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
+                        marginRight: { xs: 12, sm: 14, md: 16 }[theme.breakpoints.down('md') ? 'xs' : theme.breakpoints.down('lg') ? 'sm' : 'md'],
                         color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
                       }}
                     />
                     <Typography
                       variant="overline"
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: { xs: 500, sm: 600, md: 600 }, // Responsive font weight
                         color: theme.palette.mode === "dark" ? "#cccccc" : "#666666",
-                        letterSpacing: "0.1em",
+                        letterSpacing: { xs: "0.08em", sm: "0.1em", md: "0.1em" }, // Responsive letter spacing
+                        fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.8rem" }, // Responsive font size
                       }}
                     >
                       {t("landing.features.badges.cta")}
@@ -2074,11 +2150,11 @@ export default function HomePage() {
                   <Typography
                     variant="h2"
                     sx={{
-                      fontWeight: 900,
-                      mb: 4,
+                      fontWeight: { xs: 800, sm: 900, md: 900, lg: 900 }, // Responsive font weight
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-                      fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
-                      lineHeight: 1.1,
+                      fontSize: { xs: "1.8rem", sm: "2rem", md: "2.25rem", lg: "2.5rem", xl: "3rem" }, // More responsive font size
+                      lineHeight: { xs: 1.15, sm: 1.1, md: 1.1 }, // Responsive line height
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #ffffff 0%, #cccccc 100%)"
@@ -2097,12 +2173,12 @@ export default function HomePage() {
                   {/* Visual Divider */}
                   <Box
                     sx={{
-                      width: { xs: "60px", md: "80px" },
-                      height: "4px",
+                      width: { xs: "50px", sm: "60px", md: "70px", lg: "80px" }, // More responsive width
+                      height: { xs: "3px", sm: "3px", md: "4px", lg: "4px" }, // Responsive height
                       background: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
                       borderRadius: "2px",
                       mx: "auto",
-                      mb: 4,
+                      mb: { xs: 3, sm: 4, md: 4 }, // Responsive margin bottom
                       boxShadow: "0 2px 8px rgba(255, 154, 158, 0.3)",
                     }}
                   />
@@ -2115,11 +2191,12 @@ export default function HomePage() {
                         theme.palette.mode === "dark"
                           ? "rgba(255,255,255,0.8)"
                           : "rgba(0,0,0,0.8)",
-                      maxWidth: 800,
+                      maxWidth: { xs: "100%", sm: 700, md: 800 }, // Responsive max width
                       mx: "auto",
-                      lineHeight: 1.6,
-                      fontWeight: 400,
-                      mb: 6,
+                      lineHeight: { xs: 1.5, sm: 1.55, md: 1.6 }, // Responsive line height
+                      fontWeight: { xs: 400, sm: 400, md: 400 }, // Responsive font weight
+                      fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" }, // Responsive font size
+                      mb: { xs: 4, sm: 5, md: 6 }, // Responsive margin bottom
                     }}
                   >
                     {getCtaSubtitle()}
@@ -2151,6 +2228,7 @@ export default function HomePage() {
                   fontSize: "1.1rem",
                   textTransform: "none",
                   boxShadow: theme.shadows[4],
+                  width: { xs: "100%", sm: "280px" }, // Same width for both buttons
                   "&:hover": {
                     background: theme.palette.primary.dark,
                     transform: "translateY(-2px)",
@@ -2175,6 +2253,7 @@ export default function HomePage() {
                   fontWeight: 700,
                   fontSize: "1.1rem",
                   textTransform: "none",
+                  width: { xs: "100%", sm: "280px" }, // Same width for both buttons
                   "&:hover": {
                     border: `2px solid ${theme.palette.primary.dark}`,
                     background: theme.palette.primary.main,
@@ -2204,7 +2283,7 @@ export default function HomePage() {
         }}
         id="footer"
       >
-        <Container maxWidth="xl" sx={{ py: 6 }}>
+        <Container maxWidth="xl" sx={{ py: 6, px: { xs: 4, sm: 6, md: 0 } }}>
           {/* Main Footer Content */}
           <Box sx={{ 
             display: "grid", 
@@ -2239,21 +2318,11 @@ export default function HomePage() {
                     p.
                   </Typography>
                 </Box>
-                <Typography
+                <Logo 
                   variant="h5"
-                  sx={{
-                    fontWeight: 700,
-                    fontSize: { xs: "1.3rem", md: "1.5rem" },
-                    letterSpacing: "-0.065em",
-                  }}
-                >
-                  <Box component="span" sx={{ color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b" }}>
-                    park
-                  </Box>
-                  <Box component="span" sx={{ color: "#3b82f6" }}>
-                    it.
-                  </Box>
-                </Typography>
+                  fontSize={{ xs: '1.3rem', sm: '1.4rem', md: '1.5rem', lg: '1.6rem' }}
+                  fontWeight={{ xs: 700, sm: 700, md: 700, lg: 800 }}
+                />
               </Box>
 
               {/* Description */}
@@ -2591,9 +2660,10 @@ export default function HomePage() {
                         "& .MuiOutlinedInput-root": {
                           color: theme.palette.text.primary,
                           background: theme.palette.background.paper,
-                          borderRadius: theme.shape.borderRadius,
+                          borderRadius: "12px", // Consistent rounded corners across all views
                           border: `1px solid ${theme.palette.mode === "dark" ? theme.palette.divider : theme.palette.grey[300]}`,
-                          fontSize: { xs: "0.8rem", md: "0.875rem" },
+                          fontSize: "0.875rem", // Consistent font size across all views
+                          minHeight: "48px", // Consistent height across all views
                           "&:hover": {
                             border: `1px solid ${theme.palette.mode === "dark" ? theme.palette.grey[600] : theme.palette.primary.main}`,
                           },
@@ -2604,8 +2674,8 @@ export default function HomePage() {
                           "& fieldset": { border: "none" },
                         },
                         "& .MuiInputBase-input": {
-                          padding: { xs: "6px 10px", md: "8px 12px" },
-                          fontSize: { xs: "0.8rem", md: "0.875rem" },
+                          padding: "12px 16px", // Consistent padding across all views
+                          fontSize: "0.875rem", // Consistent font size across all views
                           fontWeight: 400,
                           "&::placeholder": {
                             color: theme.palette.text.secondary,
@@ -2621,12 +2691,14 @@ export default function HomePage() {
                         background: theme.palette.primary.main,
                         color: theme.palette.primary.contrastText,
                         fontWeight: 600,
-                        py: { xs: 0.75, md: 1 },
-                        px: { xs: 2, md: 3 },
-                        borderRadius: theme.shape.borderRadius,
+                        py: 1, // Consistent vertical padding across all views
+                        px: 3, // Consistent horizontal padding across all views
+                        borderRadius: "12px", // Consistent rounded corners across all views
                         border: "none",
-                        fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        fontSize: "0.875rem", // Consistent font size across all views
                         textTransform: "none",
+                        minHeight: "48px", // Consistent height across all views
+                        minWidth: "120px", // Consistent minimum width across all views
                         "&:hover": {
                           background: theme.palette.primary.dark,
                         },
@@ -2752,7 +2824,16 @@ export default function HomePage() {
               onChange={(e) =>
                 setLoginData({ ...loginData, email: e.target.value })
               }
-              sx={{ mb: 3 }}
+              sx={{ 
+                mb: 3,
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "12px", // Consistent rounded corners across all views
+                  minHeight: "48px", // Consistent height across all views
+                },
+                "& .MuiInputBase-input": {
+                  padding: "12px 16px", // Consistent padding across all views
+                },
+              }}
             />
             <TextField
               fullWidth
@@ -2762,6 +2843,15 @@ export default function HomePage() {
               onChange={(e) =>
                 setLoginData({ ...loginData, password: e.target.value })
               }
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "12px", // Consistent rounded corners across all views
+                  minHeight: "48px", // Consistent height across all views
+                },
+                "& .MuiInputBase-input": {
+                  padding: "12px 16px", // Consistent padding across all views
+                },
+              }}
             />
             <Alert severity="info" sx={{ mt: 2 }}>
               {t("landing.login.demoInfo")}
@@ -2769,18 +2859,33 @@ export default function HomePage() {
           </Box>
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
-          <Button onClick={() => setLoginOpen(false)} sx={{ color: "#666666" }}>
+          <Button 
+            onClick={() => setLoginOpen(false)} 
+            sx={{ 
+              color: "#666666",
+              px: 3,
+              py: 1.5,
+              borderRadius: "12px", // Consistent rounded corners across all views
+              minHeight: "48px", // Consistent height across all views
+              minWidth: "100px", // Consistent minimum width across all views
+              fontWeight: 600,
+            }}
+          >
             {t("common.cancel")}
           </Button>
           <Button
             variant="contained"
             onClick={handleLogin}
-                                    startIcon={<LoginIcon />}
+            startIcon={<LoginIcon />}
             sx={{
               background: "#000000",
               color: "#ffffff",
               px: 3,
+              py: 1.5,
+              borderRadius: "12px", // Consistent rounded corners across all views
               fontWeight: 600,
+              minHeight: "48px", // Consistent height across all views
+              minWidth: "120px", // Consistent minimum width across all views
               "&:hover": {
                 background: "#333333",
               },

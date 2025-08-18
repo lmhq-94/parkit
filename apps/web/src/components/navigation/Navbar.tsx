@@ -71,7 +71,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         <Toolbar sx={{ justifyContent: "space-between", py: 1 }}>
           {/* Logo section */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Logo />
+            <Logo 
+              variant="h5"
+              fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem', lg: '2.2rem' }}
+              fontWeight={{ xs: 700, sm: 800, md: 800, lg: 900 }}
+            />
           </Box>
 
           {/* Desktop navigation */}

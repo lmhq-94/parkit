@@ -119,15 +119,17 @@ export const defaultTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
-          padding: '12px 24px',
-          fontSize: '0.875rem',
-          fontWeight: 600,
+          borderRadius: "12px", // Consistent rounded corners across all views
+          padding: '12px 24px', // Consistent padding across all views
+          fontSize: '0.875rem', // Consistent font size across all views
+          fontWeight: 600, // Consistent font weight across all views
           textTransform: 'none',
           letterSpacing: '0.025em',
+          minHeight: "48px", // Consistent height across all views
+          minWidth: "120px", // Consistent minimum width across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            transform: 'translateY(-1px)',
+            transform: 'translateY(-2px)', // Consistent hover effect across all views
           },
         },
         contained: {
@@ -148,7 +150,7 @@ export const defaultTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -161,7 +163,7 @@ export const defaultTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
         },
       },
     },
@@ -169,7 +171,8 @@ export const defaultTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 2,
+            borderRadius: "12px", // Consistent rounded corners across all views
+            minHeight: "48px", // Consistent height across all views
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
@@ -178,17 +181,21 @@ export const defaultTheme = createTheme({
               boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
             },
           },
+          '& .MuiInputBase-input': {
+            padding: "12px 16px", // Consistent padding across all views
+            fontSize: "0.875rem", // Consistent font size across all views
+          },
         },
       },
     },
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           fontWeight: 600,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            transform: 'translateY(-1px)',
+            transform: 'translateY(-2px)', // Consistent hover effect across all views
           },
         },
       },
@@ -203,17 +210,17 @@ export const defaultTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            transform: 'translateY(-1px)',
+            transform: 'translateY(-2px)', // Consistent hover effect across all views
           },
         },
       },
@@ -221,7 +228,7 @@ export const defaultTheme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.08)',
@@ -232,7 +239,7 @@ export const defaultTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
         },
       },
@@ -240,7 +247,7 @@ export const defaultTheme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
         },
       },
@@ -434,17 +441,17 @@ export const lightTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            transform: 'translateY(-1px)',
+            transform: 'translateY(-2px)', // Consistent hover effect across all views
           },
         },
       },
@@ -452,7 +459,7 @@ export const lightTheme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.08)',
@@ -463,7 +470,7 @@ export const lightTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
         },
       },
@@ -471,7 +478,7 @@ export const lightTheme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
         },
       },
@@ -623,7 +630,7 @@ export const darkTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
         },
       },
     },
@@ -631,7 +638,8 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 2,
+            borderRadius: "12px", // Consistent rounded corners across all views
+            minHeight: "48px", // Consistent height across all views
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
@@ -640,17 +648,21 @@ export const darkTheme = createTheme({
               boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
             },
           },
+          '& .MuiInputBase-input': {
+            padding: "12px 16px", // Consistent padding across all views
+            fontSize: "0.875rem", // Consistent font size across all views
+          },
         },
       },
     },
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           fontWeight: 600,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            transform: 'translateY(-1px)',
+            transform: 'translateY(-2px)', // Consistent hover effect across all views
           },
         },
       },
@@ -665,17 +677,17 @@ export const darkTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
         },
       },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            transform: 'translateY(-1px)',
+            transform: 'translateY(-2px)', // Consistent hover effect across all views
           },
         },
       },
@@ -683,7 +695,7 @@ export const darkTheme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             backgroundColor: 'rgba(255, 255, 255, 0.08)',
@@ -694,7 +706,7 @@ export const darkTheme = createTheme({
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
         },
       },
@@ -702,7 +714,7 @@ export const darkTheme = createTheme({
     MuiMenu: {
       styleOverrides: {
         paper: {
-          borderRadius: 2,
+          borderRadius: "12px", // Consistent rounded corners across all views
           boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
         },
       },

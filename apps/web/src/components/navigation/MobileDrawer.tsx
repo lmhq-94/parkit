@@ -10,14 +10,23 @@ import {
   ListItemText,
   Button,
   useTheme,
+  Divider,
 } from '@mui/material';
+import { Logo } from '../Logo';
 import {
   CarIcon,
   QrCodeIcon,
   HelpIcon,
   MessageIcon,
   LoginIcon,
+  HomeIcon,
+  UserIcon,
+  SettingsIcon,
+  PhoneIcon,
+  EmailIcon as MailIcon,
 } from '../icons';
+import { useTranslation } from 'react-i18next';
+import { FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 
 // Types
 interface MobileDrawerProps {
@@ -28,8 +37,8 @@ interface MobileDrawerProps {
 }
 
 /**
- * MobileDrawer component - Mobile navigation drawer
- * Features modern design with theme integration and smooth navigation
+ * MobileDrawer component - Professional mobile navigation drawer
+ * Features clean design with essential navigation items and modern icons
  */
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   open,
@@ -38,6 +47,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   onLogin,
 }) => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const handleNavigation = (elementId: string) => {
     onNavigation(elementId);
@@ -57,31 +67,11 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
       PaperProps={{
         sx: {
           width: 320,
-          background: theme.palette.mode === "dark"
-            ? "linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,26,46,0.95) 100%)"
-            : "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%)",
-          borderRight: theme.palette.mode === "dark"
-            ? "1px solid rgba(255,255,255,0.1)"
-            : "1px solid rgba(0,0,0,0.1)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          position: "fixed",
-          top: 0,
-          right: 0,
-          height: "100vh",
-          zIndex: 1200,
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: theme.palette.mode === "dark"
-              ? "radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%)"
-              : "radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
-            pointerEvents: "none",
-          },
+          background: theme.palette.background.paper,
+          borderLeft: `1px solid ${theme.palette.divider}`,
+          boxShadow: theme.palette.mode === "dark" 
+            ? "0 8px 32px rgba(0, 0, 0, 0.4)"
+            : "0 8px 32px rgba(0, 0, 0, 0.1)",
         },
       }}
     >
@@ -89,143 +79,319 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
       <Box
         sx={{
           p: 3,
-          borderBottom: theme.palette.mode === "dark"
-            ? "1px solid rgba(255,255,255,0.1)"
-            : "1px solid rgba(0,0,0,0.1)",
-          position: "relative",
-          zIndex: 2,
+          borderBottom: `1px solid ${theme.palette.divider}`,
+          background: theme.palette.background.default,
         }}
       >
-        <Typography
+        <Logo 
           variant="h6"
-          sx={{
-            fontWeight: 700,
-            fontSize: "1.5rem",
-            color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          <Box
-            component="span"
-            sx={{
-              color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-            }}
-          >
-            park
-          </Box>
-          <Box
-            component="span"
-            sx={{
-              color: theme.palette.mode === "dark" ? "#3b82f6" : "#3b82f6",
-            }}
-          >
-            it.
-          </Box>
-        </Typography>
+          fontSize={{ xs: '1.4rem', sm: '1.5rem', md: '1.6rem', lg: '1.6rem' }}
+          fontWeight={{ xs: 700, sm: 700, md: 700, lg: 700 }}
+        />
       </Box>
 
       {/* Navigation content */}
-      <Box sx={{ flex: 1, position: "relative", zIndex: 2 }}>
-        <List sx={{ p: 2 }}>
-          {/* Navigation items */}
-                  {[
-          { label: "Soluciones", icon: <CarIcon />, id: "soluciones" },
-          { label: "Cómo Funciona", icon: <QrCodeIcon />, id: "como-funciona" },
-          { label: "FAQ", icon: <HelpIcon />, id: "faq" },
-          { label: "Contacto", icon: <MessageIcon />, id: "footer" },
-        ].map((item) => (
-            <ListItem key={item.id} disablePadding sx={{ mb: 1 }}>
-              <ListItemButton
-                onClick={() => handleNavigation(item.id)}
-                sx={{
-                  borderRadius: 0,
-                  py: 2,
-                  px: 3,
-                  background: "transparent",
-                  "&:hover": {
-                    background: theme.palette.mode === "dark"
-                      ? "rgba(255,255,255,0.1)"
-                      : "rgba(0,0,0,0.05)",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 40,
-                    color: theme.palette.mode === "dark" ? "#3b82f6" : "#3b82f6",
-                  }}
-                >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.label}
-                  sx={{
-                    "& .MuiListItemText-primary": {
-                      fontWeight: 500,
-                      color: theme.palette.mode === "dark" ? "#e2e8f0" : "#374151",
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-
-        {/* CTA section */}
-        <Box
-          sx={{
-            p: 2,
-            borderTop: theme.palette.mode === "dark"
-              ? "1px solid rgba(255,255,255,0.1)"
-              : "1px solid rgba(0,0,0,0.1)",
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
+      <Box sx={{ flex: 1, overflowY: "auto" }}>
+        <List sx={{ p: 0 }}>
+          {/* Main Navigation */}
           <ListItem disablePadding>
             <ListItemButton
-              onClick={handleLogin}
+              onClick={() => handleNavigation('hero')}
               sx={{
-                borderRadius: 0,
                 py: 2.5,
                 px: 3,
-                background: theme.palette.mode === "dark"
-                  ? "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)"
-                  : "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
-                color: "#ffffff",
-                boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                borderBottom: `1px solid ${theme.palette.divider}`,
                 "&:hover": {
-                  background: theme.palette.mode === "dark"
-                    ? "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)"
-                    : "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)",
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 15px 35px rgba(59, 130, 246, 0.4)",
+                  background: theme.palette.action.hover,
                 },
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 40,
-                  color: "#ffffff",
+                  color: theme.palette.primary.main,
                 }}
               >
-                <LoginIcon />
+                <HomeIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Comenzar Ahora"
+                primary="Inicio"
                 sx={{
                   "& .MuiListItemText-primary": {
-                    fontWeight: 600,
-                    color: "#ffffff",
-                    textAlign: "center",
+                    fontWeight: 500,
+                    fontSize: "1rem",
                   },
                 }}
               />
             </ListItemButton>
           </ListItem>
-        </Box>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => handleNavigation('soluciones')}
+              sx={{
+                py: 2.5,
+                px: 3,
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                "&:hover": {
+                  background: theme.palette.action.hover,
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 40,
+                  color: theme.palette.primary.main,
+                }}
+              >
+                <CarIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Soluciones"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => handleNavigation('como-funciona')}
+              sx={{
+                py: 2.5,
+                px: 3,
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                "&:hover": {
+                  background: theme.palette.action.hover,
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 40,
+                  color: theme.palette.primary.main,
+                }}
+              >
+                <QrCodeIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Cómo Funciona"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => handleNavigation('faq')}
+              sx={{
+                py: 2.5,
+                px: 3,
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                "&:hover": {
+                  background: theme.palette.action.hover,
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 40,
+                  color: theme.palette.primary.main,
+                }}
+              >
+                <HelpIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Preguntas Frecuentes"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <Divider sx={{ my: 2 }} />
+
+          {/* Quick Actions */}
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="https://wa.me/50662164040"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                py: 2.5,
+                px: 3,
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                "&:hover": {
+                  background: theme.palette.action.hover,
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 40,
+                  color: "#25D366",
+                }}
+              >
+                <PhoneIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Contactar por WhatsApp"
+                secondary="+506 6216 4040"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                  },
+                  "& .MuiListItemText-secondary": {
+                    fontSize: "0.875rem",
+                    color: theme.palette.text.secondary,
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="mailto:info@parkit.com"
+              sx={{
+                py: 2.5,
+                px: 3,
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                "&:hover": {
+                  background: theme.palette.action.hover,
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 40,
+                  color: theme.palette.primary.main,
+                }}
+              >
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Enviar Email"
+                secondary="info@parkit.com"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                  },
+                  "& .MuiListItemText-secondary": {
+                    fontSize: "0.875rem",
+                    color: theme.palette.text.secondary,
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <Divider sx={{ my: 2 }} />
+
+          {/* Social Media */}
+          <Box sx={{ p: 3, textAlign: "center" }}>
+            <Typography
+              variant="subtitle2"
+              sx={{
+                fontWeight: 600,
+                mb: 2,
+                color: theme.palette.text.secondary,
+                fontSize: "0.75rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+              }}
+            >
+              Síguenos
+            </Typography>
+            <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+              {[
+                { icon: <FaLinkedin />, color: "#0077b5", label: "LinkedIn", href: "https://linkedin.com/company/parkit" },
+                { icon: <FaInstagram />, color: "#e4405f", label: "Instagram", href: "https://instagram.com/parkit" },
+                { icon: <FaFacebook />, color: "#1877f2", label: "Facebook", href: "https://facebook.com/parkit" }
+              ].map((social, index) => (
+                <Box
+                  key={index}
+                  component="a"
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "12px",
+                    background: theme.palette.background.default,
+                    border: `1px solid ${theme.palette.divider}`,
+                    color: social.color,
+                    textDecoration: "none",
+                    transition: "all 0.2s ease",
+                    "&:hover": {
+                      background: theme.palette.action.hover,
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    },
+                  }}
+                  title={social.label}
+                >
+                  {social.icon}
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </List>
+      </Box>
+
+      {/* CTA section */}
+      <Box
+        sx={{
+          p: 3,
+          borderTop: `1px solid ${theme.palette.divider}`,
+          background: theme.palette.background.default,
+        }}
+      >
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={handleLogin}
+          sx={{
+            py: 2,
+            px: 3,
+            background: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
+            fontWeight: 600,
+            fontSize: "1rem",
+            borderRadius: "12px",
+            textTransform: "none",
+            boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)",
+            "&:hover": {
+              background: theme.palette.primary.dark,
+              transform: "translateY(-1px)",
+              boxShadow: "0 6px 20px rgba(59, 130, 246, 0.4)",
+            },
+            transition: "all 0.2s ease",
+          }}
+        >
+          Comenzar Ahora
+        </Button>
       </Box>
     </Drawer>
   );
