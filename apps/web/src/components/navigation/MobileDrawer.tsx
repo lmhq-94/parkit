@@ -11,6 +11,8 @@ import {
   Button,
   useTheme,
   Divider,
+  Avatar,
+  Chip,
 } from '@mui/material';
 import { Logo } from '../Logo';
 import {
@@ -24,9 +26,12 @@ import {
   SettingsIcon,
   PhoneIcon,
   EmailIcon as MailIcon,
+  StarIcon,
+  SecurityIcon as ShieldIcon,
+  ZapIcon,
 } from '../icons';
 import { useTranslation } from 'react-i18next';
-import { FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 
 // Types
 interface MobileDrawerProps {
@@ -37,8 +42,8 @@ interface MobileDrawerProps {
 }
 
 /**
- * MobileDrawer component - Professional mobile navigation drawer
- * Features clean design with essential navigation items and modern icons
+ * MobileDrawer component - Modern, Uber-inspired mobile navigation drawer
+ * Features clean design with professional styling and improved UX
  */
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   open,
@@ -66,332 +71,267 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
       onClose={onClose}
       PaperProps={{
         sx: {
-          width: 320,
+          width: 360,
           background: theme.palette.background.paper,
           borderLeft: `1px solid ${theme.palette.divider}`,
+          borderTopLeftRadius: "16px",
+          borderBottomLeftRadius: "16px",
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
           boxShadow: theme.palette.mode === "dark" 
-            ? "0 8px 32px rgba(0, 0, 0, 0.4)"
-            : "0 8px 32px rgba(0, 0, 0, 0.1)",
+            ? "0 12px 40px rgba(0, 0, 0, 0.5)"
+            : "0 12px 40px rgba(0, 0, 0, 0.15)",
+          overflow: "hidden",
         },
       }}
     >
-      {/* Header */}
+      {/* Modern Header with Hero Section Background */}
       <Box
         sx={{
-          p: 3,
-          borderBottom: `1px solid ${theme.palette.divider}`,
-          background: theme.palette.background.default,
+          p: 4,
+          background: theme.palette.mode === 'dark' 
+            ? `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 50%, ${theme.palette.background.default} 100%)`
+            : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.grey[50]} 50%, ${theme.palette.background.paper} 100%)`,
+          color: theme.palette.text.primary,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <Logo 
-          variant="h6"
-          fontSize={{ xs: '1.4rem', sm: '1.5rem', md: '1.6rem', lg: '1.6rem' }}
-          fontWeight={{ xs: 700, sm: 700, md: 700, lg: 700 }}
+        {/* Modern Gradient Mesh */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `radial-gradient(circle at 20% 20%, ${theme.palette.primary.main}05 0%, transparent 50%),
+                         radial-gradient(circle at 80% 80%, ${theme.palette.secondary.main}05 0%, transparent 50%),
+                         radial-gradient(circle at 40% 60%, ${theme.palette.success.main}03 0%, transparent 50%)`,
+            zIndex: 1,
+          }}
         />
+        
+        {/* Logo and Close */}
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 3 }}>
+          <Logo 
+            variant="h5"
+            fontSize="1.5rem"
+            fontWeight={700}
+            color={theme.palette.primary.main}
+          />
+          <Chip
+            label="v2.0"
+            size="small"
+            sx={{
+              background: theme.palette.primary.main,
+              color: theme.palette.primary.contrastText,
+              fontSize: "0.7rem",
+              height: "24px",
+            }}
+          />
+        </Box>
+
+        {/* Welcome Message */}
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 600,
+            mb: 1,
+            opacity: 0.9,
+          }}
+        >
+          Bienvenido a ParkIt
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            opacity: 0.8,
+            lineHeight: 1.4,
+          }}
+        >
+          La plataforma más inteligente del mercado
+        </Typography>
       </Box>
 
       {/* Navigation content */}
       <Box sx={{ flex: 1, overflowY: "auto" }}>
         <List sx={{ p: 0 }}>
-          {/* Main Navigation */}
-          <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => handleNavigation('hero')}
-              sx={{
-                py: 2.5,
-                px: 3,
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                "&:hover": {
-                  background: theme.palette.action.hover,
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: theme.palette.primary.main,
-                }}
-              >
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Inicio"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => handleNavigation('soluciones')}
-              sx={{
-                py: 2.5,
-                px: 3,
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                "&:hover": {
-                  background: theme.palette.action.hover,
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: theme.palette.primary.main,
-                }}
-              >
-                <CarIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Soluciones"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => handleNavigation('como-funciona')}
-              sx={{
-                py: 2.5,
-                px: 3,
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                "&:hover": {
-                  background: theme.palette.action.hover,
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: theme.palette.primary.main,
-                }}
-              >
-                <QrCodeIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Cómo Funciona"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => handleNavigation('faq')}
-              sx={{
-                py: 2.5,
-                px: 3,
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                "&:hover": {
-                  background: theme.palette.action.hover,
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: theme.palette.primary.main,
-                }}
-              >
-                <HelpIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Preguntas Frecuentes"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <Divider sx={{ my: 2 }} />
-
-          {/* Quick Actions */}
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="https://wa.me/50662164040"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                py: 2.5,
-                px: 3,
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                "&:hover": {
-                  background: theme.palette.action.hover,
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: "#25D366",
-                }}
-              >
-                <PhoneIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Contactar por WhatsApp"
-                secondary="+506 6216 4040"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                  },
-                  "& .MuiListItemText-secondary": {
-                    fontSize: "0.875rem",
-                    color: theme.palette.text.secondary,
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="mailto:info@parkit.com"
-              sx={{
-                py: 2.5,
-                px: 3,
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                "&:hover": {
-                  background: theme.palette.action.hover,
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: theme.palette.primary.main,
-                }}
-              >
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Enviar Email"
-                secondary="info@parkit.com"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                  },
-                  "& .MuiListItemText-secondary": {
-                    fontSize: "0.875rem",
-                    color: theme.palette.text.secondary,
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <Divider sx={{ my: 2 }} />
-
-          {/* Social Media */}
-          <Box sx={{ p: 3, textAlign: "center" }}>
+          {/* Main Navigation Section */}
+          <Box sx={{ p: 3, pb: 1 }}>
             <Typography
-              variant="subtitle2"
+              variant="overline"
               sx={{
                 fontWeight: 600,
-                mb: 2,
                 color: theme.palette.text.secondary,
-                fontSize: "0.75rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
+                fontSize: "0.7rem",
+                letterSpacing: "0.1em",
+                mb: 2,
+                display: "block",
               }}
             >
-              Síguenos
+              NAVEGACIÓN
             </Typography>
-            <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
-              {[
-                { icon: <FaLinkedin />, color: "#0077b5", label: "LinkedIn", href: "https://linkedin.com/company/parkit" },
-                { icon: <FaInstagram />, color: "#e4405f", label: "Instagram", href: "https://instagram.com/parkit" },
-                { icon: <FaFacebook />, color: "#1877f2", label: "Facebook", href: "https://facebook.com/parkit" }
-              ].map((social, index) => (
-                <Box
-                  key={index}
-                  component="a"
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+          </Box>
+
+          {/* Navigation Items */}
+          {[
+            { icon: <HomeIcon />, text: "Inicio", action: () => handleNavigation('hero'), color: theme.palette.primary.main },
+            { icon: <CarIcon />, text: "Soluciones", action: () => handleNavigation('soluciones'), color: "#10b981" },
+            { icon: <QrCodeIcon />, text: "Cómo Funciona", action: () => handleNavigation('como-funciona'), color: "#f59e0b" },
+            { icon: <HelpIcon />, text: "FAQ", action: () => handleNavigation('faq'), color: "#8b5cf6" },
+          ].map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton
+                onClick={item.action}
+                sx={{
+                  py: 2.5,
+                  px: 3,
+                  mx: 2,
+                  mb: 1,
+                  borderRadius: "12px",
+                  background: "transparent",
+                  border: "none",
+                  "&:hover": {
+                    background: theme.palette.action.hover,
+                    transform: "translateX(4px)",
+                  },
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    width: 44,
-                    height: 44,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "12px",
-                    background: theme.palette.background.default,
-                    border: `1px solid ${theme.palette.divider}`,
-                    color: social.color,
-                    textDecoration: "none",
-                    transition: "all 0.2s ease",
-                    "&:hover": {
-                      background: theme.palette.action.hover,
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    minWidth: 44,
+                    color: item.color,
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  sx={{
+                    "& .MuiListItemText-primary": {
+                      fontWeight: 600,
+                      fontSize: "1rem",
                     },
                   }}
-                  title={social.label}
-                >
-                  {social.icon}
-                </Box>
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+
+          <Divider sx={{ my: 3, mx: 3 }} />
+
+
+
+          {/* Features Preview */}
+          <Box sx={{ p: 3, pt: 1 }}>
+            <Typography
+              variant="overline"
+              sx={{
+                fontWeight: 600,
+                color: theme.palette.text.secondary,
+                fontSize: "0.7rem",
+                letterSpacing: "0.1em",
+                mb: 2,
+                display: "block",
+              }}
+            >
+              CARACTERÍSTICAS
+            </Typography>
+            <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+              {[
+                { icon: <ZapIcon />, label: "Rápido", color: "#f59e0b" },
+                { icon: <ShieldIcon />, label: "Seguro", color: "#10b981" },
+                { icon: <StarIcon />, label: "Premium", color: "#8b5cf6" },
+              ].map((feature, index) => (
+                <Chip
+                  key={index}
+                  icon={feature.icon}
+                  label={feature.label}
+                  size="small"
+                  sx={{
+                    background: `${feature.color}15`,
+                    color: feature.color,
+                    border: `1px solid ${feature.color}30`,
+                    fontWeight: 600,
+                    fontSize: "0.75rem",
+                    height: "28px",
+                    "& .MuiChip-icon": {
+                      color: feature.color,
+                      fontSize: "1rem",
+                    },
+                  }}
+                />
               ))}
             </Box>
           </Box>
         </List>
       </Box>
 
-      {/* CTA section */}
+      {/* Modern CTA section */}
       <Box
         sx={{
           p: 3,
+          background: `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`,
           borderTop: `1px solid ${theme.palette.divider}`,
-          background: theme.palette.background.default,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Background Pattern */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            opacity: 0.05,
+            background: "radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)",
+          }}
+        />
+        
         <Button
           fullWidth
           variant="contained"
           onClick={handleLogin}
+          startIcon={<LoginIcon />}
           sx={{
-            py: 2,
+            py: 2.5,
             px: 3,
-            background: theme.palette.primary.main,
+            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
             color: theme.palette.primary.contrastText,
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: "1rem",
-            borderRadius: "12px",
+            borderRadius: "16px",
             textTransform: "none",
-            boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)",
+            boxShadow: `0 8px 25px ${theme.palette.primary.main}40`,
+            border: "none",
             "&:hover": {
-              background: theme.palette.primary.dark,
-              transform: "translateY(-1px)",
-              boxShadow: "0 6px 20px rgba(59, 130, 246, 0.4)",
+              background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
+              transform: "translateY(-2px)",
+              boxShadow: `0 12px 35px ${theme.palette.primary.main}50`,
             },
-            transition: "all 0.2s ease",
+            transition: "all 0.3s ease",
           }}
         >
           Comenzar Ahora
         </Button>
+        
+        <Typography
+          variant="caption"
+          sx={{
+            display: "block",
+            textAlign: "center",
+            mt: 2,
+            color: theme.palette.text.secondary,
+            fontSize: "0.75rem",
+            opacity: 0.7,
+          }}
+        >
+          Únete a miles de usuarios satisfechos
+        </Typography>
       </Box>
     </Drawer>
   );

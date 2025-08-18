@@ -631,42 +631,56 @@ export default function HomePage() {
 
                   {/* Main Headline */}
                   <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.HERO + 0.4}>
-                    <Typography
-                      variant="h1"
+                    <Box
                       sx={{
-                        fontWeight: 900,
-                        fontSize: { xs: "3.5rem", sm: "4.5rem", md: "5.5rem", lg: "6.5rem" },
-                        lineHeight: 1.05,
-                        mb: 3,
-                        color: theme.palette.text.primary,
-                        letterSpacing: "-0.03em",
+                        maxWidth: "100%",
+                        overflow: "hidden",
                       }}
                     >
-                      <TypewriterText 
-                        text={t("landing.hero.title")} 
-                        speed={60} 
-                        delay={0.4}
-                      />
-                      <Box
-                        component="span"
+                      <Typography
+                        variant="h1"
                         sx={{
-                          display: "block",
-                          background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-                          backgroundClip: "text",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          fontSize: { xs: "0.85em", sm: "0.9em", md: "0.9em" }, // Responsive subtitle size
-                          mt: { xs: 0.5, sm: 1, md: 1 }, // Responsive top margin
-                          fontWeight: { xs: 700, sm: 800, md: 800 }, // Responsive font weight
+                          fontWeight: 900,
+                          fontSize: { xs: "3rem", sm: "3.5rem", md: "4.5rem", lg: "5.5rem", xl: "6.5rem" },
+                          lineHeight: { xs: 1.1, sm: 1.05, md: 1.05 },
+                          mb: 3,
+                          color: theme.palette.text.primary,
+                          letterSpacing: { xs: "-0.02em", sm: "-0.03em" },
+                          wordBreak: "break-word",
+                          overflowWrap: "break-word",
+                          hyphens: "auto",
+                          maxWidth: "100%",
                         }}
                       >
                         <TypewriterText 
-                          text={t("landing.hero.subtitle")} 
-                          speed={70} 
-                          delay={0.6}
+                          text={t("landing.hero.title")} 
+                          speed={60} 
+                          delay={0.4}
                         />
-                      </Box>
-                    </Typography>
+                        <Box
+                          component="span"
+                          sx={{
+                            display: "block",
+                            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                            backgroundClip: "text",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            fontSize: { xs: "0.9em", sm: "0.9em", md: "0.9em" }, // Increased mobile subtitle size
+                            mt: { xs: 0.5, sm: 1, md: 1 }, // Responsive top margin
+                            fontWeight: { xs: 700, sm: 800, md: 800 }, // Responsive font weight
+                            wordBreak: "break-word",
+                            overflowWrap: "break-word",
+                            maxWidth: "100%",
+                          }}
+                        >
+                          <TypewriterText 
+                            text={t("landing.hero.subtitle")} 
+                            speed={70} 
+                            delay={0.6}
+                          />
+                        </Box>
+                      </Typography>
+                    </Box>
                   </AnimatedSection>
 
                   {/* Hero SVG - Shown on mobile between title and description */}
@@ -1940,19 +1954,6 @@ export default function HomePage() {
                   icon: <WifiIcon />, // Mobile compatibility
                 },
               ].map((faq, index) => {
-                // Debug: Check if faq5 has content
-                if (index === 4) {
-                  console.log('FAQ5 Debug:', {
-                    question: faq.question,
-                    answer: faq.answer,
-                    questionLength: faq.question?.length,
-                    answerLength: faq.answer?.length,
-                    currentLanguage: i18n.language,
-                    questionTranslation: t("landing.faq.faq5.question"),
-                    answerTranslation: t("landing.faq.faq5.answer")
-                  });
-                }
-
                 return (
                   <Grid item xs={12} md={6} key={index}>
                     <AnimatedSection animationType="scale" delay={0.1 * index}>

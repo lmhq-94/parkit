@@ -166,6 +166,10 @@ export { MessageSquare as MessageIcon } from 'lucide-react';
 export { Sun as SunIcon } from 'lucide-react';
 export { Moon as MoonIcon } from 'lucide-react';
 
+// Additional icons for MobileDrawer
+export { Star as StarIcon } from 'lucide-react';
+export { Zap as ZapIcon } from 'lucide-react';
+
 // Parking & Vehicle Icons - Specific to ParkIt
 export { Car as VehicleIcon } from 'lucide-react';
 export { CircleParking as ParkingIcon } from 'lucide-react';
