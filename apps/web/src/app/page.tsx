@@ -66,6 +66,7 @@ import {
   SecurityLockIcon as LockIcon,
   MonitorIcon,
   BusinessIcon,
+  GoalIcon,
 } from "../components/icons";
 import { useAuthStore } from "../store/authStore";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
@@ -878,6 +879,18 @@ export default function HomePage() {
                 >
                   {getFeaturesTitle()}
                 </Typography>
+                {/* Visual Divider */}
+                <Box
+                  sx={{
+                    width: { xs: "60px", md: "80px" },
+                    height: "4px",
+                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    borderRadius: "2px",
+                    mx: "auto",
+                    mb: 4,
+                    boxShadow: "0 2px 8px rgba(102, 126, 234, 0.3)",
+                  }}
+                />
               </AnimatedSection>
               <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.6}>
                 <Typography
@@ -1307,6 +1320,18 @@ export default function HomePage() {
                       delay={0.6}
                     />
                   </Typography>
+                  {/* Visual Divider */}
+                  <Box
+                    sx={{
+                      width: { xs: "60px", md: "80px" },
+                      height: "4px",
+                      background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                      borderRadius: "2px",
+                      mx: "auto",
+                      mb: 4,
+                      boxShadow: "0 2px 8px rgba(240, 147, 251, 0.3)",
+                    }}
+                  />
                 </AnimatedSection>
                 <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FEATURES + 0.6}>
                   <Typography
@@ -1534,6 +1559,18 @@ export default function HomePage() {
                       delay={0.6}
                     />
                   </Typography>
+                  {/* Visual Divider */}
+                  <Box
+                    sx={{
+                      width: { xs: "60px", md: "80px" },
+                      height: "4px",
+                      background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+                      borderRadius: "2px",
+                      mx: "auto",
+                      mb: 4,
+                      boxShadow: "0 2px 8px rgba(79, 172, 254, 0.3)",
+                    }}
+                  />
                 </AnimatedSection>
                 <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.TESTIMONIALS + 0.6}>
                   <Typography
@@ -1764,6 +1801,18 @@ export default function HomePage() {
                       delay={0.6}
                     />
                   </Typography>
+                  {/* Visual Divider */}
+                  <Box
+                    sx={{
+                      width: { xs: "60px", md: "80px" },
+                      height: "4px",
+                      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                      borderRadius: "2px",
+                      mx: "auto",
+                      mb: 4,
+                      boxShadow: "0 2px 8px rgba(102, 126, 234, 0.3)",
+                    }}
+                  />
                 </AnimatedSection>
                 <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.FAQ + 0.6}>
                   <Typography
@@ -2002,7 +2051,7 @@ export default function HomePage() {
                       borderRadius: 2,
                     }}
                   >
-                    <RocketIcon
+                    <GoalIcon
                       style={{
                         fontSize: 24,
                         marginRight: 16,
@@ -2045,6 +2094,18 @@ export default function HomePage() {
                       delay={0.6}
                     />
                   </Typography>
+                  {/* Visual Divider */}
+                  <Box
+                    sx={{
+                      width: { xs: "60px", md: "80px" },
+                      height: "4px",
+                      background: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+                      borderRadius: "2px",
+                      mx: "auto",
+                      mb: 4,
+                      boxShadow: "0 2px 8px rgba(255, 154, 158, 0.3)",
+                    }}
+                  />
                 </AnimatedSection>
                 <AnimatedSection animationType="slideUp" delay={ANIMATION_DELAYS.CTA + 0.6}>
                   <Typography
@@ -2209,6 +2270,19 @@ export default function HomePage() {
               </Typography>
 
               {/* Social Media */}
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontWeight: 600,
+                  mb: { xs: 2, md: 3 },
+                  color: theme.palette.mode === "dark" ? "#ffffff" : "#1e293b",
+                  fontSize: { xs: "0.8rem", md: "0.875rem" },
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {t("landing.footer.sections.socialMedia")}
+              </Typography>
               <Box sx={{ display: "flex", gap: 2 }}>
                 {[
                   { icon: <FaLinkedin />, color: "#0077b5", label: "LinkedIn", href: "https://linkedin.com/company/parkit" },
@@ -2515,19 +2589,17 @@ export default function HomePage() {
                       variant="outlined"
                       sx={{
                         "& .MuiOutlinedInput-root": {
-                          color: theme.palette.mode === "dark" ? "white" : "black",
-                          background: theme.palette.mode === "dark" 
-                            ? "#2a2a2a"
-                            : "#ffffff",
-                          borderRadius: "6px",
-                          border: `1px solid ${theme.palette.mode === "dark" ? "#404040" : "#e9ecef"}`,
+                          color: theme.palette.text.primary,
+                          background: theme.palette.background.paper,
+                          borderRadius: theme.shape.borderRadius,
+                          border: `1px solid ${theme.palette.mode === "dark" ? theme.palette.divider : theme.palette.grey[300]}`,
                           fontSize: { xs: "0.8rem", md: "0.875rem" },
                           "&:hover": {
-                            border: `1px solid ${theme.palette.mode === "dark" ? "#606060" : "#3b82f6"}`,
+                            border: `1px solid ${theme.palette.mode === "dark" ? theme.palette.grey[600] : theme.palette.primary.main}`,
                           },
                           "&.Mui-focused": {
-                            border: "2px solid #3b82f6",
-                            boxShadow: "0 0 0 2px rgba(59,130,246,0.1)",
+                            border: `2px solid ${theme.palette.primary.main}`,
+                            boxShadow: `0 0 0 2px ${theme.palette.primary.main}20`,
                           },
                           "& fieldset": { border: "none" },
                         },
@@ -2536,9 +2608,7 @@ export default function HomePage() {
                           fontSize: { xs: "0.8rem", md: "0.875rem" },
                           fontWeight: 400,
                           "&::placeholder": {
-                            color: theme.palette.mode === "dark" 
-                              ? "rgba(255,255,255,0.5)"
-                              : "rgba(0,0,0,0.5)",
+                            color: theme.palette.text.secondary,
                             opacity: 1,
                           },
                         },
@@ -2548,17 +2618,17 @@ export default function HomePage() {
                       variant="contained"
                       size="small"
                       sx={{
-                        background: "#3b82f6",
-                        color: "#ffffff",
+                        background: theme.palette.primary.main,
+                        color: theme.palette.primary.contrastText,
                         fontWeight: 600,
                         py: { xs: 0.75, md: 1 },
                         px: { xs: 2, md: 3 },
-                        borderRadius: "6px",
+                        borderRadius: theme.shape.borderRadius,
                         border: "none",
                         fontSize: { xs: "0.8rem", md: "0.875rem" },
                         textTransform: "none",
                         "&:hover": {
-                          background: "#2563eb",
+                          background: theme.palette.primary.dark,
                         },
                         transition: "background 0.2s ease",
                       }}

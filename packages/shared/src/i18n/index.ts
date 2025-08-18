@@ -106,8 +106,8 @@ const es = {
         benefits: 'BENEFICIOS PARA TU NEGOCIO',
         process: 'PROCESO SIMPLE',
         testimonials: 'EXPERIENCIAS REALES',
-        faq: 'FAQ',
-        cta: '¡COMIENZA AHORA!'
+        faq: 'RESUELVE DUDAS',
+        cta: 'IMPULSA TU NEGOCIO'
       },
       cardBadges: {
         management: 'GESTIÓN',
@@ -236,7 +236,7 @@ const es = {
         company: 'Empresa',
         support: 'Soporte',
         stayUpdated: 'Mantente Actualizado',
-        contact: 'Contacto'
+        socialMedia: 'Redes Sociales'
       },
       solutions: {
         smartParking: 'Estacionamiento Inteligente',
@@ -577,8 +577,8 @@ const en = {
         benefits: 'BENEFITS FOR YOUR BUSINESS',
         process: 'SIMPLE PROCESS',
         testimonials: 'REAL EXPERIENCES',
-        faq: 'FAQ',
-        cta: 'START NOW!'
+        faq: 'RESOLVE DOUBTS',
+        cta: 'BOOST YOUR BUSINESS'
       },
       cardBadges: {
         management: 'MANAGEMENT',
@@ -707,7 +707,7 @@ const en = {
         company: 'Company',
         support: 'Support',
         stayUpdated: 'Stay Updated',
-        contact: 'Contact'
+        socialMedia: 'Social Media'
       },
       solutions: {
         smartParking: 'Smart Parking',
