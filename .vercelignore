@@ -6,9 +6,8 @@ node_modules/
 # Development files
 .husky/
 .git/
-.github/
 
-# Build outputs
+# Build outputs (but keep the structure)
 dist/
 .next/
 out/

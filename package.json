@@ -4,7 +4,7 @@
   "description": "Sistema Inteligente de Gestión de Parqueos - Multiplataforma",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=@parkit/web",
     "dev": "turbo run dev",
     "dev:backend": "turbo run dev --filter=@parkit/backend",
     "dev:web": "turbo run dev --filter=@parkit/web",
