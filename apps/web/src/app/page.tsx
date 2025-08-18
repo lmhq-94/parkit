@@ -983,19 +983,41 @@ export default function HomePage() {
               <Grid container spacing={{ xs: 3, sm: 3.5, md: 4 }}> {/* Responsive spacing */}
               {[
                 {
-                  icon: <ManagementIcon style={{ fontSize: 64 }} />, // Data management for business
-                  title: t("landing.features.benefits.revenue.title"),
+                  icon: (
+                    <Box
+                      component="img"
+                      src="/images/1.png"
+                      alt="Management"
+                      sx={{
+                        width: 250,
+                        height: 250,
+                        objectFit: "contain",
+                      }}
+                    />
+                  ), // Data management for business
+                  title: "Gestión de Parqueos",
                   description: t("landing.features.benefits.revenue.description"),
                   longDescription: t(
                     "landing.features.benefits.revenue.longDescription"
                   ),
 
                   gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                  badge: t("landing.features.cardBadges.management"),
+                  badge: <ManagementIcon style={{ fontSize: 20 }} />,
                 },
                 {
-                  icon: <AutomationIcon style={{ fontSize: 64 }} />, // Automation for efficiency
-                  title: t("landing.features.benefits.automation.title"),
+                  icon: (
+                    <Box
+                      component="img"
+                      src="/images/2.png"
+                      alt="Automation"
+                      sx={{
+                        width: 250,
+                        height: 250,
+                        objectFit: "contain",
+                      }}
+                    />
+                  ), // Automation for efficiency
+                  title: "Automatización",
                   description: t(
                     "landing.features.benefits.automation.description"
                   ),
@@ -1004,11 +1026,22 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-                  badge: t("landing.features.cardBadges.automation"),
+                  badge: <AutomationIcon style={{ fontSize: 20 }} />,
                 },
                 {
-                  icon: <ExperienceIcon style={{ fontSize: 64 }} />, // User experience focus
-                  title: t("landing.features.benefits.experience.title"),
+                  icon: (
+                    <Box
+                      component="img"
+                      src="/images/3.png"
+                      alt="Experience"
+                      sx={{
+                        width: 250,
+                        height: 250,
+                        objectFit: "contain",
+                      }}
+                    />
+                  ), // User experience focus
+                  title: "Experiencia",
                   description: t(
                     "landing.features.benefits.experience.description"
                   ),
@@ -1017,11 +1050,22 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-                  badge: t("landing.features.cardBadges.experience"),
+                  badge: <ExperienceIcon style={{ fontSize: 20 }} />,
                 },
                 {
-                  icon: <AnalyticsIcon style={{ fontSize: 64 }} />, // Analytics for insights
-                  title: t("landing.features.benefits.analytics.title"),
+                  icon: (
+                    <Box
+                      component="img"
+                      src="/images/4.png"
+                      alt="Analytics"
+                      sx={{
+                        width: 250,
+                        height: 250,
+                        objectFit: "contain",
+                      }}
+                    />
+                  ), // Analytics for insights
+                  title: "Analytics",
                   description: t(
                     "landing.features.benefits.analytics.description"
                   ),
@@ -1030,11 +1074,22 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-                  badge: t("landing.features.cardBadges.analytics"),
+                  badge: <AnalyticsIcon style={{ fontSize: 20 }} />,
                 },
                 {
-                  icon: <SecurityIcon style={{ fontSize: 64 }} />, // Security & protection
-                  title: t("landing.features.benefits.security.title"),
+                  icon: (
+                    <Box
+                      component="img"
+                      src="/images/5.png"
+                      alt="Security"
+                      sx={{
+                        width: 250,
+                        height: 250,
+                        objectFit: "contain",
+                      }}
+                    />
+                  ), // Security & protection
+                  title: "Seguridad",
                   description: t(
                     "landing.features.benefits.security.description"
                   ),
@@ -1043,18 +1098,29 @@ export default function HomePage() {
                   ),
 
                   gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-                  badge: t("landing.features.cardBadges.security"),
+                  badge: <SecurityIcon style={{ fontSize: 20 }} />,
                 },
                 {
-                  icon: <SupportIcon style={{ fontSize: 64 }} />, // Customer support
-                  title: t("landing.features.benefits.support.title"),
+                  icon: (
+                    <Box
+                      component="img"
+                      src="/images/6.png"
+                      alt="Support"
+                      sx={{
+                        width: 250,
+                        height: 250,
+                        objectFit: "contain",
+                      }}
+                    />
+                  ), // Customer support
+                  title: "Soporte",
                   description: t("landing.features.benefits.support.description"),
                   longDescription: t(
                     "landing.features.benefits.support.longDescription"
                   ),
 
                   gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-                  badge: t("landing.features.cardBadges.support"),
+                  badge: <SupportIcon style={{ fontSize: 20 }} />,
                 },
               ].map((benefit, index) => (
                 <Grid item xs={12} md={6} lg={4} key={index}>
@@ -1066,8 +1132,7 @@ export default function HomePage() {
                   >
                     <Card
                     sx={{
-                      height: "100%",
-                      minHeight: { xs: 400, sm: 450, md: 500 }, // Responsive min height
+                      height: { xs: 600, sm: 650, md: 700 }, // Fixed height for all cards
                       background:
                         theme.palette.mode === "dark"
                           ? "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)"
@@ -1117,8 +1182,6 @@ export default function HomePage() {
                         },
                         "& .feature-icon": {
                           transform: "scale(1.1)",
-                          background: benefit.gradient,
-                          boxShadow: `0 10px 25px ${benefit.gradient}50`,
                         },
                         "& .feature-badge": {
                           transform: "scale(1.1)",
@@ -1213,6 +1276,9 @@ export default function HomePage() {
                           boxShadow: "0 4px 12px rgba(0,0,0,0.25)", // Enhanced shadow
                           backdropFilter: "blur(10px)",
                           animation: `fadeInUp 0.6s ease-out ${0.3 + (0.15 * index)}s both`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
                           "&::before": {
                             content: '""',
                             position: "absolute",
@@ -1234,36 +1300,20 @@ export default function HomePage() {
                       <Box
                         className="feature-icon"
                         sx={{
-                          width: { xs: 80, sm: 100, md: 120 }, // Responsive width
-                          height: { xs: 80, sm: 100, md: 120 }, // Responsive height
-                          background:
-                            theme.palette.mode === "dark"
-                              ? "linear-gradient(135deg, #3d3d3d 0%, #2a2a2a 100%)"
-                              : "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           mx: "auto",
-                          mb: { xs: 3, sm: 3.5, md: 4 }, // Responsive margin bottom
-                          borderRadius: "50%",
-                          transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                          boxShadow:
-                            theme.palette.mode === "dark"
-                              ? "0 12px 35px rgba(0,0,0,0.4)"
-                              : "0 12px 35px rgba(0,0,0,0.15)",
+                          mb: { xs: 0.5, sm: 1, md: 1.5 }, // Minimal margin bottom for tight spacing
+                          height: { xs: 280, sm: 300, md: 320 }, // Fixed height for icon container
                           position: "relative",
                           zIndex: 1,
-                          "& svg": {
-                            color:
-                              theme.palette.mode === "dark"
-                                ? "#ffffff"
-                                : "#000000",
-                            fontSize: "4rem", // Increased to 4rem (64px) for bigger icon
-                            transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                          "& img": {
+                            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                             filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.15))",
                           },
-                          "&:hover svg": {
-                            color: "#ffffff",
+                          "&:hover img": {
+                            transform: "scale(1.1)",
                             filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.25))",
                           },
                         }}
