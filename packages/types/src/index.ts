@@ -1,6 +1,14 @@
 // Basic types for ParkIt application
 // This file provides essential type definitions
 
+// Export error types
+export * from './errors';
+
+// Export validation schemas
+export * from './schemas/auth';
+export * from './schemas/parking';
+export * from './schemas/reservation';
+
 // Base types
 export interface BaseEntity {
   id: string;

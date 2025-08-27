@@ -17,7 +17,7 @@ import { logger } from './utils/logger';
 
 // Importar middleware
 import { authMiddleware } from './middleware/auth';
-import { errorHandler } from './middleware/errorHandler';
+import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import { requestLogger } from './middleware/requestLogger';
 
 // Importar GraphQL
@@ -185,7 +185,10 @@ async function startServer() {
     // Authentication middleware for protected routes
     app.use('/api/protected', authMiddleware);
 
-    // Error handling middleware
+    // 404 handler - must be before error handler
+    app.use(notFoundHandler);
+
+    // Error handling middleware - must be last
     app.use(errorHandler);
 
     // Start server
